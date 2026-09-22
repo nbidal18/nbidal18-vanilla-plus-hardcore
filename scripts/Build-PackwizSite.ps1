@@ -140,8 +140,12 @@ $mmcJson = @"
 # ---------------------------------------------------------------- pack.toml
 $loader = (Get-Content -LiteralPath (Join-Path $repo 'LOADER.txt') -Raw).Trim()
 $mc = (Get-Content -LiteralPath (Join-Path $repo 'MINECRAFT.txt') -Raw).Trim()
+# From a file for the same reason as RELEASE-PREFIX.txt: this script is byte-identical in the
+# Vanilla+ and Hardcore repositories, and a pack name baked in here would have been the one thing
+# forcing them apart. It is what a player sees as the pack's name in Prism.
+$packName = (Get-Content -LiteralPath (Join-Path $repo 'PACK-NAME.txt') -Raw).Trim()
 $packToml = @"
-name = "nbidal18 Vanilla+"
+name = "$packName"
 version = "$version"
 description = "Minecraft $mc vanilla+ modpack with automatic Prism updates"
 pack-format = "packwiz:1.1.0"
@@ -224,8 +228,21 @@ foreach ($entry in $entriesList) {
 # moved is about to be re-delivered on top of every player's copy; the only legitimate way to
 # change one of these on existing instances is a seed, which writes the rows it names and nothing
 # else. A file that is new to the pack is delivered once by design and is not a change.
+#
+# The `2>$null` below is not enough on its own. Under $ErrorActionPreference = 'Stop', anything a
+# native executable writes to stderr is raised as a NativeCommandError and terminates the script
+# before the guard on the next line can run. git writes to stderr in both of the cases this lookup
+# exists to tolerate - a repository with no commits, and a first build whose HEAD has no
+# site/sync-manifest.json - so the preference is relaxed across the call and restored immediately.
+# Found 2026-09-22 on the hardcore pack's first build; Vanilla+ never hit it because it has always
+# had a previous manifest to read.
 $repo = Split-Path -Parent $PSScriptRoot
-$previousJson = & git -C $repo show HEAD:site/sync-manifest.json 2>$null
+$previousJson = $null
+$savedErrorAction = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
+try { $previousJson = & git -C $repo show HEAD:site/sync-manifest.json 2>$null }
+catch { $previousJson = $null }
+finally { $ErrorActionPreference = $savedErrorAction }
 if ($LASTEXITCODE -eq 0 -and $previousJson) {
     $previous = @{}
     foreach ($entry in (($previousJson -join "`n") | ConvertFrom-Json).files) { $previous[$entry.path] = $entry.sha256 }

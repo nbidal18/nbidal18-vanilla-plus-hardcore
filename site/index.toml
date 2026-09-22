@@ -26,7 +26,7 @@ hash = "7ed0a97e729cf0e9cb638d37ace4282d5668103c58d33fb721916739419ba5f3"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "ff9c660b33206e48668306f708ecb4a373dcb87d5245f5b357afcb113d16c97d"
+hash = "1d3e3adfa8fdf1bb20b98d679ac9366731a7708ff7721a999a467db8625cdd25"
 
 [[files]]
 file = "config/better_fishing.properties"
@@ -961,8 +961,8 @@ file = "mods/nbidal18-incendium-1.0.0+26.2-fabric.jar"
 hash = "ee2ef2e17f9bbd0a02d1e41cfb1da4dc39e3c3ed45e6b857a5a0c8823608eb3f"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.109+26.2-fabric.jar"
-hash = "b958fa02807487b8f2b47b5239103bba4239f3016b34f0d3120457e3300e1dad"
+file = "mods/nbidal18-integrity-1.0.0+26.2-fabric.jar"
+hash = "ab025fba7e90b731b4cbf1a600f2c18364abb96f4ced6a40b8d7807ea81b90dc"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"

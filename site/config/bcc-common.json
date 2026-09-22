@@ -1,0 +1,21 @@
+{
+  "modpackName": {
+    "value": "nbidal18 Vanilla+",
+    "comments": [
+      "The name of the modpack"
+    ]
+  },
+  "modpackVersion": {
+    "value": "v1.0.109",
+    "comments": [
+      "The version of the modpack"
+    ]
+  },
+  "useMetadata": {
+    "value": false,
+    "comments": [
+      "Use the metadata.json to determine the modpack version",
+      "ONLY ENABLE THIS IF YOU KNOW WHAT YOU ARE DOING"
+    ]
+  }
+}

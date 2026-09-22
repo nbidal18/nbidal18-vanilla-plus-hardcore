@@ -1,0 +1,23 @@
+{
+  "show_heads": false,
+  "time_format": "DDMMYYYY",
+  "console_info": false,
+  "decay_with_deaths": true,
+  "decay_with_time": true,
+  "decay_time": 576000,
+  "decay_time_type": "TICKS",
+  "damage_to_break": 3,
+  "aesthetic_decay": true,
+  "store_experience": false,
+  "experience_cap": true,
+  "experience_kept": "VANILLA",
+  "experience_decay": false,
+  "drop_experience": false,
+  "gravestone_accessible_owner_only": false,
+  "broadcast_collect_in_chat": false,
+  "broadcast_coordinates_in_chat": false,
+  "aesthetic_gravestones": true,
+  "spawn_gravestone_skeletons": false,
+  "spawn_gravestones_in_creative": false,
+  "spawn_gravestones_with_keepinv": false
+}

@@ -1,0 +1,18 @@
+# The version and URL files are read by scripts; a stray CR breaks a string compare.
+*.txt text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ps1 text eol=lf
+*.jar binary
+*.zip binary
+*.ogg binary
+*.png binary
+
+# site/ is PUBLISHED BYTES. Every file there is hashed in index.toml and sync-manifest.json, so
+# git must store and serve it exactly as the build produced it. Normalising line endings here
+# silently changes the served file without changing the recorded hash, and the updater then
+# redownloads those files on every launch forever. This shipped once, in v1.0.0, and was caught
+# by verifying the published channel against the local build rather than by anything local.
+site/** -text

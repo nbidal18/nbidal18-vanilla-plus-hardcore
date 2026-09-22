@@ -1,0 +1,199 @@
+{
+	"dynamicOnLoad": true,
+	"ticksRevealed": 200,
+	"animationMove": true,
+	"animationFade": true,
+	"animationSpeed": 2.0,
+	"animationSpeeds": {
+		"moveIn": 0.0,
+		"moveOut": 0.0,
+		"fadeIn": 0.0,
+		"fadeOut": 0.0
+	},
+	"events": {
+		"onScreenOpen": "Nothing",
+		"onMoving": "Nothing",
+		"onStandingStill": "Nothing",
+		"onPauseScreen": "Nothing",
+		"onSneaking": "Nothing",
+		"onFlying": "Nothing",
+		"onUsingItem": false,
+		"onMining": false
+	},
+	"elements": {
+		"minecraft:hotbar": {
+			"maximumMoveHotbar": 1.0,
+			"minimumAlpha": 0.0,
+			"onChange": true,
+			"onSlotChange": true,
+			"durabilityPercentage": 10,
+			"onDamageChange": false,
+			"onStackSizeChange": true,
+			"maximumFadeHotbarItems": 0.0,
+			"alwaysHidden": false,
+			"onLowDurability": true,
+			"maximumAlpha": 1.0,
+			"durabilityTotal": 20,
+			"dynamic": true
+		},
+		"minecraft:tooltip": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": true,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:subtitle": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:overlay_message": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:status_effects": {
+			"hidePersistentStatusEffects": true,
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"onChange": true,
+			"showHiddenStatusEffects": false,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:boss_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:info_bar": {
+			"minimumAlpha": 0.0,
+			"revealLocatorBarWhenNearby": 32,
+			"alwaysHidden": false,
+			"onChange": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:player_list": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:armor_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true,
+			"revealWhenHoldingArmorItem": true,
+			"policy": "Changing"
+		},
+		"minecraft:air_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0,
+			"dynamic": true,
+			"policy": "Changing"
+		},
+		"minecraft:health_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0,
+			"revealWhenHoldingHealingItem": true,
+			"dynamic": true,
+			"policy": "Changing"
+		},
+		"minecraft:scoreboard": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"onTeamChange": true,
+			"onScoreChange": true,
+			"maximumAlpha": 1.0,
+			"onTitleChange": true,
+			"dynamic": true
+		},
+		"minecraft:title": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:experience_level": {
+			"revealOnTargetingEnchantingBlock": true,
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"onChange": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true,
+			"revealWithHotbar": true
+		},
+		"autohud:chat_indicator": {
+			"displayIndicator": true,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:crosshair": {
+			"crosshairAlwaysVisible": [
+				"minecraft:bow",
+				"minecraft:crossbow",
+				"minecraft:trident"
+			],
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"onChange": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:closed_captions": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"maximumAlpha": 1.0
+		},
+		"minecraft:chat": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true
+		},
+		"minecraft:food_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"revealWhenHoldingConsumableItem": true,
+			"maximumAlpha": 1.0,
+			"visibleWhenRiding": true,
+			"dynamic": true,
+			"policy": "Changing"
+		},
+		"minecraft:mount_health_bar": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": true,
+			"maximumAlpha": 1.0,
+			"dynamic": true,
+			"policy": "Changing"
+		},
+		"architectury:render_hud": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"jade:main": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"unlink": false,
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"creativecore:gui": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"unlink": false,
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		}
+	}
+}

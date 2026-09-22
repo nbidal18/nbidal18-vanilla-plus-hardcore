@@ -1,0 +1,8 @@
+/.site-staging-*/
+/tools/
+/client/java-build/
+*.tmp
+
+# Python bytecode from the analysis scripts in scripts\ (Compare-Chunks, Set-EndGenerator).
+__pycache__/
+*.pyc

@@ -1,0 +1,8 @@
+{
+  "mobNames": [
+    "corpse:corpse"
+  ],
+  "persistenceEnablers": [],
+  "enableStandardSpawnerDespawn": true,
+  "enableTrialSpawnerDespawn": true
+}

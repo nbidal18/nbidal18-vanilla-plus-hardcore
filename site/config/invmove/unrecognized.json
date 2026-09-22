@@ -1,0 +1,14 @@
+{
+  "allowMovement": {
+    "net.minecraft.client.gui.screens.PauseScreen": false,
+    "net.minecraft.client.gui.screens.options.OptionsScreen": false,
+    "me.flashyreese.mods.reeses_sodium_options.client.gui.SodiumVideoOptionsScreen": false,
+    "net.irisshaders.iris.gui.screen.ShaderPackScreen": false,
+    "dev.isxander.yacl3.gui.YACLScreen": false,
+    "net.minecraft.client.gui.screens.MultiplayerOptionsScreen": false,
+    "mezz.jei.gui.recipes.RecipesGui": false,
+    "xaero.map.gui.GuiMap": true,
+    "immersive_aircraft.client.gui.VehicleScreen": true
+  },
+  "hideBackground": {}
+}

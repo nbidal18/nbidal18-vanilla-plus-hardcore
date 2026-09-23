@@ -94,7 +94,7 @@ hash = "5670885d277274a734abdd065cd55f9c43a770b473353a420686d450b6259ef4"
 
 [[files]]
 file = "config/gravestones.json"
-hash = "de6cfe61115b625004dba1c0f2a422e85e714625be162568e8e3a3950382ddb9"
+hash = "e6ef20d1c572e82cd0b427da013e29a60f9f1bb9b28d3f28c057911a9f4330eb"
 
 [[files]]
 file = "config/immediatelyfast.json"
@@ -302,7 +302,7 @@ hash = "49e0f7ab854b935167e987e77ff379713780fd6e625f6c259459089af8f4d1d4"
 
 [[files]]
 file = "config/tectonic.json"
-hash = "88ac9fd71410c3ba66e5a775a4d38ebd3fec819184996f3d6c3091188532adb1"
+hash = "f8159cd49fec4f6faefa98cff420db36861d71bba7aaa0a55c898b860da75f09"
 
 [[files]]
 file = "config/terrain_slabs.json"

@@ -82,13 +82,21 @@ Write-Host ("copied    {0} files, {1} MB" -f $b.Count, [math]::Round($b.Sum / 1M
 # format - LF, two-space indent, no trailing newline - because it is hash-enforced at login and BCC
 # only writes it when it is missing, so the published bytes stand. The version is the one field
 # that changes here; everything else is left byte for byte.
-$bcc = Join-Path $to '3. modpack\client\config\bcc-common.json'
-$text = [IO.File]::ReadAllText($bcc)
-$expected = '"value": "v{0}"' -f $current
-if (([regex]::Matches($text, [regex]::Escape($expected))).Count -ne 1) { throw "bcc-common.json does not say $expected exactly once" }
-[IO.File]::WriteAllText($bcc, $text.Replace($expected, ('"value": "v{0}"' -f $Version)),
-    (New-Object Text.UTF8Encoding($false)))
-Write-Host ("version   PACK-VERSION.txt and bcc-common.json -> {0}" -f $Version)
+#
+# The server master keeps its own copy under 4. server\config. The deploy takes the client copy, so
+# the server never ran a stale one - but the master said v1.0.0 after the v1.0.1 cut (2026-09-24),
+# which is a master describing a release that no longer exists. Both move together.
+$bccCopies = @((Join-Path $to '3. modpack\client\config\bcc-common.json'),
+               (Join-Path $to '4. server\config\bcc-common.json')) | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf }
+if ($bccCopies.Count -eq 0) { throw 'No bcc-common.json in the release' }
+foreach ($bcc in $bccCopies) {
+    $text = [IO.File]::ReadAllText($bcc)
+    $expected = '"value": "v{0}"' -f $current
+    if (([regex]::Matches($text, [regex]::Escape($expected))).Count -ne 1) { throw "$bcc does not say $expected exactly once" }
+    [IO.File]::WriteAllText($bcc, $text.Replace($expected, ('"value": "v{0}"' -f $Version)),
+        (New-Object Text.UTF8Encoding($false)))
+}
+Write-Host ("version   PACK-VERSION.txt and {0} bcc-common.json -> {1}" -f $bccCopies.Count, $Version)
 
 # ---------------------------------------------------------------- the first-party mods
 # Delegated rather than inlined: a first-party mod has to be rebuildable inside the release you are

@@ -5,6 +5,36 @@ build that was not published.
 
 ---
 
+## v1.0.1 — 2026-09-24
+
+**Better Third Person is back, Variants & Ventures is gone, and the settings you get on a first
+install are the owner's.** The first two of those had already reached the channel under the v1.0.0
+number - v1.0.0 was published three times in a day, which is what the one-publish-per-version rule
+exists to prevent - so this is the version that makes the current pack a release of its own.
+
+Manifest digest `99fd6e9ee1c3ac12…`, replacing `fd2f1cbf3be5bea3…` (the third v1.0.0 build the
+channel was serving) and, before it, `61810e0d67ffc34a…` (the first).
+
+**What changed since the v1.0.0 that was written up below**
+
+* **Better Third Person (our 26.2 port, `1.9.0-nbidal18.1`) is in the client again.** It had been
+  set aside with the animation-conflict group by mistake: its mixins are camera and input, none
+  touch the player model. `skipThirdPersonFrontView` is on, as on Vanilla+, so the front view is
+  gone again. **112 client jars.**
+* **Variants & Ventures is removed from both sides, with Resourceful Lib.** It adds four mobs of its
+  own with spawn eggs, which is content, not variants. **69 server jars.**
+* **`options.txt` in the setup ZIP is the owner's Vanilla+ file** - same keybinds, fullscreen,
+  video, sound and accessibility values - with this line's nine resource packs selected and no
+  remembered server. It is a first-install default only: an instance imported before this keeps
+  the file it has, and gets these settings only by re-importing the ZIP.
+* Every other first-party jar rebuilt **byte-identical** to the one it replaces; only the integrity
+  helper moved, to `1.0.1`.
+
+**Players do nothing beyond clicking Play.** The game closes once with a "close and reopen" notice
+while the updater fetches the new helper and the removed mod's files are moved aside - the same
+as every release. Anyone who wants the new default settings re-imports
+`nbidal18-hardcore-client.zip`; nothing about the update requires it.
+
 ## v1.0.0 — 2026-09-23
 
 **The first hardcore release, and the first thing this channel has ever served that is actually

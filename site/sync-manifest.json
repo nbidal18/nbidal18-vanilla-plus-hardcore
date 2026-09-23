@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.0",
+    "packVersion":  "1.0.1",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -33,6 +33,7 @@
                                 "config/treechop-client.toml",
                                 "config/betteradvancements.json",
                                 "config/betterf3.json",
+                                "config/betterthirdperson.json5",
                                 "config/c2me.toml",
                                 "config/cameraoverhaul.toml",
                                 "config/chatanimation.json",
@@ -118,6 +119,7 @@
                          "config/asyncparticles/asyncparticles.json",
                          "config/betteradvancements.json",
                          "config/betterf3.json",
+                         "config/betterthirdperson.json5",
                          "config/c2me.toml",
                          "config/cameraoverhaul.toml",
                          "config/chatanimation.json",
@@ -282,7 +284,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "1d3e3adfa8fdf1bb20b98d679ac9366731a7708ff7721a999a467db8625cdd25"
+                                    "sha256":  "5abbd82668539608dcd26c7952ef2d2ae1b011362d7f8e3323b35ab32f51d0b4"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -291,6 +293,10 @@
                                 {
                                     "path":  "config/betterf3.json",
                                     "sha256":  "41a7bdf7d9406f41813d127f123e3190140b7be5d09c2173f5a675df657ac346"
+                                },
+                                {
+                                    "path":  "config/betterthirdperson.json5",
+                                    "sha256":  "a08f97002e75fbe4e2933cbb6137c8bcb33d1cd36e947e54829b8fa8ab3caa7c"
                                 },
                                 {
                                     "path":  "config/c2me.toml",
@@ -624,7 +630,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "1d3e3adfa8fdf1bb20b98d679ac9366731a7708ff7721a999a467db8625cdd25"
+                      "sha256":  "5abbd82668539608dcd26c7952ef2d2ae1b011362d7f8e3323b35ab32f51d0b4"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -633,6 +639,10 @@
                   {
                       "path":  "config/betterf3.json",
                       "sha256":  "4168bac2dc287241056469b9cf32f118bc7804ae2325b256d9b734812e9e5ee7"
+                  },
+                  {
+                      "path":  "config/betterthirdperson.json5",
+                      "sha256":  "a08f97002e75fbe4e2933cbb6137c8bcb33d1cd36e947e54829b8fa8ab3caa7c"
                   },
                   {
                       "path":  "config/c2me.toml",
@@ -1215,6 +1225,10 @@
                       "sha256":  "20964b7da5db58b5e9bd499e8e43c79d4715dd8bdf99581b6bca899a23adcc9e"
                   },
                   {
+                      "path":  "mods/nbidal18-betterthirdperson-1.9.0+26.2-fabric.jar",
+                      "sha256":  "83e0c7fdf7ea8c8ea32018504efa57d5107880fbe3085c94201f8bea83faaba2"
+                  },
+                  {
                       "path":  "mods/nbidal18-cameraoverhaul-2.1.1-fabric+mc.26.1-plus.jar",
                       "sha256":  "101a59b5a662c920a8ea05c2396e82f546be87f2cc7d698822eccd4821ad8a85"
                   },
@@ -1235,8 +1249,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.0+26.2-fabric.jar",
-                      "sha256":  "ab025fba7e90b731b4cbf1a600f2c18364abb96f4ced6a40b8d7807ea81b90dc"
+                      "path":  "mods/nbidal18-integrity-1.0.1+26.2-fabric.jar",
+                      "sha256":  "06fade3206412fab2b02fb75c0f322e4c4b66bd8d007d6e066dc0e9028e83a55"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",

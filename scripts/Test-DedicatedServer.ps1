@@ -70,8 +70,17 @@ $prefix = & (Join-Path $PSScriptRoot 'ReleaseLine.ps1')
 $release = Join-Path (Split-Path -Parent $repo) "$prefix$version"
 $javaPath = Join-Path $env:APPDATA 'PrismLauncher\java\java-runtime-epsilon\bin\java.exe'
 
+# The Vanilla+ mirror keeps the Fabric launcher (server.jar, libraries, versions) beside mods\ and
+# config\; the Hardcore mirror keeps it under root\. Look in both, as Export-ServerInventory does -
+# pointing this at root\ instead loses mods\ and config\, which sit one level up (2026-09-24).
+$launcherRoot = $DriveRoot
+if (-not (Test-Path -LiteralPath (Join-Path $DriveRoot 'server.jar')) -and
+    (Test-Path -LiteralPath (Join-Path (Join-Path $DriveRoot 'root') 'server.jar'))) {
+    $launcherRoot = Join-Path $DriveRoot 'root'
+}
+
 # A rebuild folder has no release behind it, so the release is required only when it is overlaid.
-$required = @($DriveRoot, $javaPath, (Join-Path $DriveRoot 'server.jar'))
+$required = @($DriveRoot, $javaPath, (Join-Path $launcherRoot 'server.jar'))
 if ($ServerSource) {
     $ServerSource = [IO.Path]::GetFullPath((Join-Path $PWD.ProviderPath $ServerSource))
     $required += @($ServerSource, (Join-Path $ServerSource 'mods'))
@@ -93,16 +102,16 @@ try {
     # With -ServerSource the launcher (server.jar, libraries, versions) still comes from the mirror
     # and the payload (mods, config) comes from the rebuild folder.
     $payloadRoot = if ($ServerSource) { $ServerSource } else { $DriveRoot }
-    Write-Host ("copying   launcher from {0}" -f $DriveRoot)
+    Write-Host ("copying   launcher from {0}" -f $launcherRoot)
     Write-Host ("copying   mods and config from {0}" -f $payloadRoot)
     foreach ($directory in @('mods', 'config', 'libraries', 'versions')) {
-        $source = Join-Path $(if ($directory -in @('mods', 'config')) { $payloadRoot } else { $DriveRoot }) $directory
+        $source = Join-Path $(if ($directory -in @('mods', 'config')) { $payloadRoot } else { $launcherRoot }) $directory
         if (Test-Path -LiteralPath $source) {
             robocopy $source (Join-Path $testRoot $directory) /E /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
             if ($LASTEXITCODE -ge 8) { throw "robocopy failed for $directory ($LASTEXITCODE)" }
         }
     }
-    Copy-Item -LiteralPath (Join-Path $DriveRoot 'server.jar') -Destination $testRoot -Force
+    Copy-Item -LiteralPath (Join-Path $launcherRoot 'server.jar') -Destination $testRoot -Force
     [IO.File]::WriteAllText((Join-Path $testRoot 'eula.txt'), "eula=true`n")
 
     if ($ServerSource) {

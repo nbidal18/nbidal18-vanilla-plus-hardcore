@@ -105,6 +105,11 @@
       "reason": "Debug overlay layout."
     },
     {
+      "match": "config/betterthirdperson.json5",
+      "class": "support",
+      "reason": "Camera control."
+    },
+    {
       "match": "config/c2me.toml",
       "class": "support",
       "reason": "Chunk pipeline threading; performance."

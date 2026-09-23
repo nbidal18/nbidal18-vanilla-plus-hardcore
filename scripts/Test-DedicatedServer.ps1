@@ -38,7 +38,16 @@ param(
     # the server for both worlds and must be dormant on the normal one, active on the hardcore one).
     [switch] $Hardcore,
     [switch] $Interactive,
-    [switch] $KeepGameDir
+    [switch] $KeepGameDir,
+    # Stage mods and config from this folder instead of the mirror, and skip the release overlay
+    # entirely. Added 2026-09-23 for the clean 26.2 rebuild, which builds the server half up one mod
+    # at a time in a folder that is not a release and has no integrity helper - the counterpart of
+    # Test-ClientLaunch's -ClientSource. server.jar, libraries and versions still come from
+    # -DriveRoot, because the Fabric launcher is not something the rebuild decides.
+    #
+    #   .\Test-DedicatedServer.ps1 -ServerSource ..\..\_rebuild-server `
+    #       -DriveRoot ..\..\_server-payload-cache-hardcore\root
+    [string] $ServerSource
 )
 
 Set-StrictMode -Version Latest
@@ -61,8 +70,15 @@ $prefix = & (Join-Path $PSScriptRoot 'ReleaseLine.ps1')
 $release = Join-Path (Split-Path -Parent $repo) "$prefix$version"
 $javaPath = Join-Path $env:APPDATA 'PrismLauncher\java\java-runtime-epsilon\bin\java.exe'
 
-foreach ($required in @($DriveRoot, $release, $javaPath, (Join-Path $DriveRoot 'server.jar'))) {
-    if (-not (Test-Path -LiteralPath $required)) { throw "Missing input: $required" }
+# A rebuild folder has no release behind it, so the release is required only when it is overlaid.
+$required = @($DriveRoot, $javaPath, (Join-Path $DriveRoot 'server.jar'))
+if ($ServerSource) {
+    $ServerSource = [IO.Path]::GetFullPath((Join-Path $PWD.ProviderPath $ServerSource))
+    $required += @($ServerSource, (Join-Path $ServerSource 'mods'))
+}
+else { $required += $release }
+foreach ($item in $required) {
+    if (-not (Test-Path -LiteralPath $item)) { throw "Missing input: $item" }
 }
 
 $tempBase = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\') + '\'
@@ -74,9 +90,13 @@ try {
     # The world is deliberately not copied: it is 5 GB, and a fresh one is what exercises the
     # datapacks. libraries and versions are what the Fabric launcher loads; .fabric is a remap cache
     # the server rebuilds on its own, so it is skipped to keep the copy small.
-    Write-Host 'copying   server payload (mods, config, libraries, versions)'
+    # With -ServerSource the launcher (server.jar, libraries, versions) still comes from the mirror
+    # and the payload (mods, config) comes from the rebuild folder.
+    $payloadRoot = if ($ServerSource) { $ServerSource } else { $DriveRoot }
+    Write-Host ("copying   launcher from {0}" -f $DriveRoot)
+    Write-Host ("copying   mods and config from {0}" -f $payloadRoot)
     foreach ($directory in @('mods', 'config', 'libraries', 'versions')) {
-        $source = Join-Path $DriveRoot $directory
+        $source = Join-Path $(if ($directory -in @('mods', 'config')) { $payloadRoot } else { $DriveRoot }) $directory
         if (Test-Path -LiteralPath $source) {
             robocopy $source (Join-Path $testRoot $directory) /E /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
             if ($LASTEXITCODE -ge 8) { throw "robocopy failed for $directory ($LASTEXITCODE)" }
@@ -85,6 +105,10 @@ try {
     Copy-Item -LiteralPath (Join-Path $DriveRoot 'server.jar') -Destination $testRoot -Force
     [IO.File]::WriteAllText((Join-Path $testRoot 'eula.txt'), "eula=true`n")
 
+    if ($ServerSource) {
+        Write-Host 'overlay   skipped - a rebuild folder has no release to overlay'
+    }
+    else {
     # Overlay what this release would deploy, so the boot proves the jar we are about to ship.
     $helpers = @(Get-ChildItem -LiteralPath (Join-Path $release '3. modpack\client\mods') -Filter 'nbidal18-integrity-*.jar')
     if ($helpers.Count -ne 1) { throw "Expected one integrity helper in the release, found $($helpers.Count)" }
@@ -145,6 +169,7 @@ try {
         Write-Host ("added     {0} (named by -AddMods, absent from the server)" -f $name)
     }
     Write-Host ("overlaid  {0}, this release's policy and {1} other jar(s); added {2} named jar(s)" -f $helpers[0].Name, $refreshed, $addedNames.Count)
+    }
 
     # A properties file of our own rather than the live one: no whitelist, no ops, its own ports and
     # its own world, so nothing here can collide with the real server or need its player files.

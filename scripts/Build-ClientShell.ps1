@@ -20,6 +20,16 @@ $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).
 $loader = (Get-Content -LiteralPath (Join-Path $repo 'LOADER.txt') -Raw).Trim()
 $mc = (Get-Content -LiteralPath (Join-Path $repo 'MINECRAFT.txt') -Raw).Trim()
 $url = (Get-Content -LiteralPath (Join-Path $repo 'UPDATE-URL.txt') -Raw).Trim()
+$packName = (Get-Content -LiteralPath (Join-Path $repo 'PACK-NAME.txt') -Raw).Trim()
+# The Prism instance name, derived rather than written down, so this script stays identical between
+# the two pack lines - which is the whole point of RELEASE-PREFIX.txt and its siblings. Two packs
+# sharing one instance name would land in the same folder on a player's machine and overwrite each
+# other; Vanilla+ and Hardcore are separate installs, not versions of one.
+#   "nbidal18 Vanilla+"           -> nbidal18-vanilla-plus            (what Vanilla+ already had)
+#   "nbidal18 Vanilla+ Hardcore"  -> nbidal18-vanilla-plus-hardcore
+$instanceName = (($packName -replace '\+', ' plus').ToLowerInvariant() -replace '[^a-z0-9]+', '-').Trim('-')
+if (-not $instanceName) { throw "PACK-NAME.txt ('$packName') does not reduce to an instance name." }
+Write-Host ("instance  {0}" -f $instanceName)
 $prefix = & (Join-Path $PSScriptRoot 'ReleaseLine.ps1')
 $release = Join-Path $line "$prefix$version"
 $tools = Join-Path $release '5. modpack source\auto-updater tools'
@@ -38,12 +48,12 @@ function W($path, $text) { [IO.File]::WriteAllText($path, ($text -replace "`r`n"
 W (Join-Path $stage 'instance.cfg') @"
 [General]
 iconKey=server-icon
-name=nbidal18-vanilla-plus
+name=$instanceName
 AutomaticJava=true
 InstanceType=OneSix
-ExportName=nbidal18-vanilla-plus
+ExportName=$instanceName
 ExportOptionalFiles=true
-ExportSummary=Minecraft $mc vanilla+ modpack with automatic updates
+ExportSummary=$packName - Minecraft $mc, updates itself
 ExportVersion=$version
 IgnoreJavaCompatibility=false
 JoinServerOnLaunch=false

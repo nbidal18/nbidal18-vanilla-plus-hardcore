@@ -65,11 +65,6 @@
       "reason": "Inventory mouse handling."
     },
     {
-      "match": "config/almanac-nbtFix.json5",
-      "class": "support",
-      "reason": "Library compatibility shim."
-    },
-    {
       "match": "config/asyncparticles/asyncparticles-mixin.properties",
       "class": "support",
       "reason": "Particle threading; rendering."
@@ -90,11 +85,6 @@
       "reason": "Declares this pack's name and version to Better Compatibility Checker (26.2 reads only this JSON; the TOML it read on 1.21.1 is dead). If a player can edit it, they can claim to be on any version, and the mismatch marker means nothing. BCC writes the file only when it is missing, so the published bytes stand."
     },
     {
-      "match": "config/better_fishing.properties",
-      "class": "support",
-      "reason": "Client-side fishing visuals."
-    },
-    {
       "match": "config/treechop-client.toml",
       "class": "support",
       "reason": "Client half of TreeChop: the crosshair chop indicator (shipped off, as in 4.5.2) and settings-screen preferences."
@@ -110,24 +100,9 @@
       "reason": "Advancement screen."
     },
     {
-      "match": "config/betterdays-client.toml",
-      "class": "support",
-      "reason": "Client half."
-    },
-    {
-      "match": "config/betterdays-common.toml",
-      "class": "gameplay",
-      "reason": "Day length."
-    },
-    {
       "match": "config/betterf3.json",
       "class": "support",
       "reason": "Debug overlay layout."
-    },
-    {
-      "match": "config/betterthirdperson.json5",
-      "class": "support",
-      "reason": "Camera control."
     },
     {
       "match": "config/c2me.toml",
@@ -138,16 +113,6 @@
       "match": "config/cameraoverhaul.toml",
       "class": "support",
       "reason": "Camera motion."
-    },
-    {
-      "match": "config/carryon-client.json",
-      "class": "support",
-      "reason": "How a carried block or mob is drawn - facing, rotation, arms, and the model-override list. Rendering, and the override list is content we may extend."
-    },
-    {
-      "match": "config/carryon-common.json",
-      "class": "gameplay",
-      "reason": "What can be picked up, how much it slows the player, and the block and entity blacklists. The server enforces its own copy, so a client editing this would be told it can carry things the server refuses."
     },
     {
       "match": "config/chatanimation.json",
@@ -185,34 +150,14 @@
       "reason": "Cursor rendering."
     },
     {
-      "match": "config/emf_compat.json",
-      "class": "support",
-      "reason": "Entity model compatibility shim."
-    },
-    {
       "match": "config/enchdesc.json",
       "class": "support",
       "reason": "Enchantment tooltip text."
     },
     {
-      "match": "config/entity_model_features.json",
-      "class": "support",
-      "reason": "Model rendering."
-    },
-    {
-      "match": "config/entity_texture_features.json",
-      "class": "support",
-      "reason": "Texture rendering."
-    },
-    {
       "match": "config/entityculling.json",
       "class": "support",
       "reason": "Render culling; performance."
-    },
-    {
-      "match": "config/etf_warnings.json",
-      "class": "support",
-      "reason": "Dismissed rendering warnings."
     },
     {
       "match": "config/fallingleaves2.json",
@@ -223,16 +168,6 @@
       "match": "config/ferritecore.mixin.properties",
       "class": "support",
       "reason": "Memory optimisation."
-    },
-    {
-      "match": "config/fzzy_config/keybinds.toml",
-      "class": "player",
-      "reason": "Keybinds."
-    },
-    {
-      "match": "config/fzzy_config/search.toml",
-      "class": "support",
-      "reason": "Config-screen search UI."
     },
     {
       "match": "config/gnetum.json",
@@ -265,11 +200,6 @@
       "reason": "Shader exclusions."
     },
     {
-      "match": "config/immersive_aircraft.json",
-      "class": "player",
-      "reason": "Immersive Aircraft settings. Published so the file exists at all - the mod otherwise writes its own on first launch, and its default useCustomKeybindSystem=true builds the aircraft its own key objects, which InvMove has never heard of, so no aircraft control works while any screen is open. Player class rather than gameplay because the same file carries genuine preferences - third person by default, trails, render distance - and the values that matter for fairness are read server-side from the server's own copy. Player class still delivers this file once to instances that already have one - preserved-forever starts after that first delivery - so no seed is needed, but it does mean a player's own Immersive Aircraft settings are replaced on the update that introduces it."
-    },
-    {
       "match": "config/iris.properties",
       "class": "player",
       "reason": "Selected shader pack and shader toggles."
@@ -278,56 +208,6 @@
       "match": "config/ixeris.toml",
       "class": "support",
       "reason": "Window event threading; input."
-    },
-    {
-      "match": "config/jade/hide-blocks.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/hide-entities.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/hide-mob-effects.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/jade.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/profiles/1/jade.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/profiles/2/jade.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/profiles/3/jade.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/server-plugin-overrides.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jade/sort-order.json",
-      "class": "support",
-      "reason": "Tooltip HUD. Jade's Coordinates and Relative Coordinates lines are forced off for every player by the server's jade/server-plugin-overrides.json (v1.0.103), which overrides whatever a client sets here. Until v1.0.103 that file was empty, and this note claimed it enforced entity health - it never did."
-    },
-    {
-      "match": "config/jei-server.properties",
-      "class": "support",
-      "reason": "Recipe viewer permissions."
     },
     {
       "match": "config/jei/blacklist.json",
@@ -390,11 +270,6 @@
       "reason": "Thunder sound and flash."
     },
     {
-      "match": "config/letmedespawn.json",
-      "class": "gameplay",
-      "reason": "Which mobs despawn, and when."
-    },
-    {
       "match": "config/lithium.properties",
       "class": "support",
       "reason": "Server optimisation toggles."
@@ -408,11 +283,6 @@
       "match": "config/lootr-client.jsonc",
       "class": "support",
       "reason": "Client half of Lootr: textures and UI only."
-    },
-    {
-      "match": "config/lootr-common.jsonc",
-      "class": "gameplay",
-      "reason": "Per-player loot container behaviour."
     },
     {
       "match": "config/midnightlib.json",
@@ -435,21 +305,6 @@
       "reason": "VinURL's custom music discs. Published (v1.0.74) so a fresh install starts with youtube.com and soundcloud.com on the URL whitelist instead of asking every player to press Y once per domain, which is what 4.5.2 shipped too. Player class because the mod writes the player's own whitelist additions into this file; player class still delivers it once to instances that already have one, so existing players get the two domains and lose any they added themselves, once. Startup updates stay on: yt-dlp has to chase YouTube. The executables (yt-dlp, ffmpeg, ffprobe, deno - 230 MB) are not shipped; the mod downloads and updates them itself."
     },
     {
-      "match": "config/mousewheelie.hjson",
-      "class": "support",
-      "reason": "Inventory scrolling."
-    },
-    {
-      "match": "config/nbidal18-vanillarefresh.json",
-      "class": "player",
-      "reason": "Vanilla Refresh settings, shipped once as this pack's chosen defaults. The player edits them through Mod Menu and through the datapack's own chat menu, which syncs back into this file, so it must never be enforced and must never be restored over their choices."
-    },
-    {
-      "match": "config/notenoughanimations.json",
-      "class": "support",
-      "reason": "Player animation."
-    },
-    {
       "match": "config/firstperson.json",
       "class": "player",
       "reason": "First Person Model (v1.0.90): whether the body is drawn in first person, the vanilla-hands mode, the offsets. The mod's F6 toggle writes this file, and a player who prefers vanilla first person keeps that choice; nothing in it affects fairness. v1.0.97 seeds the three body offsets (xOffset, sneakXOffset, sitXOffset) to 15, the values the owner plays with, once per instance under token firstperson-offsets-v1097. The master deliberately keeps 0: changing a player master re-delivers the file over every player, F6 choice included."
@@ -463,21 +318,6 @@
       "match": "config/presencefootsteps/userconfig.json5",
       "class": "support",
       "reason": "Footstep sounds; writes its own updater state."
-    },
-    {
-      "match": "config/reliable_gliders.json",
-      "class": "gameplay",
-      "reason": "How far and how fast the glider carries you - updraft strength and height are movement, and the server reads its own copy, so a client editing these would fly differently from what the server allows. equip_to_chestplate decides whether the glider takes an armour slot, which is the whole cost of carrying it."
-    },
-    {
-      "match": "config/servercore/config.yml",
-      "class": "support",
-      "reason": "Tick and chunk performance tuning."
-    },
-    {
-      "match": "config/servercore/optimizations.yml",
-      "class": "support",
-      "reason": "Tick and chunk performance tuning."
     },
     {
       "match": "config/skinlayers.json",
@@ -580,11 +420,6 @@
       "reason": "HUD effect bars."
     },
     {
-      "match": "config/structure_layout_optimizer.jsonc",
-      "class": "support",
-      "reason": "Structure placement performance only."
-    },
-    {
       "match": "config/subtle_effects/blocks.toml",
       "class": "support",
       "reason": "Ambient particle effects."
@@ -625,21 +460,6 @@
       "reason": "Terrain generation."
     },
     {
-      "match": "config/sparsestructures.json5",
-      "class": "gameplay",
-      "reason": "Structure rarity. Worldgen, so it decides what the world contains - enforced like tectonic and terralith."
-    },
-    {
-      "match": "config/transition.json",
-      "class": "support",
-      "reason": "Crash report consent."
-    },
-    {
-      "match": "config/trender.json",
-      "class": "support",
-      "reason": "Tooltip render style."
-    },
-    {
       "match": "config/variantsandventures.json",
       "class": "gameplay",
       "reason": "Mob variant spawning."
@@ -655,16 +475,6 @@
       "reason": "LOD generation threading; machine-dependent."
     },
     {
-      "match": "config/wover/client.json",
-      "class": "player",
-      "reason": "World Weaver's client answers, shipped once so its first-run welcome screen never appears and its version check never runs. That check sends the player's IP to the mod author's server and keeps it in their logs for four weeks; nothing in this pack needs it, because the pack updates through its own channel. Published once and then owned by the player: all three are also settings, reachable from Mod Menu, and the welcome screen writes this file itself the moment it is answered - so restoring it would overwrite a choice a player had just made."
-    },
-    {
-      "match": "config/whitenoise-client.toml",
-      "class": "support",
-      "reason": "Ambient audio."
-    },
-    {
       "match": "config/xaero/minimap/profiles/default.cfg",
       "class": "player",
       "reason": "Minimap preferences. The minimap is installed only because waypoints live in it - the map itself, its entity radar and its cave mode are pinned off by property rules."
@@ -675,24 +485,9 @@
       "reason": "Map preferences - zoom, colours, waypoint scale. The eight settings that would turn the map into an information cheat are pinned individually by property rules instead, so the player keeps every honest preference."
     },
     {
-      "match": "config/farmersdelight-client.json",
-      "class": "support",
-      "reason": "Farmer's Delight Refabricated (v1.0.85): the nourishment and comfort HUD overlays and the food-effect tooltip. Rendering and UI only, so support."
-    },
-    {
-      "match": "config/farmersdelight-common.json",
-      "class": "gameplay",
-      "reason": "Farmer's Delight Refabricated (v1.0.85): recipes, crop crates, soup effects, rich soil, and the village and chest-loot world generation. In-game content on both sides; the server copy is deployed with -Config in the same release. Published in the exact form the mod wrote it (mod defaults)."
-    },
-    {
       "match": "config/yacl.json5",
       "class": "support",
       "reason": "Config GUI library."
-    },
-    {
-      "match": "config/zfastnoise.mixin.toml",
-      "class": "support",
-      "reason": "Noise implementation; performance."
     }
   ],
   "rewrittenAtRuntime": [
@@ -911,7 +706,7 @@
       "reason": "Rethinking Voxels' settings (v1.0.105). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."
     },
     {
-      "match": "shaderpacks/nbidal18-\u00a7lE-LITE shaders 5.1.1.zip.txt",
+      "match": "shaderpacks/nbidal18-§lE-LITE shaders 5.1.1.zip.txt",
       "class": "player",
       "reason": "Shader settings. Published once so the pack ships its tuning, then owned by the player - a property rule cannot pin a key here, because these are not properties files."
     },

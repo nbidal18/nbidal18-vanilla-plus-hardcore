@@ -1,0 +1,60 @@
+{
+  "$doc": [
+    "Per-line expectations for Test-LocalSync.ps1, so the script file itself stays identical",
+    "between nbidal18-vanilla-plus and nbidal18-vanilla-plus-hardcore - the same reason",
+    "RELEASE-PREFIX.txt, PACK-NAME.txt and SERVER.txt exist. Before this file the test asserted",
+    "Vanilla+ facts outright: both servers in servers.dat, the v1.0.106 hardcore move, and a",
+    "config probe on a mod the hardcore line removes. All three failed here, correctly, and none",
+    "of them was a bug in the pack.",
+    "",
+    "This is the HARDCORE copy. The Vanilla+ copy lists both addresses, carries the hardcore",
+    "move under serverListSeed, and probes config/immersive_aircraft.json."
+  ],
+
+  "$serversDoc": [
+    "Every address that must be in servers.dat after a sync. The hardcore client ships one",
+    "server and seeds nothing: this pack has never been released, so every install is a first",
+    "install and the ZIP's servers.dat is already right. Seeding the Vanilla+ address here would",
+    "also be pointless - the two packs have different manifest digests, so a hardcore client is",
+    "refused at the Vanilla+ server's login."
+  ],
+  "expectedServers": [
+    "38.103.248.98:27037"
+  ],
+
+  "$seedDoc": [
+    "null means this line ships no ServerListSeed, so the test neither rolls an address back nor",
+    "expects the updater to move one. Vanilla+ sets it to the v1.0.106 hardcore move: the test",
+    "gives its instance the OLD address so the seed has to perform the move, which is the path",
+    "that can go wrong - appending instead of rewriting would leave two hardcore entries."
+  ],
+  "serverListSeed": null,
+
+  "$worldFolderDoc": [
+    "The server address whose per-world folders the retirement sweep is checked against - Voxy's",
+    "LOD store under .voxy/saves/<addr>_<port> and Xaero's map tiles under Multiplayer_<addr>.",
+    "Each line checks its own server, because that is the one its players actually have."
+  ],
+  "worldFolderAddress": "38.103.248.98",
+  "worldFolderPort": "27037",
+
+  "$configProbeDoc": [
+    "A published config file the test plants a deliberately wrong stub of, to prove the updater",
+    "replaces a support-class file an existing instance already had rather than leaving the",
+    "player's stale copy. null skips the probe.",
+    "",
+    "Vanilla+ uses config/immersive_aircraft.json and checks useCustomKeybindSystem goes back to",
+    "false. The hardcore line removes Immersive Aircraft, so that file is not published here and",
+    "the probe would assert against a file that cannot exist. Replaced with lambdynlights.toml,",
+    "which is support class on this line and published."
+  ],
+  "configProbe": {
+    "path": "config/lambdynlights.toml",
+    "stub": "# planted by Test-LocalSync; the updater must replace this whole file\nmode = \"OFF\"\n",
+    "mustMatch": "dynamic_lights_mode|mode",
+    "mustNotMatch": "planted by Test-LocalSync",
+    "failIfStale": "an instance that already had lambdynlights.toml kept the planted stub - a support-class config an existing player has is not being restored",
+    "failIfMissing": "lambdynlights.toml was not replaced by the published copy - only the planted stub is there",
+    "ok": "published lambdynlights.toml replaced, so support config reaches an instance that already had it"
+  }
+}

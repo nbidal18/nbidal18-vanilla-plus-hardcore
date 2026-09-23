@@ -33,13 +33,22 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# The two servers, in one place. The hardcore machine was rehosted on 2026-09-21 and changed both
-# address and port; the updater's seed moves an existing entry rather than appending a second one,
-# and this test drives that path by rolling its instance back to the previous address first.
-$vanillaAddress = '194.54.88.14:27107'
-$hardcoreCurrentAddress = '38.103.248.98:27037'
-$hardcorePreviousAddress = '195.60.166.224:27321'
-$hardcoreSeedMarker = 'applied-servers-hardcore-moved-v1106'
+# What this pack line expects, read from data rather than written here, so this script file stays
+# identical between nbidal18-vanilla-plus and nbidal18-vanilla-plus-hardcore - the same reason
+# RELEASE-PREFIX.txt and PACK-NAME.txt exist. Until 2026-09-23 the three addresses, the seed marker
+# and the config probe were spelled out below, and all of them were Vanilla+ facts: the hardcore
+# line ships one server, seeds nothing, and does not have Immersive Aircraft to probe.
+$expectPath = Join-Path $PSScriptRoot 'local-sync-expectations.json'
+if (-not (Test-Path -LiteralPath $expectPath)) {
+    throw "No local-sync-expectations.json beside the scripts ($expectPath). It holds this pack line's expected server list, its ServerListSeed if it has one, and its config probe."
+}
+$expect = Get-Content -LiteralPath $expectPath -Raw | ConvertFrom-Json
+$expectedServers = @($expect.expectedServers)
+if (-not $expectedServers.Count) { throw 'local-sync-expectations.json lists no expectedServers.' }
+$seed = $expect.serverListSeed
+$configProbe = $expect.configProbe
+$worldFolderAddress = $expect.worldFolderAddress
+$worldFolderPort = $expect.worldFolderPort
 
 $repo = Split-Path -Parent $PSScriptRoot
 $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).Trim()
@@ -145,12 +154,15 @@ try {
     # rewriting would leave two hardcore entries, and the assertions after the sync catch exactly
     # that: the new address present, the old one gone, and one hardcore entry rather than two.
     $serverList = Join-Path $minecraft 'servers.dat'
-    if (Test-Path -LiteralPath $serverList -PathType Leaf) {
-        $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList remove $hardcoreCurrentAddress
+    if ($seed -and (Test-Path -LiteralPath $serverList -PathType Leaf)) {
+        $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList remove $seed.current
         if ($LASTEXITCODE -ne 0) { throw "Edit-ServerList.py failed: $rolled" }
-        $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList add 'nbidal18 Vanilla+ Hardcore' $hardcorePreviousAddress
+        $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList add $seed.name $seed.previous
         if ($LASTEXITCODE -ne 0) { throw "Edit-ServerList.py failed: $rolled" }
-        Write-Host ("rolled    servers.dat back to {0}, so the updater's seed has to move it" -f $hardcorePreviousAddress)
+        Write-Host ("rolled    servers.dat back to {0}, so the updater's seed has to move it" -f $seed.previous)
+    }
+    elseif (-not $seed) {
+        Write-Host 'seeds     this line ships no ServerListSeed, so the shipped servers.dat is checked as delivered'
     }
 
     $env:INST_MC_DIR = $minecraft
@@ -183,9 +195,9 @@ try {
     # the End's images go, the overworld's and the Nether's stay, Voxy is left alone entirely, and
     # the waypoints - the single Xaero feature this pack kept - survive as they always had to.
     $sep = [IO.Path]::DirectorySeparatorChar
-    $keptVoxy = Join-Path $minecraft (@('.voxy', 'saves', '194.54.88.14_27107') -join $sep)
-    $doomedMap = Join-Path $minecraft (@('xaero', 'world-map', 'Multiplayer_194.54.88.14', 'DIM1') -join $sep)
-    $keptOverworldMap = Join-Path $minecraft (@('xaero', 'world-map', 'Multiplayer_194.54.88.14', 'null') -join $sep)
+    $keptVoxy = Join-Path $minecraft (@('.voxy', 'saves', ($worldFolderAddress + '_' + $worldFolderPort)) -join $sep)
+    $doomedMap = Join-Path $minecraft (@('xaero', 'world-map', ('Multiplayer_' + $worldFolderAddress), 'DIM1') -join $sep)
+    $keptOverworldMap = Join-Path $minecraft (@('xaero', 'world-map', ('Multiplayer_' + $worldFolderAddress), 'null') -join $sep)
     $keptWaypoints = Join-Path $minecraft (@('xaero', 'minimap', 'Multiplayer_test') -join $sep)
     foreach ($dir in @($keptVoxy, $doomedMap, $keptOverworldMap, $keptWaypoints)) {
         New-Item -ItemType Directory -Path $dir -Force | Out-Null
@@ -213,11 +225,13 @@ try {
     # what makes the aircraft keybind fix reach people who are already playing, and it is worth
     # pinning down: the obvious reading - that an existing file is never touched - would mean the
     # fix silently missed every current player, and a fresh instance cannot tell the two apart.
-    $aircraftDir = Join-Path $minecraft 'config'
-    New-Item -ItemType Directory -Path $aircraftDir -Force | Out-Null
-    $aircraftConfig = Join-Path $aircraftDir 'immersive_aircraft.json'
-    [IO.File]::WriteAllText($aircraftConfig,
-        "{`n  `"useCustomKeybindSystem`": true,`n  `"enableTrails`": false`n}`n")
+    $probeFile = $null
+    if ($configProbe) {
+        $probeFile = Join-Path $minecraft ($configProbe.path -replace '/', [string][IO.Path]::DirectorySeparatorChar)
+        $probeDir = Split-Path -Parent $probeFile
+        if (-not (Test-Path -LiteralPath $probeDir)) { New-Item -ItemType Directory -Path $probeDir -Force | Out-Null }
+        [IO.File]::WriteAllText($probeFile, ($configProbe.stub -replace "`r`n", "`n"))
+    }
 
     $firstSync = Invoke-Sync 'sync 1'
 
@@ -233,13 +247,13 @@ try {
     # Deleting several gigabytes silently reads as a hang, so the sweep has to say what it is doing
     # by name. Asserted rather than assumed: a status line that quietly stops being emitted would
     # otherwise only show up as a player watching a frozen updater.
-    $aircraftAfter = [IO.File]::ReadAllText($aircraftConfig)
-    Assert ($aircraftAfter -match '"useCustomKeybindSystem"\s*:\s*false') `
-        'an instance that already had immersive_aircraft.json kept useCustomKeybindSystem on - aircraft controls stay dead in every screen for everyone already playing'
-    Assert ($aircraftAfter -match '"fuelConsumption"') `
-        'immersive_aircraft.json was not replaced by the published copy - only the planted stub is there'
-    if ($aircraftAfter -match '"useCustomKeybindSystem"\s*:\s*false') {
-        Write-Host 'published immersive_aircraft.json replaced, now on the vanilla movement keys'
+    if ($configProbe) {
+        $probeAfter = [IO.File]::ReadAllText($probeFile)
+        Assert (-not ($probeAfter -match $configProbe.mustNotMatch)) $configProbe.failIfStale
+        Assert ($probeAfter -match $configProbe.mustMatch) $configProbe.failIfMissing
+        if (($probeAfter -match $configProbe.mustMatch) -and -not ($probeAfter -match $configProbe.mustNotMatch)) {
+            Write-Host ("probe     {0}" -f $configProbe.ok)
+        }
     }
 
     $swept = @($firstSync | Where-Object { $_ -match 'Clearing ' })
@@ -344,21 +358,24 @@ try {
     $serverList = Join-Path $minecraft 'servers.dat'
     Assert (Test-Path -LiteralPath $serverList -PathType Leaf) 'servers.dat is missing after the sync'
     $serverBytes = [Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes($serverList))
-    foreach ($address in $vanillaAddress, $hardcoreCurrentAddress) {
+    foreach ($address in $expectedServers) {
         Assert ($serverBytes.Contains($address)) "servers.dat does not list $address after the sync"
     }
-    # The move's whole point: the dead address is gone rather than sitting beside the new one.
-    Assert (-not $serverBytes.Contains($hardcorePreviousAddress)) `
-        "servers.dat still lists the previous hardcore address $hardcorePreviousAddress after the sync"
-    $serverMarker = Join-Path $minecraft ".nbidal18-packwiz\$hardcoreSeedMarker"
-    Assert ((Test-Path -LiteralPath $serverMarker) -and (([IO.File]::ReadAllLines($serverMarker))[2] -eq 'changed')) 'the server-list seed did not report moving the hardcore server'
+    if ($seed) {
+        # The move's whole point: the dead address is gone rather than sitting beside the new one.
+        Assert (-not $serverBytes.Contains($seed.previous)) `
+            "servers.dat still lists the previous hardcore address $($seed.previous) after the sync"
+        $serverMarker = Join-Path $minecraft ".nbidal18-packwiz\$($seed.marker)"
+        Assert ((Test-Path -LiteralPath $serverMarker) -and (([IO.File]::ReadAllLines($serverMarker))[2] -eq 'changed')) 'the server-list seed did not report moving the hardcore server'
+    }
     # The file the updater wrote has to be NBT the game can read, not just bytes that contain the
     # addresses: Edit-ServerList.py parses every tag, refuses trailing bytes, and finds the entry.
-    # Removing the new address must take exactly one entry - two would mean the seed appended a
+    # Removing one known address must take exactly one entry - two would mean a seed appended a
     # duplicate instead of rewriting the one that was there.
-    $parsed = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList (Join-Path $testRoot 'servers-parsed.dat') remove $hardcoreCurrentAddress
-    Assert ($LASTEXITCODE -eq 0 -and (($parsed -join "`n") -match 'removed\s+1 entries')) "the updater's servers.dat did not parse as exactly one hardcore entry: $parsed"
-    Write-Host 'seeded    servers.dat lists both servers, the hardcore one moved by the updater as valid NBT'
+    $probeAddress = $expectedServers[-1]
+    $parsed = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList (Join-Path $testRoot 'servers-parsed.dat') remove $probeAddress
+    Assert ($LASTEXITCODE -eq 0 -and (($parsed -join "`n") -match 'removed\s+1 entries')) "the updater's servers.dat did not parse with exactly one $probeAddress entry: $parsed"
+    Write-Host ("seeded    servers.dat lists {0} server(s) as valid NBT" -f $expectedServers.Count)
 
     # no intruders
     $managed = @{}

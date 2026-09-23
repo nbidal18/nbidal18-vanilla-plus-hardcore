@@ -1063,15 +1063,18 @@ public final class Nbidal18PackwizSync {
     }
 
     private static final String SERVER_LIST = "servers.dat";
-    private static final List<ServerListSeed> SERVER_LIST_SEEDS = List.of(
-            // v1.0.88 added the hardcore server. v1.0.106 moved it: the owner rehosted that machine
-            // and it changed both address and port. A second `added` seed would have appended a new
-            // entry and left the dead one in the list for ever - a seed only ever ran once and never
-            // looked at what was already there. `moved` rewrites the ip of the entry that still
-            // carries the old address, in place, keeping its name, icon and position, and falls back
-            // to appending for anyone who never had it.
-            ServerListSeed.moved("servers-hardcore-moved-v1106", "nbidal18 Vanilla+ Hardcore",
-                    "38.103.248.98:27037", "195.60.166.224:27321"));
+    // EMPTY ON THE HARDCORE LINE, and deliberately so. A seed exists to reach an instance that was
+    // imported before the entry existed; this pack has never been released, so every install is a
+    // first install and `servers.dat` in the client ZIP already carries the one correct address.
+    //
+    // Vanilla+ keeps its seed here - it moves the hardcore entry for players who had the old
+    // 195.60.166.224:27321 address - and that is a Vanilla+ concern. Seeding the Vanilla+ address
+    // into a hardcore player's list would be worse than useless: the two packs have different
+    // manifest digests, so a hardcore client is refused at the Vanilla+ server's login anyway.
+    //
+    // The shipped servers.dat was trimmed to the hardcore server alone on 2026-09-23
+    // (Edit-ServerList.py remove 194.54.88.14:27107); it had been carrying both.
+    private static final List<ServerListSeed> SERVER_LIST_SEEDS = List.of();
 
     private void applyServerListSeeds() {
         for (ServerListSeed seed : SERVER_LIST_SEEDS) {

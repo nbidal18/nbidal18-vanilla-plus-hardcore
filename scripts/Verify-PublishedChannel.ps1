@@ -25,7 +25,10 @@
 #>
 [CmdletBinding()]
 param(
-    [string] $BaseUrl = 'https://nbidal18.github.io/nbidal18-vanilla-plus/',
+    # Default: the channel this repository publishes, from UPDATE-URL.txt with pack.toml stripped.
+    # It used to spell out the Vanilla+ URL, so on the hardcore line a run with no -BaseUrl verified
+    # the wrong channel and passed (2026-09-24).
+    [string] $BaseUrl = ((Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'UPDATE-URL.txt') -Raw).Trim() -replace 'pack\.toml$', ''),
     [string[]] $Retired = @(),
     [int] $TimeoutSec = 60
 )

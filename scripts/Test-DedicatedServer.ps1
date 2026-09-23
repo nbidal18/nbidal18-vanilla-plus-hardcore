@@ -263,6 +263,15 @@ try {
             'Detected unsafe terrain read during worldgen',
             'No data fixer registered for'
         )
+        # -ServerSource means a rebuild folder, which by definition has no published channel and so
+        # no integrity policy for the helper to read. The helper says so, once, at ERROR level, and
+        # then correctly leaves transition mode open and the query disabled. Against a release this
+        # same line means the policy is missing or corrupt and must still fail the test, so the
+        # exemption is scoped to rebuild runs rather than added to the list above.
+        if ($ServerSource) {
+            $benign += 'Integrity server policy could not be read'
+        }
+
         $lines = (Read-SharedText $logPath) -split "`r?`n"
 
         # BCLib patches an existing world's level.dat on boot, and it does so before the server has

@@ -175,7 +175,14 @@ $fatalPatterns = @(
         Note = 'a pack ships JSON the game cannot parse and silently drops (v1.0.7)' }
     @{ Name = 'invalid namespace in a resource pack'
         Pattern = 'Non \[a-z0-9_\.-\] character in namespace'
-        Note = 'a pack ships a folder name Minecraft rejects outright (v1.0.7)' }
+        Note = 'a pack ships a folder name Minecraft rejects outright (v1.0.7)'
+        # macOS litter, not a broken pack. Os' Colorful Grasses (Mix).zip was zipped on a Mac and
+        # carries assets/.DS_Store plus a __MACOSX/ tree - 14 entries, none of them game content -
+        # so the game reads ".DS_Store" as a namespace and ignores it. Nothing is lost: the pack's
+        # textures are all under assets/minecraft/. Excepted rather than repacked because the same
+        # zip ships in the live Vanilla+ release, and editing it here would diverge the two packs
+        # over a log line. A genuine bad namespace is any other name and still fails.
+        Except = 'namespace \.DS_Store' }
 )
 
 # Only with -ReplaceShader, because nothing else in this pack turns Iris on. A shader that fails to
@@ -332,13 +339,23 @@ try {
         Write-Host ("world     restored {0}" -f ((Get-ChildItem -LiteralPath $World -Directory | ForEach-Object { $_.Name }) -join ', '))
     }
 
+    # Seeded on every run, not just -Hold. Without these two rows the staged client boots with every
+    # resource pack switched off, and the two failures this script was written for - v1.0.6's blanked
+    # inventory slots from a pack's core item shader, v1.0.7's "Missing texture references" - are both
+    # failures that can only happen once a pack is actually selected. Staging the zips and leaving
+    # them unselected proved the folder copied, nothing more. Changed 2026-09-23, when the hardcore
+    # rebuild enabled nine packs, three of which the game marks format-incompatible and runs anyway.
     $releaseOptions = Join-Path $clientSource 'options.txt'
-    if ($Hold -and (Test-Path -LiteralPath $releaseOptions -PathType Leaf)) {
+    if (Test-Path -LiteralPath $releaseOptions -PathType Leaf) {
         $rows = ([IO.File]::ReadAllText($releaseOptions) -split "`r?`n") |
             Where-Object { $_ -match '^(resourcePacks|incompatibleResourcePacks):' }
         [IO.File]::WriteAllText((Join-Path $testRoot 'options.txt'), (($rows -join "`n") + "`n"),
             (New-Object Text.UTF8Encoding($false)))
-        Write-Host ("seeded    options.txt with {0} pack rows from the release" -f $rows.Count)
+        Write-Host ("seeded    options.txt with {0} pack rows from the client source" -f $rows.Count)
+    }
+    else {
+        Write-Warning ('No options.txt in the client source, so every resource pack boots ' +
+            'switched off and this run proves nothing about them.')
     }
 
     $arguments = @(
@@ -423,7 +440,14 @@ try {
 
         if (-not $reachedMenu) {
             $crash = @(Get-ChildItem -LiteralPath (Join-Path $testRoot 'crash-reports') -File -ErrorAction SilentlyContinue)
+            # The loader's own refusal - a missing dependency, two jars with one id - is an ERROR
+            # block in the log, not a mixin failure and not a crash report. Print it here, because the
+            # staging directory is cleaned on exit and the log with it: on 2026-09-23 a missing
+            # Fabric Language Kotlin cost a second seven-minute run just to read a line this could
+            # have shown the first time.
+            $errorLines = @($lines | Where-Object { $_ -match '/ERROR\]|^\s+- Mod .+ requires|^\s+- Install ' })
             $detail = if ($mixinLines.Count) { "`nMixin trouble, most likely the cause:`n" + (($mixinLines | Select-Object -First 10) -join "`n") }
+            elseif ($errorLines.Count) { "`nThe log's ERROR lines:`n" + (($errorLines | Select-Object -First 12) -join "`n") }
             elseif ($crash.Count) { "`nCrash report: $($crash[0].FullName)" }
             else { "`nLog: $logPath" }
             throw "The client never reached the title screen within $BootTimeoutSeconds seconds.$detail"

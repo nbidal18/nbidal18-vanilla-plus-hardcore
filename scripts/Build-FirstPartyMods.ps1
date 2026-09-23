@@ -169,6 +169,7 @@ $mods = @(
     # cache whenever Iris's pipeline or the block atlas changes, and for a few seconds after, so
     # every icon is re-baked once the pipeline has settled. Client only.
     @{ Name = 'nbidal18-iris'; Generator = $null; Builder = 'build_iris.py' },
+    @{ Name = 'nbidal18-jei'; Generator = $null; Builder = 'build_jei.py' },
     # Voxy's internal errors go to the log instead of chat (v1.0.102). Its Logger.error writes the
     # log line and then posts the same text to chat through showInHUD; the mixin drops that post inside
     # error() only, so the log keeps everything and deliberate chat notices still arrive. Client only.

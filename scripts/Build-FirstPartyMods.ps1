@@ -37,6 +37,13 @@ if (-not (Test-Path -LiteralPath $ReleaseRoot)) { throw "No release folder at $R
 # Each entry: folder name, optional generator, builder. Order matters only in that the integrity
 # helper is the one that can lock players out, so it is built first and fails loudest.
 $mods = @(
+    # Nine entries were removed here on 2026-09-23, with their source folders: Better End,
+    # Farmer's Delight, Carry On, Traveler's Backpack, Reliable Gliders, Incendium, Better Fishing,
+    # Mouse Wheelie and Almanac. This line does not ship those mods, so it has nothing to customise
+    # for them - and leaving them listed was not harmless: a full run of this script would have
+    # compiled nine jars for removed mods straight into "3. modpack\client\mods", and the next
+    # Build-PackwizSite would have published them. All nine are still maintained on the Vanilla+
+    # line, which does ship them.
     @{ Name = 'nbidal18-integrity'; Generator = 'port_integrity.py'; Builder = 'build_integrity.py' },
     @{ Name = 'nbidal18-invmov'; Generator = $null; Builder = 'build_invmov.py' },
     # Left in v1.0.72 when the world went back to normal survival; back in v1.0.87 for the second,
@@ -47,20 +54,11 @@ $mods = @(
     # Blank graves (v1.0.89): one client mixin cancelling Gravestones' text rendering, because the
     # mod has no setting for it - only the date's format. Client only.
     @{ Name = 'nbidal18-gravestones'; Generator = $null; Builder = 'build_gravestones.py' },
-    # Almanac's picked-equipment tracker ignores a mob with no entity id (v1.0.89): 26.2 throws on
-    # getId before assignment, the tracker hashes the mob on load, and Carry On's preview of a
-    # carried mob is rebuilt from data with no id - yeetnado69's eight crashes. Client only.
-    @{ Name = 'nbidal18-almanac'; Generator = $null; Builder = 'build_almanac.py' },
-    # Incendium for its Nether, not its items (v1.0.89): every artifact loot table empty, the elytra
-    # upgrade gone. Data only, read out of the Incendium jar; both sides, -AddMods. Began the same
-    # evening as a hardcore-only world datapack; the owner then wanted both servers the same.
-    @{ Name = 'nbidal18-incendium'; Generator = $null; Builder = 'build_incendium.py' },
     # Both Xaero artefacts run on the server too since v1.0.87 (1.1.0): each sends the map its own
     # level-id packet so that two worlds behind one address keep separate maps and waypoints.
     # Needs -AddMods.
     @{ Name = 'nbidal18-xaerominimap'; Generator = $null; Builder = 'build_xaerominimap.py' },
     @{ Name = 'nbidal18-xaeroworldmap'; Generator = $null; Builder = 'build_xaeroworldmap.py' },
-    @{ Name = 'nbidal18-betterfishing'; Generator = $null; Builder = 'patch_betterfishing.py' },
     # Neutralises BOTH PostHog clients this mod ships - its own, and the one inside the bundled
     # meza_core library. meza's is the one that mattered: PostHog's sender thread is non-daemon, so
     # the JVM could not exit and Minecraft's watchdog halted it 15 seconds later, which is a
@@ -73,10 +71,6 @@ $mods = @(
     # Its own cleanup hangs off Util.shutdownExecutors(), which 26.2 no longer reaches on that path,
     # so this makes the threads daemon instead - correct whenever cleanup runs, or does not.
     @{ Name = 'nbidal18-skinoverrides'; Generator = $null; Builder = 'build_skinoverrides.py' },
-    # Mouse Wheelie's InteractionManager constructs a ScheduledThreadPoolExecutor in <clinit>
-    # with no thread factory, so non-daemon, and schedules a fixed-rate tick that never ends and
-    # is never shut down. Second of the two threads that stopped the client exiting.
-    @{ Name = 'nbidal18-mousewheelie'; Generator = $null; Builder = 'build_mousewheelie.py' },
     # Immersive Paintings' ClientPaintingManager and its painting screen each build a fixed thread
     # pool in <clinit> with no factory and never shut it down. Third of the threads that kept the
     # client from exiting (2026-09-05 thread dump: pool-12-thread-1/2). Daemon factory instead.
@@ -98,17 +92,6 @@ $mods = @(
     # key and not the movement input, which is what makes it work for boats, horses and Immersive
     # Aircraft rather than only for walking.
     @{ Name = 'nbidal18-autopilot'; Generator = $null; Builder = 'build_autopilot.py' },
-    # Reliable Gliders has no dimension setting, so without this the Nether is the easiest place in
-    # the pack to cross rather than the hardest. Sets a gliding player on fire there. No mixin - the
-    # mod exposes GlidingState.isGliding(Player) as public static API. **Runs on the server too**,
-    # so it needs -AddMods on the release that publishes it.
-    @{ Name = 'nbidal18-reliablegliders'; Generator = $null; Builder = 'build_reliablegliders.py' },
-    # Carry On poses a carrying player with two hands, and EMF draws the Fresh Animations Player
-    # Extended pose straight over the top of it, so the block appears to float. This registers a
-    # pause condition with EMF - asking to be asked - rather than pushing a pause in and taking it
-    # back out, which is what the 1.21.1 equivalent did and why that one needed a ledger to avoid
-    # leaving a disconnected player's animations stuck. Client only.
-    @{ Name = 'nbidal18-carryon'; Generator = $null; Builder = 'build_carryon.py' },
     # Paces Voxy World Gen's far-terrain stream to what each player's connection and client can
     # take - bytes in flight under a window steered by measured queueing delay, acknowledged by the
     # client every tick - and delivers everything it holds back, loading a chunk from disk when it
@@ -196,31 +179,9 @@ $mods = @(
     # **Runs on the server too** - needs -AddMods.
     @{ Name = 'nbidal18-vanillarefresh'; Generator = $null; Builder = 'build_vanillarefresh.py' },
 
-    # Traveler's Backpack never sends the death message that carries the backpack's - the player's -
-    # coordinates (v1.0.103): one mixin on its PacketDistributor.sendToPlayer drops that one packet.
-    # The artefact's earlier panel-tint work is still NOT built: it is parked in parked-panel-tint\,
-    # because a uniform tint is not what Recolourful does - it recolours a panel region by region - so
-    # shipping it looked unfinished next to the vanilla containers. **Both sides** - needs -AddMods.
-    @{ Name = 'nbidal18-travelersbackpack'; Generator = $null; Builder = 'build_travelersbackpack.py' },
     # Data only - no src\, so no javac. Its builder reads the vanilla loot table out of the game jar
     # and edits it, which is why it needs no classpath either.
     @{ Name = 'nbidal18-tectonic'; Generator = $null; Builder = 'build_tectonic.py' },
-    # Data only, like Tectonic's. Better End's Resonance hammer enchantment (3x3x3 at I, 5x5x5 at II,
-    # one swing's durability, no config) is taken off the table: its definition is read out of the
-    # Better End jar and republished supporting no item, so no table, villager or loot roll can offer
-    # it. Decided 2026-09-09 alongside Immersive Machinery's drill. **Runs on the server too** (the
-    # server owns enchanting and loot) - needs -AddMods.
-    # Data only, like Tectonic's. Better End's Resonance hammer enchantment (3x3x3 at I, 5x5x5 at II,
-    # one swing's durability, no config) is taken off the table: its definition is read out of the
-    # Better End jar and republished supporting no item, so no table, villager or loot roll can offer
-    # it. Decided 2026-09-09 alongside Immersive Machinery's drill, and shipped in the same release
-    # (v1.0.86). **Runs on the server too** (the server owns enchanting and loot) - needs -AddMods.
-    @{ Name = 'nbidal18-betterend'; Generator = $null; Builder = 'build_betterend.py' },
-    # Data only. Fifteen Farmer's Delight recipes that give a vanilla item a non-vanilla route
-    # (paper from tree bark, lead from straw, bread from dough, ...) and their unlock advancements
-    # are overridden with a load condition that is never true, so Fabric's loader drops them. The
-    # list is checked against the jar at build time. **Runs on the server too** - needs -AddMods.
-    @{ Name = 'nbidal18-farmersdelight'; Generator = $null; Builder = 'build_farmersdelight.py' },
     # Every Xaero option the pack pins (minimap off, coordinates and cave mode hidden, teleport
     # denied) reads as its pin for the whole session, so the mods' own settings screens cannot
     # flip them until the updater repairs the file. One mixin at Xaero Lib's Config.get; the pin

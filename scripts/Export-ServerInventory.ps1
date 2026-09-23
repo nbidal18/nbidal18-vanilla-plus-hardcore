@@ -42,6 +42,16 @@ $out = Join-Path $release '4. server\SERVER-INVENTORY.md'
 
 $mirrorDefault = Join-Path (Split-Path -Parent $repo) '_server-payload-cache'
 if (-not $DriveRoot) { $DriveRoot = $mirrorDefault }
+# A relative -DriveRoot is resolved against THIS REPOSITORY, which is what every call site means
+# by '..\_server-payload-cache-hardcore' - not against whatever directory the caller happened to be in. Sync-ServerMirror
+# already normalises it that way, so before this the two disagreed: the pull wrote to
+# vanilla_plus_hardcore\_server-payload-cache-hardcore and the read came back one level too high, at
+# modpack\_server-payload-cache-hardcore. Surfaced 2026-09-23 by moving the hardcore line into its
+# own folder, which is exactly the kind of move a path assumption like this survives silently until
+# it does not.
+elseif (-not [IO.Path]::IsPathRooted($DriveRoot)) {
+    $DriveRoot = [IO.Path]::GetFullPath((Join-Path $repo $DriveRoot))
+}
 $syncScript = Join-Path $PSScriptRoot 'Sync-ServerMirror.ps1'
 
 if (-not $SkipPull) {
@@ -94,7 +104,15 @@ Add ''
 
 Add "## Launcher"
 Add ''
+# The Vanilla+ mirror keeps the Fabric launcher at its root; the Hardcore one keeps it under
+# root\, which is why Test-DedicatedServer is pointed at the root subfolder. Look in both rather than
+# assuming one layout - this threw "Cannot find path ...\server.jar" on the Hardcore line, where
+# the jar was there all along, one folder down.
 $serverJar = Join-Path $DriveRoot 'server.jar'
+if (-not (Test-Path -LiteralPath $serverJar -PathType Leaf)) {
+    $nested = Join-Path (Join-Path $DriveRoot 'root') 'server.jar'
+    if (Test-Path -LiteralPath $nested -PathType Leaf) { $serverJar = $nested }
+}
 Add "| | |"
 Add "| --- | --- |"
 Add ("| ``server.jar`` | {0} bytes, sha256 ``{1}`` |" -f (Get-Item -LiteralPath $serverJar).Length, (Get-Sha $serverJar).Substring(0, 16))

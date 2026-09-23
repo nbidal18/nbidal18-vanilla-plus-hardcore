@@ -51,6 +51,8 @@ $worldFolderAddress = $expect.worldFolderAddress
 $worldFolderPort = $expect.worldFolderPort
 
 $repo = Split-Path -Parent $PSScriptRoot
+$clientZip = (Get-Content -LiteralPath (Join-Path $repo 'CLIENT-ZIP.txt') -Raw).Trim()
+if (-not $clientZip.EndsWith('.zip')) { throw "CLIENT-ZIP.txt is '$clientZip'; it must name a .zip." }
 $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).Trim()
 $prefix = & (Join-Path $PSScriptRoot 'ReleaseLine.ps1')
 $release = Join-Path (Split-Path -Parent $repo) "$prefix$version"
@@ -131,7 +133,7 @@ try {
     # The .next copies matter: the supervisor promotes them before running anything and throws when
     # one is absent. An earlier draft copied only the four live jars and failed exactly there.
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    $zipPath = Join-Path $site 'nbidal18-client.zip'
+    $zipPath = Join-Path $site $clientZip
     if (-not (Test-Path -LiteralPath $zipPath)) { throw "Missing client ZIP: $zipPath" }
     $zip = [IO.Compression.ZipFile]::OpenRead($zipPath)
     $seeded = 0
@@ -145,7 +147,7 @@ try {
         }
     }
     finally { $zip.Dispose() }
-    Write-Host ("seeded    {0} files from nbidal18-client.zip" -f $seeded)
+    Write-Host ("seeded    {0} files from {1}" -f $seeded, $clientZip)
 
     # The ZIP's servers.dat already carries the CURRENT hardcore address, so on a fresh install the
     # server-list seed has nothing to do and this would never prove it works. Give the instance the

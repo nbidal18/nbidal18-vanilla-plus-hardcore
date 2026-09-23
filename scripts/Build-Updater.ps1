@@ -70,9 +70,37 @@ function Normalize-Archive([string] $path) {
 if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Recurse -Force }
 New-Item -ItemType Directory -Path $out -Force | Out-Null
 
+# The channel this line publishes to, taken from UPDATE-URL.txt and substituted into the source
+# before javac sees it. The .java files stay identical between the two repositories - the same rule
+# as RELEASE-PREFIX.txt and PACK-NAME.txt - and only the data file differs.
+#
+# Before this, DEFAULT_PACK_URL was the Vanilla+ channel, written into the source. The hardcore
+# repository inherited it at the fork, so its client ZIP pointed every new install at the Vanilla+
+# channel: importing the hardcore pack installed Vanilla+, 176 mods and all. Found 2026-09-23 when
+# the owner imported it and Better Compatibility Checker reported the client as Vanilla+ v1.0.109.
+$updateUrl = (Get-Content -LiteralPath (Join-Path $repo 'UPDATE-URL.txt') -Raw).Trim()
+if ($updateUrl -notmatch '^https://\S+/pack\.toml$') {
+    throw "UPDATE-URL.txt is '$updateUrl'; it must be an https URL ending in /pack.toml."
+}
+$manifestUrl = $updateUrl -replace 'pack\.toml$', 'sync-manifest.json'
+$staged = Join-Path $out 'src'
+if (Test-Path -LiteralPath $staged) { Remove-Item -LiteralPath $staged -Recurse -Force }
+New-Item -ItemType Directory -Path $staged -Force | Out-Null
+$substituted = 0
+foreach ($name in 'Nbidal18PackwizSync.java', 'Nbidal18PackwizSupervisor.java') {
+    $text = [IO.File]::ReadAllText((Join-Path $client $name))
+    $before = $text
+    $text = [regex]::Replace($text, '"https://[^"]*?/pack\.toml"', ('"' + $updateUrl + '"'))
+    $text = [regex]::Replace($text, '"https://[^"]*?/sync-manifest\.json"', ('"' + $manifestUrl + '"'))
+    if ($text -ne $before) { $substituted++ }
+    [IO.File]::WriteAllText((Join-Path $staged $name), $text, (New-Object Text.UTF8Encoding($false)))
+}
+if (-not $substituted) { throw 'No channel URL was substituted - the source no longer carries one where this expects it.' }
+Write-Host ("channel   $updateUrl")
+
 $sources = @(
-    (Join-Path $client 'Nbidal18PackwizSync.java'),
-    (Join-Path $client 'Nbidal18PackwizSupervisor.java')
+    (Join-Path $staged 'Nbidal18PackwizSync.java'),
+    (Join-Path $staged 'Nbidal18PackwizSupervisor.java')
 )
 & $javac -Xlint:all -Werror -d $out @sources
 if ($LASTEXITCODE -ne 0) { throw "javac failed ($LASTEXITCODE)" }

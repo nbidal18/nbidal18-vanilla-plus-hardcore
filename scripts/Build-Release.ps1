@@ -46,6 +46,8 @@ function Assert-VersionUnpublished([string] $version, [string] $repoRoot) {
 
 
 $repo = Split-Path -Parent $PSScriptRoot
+$clientZip = (Get-Content -LiteralPath (Join-Path $repo 'CLIENT-ZIP.txt') -Raw).Trim()
+if (-not $clientZip.EndsWith('.zip')) { throw "CLIENT-ZIP.txt is '$clientZip'; it must name a .zip." }
 # Before anything is built, not after: the sub-scripts below wipe and regenerate site\, so a late
 # check still rewrites the published release before refusing.
 Assert-VersionUnpublished ((Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).Trim()) $repo
@@ -69,7 +71,7 @@ Get-ChildItem -LiteralPath $site -Recurse -File | Sort-Object FullName | ForEach
 
 # Fetched directly by the updater rather than through the packwiz index.
 $required = @(
-    'pack.toml', 'index.toml', 'sync-manifest.json', 'SHA256SUMS.txt', 'nbidal18-client.zip'
+    'pack.toml', 'index.toml', 'sync-manifest.json', 'SHA256SUMS.txt', $clientZip
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath (Join-Path $site $_)) })
 if ($missing.Count) { throw ("The release is incomplete; these are missing from site\: " + ($missing -join ', ')) }
@@ -111,10 +113,10 @@ $zipRequired = @('mmc-pack.json', 'instance.cfg', '.packignore',
     'minecraft/nbidal18-packwiz-sync.next.jar', 'minecraft/nbidal18-packwiz-updater.next.jar',
     'minecraft/packwiz-installer.jar', 'minecraft/packwiz-installer-bootstrap.jar',
     'minecraft/packwiz-installer.next.jar', 'minecraft/packwiz-installer-bootstrap.next.jar')
-$zipArchive = [IO.Compression.ZipFile]::OpenRead((Join-Path $site 'nbidal18-client.zip'))
+$zipArchive = [IO.Compression.ZipFile]::OpenRead((Join-Path $site $clientZip))
 try { $inZip = @($zipArchive.Entries | ForEach-Object { $_.FullName }) } finally { $zipArchive.Dispose() }
 $zipMissing = @($zipRequired | Where-Object { $inZip -notcontains $_ })
-if ($zipMissing.Count) { throw ("nbidal18-client.zip is missing: " + ($zipMissing -join ', ')) }
+if ($zipMissing.Count) { throw ("$clientZip is missing: " + ($zipMissing -join ', ')) }
 Write-Host ("clientzip {0} entries, all {1} required present" -f $inZip.Count, $zipRequired.Count)
 
 $total = Get-ChildItem -LiteralPath $site -Recurse -File | Measure-Object -Sum Length
@@ -129,10 +131,10 @@ $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).
 $prefix = & (Join-Path $PSScriptRoot 'ReleaseLine.ps1')
 $setup = Join-Path (Split-Path -Parent $repo) "$prefix$version\1. setup"
 New-Item -ItemType Directory -Path $setup -Force | Out-Null
-Copy-Item -LiteralPath (Join-Path $site 'nbidal18-client.zip') -Destination $setup -Force
+Copy-Item -LiteralPath (Join-Path $site $clientZip) -Destination $setup -Force
 
-$sha = (Get-FileHash -LiteralPath (Join-Path $setup 'nbidal18-client.zip') -Algorithm SHA256).Hash.ToLower()
-[IO.File]::WriteAllText((Join-Path $setup 'SHA256SUMS.txt'), "$sha  nbidal18-client.zip`n",
+$sha = (Get-FileHash -LiteralPath (Join-Path $setup $clientZip) -Algorithm SHA256).Hash.ToLower()
+[IO.File]::WriteAllText((Join-Path $setup 'SHA256SUMS.txt'), "$sha  $clientZip`n",
     (New-Object Text.UTF8Encoding($false)))
-Write-Host ("setup     1. setup\nbidal18-client.zip refreshed, sha256 {0}" -f $sha.Substring(0, 16))
+Write-Host ("setup     1. setup\{1} refreshed, sha256 {0}" -f $sha.Substring(0, 16), $clientZip)
 Write-Host "ready to publish"

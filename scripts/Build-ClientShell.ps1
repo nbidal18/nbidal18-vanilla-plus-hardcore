@@ -1,5 +1,8 @@
 <#
-    Builds site/nbidal18-client.zip - the Prism instance a player imports once.
+    Builds the client ZIP named by CLIENT-ZIP.txt into site/ - the Prism instance a player imports
+    once. The name is per line because Prism takes the instance FOLDER from the ZIP's filename,
+    not from instance.cfg: two packs shipping nbidal18-client.zip land in one folder, or in a
+    '(1)' copy of it. Found 2026-09-23 when the hardcore ZIP imported as nbidal18-client(1).
 
     The ZIP carries no pack content. It carries the instance definition and the packwiz installer,
     and the pre-launch hook pulls everything else from the channel on first launch. That is what
@@ -15,6 +18,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 $repo = Split-Path -Parent $PSScriptRoot
+$clientZip = (Get-Content -LiteralPath (Join-Path $repo 'CLIENT-ZIP.txt') -Raw).Trim()
+if (-not $clientZip.EndsWith('.zip')) { throw "CLIENT-ZIP.txt is '$clientZip'; it must name a .zip." }
 $line = Split-Path -Parent $repo
 $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).Trim()
 $loader = (Get-Content -LiteralPath (Join-Path $repo 'LOADER.txt') -Raw).Trim()
@@ -137,7 +142,7 @@ $seedServers = Join-Path $release '3. modpack\client\servers.dat'
 if (Test-Path -LiteralPath $seedServers) { Copy-Item -LiteralPath $seedServers -Destination $mcDir -Force }
 
 # ---------------------------------------------------------------- pack
-$out = Join-Path $site 'nbidal18-client.zip'
+$out = Join-Path $site $clientZip
 if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Force }
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 Add-Type -AssemblyName System.IO.Compression   # ZipArchiveMode lives here, not in .FileSystem
@@ -164,6 +169,6 @@ finally { $zip.Dispose() }
 Remove-Item -LiteralPath $stage -Recurse -Force
 
 $zip = [IO.Compression.ZipFile]::OpenRead($out)
-Write-Host ("nbidal18-client.zip  {0} entries, {1:N0} bytes" -f $zip.Entries.Count, (Get-Item -LiteralPath $out).Length)
+Write-Host ("{2}  {0} entries, {1:N0} bytes" -f $zip.Entries.Count, (Get-Item -LiteralPath $out).Length, $clientZip)
 $zip.Entries | Sort-Object FullName | ForEach-Object { Write-Host ("   {0,-46} {1,9:N0}" -f $_.FullName, $_.Length) }
 $zip.Dispose()

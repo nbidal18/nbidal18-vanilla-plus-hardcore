@@ -34,6 +34,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 $repo = Split-Path -Parent $PSScriptRoot
+$clientZip = (Get-Content -LiteralPath (Join-Path $repo 'CLIENT-ZIP.txt') -Raw).Trim()
+if (-not $clientZip.EndsWith('.zip')) { throw "CLIENT-ZIP.txt is '$clientZip'; it must name a .zip." }
 $site = Join-Path $repo 'site'
 if (-not (Test-Path -LiteralPath $site)) { throw "No site\ at $site - run Build-Release.ps1 first" }
 $version = (Get-Content -LiteralPath (Join-Path $repo 'PACK-VERSION.txt') -Raw).Trim()
@@ -117,7 +119,7 @@ foreach ($entry in $entries) {
 Write-Host ("checked   {0} indexed files" -f $done)
 
 # ---------------------------------------------------------------- fetched directly, not indexed
-foreach ($rel in 'pack.toml', 'index.toml', 'sync-manifest.json', 'SHA256SUMS.txt', 'nbidal18-client.zip') {
+foreach ($rel in 'pack.toml', 'index.toml', 'sync-manifest.json', 'SHA256SUMS.txt', $clientZip) {
     $served = Get-Served $rel
     if ($null -eq $served) { $missing.Add($rel); continue }
     $local = Join-Path $site $rel

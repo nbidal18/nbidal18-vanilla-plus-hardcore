@@ -278,7 +278,7 @@
                                 },
                                 {
                                     "path":  "config/autohud.json5",
-                                    "sha256":  "7ed0a97e729cf0e9cb638d37ace4282d5668103c58d33fb721916739419ba5f3"
+                                    "sha256":  "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
@@ -346,11 +346,11 @@
                                 },
                                 {
                                     "path":  "config/firstperson.json",
-                                    "sha256":  "6d9d8a3708ccf453fb710f4e10591cedd4d1767acde97c7da7bbc2cd2c4d4101"
+                                    "sha256":  "7962fe86af1b79228e61c633c6c1c826da798b0fcf12af27dd4a7e5fc94328b3"
                                 },
                                 {
                                     "path":  "config/gnetum.json",
-                                    "sha256":  "5670885d277274a734abdd065cd55f9c43a770b473353a420686d450b6259ef4"
+                                    "sha256":  "8f4c986698bdd95ba0a36d0dbc192eef41ddd477f1ae773277e04dd6ffa7c2ad"
                                 },
                                 {
                                     "path":  "config/gravestones.json",
@@ -358,7 +358,7 @@
                                 },
                                 {
                                     "path":  "config/immediatelyfast.json",
-                                    "sha256":  "351554b5d847acfb0dcdd05a93b5b93f27035178bcbde4d5193b4dc5a5a2f11b"
+                                    "sha256":  "de689cd568aa0de06b6d2bab7462b0f033c101418e5069d95ced35c57128ab49"
                                 },
                                 {
                                     "path":  "config/invmove.json",
@@ -378,7 +378,7 @@
                                 },
                                 {
                                     "path":  "config/iris.properties",
-                                    "sha256":  "3781f150b856c8fd1a1921e53300605189f242b7fc1753e243717d006c14f025"
+                                    "sha256":  "e699320f41b2bd15155a4894521ecc77c65a03ff73f294cade71c0b8024ae190"
                                 },
                                 {
                                     "path":  "config/ixeris.toml",
@@ -462,7 +462,7 @@
                                 },
                                 {
                                     "path":  "config/skinlayers.json",
-                                    "sha256":  "45162f45aa2db525a0edc483959f35b6d958ba2e54066a4f87e7f3c3f0f99166"
+                                    "sha256":  "bf1adcb1b9d085875d355d4092f0d1df29645aa1848e226489ae777cc3c563eb"
                                 },
                                 {
                                     "path":  "config/smooth_steps.json",
@@ -474,7 +474,7 @@
                                 },
                                 {
                                     "path":  "config/smoothscroll.json",
-                                    "sha256":  "3bb120637792d9780f01168b9ad70a925c2436f1d490758cddce2b54c07f1340"
+                                    "sha256":  "2a5de95b4d8bef747e6c59dc56b4ed321c5738bd30d11b03e2b246427f26a5f8"
                                 },
                                 {
                                     "path":  "config/smoothswapping.json",
@@ -482,7 +482,7 @@
                                 },
                                 {
                                     "path":  "config/sodium-extra-options.json",
-                                    "sha256":  "b01c35764dec53bdfdab6562628d99f830b97890f10f74e2e99171b66a4edac5"
+                                    "sha256":  "8d0f0b148abe78cdfb11510a16984dca5909b3f647395f4e21db1a95e6198355"
                                 },
                                 {
                                     "path":  "config/sodium-extra.properties",
@@ -498,7 +498,7 @@
                                 },
                                 {
                                     "path":  "config/sodium-options.json",
-                                    "sha256":  "7d98966fef8784202c6acfcdf47d47c2b4bc1aaea006661120f3b5b10331ee94"
+                                    "sha256":  "c06fecae6a8f39d4f5efba120cbf02a6f2dbbe31c596b7ac1b20f6a70e9c21ec"
                                 },
                                 {
                                     "path":  "config/sound_physics_remastered/occlusion.properties",
@@ -514,11 +514,11 @@
                                 },
                                 {
                                     "path":  "config/sound_physics_remastered/soundphysics.properties",
-                                    "sha256":  "9573c64dd047712ef1c7ec7f8e2a2b442906f7272eb0c0c73986fc876a3e6235"
+                                    "sha256":  "55b4fe3e5b99a4867b44625cd8aa83e95bf06be6230a7db35ae0dee34d62f369"
                                 },
                                 {
                                     "path":  "config/sounds/chat.json",
-                                    "sha256":  "580248b70a7c0ce5b8ae2cda237e341fa3594c48a57257aceecdd29cf7c32a71"
+                                    "sha256":  "432d28b6f6e4d4ce4b8e6f8b167a41cba6aff5cf90cd1e10b6035f6cffa73f65"
                                 },
                                 {
                                     "path":  "config/sounds/event.json",
@@ -581,12 +581,8 @@
                                     "sha256":  "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
                                 },
                                 {
-                                    "path":  "config/variantsandventures.json",
-                                    "sha256":  "3722e961204446525a1057da429c14898cf9f2244870aec769d8784585b6656c"
-                                },
-                                {
                                     "path":  "config/voxy-config.json",
-                                    "sha256":  "4177e2f8165d220f607c554e20b316f195cf31336fa7c3000e295e3033e37dde"
+                                    "sha256":  "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
                                 },
                                 {
                                     "path":  "config/voxyworldgenv2.json",
@@ -598,7 +594,7 @@
                                 },
                                 {
                                     "path":  "config/xaero/world-map/profiles/default.cfg",
-                                    "sha256":  "aaa7e59dcb1d159a9cb921079d0f5409d2465c58ddb3c8a78d349897f944b943"
+                                    "sha256":  "1b1d749157d6db4549f32565054da828f2b4997b7ca669881f9f15ff2a216000"
                                 },
                                 {
                                     "path":  "config/yacl.json5",
@@ -624,7 +620,7 @@
                   },
                   {
                       "path":  "config/autohud.json5",
-                      "sha256":  "7ed0a97e729cf0e9cb638d37ace4282d5668103c58d33fb721916739419ba5f3"
+                      "sha256":  "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
                   },
                   {
                       "path":  "config/bcc-common.json",
@@ -692,11 +688,11 @@
                   },
                   {
                       "path":  "config/firstperson.json",
-                      "sha256":  "6d9d8a3708ccf453fb710f4e10591cedd4d1767acde97c7da7bbc2cd2c4d4101"
+                      "sha256":  "7962fe86af1b79228e61c633c6c1c826da798b0fcf12af27dd4a7e5fc94328b3"
                   },
                   {
                       "path":  "config/gnetum.json",
-                      "sha256":  "5670885d277274a734abdd065cd55f9c43a770b473353a420686d450b6259ef4"
+                      "sha256":  "8f4c986698bdd95ba0a36d0dbc192eef41ddd477f1ae773277e04dd6ffa7c2ad"
                   },
                   {
                       "path":  "config/gravestones.json",
@@ -704,7 +700,7 @@
                   },
                   {
                       "path":  "config/immediatelyfast.json",
-                      "sha256":  "351554b5d847acfb0dcdd05a93b5b93f27035178bcbde4d5193b4dc5a5a2f11b"
+                      "sha256":  "de689cd568aa0de06b6d2bab7462b0f033c101418e5069d95ced35c57128ab49"
                   },
                   {
                       "path":  "config/invmove.json",
@@ -724,7 +720,7 @@
                   },
                   {
                       "path":  "config/iris.properties",
-                      "sha256":  "3781f150b856c8fd1a1921e53300605189f242b7fc1753e243717d006c14f025"
+                      "sha256":  "c6df5f03efee9e254598d604bbde6a0965e1b5790858376d603864962986d745"
                   },
                   {
                       "path":  "config/ixeris.toml",
@@ -808,7 +804,7 @@
                   },
                   {
                       "path":  "config/skinlayers.json",
-                      "sha256":  "45162f45aa2db525a0edc483959f35b6d958ba2e54066a4f87e7f3c3f0f99166"
+                      "sha256":  "bf1adcb1b9d085875d355d4092f0d1df29645aa1848e226489ae777cc3c563eb"
                   },
                   {
                       "path":  "config/smooth_steps.json",
@@ -820,7 +816,7 @@
                   },
                   {
                       "path":  "config/smoothscroll.json",
-                      "sha256":  "3bb120637792d9780f01168b9ad70a925c2436f1d490758cddce2b54c07f1340"
+                      "sha256":  "2a5de95b4d8bef747e6c59dc56b4ed321c5738bd30d11b03e2b246427f26a5f8"
                   },
                   {
                       "path":  "config/smoothswapping.json",
@@ -828,7 +824,7 @@
                   },
                   {
                       "path":  "config/sodium-extra-options.json",
-                      "sha256":  "b01c35764dec53bdfdab6562628d99f830b97890f10f74e2e99171b66a4edac5"
+                      "sha256":  "1a37dbcaa75a578b2c9861dff3a0ad2086027e1e486564cd7d418b65944337b5"
                   },
                   {
                       "path":  "config/sodium-extra.properties",
@@ -844,7 +840,7 @@
                   },
                   {
                       "path":  "config/sodium-options.json",
-                      "sha256":  "7d98966fef8784202c6acfcdf47d47c2b4bc1aaea006661120f3b5b10331ee94"
+                      "sha256":  "c06fecae6a8f39d4f5efba120cbf02a6f2dbbe31c596b7ac1b20f6a70e9c21ec"
                   },
                   {
                       "path":  "config/sound_physics_remastered/occlusion.properties",
@@ -860,11 +856,11 @@
                   },
                   {
                       "path":  "config/sound_physics_remastered/soundphysics.properties",
-                      "sha256":  "d29dede3f214ee4b1aa03314f92c3f973c21ee6e26d173eba3d01a2083237b6d"
+                      "sha256":  "f641403e994a7c5b436d3429fb33bdb1e223f59f93e805114830c3832707be21"
                   },
                   {
                       "path":  "config/sounds/chat.json",
-                      "sha256":  "580248b70a7c0ce5b8ae2cda237e341fa3594c48a57257aceecdd29cf7c32a71"
+                      "sha256":  "432d28b6f6e4d4ce4b8e6f8b167a41cba6aff5cf90cd1e10b6035f6cffa73f65"
                   },
                   {
                       "path":  "config/sounds/event.json",
@@ -927,12 +923,8 @@
                       "sha256":  "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
                   },
                   {
-                      "path":  "config/variantsandventures.json",
-                      "sha256":  "3722e961204446525a1057da429c14898cf9f2244870aec769d8784585b6656c"
-                  },
-                  {
                       "path":  "config/voxy-config.json",
-                      "sha256":  "4177e2f8165d220f607c554e20b316f195cf31336fa7c3000e295e3033e37dde"
+                      "sha256":  "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
                   },
                   {
                       "path":  "config/voxyworldgenv2.json",
@@ -944,7 +936,7 @@
                   },
                   {
                       "path":  "config/xaero/world-map/profiles/default.cfg",
-                      "sha256":  "aaa7e59dcb1d159a9cb921079d0f5409d2465c58ddb3c8a78d349897f944b943"
+                      "sha256":  "1b1d749157d6db4549f32565054da828f2b4997b7ca669881f9f15ff2a216000"
                   },
                   {
                       "path":  "config/yacl.json5",
@@ -1025,10 +1017,6 @@
                   {
                       "path":  "mods/PrickleMC-fabric-MC26.2-26.2.0.3.jar",
                       "sha256":  "adb871854e5596a6d10593b13634622801b202b18d0eae694ff3a5a50951dc85"
-                  },
-                  {
-                      "path":  "mods/ResourcefulLib-5.0.4.jar",
-                      "sha256":  "466028131622b7fc3dc1c5ae0315d85365aa312ae90bb836b48f1838e8580566"
                   },
                   {
                       "path":  "mods/ScalableLux-0.2.1+fabric.2b08348-all.jar",
@@ -1373,10 +1361,6 @@
                   {
                       "path":  "mods/vanilla-refresh-1.4.31.jar",
                       "sha256":  "fd62d1d9b5b303fa45032fbba155d3851c477f3197954e3ab28b16f8a9957b42"
-                  },
-                  {
-                      "path":  "mods/variantsandventures-fabric-1.0.26+mc26.2.jar",
-                      "sha256":  "cff8ce164b80c52cb123b7467f571f5857dcf3b6ce5f1e350599f351c8340d04"
                   },
                   {
                       "path":  "mods/vinurl-2.6.0+mc26.2.jar",

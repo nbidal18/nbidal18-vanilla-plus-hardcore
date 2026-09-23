@@ -136,15 +136,15 @@
 				"minecraft:crossbow",
 				"minecraft:trident"
 			],
-			"minimumAlpha": 0.0,
+			"minimumAlpha": 0.6,
 			"alwaysHidden": false,
-			"onChange": true,
-			"maximumAlpha": 1.0,
+			"onChange": false,
+			"maximumAlpha": 0.6,
 			"dynamic": true
 		},
 		"minecraft:closed_captions": {
 			"minimumAlpha": 0.0,
-			"alwaysHidden": false,
+			"alwaysHidden": true,
 			"maximumAlpha": 1.0
 		},
 		"minecraft:chat": {
@@ -187,6 +187,48 @@
 			"direction": "NONE"
 		},
 		"creativecore:gui": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"unlink": false,
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"voicechat:hud": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"travelersbackpack:overlay": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"vinurl:progress_hud": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"unlink": false,
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"xaerohud:hud": {
+			"minimumAlpha": 0.0,
+			"alwaysHidden": false,
+			"synchronizeWith": "autohud:none",
+			"maximumAlpha": 1.0,
+			"overrideDirection": false,
+			"direction": "NONE"
+		},
+		"nbidal18:voxy_sync_overlay": {
 			"minimumAlpha": 0.0,
 			"alwaysHidden": false,
 			"synchronizeWith": "autohud:none",

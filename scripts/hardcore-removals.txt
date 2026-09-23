@@ -42,3 +42,11 @@ boids-2.0.0+26.2.jar
 # name and farm the revival charm - does not hold: the server has white-list=true and
 # enforce-whitelist=true with two names on it, so no identity exists that the owner did not create.
 # The fork stays exactly as it is, all seven of its edits intact.
+
+# --- Added 2026-09-23, after the owner played the first build
+# Variants & Ventures registers four new mob entities with spawn eggs - Gelid, Thicket, Murk,
+# Verdant. The audit called them "variants of vanilla mobs" and filed the mod as safe because it adds
+# no biomes; the owner's rule is no new content, and four new mobs with spawn eggs are new content.
+# ResourcefulLib leaves with it - nothing else in either half depends on it.
+variantsandventures-fabric-1.0.26+mc26.2.jar
+ResourcefulLib-5.0.4.jar

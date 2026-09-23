@@ -25,6 +25,11 @@
         "value": "AUTO"
       }
     },
+    "xaerohud:hud": {
+      "enabled": {
+        "value": "AUTO"
+      }
+    },
     "crosshair": {
       "enabled": {
         "value": "AUTO"
@@ -145,7 +150,22 @@
         "value": "AUTO"
       }
     },
+    "controlify:button_guide": {
+      "enabled": {
+        "value": "AUTO"
+      }
+    },
     "jade:main": {
+      "enabled": {
+        "value": "AUTO"
+      }
+    },
+    "nbidal18:voxy_sync_overlay": {
+      "enabled": {
+        "value": "AUTO"
+      }
+    },
+    "vinurl:progress_hud": {
       "enabled": {
         "value": "AUTO"
       }

@@ -18,7 +18,7 @@ hash = "55779c27c60b8b920acbc19f63987064beb9fd8887d79e8fa7bac80c5be77137"
 
 [[files]]
 file = "config/autohud.json5"
-hash = "7ed0a97e729cf0e9cb638d37ace4282d5668103c58d33fb721916739419ba5f3"
+hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
@@ -86,11 +86,11 @@ hash = "71d5e19e278cb843d92f90a99b8a9772780c62e5611b7c8cc92097cd18399b08"
 
 [[files]]
 file = "config/firstperson.json"
-hash = "6d9d8a3708ccf453fb710f4e10591cedd4d1767acde97c7da7bbc2cd2c4d4101"
+hash = "7962fe86af1b79228e61c633c6c1c826da798b0fcf12af27dd4a7e5fc94328b3"
 
 [[files]]
 file = "config/gnetum.json"
-hash = "5670885d277274a734abdd065cd55f9c43a770b473353a420686d450b6259ef4"
+hash = "8f4c986698bdd95ba0a36d0dbc192eef41ddd477f1ae773277e04dd6ffa7c2ad"
 
 [[files]]
 file = "config/gravestones.json"
@@ -98,7 +98,7 @@ hash = "e6ef20d1c572e82cd0b427da013e29a60f9f1bb9b28d3f28c057911a9f4330eb"
 
 [[files]]
 file = "config/immediatelyfast.json"
-hash = "351554b5d847acfb0dcdd05a93b5b93f27035178bcbde4d5193b4dc5a5a2f11b"
+hash = "de689cd568aa0de06b6d2bab7462b0f033c101418e5069d95ced35c57128ab49"
 
 [[files]]
 file = "config/invmove.json"
@@ -118,7 +118,7 @@ hash = "4d3264b58c502afaeca3f44e8d2db0843c54b8ba957afd21a2d450fe10dafefb"
 
 [[files]]
 file = "config/iris.properties"
-hash = "3781f150b856c8fd1a1921e53300605189f242b7fc1753e243717d006c14f025"
+hash = "c6df5f03efee9e254598d604bbde6a0965e1b5790858376d603864962986d745"
 
 [[files]]
 file = "config/ixeris.toml"
@@ -202,7 +202,7 @@ hash = "90fab4d4fe137ee65a86934eab457c4c679a87f6bd3188a320e8c0ade3ef5112"
 
 [[files]]
 file = "config/skinlayers.json"
-hash = "45162f45aa2db525a0edc483959f35b6d958ba2e54066a4f87e7f3c3f0f99166"
+hash = "bf1adcb1b9d085875d355d4092f0d1df29645aa1848e226489ae777cc3c563eb"
 
 [[files]]
 file = "config/smooth_steps.json"
@@ -214,7 +214,7 @@ hash = "7765257a12db9422a8d5bd0c823d73a2dd11ecfd6fef7bf146f5e644d91f660a"
 
 [[files]]
 file = "config/smoothscroll.json"
-hash = "3bb120637792d9780f01168b9ad70a925c2436f1d490758cddce2b54c07f1340"
+hash = "2a5de95b4d8bef747e6c59dc56b4ed321c5738bd30d11b03e2b246427f26a5f8"
 
 [[files]]
 file = "config/smoothswapping.json"
@@ -222,7 +222,7 @@ hash = "d15110f71646c8b1e18a78483990691bbda1e9e687d39ac62cff0423375a4076"
 
 [[files]]
 file = "config/sodium-extra-options.json"
-hash = "b01c35764dec53bdfdab6562628d99f830b97890f10f74e2e99171b66a4edac5"
+hash = "1a37dbcaa75a578b2c9861dff3a0ad2086027e1e486564cd7d418b65944337b5"
 
 [[files]]
 file = "config/sodium-extra.properties"
@@ -238,7 +238,7 @@ hash = "b627c4456e6fa0bc4b5f85e2f1cd949faedae3cb9afdaf2a5f52e6f3b6ae1f01"
 
 [[files]]
 file = "config/sodium-options.json"
-hash = "7d98966fef8784202c6acfcdf47d47c2b4bc1aaea006661120f3b5b10331ee94"
+hash = "c06fecae6a8f39d4f5efba120cbf02a6f2dbbe31c596b7ac1b20f6a70e9c21ec"
 
 [[files]]
 file = "config/sound_physics_remastered/occlusion.properties"
@@ -254,11 +254,11 @@ hash = "b82bd52dd1dcc9fd56f7ad4af8c8da8c2233fe39252fc1168ff226c2583e372c"
 
 [[files]]
 file = "config/sound_physics_remastered/soundphysics.properties"
-hash = "d29dede3f214ee4b1aa03314f92c3f973c21ee6e26d173eba3d01a2083237b6d"
+hash = "f641403e994a7c5b436d3429fb33bdb1e223f59f93e805114830c3832707be21"
 
 [[files]]
 file = "config/sounds/chat.json"
-hash = "580248b70a7c0ce5b8ae2cda237e341fa3594c48a57257aceecdd29cf7c32a71"
+hash = "432d28b6f6e4d4ce4b8e6f8b167a41cba6aff5cf90cd1e10b6035f6cffa73f65"
 
 [[files]]
 file = "config/sounds/event.json"
@@ -321,12 +321,8 @@ file = "config/treechop-common.toml"
 hash = "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
 
 [[files]]
-file = "config/variantsandventures.json"
-hash = "3722e961204446525a1057da429c14898cf9f2244870aec769d8784585b6656c"
-
-[[files]]
 file = "config/voxy-config.json"
-hash = "4177e2f8165d220f607c554e20b316f195cf31336fa7c3000e295e3033e37dde"
+hash = "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
 
 [[files]]
 file = "config/voxyworldgenv2.json"
@@ -338,7 +334,7 @@ hash = "2e2d25893747903d9d16c0cc50f9bb56c4ebbcbb7f91a1d8210158394781c507"
 
 [[files]]
 file = "config/xaero/world-map/profiles/default.cfg"
-hash = "aaa7e59dcb1d159a9cb921079d0f5409d2465c58ddb3c8a78d349897f944b943"
+hash = "1b1d749157d6db4549f32565054da828f2b4997b7ca669881f9f15ff2a216000"
 
 [[files]]
 file = "config/yacl.json5"
@@ -419,10 +415,6 @@ hash = "f1f7e37ffc5a56cf7cc9833d8c6b48680340554d72498160df021c6fc354af13"
 [[files]]
 file = "mods/PrickleMC-fabric-MC26.2-26.2.0.3.jar"
 hash = "adb871854e5596a6d10593b13634622801b202b18d0eae694ff3a5a50951dc85"
-
-[[files]]
-file = "mods/ResourcefulLib-5.0.4.jar"
-hash = "466028131622b7fc3dc1c5ae0315d85365aa312ae90bb836b48f1838e8580566"
 
 [[files]]
 file = "mods/ScalableLux-0.2.1+fabric.2b08348-all.jar"
@@ -767,10 +759,6 @@ hash = "9e57f7ff2d0e39808f1523ce46e87feee2c66c9a2050839eaba9be7f9b0eaaf0"
 [[files]]
 file = "mods/vanilla-refresh-1.4.31.jar"
 hash = "fd62d1d9b5b303fa45032fbba155d3851c477f3197954e3ab28b16f8a9957b42"
-
-[[files]]
-file = "mods/variantsandventures-fabric-1.0.26+mc26.2.jar"
-hash = "cff8ce164b80c52cb123b7467f571f5857dcf3b6ce5f1e350599f351c8340d04"
 
 [[files]]
 file = "mods/vinurl-2.6.0+mc26.2.jar"

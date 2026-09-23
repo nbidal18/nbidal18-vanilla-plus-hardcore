@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Move a live server's End dimension aside so it regenerates, optionally switching it to BetterX.
+    Move a live server's dimension aside so it regenerates, optionally switching the End to BetterX.
 
 .DESCRIPTION
     Written 2026-09-22. The owner asked to reset the End on both servers and re-enter it with the
@@ -40,8 +40,8 @@
     Server Pause makes a live server look dead for hours.
 
 .EXAMPLE
-    .\Reset-EndDimension.ps1 -Session 'Gamehostbros Vanilla+' -ServerHost 194.54.88.14 -Port 27107 -Label pre-v1.0.107
-    .\Reset-EndDimension.ps1 -Session 'Gamehostbros Vanilla+ Hardcore Paris' -ServerHost 38.103.248.98 -Port 27037 -Label pre-v1.0.107 -SwitchToBetterX
+    .\Reset-Dimension.ps1 -Session 'Gamehostbros Vanilla+' -ServerHost 194.54.88.14 -Port 27107 -Label pre-v1.0.107
+    .\Reset-Dimension.ps1 -Session 'Gamehostbros Vanilla+ Hardcore Paris' -ServerHost 38.103.248.98 -Port 27037 -Label pre-v1.0.107 -SwitchToBetterX
 #>
 [CmdletBinding()]
 param(
@@ -49,6 +49,11 @@ param(
     [Parameter(Mandatory)] [string] $ServerHost,
     [Parameter(Mandatory)] [int] $Port,
     [Parameter(Mandatory)] [string] $Label,
+    # Which dimension to move aside. `the_end` is the default because that is what this script was
+    # written for on 2026-09-22; `the_nether` was added on 2026-09-23 when the hardcore pack dropped
+    # Incendium and its Nether had to regenerate without those biomes. The folder name is the one
+    # under <world>/dimensions/minecraft/, which is where 26.2 keeps all three.
+    [ValidateSet('the_end', 'the_nether', 'overworld')] [string] $Dimension = 'the_end',
     [string] $WorldPath = '/world',
     # Copy the End entry of this world's wover-generator.nbt from a world that already generates
     # Better End biomes. Requires -BetterXSource.
@@ -69,7 +74,18 @@ foreach ($needed in $mirror, $stopped, $setgen) {
     if (-not (Test-Path -LiteralPath $needed)) { throw "Missing helper: $needed" }
 }
 
-$endPath = "$WorldPath/dimensions/minecraft/the_end"
+# -SwitchToBetterX only ever meant the End, and its whole safety argument was that the hardcore
+# End had never generated a chunk. Applying it to another dimension would be meaningless at best.
+if ($SwitchToBetterX -and $Dimension -ne 'the_end') {
+    throw "-SwitchToBetterX applies to the End only; -Dimension is '$Dimension'."
+}
+# Refuse the overworld outright. It is in the ValidateSet so the name resolves and the refusal can
+# say why rather than failing on a typo, but moving it aside discards every base on the server and
+# no run of this script has ever been meant to.
+if ($Dimension -eq 'overworld') {
+    throw 'Refusing to move the overworld aside - that is every base on the server. Do it by hand if it is really what you want.'
+}
+$endPath = "$WorldPath/dimensions/minecraft/$Dimension"
 $movedTo = "$endPath.$Label"
 
 Write-Host ''
@@ -90,7 +106,7 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host '     confirmed down'
 
 # 2. Record what is there, so the move can be checked against something.
-Write-Host '2/4  listing the End before the move'
+Write-Host '2/4  listing $Dimension before the move'
 $before = & $mirror -Session $Session -List $endPath 2>&1
 $before | Where-Object { $_ -match '^[d-]' } | ForEach-Object { Write-Host "     $_" }
 
@@ -133,7 +149,10 @@ Write-Host 'verify    reading the server back'
 & $mirror -Session $Session -List "$WorldPath/dimensions/minecraft" 2>&1 |
     Where-Object { $_ -match '^[d-]' } | ForEach-Object { Write-Host "     $_" }
 Write-Host ''
-Write-Host "OK        the End is moved aside as $movedTo and will regenerate on first entry."
-Write-Host '          The dragon fight went with it, so the dragon respawns - kill it with'
-Write-Host '          /kill @e[type=minecraft:ender_dragon] once you are in.'
+Write-Host "OK        $Dimension is moved aside as $movedTo and will regenerate on first entry."
+if ($Dimension -eq 'the_end') {
+    # ender_dragon_fight.dat lives inside the folder that just moved, so the fight state went with it.
+    Write-Host '          The dragon fight went with it, so the dragon respawns - kill it with'
+    Write-Host '          /kill @e[type=minecraft:ender_dragon] once you are in.'
+}
 Write-Host "          Delete $movedTo yourself when you are happy; nothing here will."

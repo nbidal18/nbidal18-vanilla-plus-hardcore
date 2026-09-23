@@ -40,13 +40,13 @@ param(
     # Rename a remote path. Added 2026-09-22 for resetting the End: moving a 2 GB dimension folder
     # aside is the only backup of it that is affordable, and it is instant and reversible where a
     # delete is neither. Named Move rather than folded into Push because it is not a copy and must
-    # never be inferred - it is only ever used on a stopped server, by Reset-EndDimension.ps1.
+    # never be inferred - it is only ever used on a stopped server, by Reset-Dimension.ps1.
     [Parameter(ParameterSetName = 'Move')]  [string] $Move,
     [Parameter(ParameterSetName = 'Move')]  [string] $MoveTo,
     # Upload one named local file to one named remote path, the mirror image of -Get. Separate from
     # -Push on purpose: -Push takes mirror-relative paths and the world is deliberately not in the
     # mirror, so pushing a world file would mean inventing a mirror entry for something the mirror
-    # exists to stay out of. Used by Reset-EndDimension.ps1 for wover-generator.nbt, on a stopped
+    # exists to stay out of. Used by Reset-Dimension.ps1 for wover-generator.nbt, on a stopped
     # server, with the original kept locally first.
     [Parameter(ParameterSetName = 'Put')]   [string] $Put,
     [Parameter(ParameterSetName = 'Put')]   [string] $PutTo,

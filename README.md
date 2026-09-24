@@ -21,6 +21,7 @@ the other verbatim. **Do not let them drift** — that was the whole reason for 
 | Channel | `https://nbidal18.github.io/nbidal18-vanilla-plus-hardcore/pack.toml` |
 | Release folders | `hc.<version>`, beside this repository |
 | Server mirror | `_server-payload-cache`, beside this repository |
+| Docs | `..\docs\README.md` - the tour, then `..\docs\index.md`. The rebuild ledger is `..\docs\archive\rebuild.md` |
 
 ## Where things are
 

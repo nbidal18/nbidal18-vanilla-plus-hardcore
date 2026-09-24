@@ -5,6 +5,33 @@ build that was not published.
 
 ---
 
+## v1.0.2 — 2026-09-24
+
+**One shader pack, a key for the far-terrain readout, both servers in the list, and the pack's
+defaults pushed to the instance that predates them.** Manifest digest `f3905636674cce7d…`,
+replacing `99fd6e9ee1c3ac12…` (v1.0.1).
+
+* **Complementary Unbound is the only shader pack.** Eclipse, Photon, Rethinking Voxels and E-LITE
+  are removed with their settings files - 222 managed files become 214. The updater moves the four
+  zips aside (`.nbidal18-packwiz/removed-local-files`), and a one-row seed points Iris at
+  Complementary; whether shaders are on stays yours.
+* **X shows and hides the `/voxysync` overlay.** A real key binding, under Controls as *Voxy sync
+  overlay (show / hide)*, rebindable. Companion `nbidal18-voxyworldgen` 3.8.0 → 3.9.0 on both sides.
+* **The multiplayer list carries Vanilla+ as well as Hardcore again**, by decision: a hardcore
+  client cannot join Vanilla+ - the two packs have different manifest digests - and Better
+  Compatibility Checker draws that entry red with the other pack's name, which is the point: it
+  tells a player the other server exists and needs the other pack. Added to existing instances
+  once by seed; nothing else in the list is touched.
+* **Seventeen `options.txt` rows seeded once** - the pack's own defaults, for an instance imported
+  before the master became the owner's file: vsync on, exclusive fullscreen off, 180 fps, clouds
+  off, narrator hotkey off, the five bindings the pack unbinds (pick block, hotbar 1 on `[`,
+  voice-chat toggle, hide icons, new waypoint), Auto HUD's toggle on H, and the sound mix. A fresh
+  install already has these and is left byte-identical.
+* Integrity helper 1.0.2. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice while the updater fetches the new helper, as
+every release. Nothing to re-import.
+
 ## v1.0.1 — 2026-09-24
 
 **Better Third Person is back, Variants & Ventures is gone, and the settings you get on a first

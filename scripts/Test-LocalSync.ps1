@@ -155,13 +155,20 @@ try {
     # to perform the v1.0.106 move, which is the path that can go wrong. Appending instead of
     # rewriting would leave two hardcore entries, and the assertions after the sync catch exactly
     # that: the new address present, the old one gone, and one hardcore entry rather than two.
+    # An `added` seed (previous = null) has no old address: the instance is given the list WITHOUT
+    # the entry, as an instance imported before the entry existed has it, so the seed has to append.
     $serverList = Join-Path $minecraft 'servers.dat'
     if ($seed -and (Test-Path -LiteralPath $serverList -PathType Leaf)) {
         $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList remove $seed.current
         if ($LASTEXITCODE -ne 0) { throw "Edit-ServerList.py failed: $rolled" }
-        $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList add $seed.name $seed.previous
-        if ($LASTEXITCODE -ne 0) { throw "Edit-ServerList.py failed: $rolled" }
-        Write-Host ("rolled    servers.dat back to {0}, so the updater's seed has to move it" -f $seed.previous)
+        if ($seed.previous) {
+            $rolled = & python (Join-Path $PSScriptRoot 'Edit-ServerList.py') $serverList $serverList add $seed.name $seed.previous
+            if ($LASTEXITCODE -ne 0) { throw "Edit-ServerList.py failed: $rolled" }
+            Write-Host ("rolled    servers.dat back to {0}, so the updater's seed has to move it" -f $seed.previous)
+        }
+        else {
+            Write-Host ("rolled    servers.dat back to without {0}, so the updater's seed has to add it" -f $seed.current)
+        }
     }
     elseif (-not $seed) {
         Write-Host 'seeds     this line ships no ServerListSeed, so the shipped servers.dat is checked as delivered'
@@ -365,8 +372,10 @@ try {
     }
     if ($seed) {
         # The move's whole point: the dead address is gone rather than sitting beside the new one.
-        Assert (-not $serverBytes.Contains($seed.previous)) `
-            "servers.dat still lists the previous hardcore address $($seed.previous) after the sync"
+        if ($seed.previous) {
+            Assert (-not $serverBytes.Contains($seed.previous)) `
+                "servers.dat still lists the previous hardcore address $($seed.previous) after the sync"
+        }
         $serverMarker = Join-Path $minecraft ".nbidal18-packwiz\$($seed.marker)"
         Assert ((Test-Path -LiteralPath $serverMarker) -and (([IO.File]::ReadAllLines($serverMarker))[2] -eq 'changed')) 'the server-list seed did not report moving the hardcore server'
     }

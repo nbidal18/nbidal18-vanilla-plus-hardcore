@@ -10,26 +10,29 @@
     "This is the HARDCORE copy. The Vanilla+ copy lists both addresses, carries the hardcore",
     "move under serverListSeed, and probes config/immersive_aircraft.json."
   ],
-
   "$serversDoc": [
-    "Every address that must be in servers.dat after a sync. The hardcore client ships one",
-    "server and seeds nothing: this pack has never been released, so every install is a first",
-    "install and the ZIP's servers.dat is already right. Seeding the Vanilla+ address here would",
-    "also be pointless - the two packs have different manifest digests, so a hardcore client is",
-    "refused at the Vanilla+ server's login."
+    "Every address that must be in servers.dat after a sync. Since hardcore v1.0.2 the client ships",
+    "BOTH servers, on purpose (owner, 2026-09-24): a hardcore client cannot log in to Vanilla+ - the",
+    "manifest digests differ - but the entry, drawn red by Better Compatibility Checker, tells a",
+    "player the other server exists and needs the other pack. Hardcore first, Vanilla+ second."
   ],
   "expectedServers": [
-    "38.103.248.98:27037"
+    "38.103.248.98:27037",
+    "194.54.88.14:27107"
   ],
-
   "$seedDoc": [
-    "null means this line ships no ServerListSeed, so the test neither rolls an address back nor",
-    "expects the updater to move one. Vanilla+ sets it to the v1.0.106 hardcore move: the test",
-    "gives its instance the OLD address so the seed has to perform the move, which is the path",
-    "that can go wrong - appending instead of rewriting would leave two hardcore entries."
+    "The updater's ServerListSeed this line ships, or null. Hardcore v1.0.2 adds the Vanilla+ entry to",
+    "instances imported while the list carried the hardcore server alone (v1.0.0 and v1.0.1). An",
+    "`added` seed has no previous address, so previous is null: the test removes the entry from its",
+    "fresh instance and expects the updater to append it and write the marker. Vanilla+ instead ships",
+    "a `moved` seed with previous set, and the test rolls its instance back to that old address."
   ],
-  "serverListSeed": null,
-
+  "serverListSeed": {
+    "marker": "applied-servers-vanilla-plus-v102",
+    "name": "nbidal18 Vanilla+",
+    "current": "194.54.88.14:27107",
+    "previous": null
+  },
   "$worldFolderDoc": [
     "The server address whose per-world folders the retirement sweep is checked against - Voxy's",
     "LOD store under .voxy/saves/<addr>_<port> and Xaero's map tiles under Multiplayer_<addr>.",
@@ -37,7 +40,6 @@
   ],
   "worldFolderAddress": "38.103.248.98",
   "worldFolderPort": "27037",
-
   "$configProbeDoc": [
     "A published config file the test plants a deliberately wrong stub of, to prove the updater",
     "replaces a support-class file an existing instance already had rather than leaving the",

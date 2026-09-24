@@ -690,26 +690,6 @@
   ],
   "outsideConfig": [
     {
-      "match": "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
-      "class": "player",
-      "reason": "Shader settings. Published once so the pack ships its tuning, then owned by the player - a property rule cannot pin a key here, because these are not properties files."
-    },
-    {
-      "match": "shaderpacks/nbidal18-photon_v1.3b.zip.txt",
-      "class": "player",
-      "reason": "Photon's settings (v1.0.105). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Photon has no ore glow to rule on; the Mob Hurt Flash toggle is the player's."
-    },
-    {
-      "match": "shaderpacks/nbidal18-rethinking-voxels_r0.1-beta9.zip.txt",
-      "class": "player",
-      "reason": "Rethinking Voxels' settings (v1.0.105). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."
-    },
-    {
-      "match": "shaderpacks/nbidal18-§lE-LITE shaders 5.1.1.zip.txt",
-      "class": "player",
-      "reason": "Shader settings. Published once so the pack ships its tuning, then owned by the player - a property rule cannot pin a key here, because these are not properties files."
-    },
-    {
       "match": "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt",
       "class": "player",
       "reason": "Complementary Unbound's settings (v1.0.97). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."

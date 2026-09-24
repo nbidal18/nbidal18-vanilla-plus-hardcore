@@ -223,42 +223,47 @@ public final class Nbidal18PackwizSync {
             // never runs twice under the same token.
             new PlayerFileSeed("config/autohud.json5", ':', "autohud-crosshair-v1044", List.of(
                     new SeedRow(List.of("elements", "minecraft:crosshair"), "alwaysHidden", "false"))),
-            // The Eclipse shader's settings, as the owner tuned them, pushed onto instances that
-            // already have the file. Shader settings are player-class - published once and then
-            // theirs - so without a seed only a fresh install would ever see this tuning, and every
-            // existing player would keep the single SELECT_BOX=false line the pack shipped before.
+            // Hardcore v1.0.2: Complementary Unbound is the only shader pack. Eclipse, Photon,
+            // Rethinking Voxels and E-LITE are gone from shaderpacks/, and with them the two Eclipse
+            // settings seeds that used to sit here (eclipse-tuning-v1044, eclipse-clouds-v1074): a
+            // seed on a flat file CREATES the file when it is missing, so on a fresh install they
+            // would have written an Eclipse sidecar into an exact-match root with no shader behind it.
             //
-            // SELECT_BOX is the block outline, and it is on now: off is a preference, and one that
-            // costs a player the only cue for which block they are about to break.
+            // iris.properties is player-class and still names Eclipse in the master, which is left
+            // alone on purpose - changing the master re-delivers the whole file over every player's
+            // own (enableShaders, colour space, shadow distance). One row instead: the selected pack
+            // becomes the one that still exists. A player who later picks something else keeps it.
+            // The master row is stale by design, as voxy-config.json's `enabled` is.
+            new PlayerFileSeed("config/iris.properties", '=', "shaders-complementary-only-v102", List.of(
+                    SeedRow.of("shaderPack", "nbidal18-ComplementaryUnbound_r5.9.3.zip"))),
+            // Hardcore v1.0.2: the pack's defaults, seeded onto the instances that predate them. The
+            // master options.txt became the owner's own Vanilla+ file on 2026-09-24 (v1.0.0's third
+            // build), but options.txt ships only in the setup ZIP, so an instance imported before that
+            // kept the rebuild-era file: exclusive fullscreen, vsync off, 260 fps, clouds on, the
+            // narrator hotkey, vanilla's own bindings where the pack unbinds (pick block, hotbar 1,
+            // voice-chat toggle, hide icons, new waypoint - H is Auto HUD's toggle here) and a mix
+            // with music, records, hostile and ambient at full. Owner: "just seed it again".
             //
-            // Every row restated rather than only the changed one. A seed sets rows it names and
-            // leaves the rest, so naming only SELECT_BOX would leave an existing instance with the
-            // outline on and none of the tuning around it.
-            //
-            // The rows here follow the master file, not history. Every instance that exists has
-            // this token's marker, so the values only ever reach a fresh install - where the master
-            // copy has just been written and any row that disagrees with it makes the seed rewrite
-            // the file, with the platform's line endings, and Test-LocalSync then finds an installed
-            // file whose hash is not the manifest's. v1.0.74 raised the clouds and found out.
-            new PlayerFileSeed("shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt", '=',
-                    "eclipse-tuning-v1044", List.of(
-                            SeedRow.of("BorderFogIntensity", "1.0"),
-                            SeedRow.of("CloudLayer0_height", "600.0"),
-                            SeedRow.of("CloudLayer1_height", "1500.0"),
-                            SeedRow.of("LPV_COLORED_CANDLES", "true"),
-                            SeedRow.of("LPV_SATURATION", "75"),
-                            SeedRow.of("MOTION_BLUR", "true"),
-                            SeedRow.of("MOTION_BLUR_STRENGTH", "2.0"),
-                            SeedRow.of("SELECT_BOX", "true"),
-                            SeedRow.of("VIGNETTE", "true"),
-                            SeedRow.of("VIGNETTE_STRENGTH", "0.7"))),
-            // The owner raised the clouds on 2026-09-05 - "they were too low": the small layer
-            // from 350 to 600, the big layer from 500 to 1500, and the cumulonimbus mode from 0 to
-            // 1, all read from the owner's own settings file. Only these three rows, under a new
-            // token: the v1044 seed has fired on every instance and a seed never fires twice under
-            // one token, and the rest of that tuning is the player's now. Both heights are steps the
-            // shader's own slider offers (lib/settings.glsl), and the big layer stays above the
-            // small one, which the shader's help text says it must.
+            // Every row is the master's value, read from the file rather than typed, so a fresh
+            // install - where the master has just been written - is left byte-identical.
+            new PlayerFileSeed("options.txt", ':', "owner-defaults-v102", List.of(
+                    SeedRow.of("enableVsync", "true"),
+                    SeedRow.of("exclusiveFullscreen", "false"),
+                    SeedRow.of("maxFps", "180"),
+                    SeedRow.of("renderClouds", "\"false\""),
+                    SeedRow.of("narratorHotkey", "false"),
+                    SeedRow.of("key_key.pickItem", "key.keyboard.unknown"),
+                    SeedRow.of("key_key.hotbar.1", "key.keyboard.left.bracket"),
+                    SeedRow.of("key_key.disable_voice_chat", "key.keyboard.unknown"),
+                    SeedRow.of("key_key.hide_icons", "key.keyboard.unknown"),
+                    SeedRow.of("key_gui.xaero_new_waypoint", "key.keyboard.unknown"),
+                    SeedRow.of("key_identifier.autohud.toggle-hud", "key.keyboard.h"),
+                    SeedRow.of("soundCategory_master", "0.20033112582781457"),
+                    SeedRow.of("soundCategory_music", "0.0"),
+                    SeedRow.of("soundCategory_record", "0.3028169014084507"),
+                    SeedRow.of("soundCategory_weather", "0.15845070422535212"),
+                    SeedRow.of("soundCategory_hostile", "0.10915492957746478"),
+                    SeedRow.of("soundCategory_ambient", "0.2535211267605634"))),
             // Vanilla Refresh's soul - the marker it leaves at the death spot holding 80 % of the XP
             // and, under keepInventory, the hotbar - is off from v1.0.75: the owner wants nothing but
             // the grave touching a death. The server's own copy is what the game reads (deployed
@@ -272,11 +277,6 @@ public final class Nbidal18PackwizSync {
             // file is preserved for the player and a changed master would replace every copy.
             new PlayerFileSeed("config/sound_physics_remastered/soundphysics.properties", '=', "soundphysics-records-v1076", List.of(
                     SeedRow.of("update_moving_sounds", "true"))),
-            new PlayerFileSeed("shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt", '=',
-                    "eclipse-clouds-v1074", List.of(
-                            SeedRow.of("CloudLayer0_height", "600.0"),
-                            SeedRow.of("CloudLayer1_height", "1500.0"),
-                            SeedRow.of("CUMULONIMBUS", "1"))),
             // Voxy off by default: its far terrain is the single heaviest thing in the pack on a weak
             // machine.
             //
@@ -1063,18 +1063,17 @@ public final class Nbidal18PackwizSync {
     }
 
     private static final String SERVER_LIST = "servers.dat";
-    // EMPTY ON THE HARDCORE LINE, and deliberately so. A seed exists to reach an instance that was
-    // imported before the entry existed; this pack has never been released, so every install is a
-    // first install and `servers.dat` in the client ZIP already carries the one correct address.
+    // Hardcore v1.0.2: BOTH servers in the list, on purpose. Owner, 2026-09-24: "we will keep both
+    // the vanilla+ and vanilla+ hardcore server entries in multiplayer, so players know that there
+    // is another server they could join, but need a different modpack." A hardcore client cannot
+    // log in there - the two packs have different manifest digests - and Better Compatibility
+    // Checker draws the entry red with the other pack's name, which is exactly the hint intended.
     //
-    // Vanilla+ keeps its seed here - it moves the hardcore entry for players who had the old
-    // 195.60.166.224:27321 address - and that is a Vanilla+ concern. Seeding the Vanilla+ address
-    // into a hardcore player's list would be worse than useless: the two packs have different
-    // manifest digests, so a hardcore client is refused at the Vanilla+ server's login anyway.
-    //
-    // The shipped servers.dat was trimmed to the hardcore server alone on 2026-09-23
-    // (Edit-ServerList.py remove 194.54.88.14:27107); it had been carrying both.
-    private static final List<ServerListSeed> SERVER_LIST_SEEDS = List.of();
+    // The shipped servers.dat carries both again (it was trimmed to the hardcore server alone on
+    // 2026-09-23, under v1.0.0). This seed reaches the instances imported between the two: appended
+    // once, only if no entry with that address is there, and the list is the player's again.
+    private static final List<ServerListSeed> SERVER_LIST_SEEDS = List.of(
+            ServerListSeed.added("servers-vanilla-plus-v102", "nbidal18 Vanilla+", "194.54.88.14:27107"));
 
     private void applyServerListSeeds() {
         for (ServerListSeed seed : SERVER_LIST_SEEDS) {

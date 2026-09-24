@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "5abbd82668539608dcd26c7952ef2d2ae1b011362d7f8e3323b35ab32f51d0b4"
+hash = "3116745b4bb192720aa163007a02e8476292f0de8719cb7e3148ca26349cebe2"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -641,8 +641,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.1+26.2-fabric.jar"
-hash = "06fade3206412fab2b02fb75c0f322e4c4b66bd8d007d6e066dc0e9028e83a55"
+file = "mods/nbidal18-integrity-1.0.2+26.2-fabric.jar"
+hash = "1efbd8c63e1b84a0973bf2bf5c0d56a61856a1bf0553117838e02d920199a7a6"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -685,8 +685,8 @@ file = "mods/nbidal18-voxy-1.0.0+26.2-fabric.jar"
 hash = "887a3409d399d4284855434e5086b0f536114e82471ba8a4f414c46e194ccd8e"
 
 [[files]]
-file = "mods/nbidal18-voxyworldgen-3.8.0+26.2-fabric.jar"
-hash = "250ac5084112768315d17ccdfba85e2a401da8644e0f8f3b260ec010078edd1f"
+file = "mods/nbidal18-voxyworldgen-3.9.0+26.2-fabric.jar"
+hash = "141ea0759e4ef5d23b967c3f9cdb8fe573e05d34cc82ee40b7d8c5473dc149d6"
 
 [[files]]
 file = "mods/nbidal18-xaerolib-1.0.0+26.2-fabric.jar"
@@ -798,7 +798,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "307fd01a926ea9d592a0d924c7b0dcd6205f4c4ee12e5723804b37faaac0e266"
+hash = "d2cc63e1aded8d704c22943084feae00245eaa9b25d48b5270edb285d25a2358"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"
@@ -855,35 +855,3 @@ hash = "c6d740d8aafa4872628d9883f218f27c81d9427e299626c83a233e364543f80c"
 [[files]]
 file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt"
 hash = "00c106473dc7b634fe522ad43d8e380276f9807c10c8714724d76589ccd15df8"
-
-[[files]]
-file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip"
-hash = "180ba7d2ed4f3d1935be1c2ac3f69bdcc42e7ac0b6f919b4b53d48ac1752c18d"
-
-[[files]]
-file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt"
-hash = "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"
-
-[[files]]
-file = "shaderpacks/nbidal18-photon_v1.3b.zip"
-hash = "429ebd7c0ca33aaa58c1ff2db80ddef3b385ea3727bdfbd859cae98f4771dded"
-
-[[files]]
-file = "shaderpacks/nbidal18-photon_v1.3b.zip.txt"
-hash = "6733eacbb4d41eec237a9014f59e327cdadab1a44581c1d4d20bee1843d3997e"
-
-[[files]]
-file = "shaderpacks/nbidal18-rethinking-voxels_r0.1-beta9.zip"
-hash = "3d403cf90fced2d0c7601102d53a27078158aa09c222f6b3f215a69bb28f7420"
-
-[[files]]
-file = "shaderpacks/nbidal18-rethinking-voxels_r0.1-beta9.zip.txt"
-hash = "4b96c1bee0e1131d09d62c8e12db60e5cf4af4170890ab71c6eae55dbedc321c"
-
-[[files]]
-file = "shaderpacks/nbidal18-§lE-LITE shaders 5.1.1.zip"
-hash = "eb756f80d1a460c5cad6eceae89a4dff6d5b0b1a4b0493f4dcb1433cfd5d5dc3"
-
-[[files]]
-file = "shaderpacks/nbidal18-§lE-LITE shaders 5.1.1.zip.txt"
-hash = "21694795b410bef9b5b34c10af835d33d19cdbef05cb264996057e9aa665f6fb"

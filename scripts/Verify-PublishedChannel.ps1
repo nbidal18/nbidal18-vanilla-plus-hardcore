@@ -11,6 +11,8 @@
 
       scripts\Verify-PublishedChannel.ps1
       scripts\Verify-PublishedChannel.ps1 -Retired 'mods/nbidal18-integrity-1.0.4+26.2-fabric.jar'
+      scripts\Verify-PublishedChannel.ps1 -WaitForPropagation 900    right after a push: waits for
+                                                                    Pages, then judges once
 
     Checks, per file:
       served bytes == the local build's bytes
@@ -30,7 +32,15 @@ param(
     # the wrong channel and passed (2026-09-24).
     [string] $BaseUrl = ((Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'UPDATE-URL.txt') -Raw).Trim() -replace 'pack\.toml$', ''),
     [string[]] $Retired = @(),
-    [int] $TimeoutSec = 60
+    [int] $TimeoutSec = 60,
+    # Seconds to wait for GitHub Pages to serve THIS build before judging it. 0 judges immediately.
+    # Pages takes a few minutes after a push, and its CDN can hand out one stale file for a while
+    # after the rest has flipped - both were being handled from outside on 2026-09-24 by re-running
+    # this whole script in a loop, which re-downloaded the entire channel each time (266 MB, five
+    # times) and whose success test was wrong twice. The wait belongs in here: first the served
+    # manifest is polled (a few KB) until it is this build's, then the full pass runs once, then
+    # only the files that still disagree are re-fetched until they agree or the time is up.
+    [int] $WaitForPropagation = 0
 )
 
 $ErrorActionPreference = 'Stop'
@@ -89,6 +99,35 @@ function Get-Sha([byte[]] $bytes) {
     finally { $sha.Dispose() }
 }
 
+$deadline = (Get-Date).AddSeconds($WaitForPropagation)
+
+# ---------------------------------------------------------------- wait for Pages to flip
+# The manifest is the file whose hash the server enforces, so "the channel serves this build" means
+# exactly "the served manifest hashes like the local one". Polled alone, cheaply, before anything
+# else is fetched; one line when the wait starts and one when it ends, not one per poll.
+$localManifestSha = Get-Sha ([IO.File]::ReadAllBytes((Join-Path $site 'sync-manifest.json')))
+if ($WaitForPropagation -gt 0) {
+    $announced = $false
+    $started = Get-Date
+    while ($true) {
+        $served = Get-Served 'sync-manifest.json' 1
+        $servedSha = if ($null -ne $served) { Get-Sha $served } else { '(unreachable)' }
+        if ($servedSha -eq $localManifestSha) {
+            if ($announced) { Write-Host ("propagated after {0:N0} s" -f ((Get-Date) - $started).TotalSeconds) }
+            break
+        }
+        if ((Get-Date) -ge $deadline) {
+            Write-Host ("waited    {0} s and the channel still serves manifest {1}, not this build's {2}" -f $WaitForPropagation, $servedSha.Substring(0, 16), $localManifestSha.Substring(0, 16))
+            break
+        }
+        if (-not $announced) {
+            Write-Host ("waiting   for Pages: served manifest {0}, this build is {1} (up to {2} s)" -f $servedSha.Substring(0, 16), $localManifestSha.Substring(0, 16), $WaitForPropagation)
+            $announced = $true
+        }
+        Start-Sleep -Seconds 20
+    }
+}
+
 # ---------------------------------------------------------------- indexed files
 $indexText = [IO.File]::ReadAllText((Join-Path $site 'index.toml'))
 $entries = [regex]::Matches($indexText, '(?m)^file = "(?<f>.+)"\r?\nhash = "(?<h>[0-9a-f]{64})"')
@@ -98,37 +137,54 @@ Write-Host ("index     {0} files listed" -f $entries.Count)
 $badLocal = New-Object Collections.Generic.List[string]
 $badHash = New-Object Collections.Generic.List[string]
 $missing = New-Object Collections.Generic.List[string]
-$done = 0
 
-foreach ($entry in $entries) {
-    $rel = $entry.Groups['f'].Value
-    $want = $entry.Groups['h'].Value
+# One file, judged: fetched, compared with the index hash (when indexed) and with the local build.
+# Returns $true when it agrees on every count, so the same function serves the first pass and the
+# re-fetch of whatever the CDN was still serving stale.
+function Test-File([string] $rel, [string] $want, [bool] $record) {
     $served = Get-Served $rel
-    if ($null -eq $served) { $missing.Add($rel); continue }
-
-    if ((Get-Sha $served) -ne $want) { $badHash.Add($rel) }
-
+    if ($null -eq $served) { if ($record) { $missing.Add($rel) }; return $false }
+    $ok = $true
+    $servedSha = Get-Sha $served
+    if ($want -and $servedSha -ne $want) { if ($record) { $badHash.Add($rel) }; $ok = $false }
     $local = Join-Path $site ($rel -replace '/', [IO.Path]::DirectorySeparatorChar)
     if (-not (Test-Path -LiteralPath $local)) {
-        $missing.Add("$rel (indexed and served, but not in the local build)")
+        if ($record) { $missing.Add("$rel (indexed and served, but not in the local build)") }
+        return $false
     }
-    elseif ((Get-Sha ([IO.File]::ReadAllBytes($local))) -ne (Get-Sha $served)) {
-        $badLocal.Add($rel)
-    }
-
-    $done++
-    if ($done % 50 -eq 0) { Write-Host ("          {0}/{1} ..." -f $done, $entries.Count) }
+    if ((Get-Sha ([IO.File]::ReadAllBytes($local))) -ne $servedSha) { if ($record) { $badLocal.Add($rel) }; $ok = $false }
+    return $ok
 }
-Write-Host ("checked   {0} indexed files" -f $done)
 
-# ---------------------------------------------------------------- fetched directly, not indexed
+$wanted = [ordered]@{}
+foreach ($entry in $entries) { $wanted[$entry.Groups['f'].Value] = $entry.Groups['h'].Value }
 foreach ($rel in 'pack.toml', 'index.toml', 'sync-manifest.json', 'SHA256SUMS.txt', $clientZip) {
-    $served = Get-Served $rel
-    if ($null -eq $served) { $missing.Add($rel); continue }
-    $local = Join-Path $site $rel
-    if ((Get-Sha ([IO.File]::ReadAllBytes($local))) -ne (Get-Sha $served)) { $badLocal.Add($rel) }
+    if (-not $wanted.Contains($rel)) { $wanted[$rel] = '' }   # fetched directly, not indexed: local-build check only
 }
-Write-Host 'checked   5 directly-fetched artefacts'
+
+$disagreeing = New-Object Collections.Generic.List[string]
+$done = 0
+foreach ($rel in $wanted.Keys) {
+    if (-not (Test-File $rel $wanted[$rel] $false)) { $disagreeing.Add($rel) }
+    $done++
+    if ($done % 50 -eq 0) { Write-Host ("          {0}/{1} ..." -f $done, $wanted.Count) }
+}
+Write-Host ("checked   {0} indexed files and 5 directly-fetched artefacts" -f $entries.Count)
+
+# A CDN edge can keep serving the previous build's copy of one file for minutes after the rest has
+# flipped (bcc-common.json, 2026-09-24: stale on the first pass, fresh on the second). Only the files
+# that disagreed are asked again, so the wait costs kilobytes rather than the whole channel.
+if ($disagreeing.Count -and $WaitForPropagation -gt 0) {
+    Write-Host ("stale?    {0} file(s) disagree; re-fetching only those until they agree or the wait is up" -f $disagreeing.Count)
+    while ($disagreeing.Count -and (Get-Date) -lt $deadline) {
+        Start-Sleep -Seconds 20
+        $still = New-Object Collections.Generic.List[string]
+        foreach ($rel in $disagreeing) { if (-not (Test-File $rel $wanted[$rel] $false)) { $still.Add($rel) } }
+        $disagreeing = $still
+    }
+}
+# Whatever still disagrees is recorded for the verdict, with the reason.
+foreach ($rel in $disagreeing) { [void] (Test-File $rel $wanted[$rel] $true) }
 
 # ---------------------------------------------------------------- the manifest agrees with itself
 $manifestBytes = Get-Served 'sync-manifest.json'

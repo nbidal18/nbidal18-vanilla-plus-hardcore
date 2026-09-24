@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "3116745b4bb192720aa163007a02e8476292f0de8719cb7e3148ca26349cebe2"
+hash = "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -641,8 +641,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.2+26.2-fabric.jar"
-hash = "1efbd8c63e1b84a0973bf2bf5c0d56a61856a1bf0553117838e02d920199a7a6"
+file = "mods/nbidal18-integrity-1.0.3+26.2-fabric.jar"
+hash = "591f66f190fa1c6cebaeb49d466274a17214bf200dc292e8c38c636b75451eb3"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -651,6 +651,10 @@ hash = "c1a9fbbfcb7372fac12425a9a0693d716c9c45ef5851f596703c2c7c3e8694bf"
 [[files]]
 file = "mods/nbidal18-iris-1.0.1+26.2-fabric.jar"
 hash = "170f80c16af020ae0d7d5ba42a50c87cbc18916220fe90dfdc7ad63342979d24"
+
+[[files]]
+file = "mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar"
+hash = "fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837"
 
 [[files]]
 file = "mods/nbidal18-jukebox-2.0.4+26.2-fabric.jar"
@@ -673,8 +677,8 @@ file = "mods/nbidal18-soundphysics-1.3.0+26.2-fabric.jar"
 hash = "a9e3de9174d22aecd83fb0e405323490ffae4bc5090d78e9249394d331807f96"
 
 [[files]]
-file = "mods/nbidal18-soundsbegone-1.0.0+26.2-fabric.jar"
-hash = "c5f04e5de20c181a83101645e24f2f73e71e42270cf688a3cd5312d24e0c63b0"
+file = "mods/nbidal18-soundsbegone-1.1.0+26.2-fabric.jar"
+hash = "67181a1ae3c401c5d53aedd890298bca33ede2c1a1d061bbd20d5cbac1b791c2"
 
 [[files]]
 file = "mods/nbidal18-treechop-0.19.3+26.2-nbidal18.2-fabric.jar"

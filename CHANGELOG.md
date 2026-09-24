@@ -5,6 +5,25 @@ build that was not published.
 
 ---
 
+## v1.0.3 — 2026-09-24
+
+**The game exits when you close it.** Since the rebuild, quitting from inside a world (or after a
+server session) closed the window but left the Java process running - two cores at 100 %, no window,
+until killed by hand. Two bugs, stacked, both fixed. Manifest digest `a93d4c4e94b7d5bd…`, replacing
+`f3905636674cce7d…` (v1.0.2).
+
+* **`nbidal18-soundsbegone` 1.1.0.** Sounds Be Gone 1.6.0 calls its telemetry `shutdown()` on quit,
+  which dereferenced the analytics client our companion deliberately never builds. Every quit became a
+  "Game shutdown" crash report and a crash-path exit that never finished. One more call dropped.
+* **`nbidal18-ixeris` 1.0.0, new.** A window that has carried Ixeris's buffered raw mouse input cannot
+  be destroyed without wedging Windows' `DestroyWindow`, which is where the main thread sat for ever.
+  At quit, while Ixeris is enabled, the window and GLFW are left to the OS to reclaim with the process.
+  Proved by closing a throwaway client inside a world and after a server session: gone in seconds.
+* Integrity helper 1.0.3. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice while the updater fetches the new helper - and
+that reopen is the last time the old client has to be killed by hand.
+
 ## v1.0.2 — 2026-09-24
 
 **One shader pack, a key for the far-terrain readout, both servers in the list, and the pack's

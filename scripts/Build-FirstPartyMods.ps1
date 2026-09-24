@@ -168,6 +168,12 @@ $mods = @(
     # log line and then posts the same text to chat through showInHUD; the mixin drops that post inside
     # error() only, so the log keeps everything and deliberate chat notices still arrive. Client only.
     @{ Name = 'nbidal18-voxy'; Generator = $null; Builder = 'build_voxy.py' },
+    # Quitting from inside a world left a windowless JVM spinning on two cores (hardcore v1.0.3,
+    # 2026-09-24): Ixeris's buffered raw mouse input is still registered on the window when the
+    # main thread runs the queued glfwDestroyWindow, and DestroyWindow never returns. One client
+    # mixin at Window.close releases the raw input first. Proved by the throwaway: same close exits
+    # with the option off or with Ixeris absent, and hangs with it on. Client only.
+    @{ Name = 'nbidal18-ixeris'; Generator = $null; Builder = 'build_ixeris.py' },
     # nbidal18-emf is not listed: Entity Model Features is set aside on this line (the player-render
     # review, 2026-09-23) and its companion goes with it. The source folder stays for when that review
     # closes; listing it would build a jar for a mod the pack does not ship.

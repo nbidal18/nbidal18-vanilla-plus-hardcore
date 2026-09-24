@@ -1,7 +1,7 @@
 55779c27c60b8b920acbc19f63987064beb9fd8887d79e8fa7bac80c5be77137  config/asyncparticles/asyncparticles.json
 7ef39a4ae264fb6dee30ebf6ebf7b31242dd56e5824b8e7018e4f513b3d991bc  config/asyncparticles/asyncparticles-mixin.properties
 20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4  config/autohud.json5
-3116745b4bb192720aa163007a02e8476292f0de8719cb7e3148ca26349cebe2  config/bcc-common.json
+c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6  config/bcc-common.json
 c81c89e9534c83ecef3206b6c7d311c7695a396c23080b15abeedeabbd7064d5  config/betteradvancements.json
 4168bac2dc287241056469b9cf32f118bc7804ae2325b256d9b734812e9e5ee7  config/betterf3.json
 a08f97002e75fbe4e2933cbb6137c8bcb33d1cd36e947e54829b8fa8ab3caa7c  config/betterthirdperson.json5
@@ -84,7 +84,7 @@ fd175c77cc37fe5981ab51ae782096710d08fb91a6c3cd97f9f988124ad25216  config/VinURLC
 2e2d25893747903d9d16c0cc50f9bb56c4ebbcbb7f91a1d8210158394781c507  config/xaero/minimap/profiles/default.cfg
 1b1d749157d6db4549f32565054da828f2b4997b7ca669881f9f15ff2a216000  config/xaero/world-map/profiles/default.cfg
 121b93764159be6fb7dab523b29a844e2bb78400ce8c48f52135a097e9b0006e  config/yacl.json5
-0ca1f6e79eb6f2f9fbfe5ef8826aa74745ac5fcc50bb9c2b543e763f0233140e  index.toml
+1909a9f42e8c3da38e0c3ff7bf791a5787f3f4863e3a31313387df7419999477  index.toml
 f729f017976e1c9f8fbc50358b980bd8b8a522a09829bda2a5e2fd3d60fcfaa0  mods/AccurateBlockPlacement-Reborn-1.4.6+mc-26.1-26.2.jar
 2b137af4fd25c1cdd1d9d6513679bd315eb8d01e087d7b8ac2e6f121340824a6  mods/afk-cinematics-1.0.5+26.2.jar
 f59a8c076896d5f7666adf6b7b3370a6729ee5fa986ddae5f4da17c57f5141e4  mods/AmbientSounds_FABRIC_v6.3.6_mc26.2.jar
@@ -150,16 +150,17 @@ f14153036ad9f690bcbd53f720b43fe6c156eb50ad38a550457a7462474993f3  mods/nbidal18-
 aaf976b19b69ba210dcdd5d9934882d4719c843033545614b267b66317b40603  mods/nbidal18-hardcorerevive-1.12.0+26.2-fabric.jar
 8ab55c6f085c5272249f8ffa921a1698e54e1dc9ab7184a8df3eb60abdaaabaa  mods/nbidal18-immersivepaintings-1.0.0+26.2-fabric.jar
 819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b  mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar
-1efbd8c63e1b84a0973bf2bf5c0d56a61856a1bf0553117838e02d920199a7a6  mods/nbidal18-integrity-1.0.2+26.2-fabric.jar
+591f66f190fa1c6cebaeb49d466274a17214bf200dc292e8c38c636b75451eb3  mods/nbidal18-integrity-1.0.3+26.2-fabric.jar
 c1a9fbbfcb7372fac12425a9a0693d716c9c45ef5851f596703c2c7c3e8694bf  mods/nbidal18-invmov-1.0.2+26.2-fabric.jar
 170f80c16af020ae0d7d5ba42a50c87cbc18916220fe90dfdc7ad63342979d24  mods/nbidal18-iris-1.0.1+26.2-fabric.jar
+fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837  mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar
 1e799b29577abe703412cc1a5e4ad72e2317e98d5a2eb55299ca8302f2164ae7  mods/nbidal18-JEI-30.29.0.201+26.2-fabric.jar
 74f800f257d43ed7905b8ec48f8bb575010ef9254f4a7b87c4f47453679f1967  mods/nbidal18-jukebox-2.0.4+26.2-fabric.jar
 58e51525b24495c5e22554d6633578ffd795aed09dc2a170d48a2873c67ebfdf  mods/nbidal18-lambdynlights-1.0.0+26.2-fabric.jar
 d2db12699fd76389473394c85ff418ca1ebfdb315a7eae77f01cedd16924aaa8  mods/nbidal18-realisticdeathvisuals-1.0.2+26.2-fabric.jar
 7336d8dace6b4b0700c2da59cdb562a11776bcdcb6a8380dbe1f9c98a8d68c17  mods/nbidal18-skinoverrides-1.0.0+26.2-fabric.jar
 a9e3de9174d22aecd83fb0e405323490ffae4bc5090d78e9249394d331807f96  mods/nbidal18-soundphysics-1.3.0+26.2-fabric.jar
-c5f04e5de20c181a83101645e24f2f73e71e42270cf688a3cd5312d24e0c63b0  mods/nbidal18-soundsbegone-1.0.0+26.2-fabric.jar
+67181a1ae3c401c5d53aedd890298bca33ede2c1a1d061bbd20d5cbac1b791c2  mods/nbidal18-soundsbegone-1.1.0+26.2-fabric.jar
 cb71edf724fd4df18bc4373519f507a33a5c6809f213af49beaccca6984743d7  mods/nbidal18-treechop-0.19.3+26.2-nbidal18.2-fabric.jar
 887a3409d399d4284855434e5086b0f536114e82471ba8a4f414c46e194ccd8e  mods/nbidal18-voxy-1.0.0+26.2-fabric.jar
 141ea0759e4ef5d23b967c3f9cdb8fe573e05d34cc82ee40b7d8c5473dc149d6  mods/nbidal18-voxyworldgen-3.9.0+26.2-fabric.jar
@@ -197,10 +198,10 @@ dd9e10d2110879f07c1ce9bdf1945f3470b32e83977f094005ee8c642e8128d5  mods/voxy-0.2.
 075f262947e5e5c0192c9c36639fa667200c078d257cb656de0b4a3ce2d65240  mods/xaerominimap-fabric-26.2-26.5.1.jar
 599bdc53c29d8ef7ec16b7c2d3d52a5de694638ce6f556c4ab4c8e6d40b6c89f  mods/xaeroworldmap-fabric-26.2-1.46.1.jar
 829396c3b3e7d1801ae0e9e2921d0454c5a3078afdb6c6dda6b3d1819dfa0e3f  mods/yet_another_config_lib_v3-3.9.6+26.2-fabric.jar
-99b8c2363bbed06ffbfbf76ab4297ace80c640981f5c46eb9b10f47e38c70cf1  nbidal18-hardcore-client.zip
+789bbaa920b1ab672e14eeb444d0ef1a6fdc23b19cd0e07fafa3fe9d49491c3a  nbidal18-hardcore-client.zip
 9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa  nbidal18-packwiz-sync.next.jar
 d2cc63e1aded8d704c22943084feae00245eaa9b25d48b5270edb285d25a2358  nbidal18-packwiz-updater.next.jar
-0062999fc3512045a1fc1340a3a5f8901050d00f75a377421bc34d11081e31f2  pack.toml
+318ad417945a2ceed1fead08871bde75e695f87f6d42ce43992a1ba79f4a5cdd  pack.toml
 c9f646908d340d84773948a9a7d98bc1dae250d35e1016dc6e2b8459760b5598  packwiz-installer.next.jar
 a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c  packwiz-installer-bootstrap.next.jar
 48f695f86304c1b76a23905b266c7eb50c5273c47c041b2c128e0001390ab441  prism/mmc-pack.json
@@ -215,4 +216,4 @@ ac40030dd211be141e42b445f0aee77591dbf46ad1e1f5066f6ddace2925806a  resourcepacks/
 5d1f2ea9b8af9cd931796c09f2159e119b25db909b0a84269b42fb3c9f55893d  resourcepacks/Theone's Eating Animation Pack v1.0.zip
 c6d740d8aafa4872628d9883f218f27c81d9427e299626c83a233e364543f80c  shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip
 00c106473dc7b634fe522ad43d8e380276f9807c10c8714724d76589ccd15df8  shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt
-f3905636674cce7de193dd6b48a4986d64e1d91776166b818fa2f6828be25f79  sync-manifest.json
+a93d4c4e94b7d5bd5f5a9014932cf2cb55ecf349562bb59cd1563781b5c15664  sync-manifest.json

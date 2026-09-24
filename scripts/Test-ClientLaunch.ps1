@@ -78,7 +78,14 @@ param(
     # the title screen, and creating a world by hand every run made that a person's job.
     [string] $World,
     # Load straight into this level and skip the menus. Needs -World.
-    [string] $QuickPlay
+    [string] $QuickPlay,
+    # Connect straight to this server (host:port) and skip the menus - the multiplayer twin of
+    # -QuickPlay, for behaviour that only shows after a server session. Added 2026-09-24 to
+    # reproduce the exit hang the owner hit after playing on the hardcore server: the throwaway
+    # has no integrity helper, so the server it joins must be one that does not require it (a
+    # local Test-DedicatedServer run with the policy removed). Uses the same "joined the game"
+    # log line as -QuickPlay to decide the session began.
+    [string] $QuickPlayServer
 )
 
 Set-StrictMode -Version Latest
@@ -373,6 +380,7 @@ try {
         '--versionType', 'release'
     )
     if ($QuickPlay) { $arguments += @('--quickPlaySingleplayer', $QuickPlay) }
+    if ($QuickPlayServer) { $arguments += @('--quickPlayMultiplayer', $QuickPlayServer) }
 
     # WorkingDirectory matters as much as --gameDir: several mods write relative to the process
     # working directory, and launching from the checkout once scattered files through the repo.
@@ -459,20 +467,24 @@ try {
         # integrated server to admit the player, then leave it ticking for ten seconds so anything
         # that only fails in play has a chance to fail here. Added for the TreeChop port (v1.0.72):
         # its first in-world run was declared a pass at the title screen with the world never entered.
-        if ($QuickPlay) {
+        if ($QuickPlay -or $QuickPlayServer) {
+            $target = if ($QuickPlay) { $QuickPlay } else { $QuickPlayServer }
             $enteredWorld = $false
             while ((Get-Date) -lt $deadline -and -not $client.HasExited) {
-                if ((Read-SharedText $logPath) -match 'joined the game') { $enteredWorld = $true; break }
+                # Singleplayer logs vanilla's "joined the game"; on a server that chat line is whatever
+                # the server's mods make of it (Sleeping Messages rewrites it), so the multiplayer
+                # signal is the client's own "Joined server with ..." line from the play phase.
+                if ((Read-SharedText $logPath) -match 'joined the game|Joined server with') { $enteredWorld = $true; break }
                 Start-Sleep -Milliseconds 1000
             }
             if (-not $enteredWorld) {
-                throw "Quick play never entered '$QuickPlay' within $BootTimeoutSeconds seconds. Log: $logPath"
+                throw "Quick play never entered '$target' within $BootTimeoutSeconds seconds. Log: $logPath"
             }
             Start-Sleep -Seconds 10
             $log = Read-SharedText $logPath
             $lines = $log -split "`r?`n"
             $mixinLines = @($lines | Where-Object { $_ -match $mixinFailure })
-            Write-Host ('world     entered {0} and ran for ten seconds' -f $QuickPlay)
+            Write-Host ('world     entered {0} and ran for ten seconds' -f $target)
         }
 
         $failures = New-Object Collections.Generic.List[string]

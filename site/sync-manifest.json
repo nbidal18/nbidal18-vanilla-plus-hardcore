@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.2",
+    "packVersion":  "1.0.3",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -276,7 +276,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "3116745b4bb192720aa163007a02e8476292f0de8719cb7e3148ca26349cebe2"
+                                    "sha256":  "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -622,7 +622,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "3116745b4bb192720aa163007a02e8476292f0de8719cb7e3148ca26349cebe2"
+                      "sha256":  "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1241,8 +1241,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.2+26.2-fabric.jar",
-                      "sha256":  "1efbd8c63e1b84a0973bf2bf5c0d56a61856a1bf0553117838e02d920199a7a6"
+                      "path":  "mods/nbidal18-integrity-1.0.3+26.2-fabric.jar",
+                      "sha256":  "591f66f190fa1c6cebaeb49d466274a17214bf200dc292e8c38c636b75451eb3"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1251,6 +1251,10 @@
                   {
                       "path":  "mods/nbidal18-iris-1.0.1+26.2-fabric.jar",
                       "sha256":  "170f80c16af020ae0d7d5ba42a50c87cbc18916220fe90dfdc7ad63342979d24"
+                  },
+                  {
+                      "path":  "mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar",
+                      "sha256":  "fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837"
                   },
                   {
                       "path":  "mods/nbidal18-jukebox-2.0.4+26.2-fabric.jar",
@@ -1273,8 +1277,8 @@
                       "sha256":  "a9e3de9174d22aecd83fb0e405323490ffae4bc5090d78e9249394d331807f96"
                   },
                   {
-                      "path":  "mods/nbidal18-soundsbegone-1.0.0+26.2-fabric.jar",
-                      "sha256":  "c5f04e5de20c181a83101645e24f2f73e71e42270cf688a3cd5312d24e0c63b0"
+                      "path":  "mods/nbidal18-soundsbegone-1.1.0+26.2-fabric.jar",
+                      "sha256":  "67181a1ae3c401c5d53aedd890298bca33ede2c1a1d061bbd20d5cbac1b791c2"
                   },
                   {
                       "path":  "mods/nbidal18-treechop-0.19.3+26.2-nbidal18.2-fabric.jar",

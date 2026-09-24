@@ -71,7 +71,7 @@ $repo = Split-Path -Parent $PSScriptRoot
 $packRoot = Split-Path -Parent $repo
 if (-not $MirrorRoot) { $MirrorRoot = Join-Path $packRoot '_server-payload-cache' }
 # Absolute from here on. WinSCP is opened in the temp folder (see LocalDirectory below), so a
-# relative mirror such as `..\_server-payload-cache-hardcore` - exactly how the hardcore deploy is
+# relative mirror such as `..\_server-payload-cache` - exactly how the hardcore deploy is
 # typed - resolved against that folder, and the pull died in WinSCP with nothing to show for it.
 #
 # Against $PWD by hand: [IO.Path]::GetFullPath uses .NET's current directory, which PowerShell does

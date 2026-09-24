@@ -3,7 +3,7 @@
 
     python Measure-GameVersionSupport.py --game-version 26.3 \
         --mods "../../hc.1.0.0/3. modpack/client/mods" \
-        --mods "../../_server-payload-cache-hardcore/mods"
+        --mods "../../_server-payload-cache/mods"
 
 Written 2026-09-23. `docs/archive/upgrade-26.3.md` was measured by hand on 2026-09-21 and says, in
 its own opening, that its counts are a snapshot of that day and must be re-measured before anything

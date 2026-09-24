@@ -112,7 +112,7 @@ if (-not (Test-Path -LiteralPath $release)) { throw "No release folder at $relea
 $mirrorDefault = Join-Path (Split-Path -Parent $repo) '_server-payload-cache'
 if (-not $DriveRoot) { $DriveRoot = $mirrorDefault }
 # Absolute from here on. Every path under the mirror is built from this, and a relative root - the
-# hardcore deploy is typed as `..\_server-payload-cache-hardcore` - once made a Substring on
+# hardcore deploy is typed as `..\_server-payload-cache` - once made a Substring on
 # absolute file paths cut the wrong number of characters (v1.0.89, caught by a dry run).
 #
 # Resolved against $PWD by hand, because [IO.Path]::GetFullPath uses .NET's own current directory

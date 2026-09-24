@@ -20,7 +20,7 @@ the other verbatim. **Do not let them drift** — that was the whole reason for 
 | Server | `38.103.248.98:27037` |
 | Channel | `https://nbidal18.github.io/nbidal18-vanilla-plus-hardcore/pack.toml` |
 | Release folders | `hc.<version>`, beside this repository |
-| Server mirror | `_server-payload-cache-hardcore`, beside this repository |
+| Server mirror | `_server-payload-cache`, beside this repository |
 
 ## Where things are
 

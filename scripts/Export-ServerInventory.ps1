@@ -43,10 +43,10 @@ $out = Join-Path $release '4. server\SERVER-INVENTORY.md'
 $mirrorDefault = Join-Path (Split-Path -Parent $repo) '_server-payload-cache'
 if (-not $DriveRoot) { $DriveRoot = $mirrorDefault }
 # A relative -DriveRoot is resolved against THIS REPOSITORY, which is what every call site means
-# by '..\_server-payload-cache-hardcore' - not against whatever directory the caller happened to be in. Sync-ServerMirror
+# by '..\_server-payload-cache' - not against whatever directory the caller happened to be in. Sync-ServerMirror
 # already normalises it that way, so before this the two disagreed: the pull wrote to
-# vanilla_plus_hardcore\_server-payload-cache-hardcore and the read came back one level too high, at
-# modpack\_server-payload-cache-hardcore. Surfaced 2026-09-23 by moving the hardcore line into its
+# vanilla_plus_hardcore\_server-payload-cache and the read came back one level too high, at
+# modpack\_server-payload-cache. Surfaced 2026-09-23 by moving the hardcore line into its
 # own folder, which is exactly the kind of move a path assumption like this survives silently until
 # it does not.
 elseif (-not [IO.Path]::IsPathRooted($DriveRoot)) {

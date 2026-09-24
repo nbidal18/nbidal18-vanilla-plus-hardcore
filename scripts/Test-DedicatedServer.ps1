@@ -46,7 +46,7 @@ param(
     # -DriveRoot, because the Fabric launcher is not something the rebuild decides.
     #
     #   .\Test-DedicatedServer.ps1 -ServerSource ..\..\_rebuild-server `
-    #       -DriveRoot ..\..\_server-payload-cache-hardcore\root
+    #       -DriveRoot ..\..\_server-payload-cache\root
     [string] $ServerSource
 )
 

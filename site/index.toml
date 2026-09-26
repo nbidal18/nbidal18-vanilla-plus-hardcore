@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "de8d3cefb5d3ed6ae98af70113539d8a1188cbdb648c14748b1688c34b913ed9"
+hash = "a11cbb4b2d8bf3fc5ed1c5521cbeb7fbce954f828c383730c1b34ff24944cb84"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -199,6 +199,10 @@ hash = "fdd6958ff17541c8d1c891bd1602088bb6888f41229e966387a07311f32ec6d9"
 [[files]]
 file = "config/leahs-immersive-thunder.toml"
 hash = "a120d448e40dbd9f63f660539b0cefb7ab3519a49a89c88e6be615fdaa363d36"
+
+[[files]]
+file = "config/litematica.json"
+hash = "988d62413ac306d7a12b6e618c86466568bf1cbdd131b3290c9e6cf3a03ea4f2"
 
 [[files]]
 file = "config/lithium.properties"
@@ -661,6 +665,10 @@ file = "mods/lambdynamiclights-4.12.4+26.2.jar"
 hash = "fdb3971cd628e7da0a9ca222c2ad501cf2f59df1b73e7f04cbc7e03194689a52"
 
 [[files]]
+file = "mods/litematica-fabric-26.2-0.28.8.jar"
+hash = "6de0774f78aee1698154dc7e7fa3c3afb19201e3d9474ddaf073fa4f4309a064"
+
+[[files]]
 file = "mods/lithium-fabric-0.25.3+mc26.2.jar"
 hash = "fdde92e238e8075f89ad7f701f2a3d5854af88ba9a67657184a4407b104ac563"
 
@@ -671,6 +679,10 @@ hash = "4d74a8ec2023657352ae051f1a6270bff474bf3cc46013100eff5f9ddbbdd024"
 [[files]]
 file = "mods/lootr-fabric-26.2-1.24.39.121.jar"
 hash = "3bff544567fd88571df89332876168b6d35b32f668c7e9b0c2591c2bbd8a54e3"
+
+[[files]]
+file = "mods/malilib-fabric-26.2-0.29.6.jar"
+hash = "db49040123d8dfe725a95407b4e777383e7162656045bff38ff72fc570080600"
 
 [[files]]
 file = "mods/midnightlib-fabric-1.9.3+26.2.jar"
@@ -725,8 +737,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.7+26.2-fabric.jar"
-hash = "2b2839528b2d7529697185e05f414f62e2190f959cb0abce5b9e4af7eaebe443"
+file = "mods/nbidal18-integrity-1.0.8+26.2-fabric.jar"
+hash = "64a6d950771fc56fa69691b391378a9688238cdd95de03b80063db3a567e34a6"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"

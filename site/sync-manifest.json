@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.7",
+    "packVersion":  "1.0.8",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -22,6 +22,7 @@
                                 "config/voxy-config.json",
                                 "config/xaero/minimap/profiles/default.cfg",
                                 "config/xaero/world-map/profiles/default.cfg",
+                                "config/litematica.json",
                                 "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                                 "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                                 "config/MouseTweaks.cfg",
@@ -117,6 +118,7 @@
                          "config/voxy-config.json",
                          "config/xaero/minimap/profiles/default.cfg",
                          "config/xaero/world-map/profiles/default.cfg",
+                         "config/litematica.json",
                          "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                          "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                          "config/MouseTweaks.cfg",
@@ -300,7 +302,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "de8d3cefb5d3ed6ae98af70113539d8a1188cbdb648c14748b1688c34b913ed9"
+                                    "sha256":  "a11cbb4b2d8bf3fc5ed1c5521cbeb7fbce954f828c383730c1b34ff24944cb84"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -477,6 +479,10 @@
                                 {
                                     "path":  "config/leahs-immersive-thunder.toml",
                                     "sha256":  "a120d448e40dbd9f63f660539b0cefb7ab3519a49a89c88e6be615fdaa363d36"
+                                },
+                                {
+                                    "path":  "config/litematica.json",
+                                    "sha256":  "988d62413ac306d7a12b6e618c86466568bf1cbdd131b3290c9e6cf3a03ea4f2"
                                 },
                                 {
                                     "path":  "config/lithium.properties",
@@ -690,7 +696,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "de8d3cefb5d3ed6ae98af70113539d8a1188cbdb648c14748b1688c34b913ed9"
+                      "sha256":  "a11cbb4b2d8bf3fc5ed1c5521cbeb7fbce954f828c383730c1b34ff24944cb84"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -867,6 +873,10 @@
                   {
                       "path":  "config/leahs-immersive-thunder.toml",
                       "sha256":  "a120d448e40dbd9f63f660539b0cefb7ab3519a49a89c88e6be615fdaa363d36"
+                  },
+                  {
+                      "path":  "config/litematica.json",
+                      "sha256":  "988d62413ac306d7a12b6e618c86466568bf1cbdd131b3290c9e6cf3a03ea4f2"
                   },
                   {
                       "path":  "config/lithium.properties",
@@ -1329,6 +1339,10 @@
                       "sha256":  "fdb3971cd628e7da0a9ca222c2ad501cf2f59df1b73e7f04cbc7e03194689a52"
                   },
                   {
+                      "path":  "mods/litematica-fabric-26.2-0.28.8.jar",
+                      "sha256":  "6de0774f78aee1698154dc7e7fa3c3afb19201e3d9474ddaf073fa4f4309a064"
+                  },
+                  {
                       "path":  "mods/lithium-fabric-0.25.3+mc26.2.jar",
                       "sha256":  "fdde92e238e8075f89ad7f701f2a3d5854af88ba9a67657184a4407b104ac563"
                   },
@@ -1339,6 +1353,10 @@
                   {
                       "path":  "mods/lootr-fabric-26.2-1.24.39.121.jar",
                       "sha256":  "3bff544567fd88571df89332876168b6d35b32f668c7e9b0c2591c2bbd8a54e3"
+                  },
+                  {
+                      "path":  "mods/malilib-fabric-26.2-0.29.6.jar",
+                      "sha256":  "db49040123d8dfe725a95407b4e777383e7162656045bff38ff72fc570080600"
                   },
                   {
                       "path":  "mods/midnightlib-fabric-1.9.3+26.2.jar",
@@ -1393,8 +1411,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.7+26.2-fabric.jar",
-                      "sha256":  "2b2839528b2d7529697185e05f414f62e2190f959cb0abce5b9e4af7eaebe443"
+                      "path":  "mods/nbidal18-integrity-1.0.8+26.2-fabric.jar",
+                      "sha256":  "64a6d950771fc56fa69691b391378a9688238cdd95de03b80063db3a567e34a6"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",

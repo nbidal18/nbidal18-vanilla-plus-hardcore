@@ -68,10 +68,37 @@ $p = Get-CimInstance Win32_Process -Filter "Name='java.exe' OR Name='javaw.exe'"
 if (-not $p) { throw 'Test-ClientLaunch returned but no throwaway client is running.' }
 $proc = Get-Process -Id $p.ProcessId
 $log = Join-Path $testRoot 'logs\latest.log'
-Write-Host ("client    pid {0}, window '{1}'" -f $proc.Id, $proc.MainWindowTitle)
 
-# 2. Close the window like a player: WM_CLOSE to the main window, nothing else. No synthetic input.
-if (-not $proc.CloseMainWindow()) { throw 'The client has no main window to close - it never showed one, or it is already gone.' }
+# 2. Close the GAME window like a player: WM_CLOSE to it, nothing else. No synthetic input.
+#
+# Not Process.CloseMainWindow(). The throwaway is started by java.exe with a console, and .NET's
+# "main window" of that process is the console, not the game. Closing the console kills the JVM on
+# the spot, which looked like a clean two-second quit and proved nothing - found 2026-09-26 when
+# Litematica's settings, which it writes on a normal quit, never appeared. The game window is the
+# one of class GLFW30 belonging to the process.
+Add-Type @'
+using System; using System.Text; using System.Runtime.InteropServices;
+public static class ExitWin {
+  public delegate bool EnumProc(IntPtr h, IntPtr p);
+  [DllImport("user32.dll")] public static extern bool EnumWindows(EnumProc f, IntPtr p);
+  [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+  [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern int GetClassName(IntPtr h, StringBuilder s, int n);
+  [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern int GetWindowText(IntPtr h, StringBuilder s, int n);
+  [DllImport("user32.dll")] public static extern bool PostMessage(IntPtr h, uint msg, IntPtr w, IntPtr l);
+  public static IntPtr Find(uint pid, string cls) {
+    IntPtr found = IntPtr.Zero;
+    EnumWindows((h, x) => { uint w; GetWindowThreadProcessId(h, out w); if (w != pid) return true;
+      var sb = new StringBuilder(256); GetClassName(h, sb, 256);
+      if (sb.ToString() == cls) { found = h; return false; } return true; }, IntPtr.Zero);
+    return found;
+  }
+  public static string Title(IntPtr h) { var sb = new StringBuilder(256); GetWindowText(h, sb, 256); return sb.ToString(); }
+}
+'@
+$gameWindow = [ExitWin]::Find([uint32] $proc.Id, 'GLFW30')
+if ($gameWindow -eq [IntPtr]::Zero) { throw 'The client has no game window (class GLFW30) to close.' }
+Write-Host ("client    pid {0}, game window '{1}'" -f $proc.Id, [ExitWin]::Title($gameWindow))
+if (-not [ExitWin]::PostMessage($gameWindow, 0x0010, [IntPtr]::Zero, [IntPtr]::Zero)) { throw 'WM_CLOSE could not be posted to the game window.' }
 $closedAt = Get-Date
 Write-Host ("closed    window at {0}; waiting up to {1} s for the process to end" -f $closedAt.ToString('HH:mm:ss'), $WaitSeconds)
 

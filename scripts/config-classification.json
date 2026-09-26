@@ -543,6 +543,11 @@
       "match": "config/particle_effects.json5",
       "class": "support",
       "reason": "Particle Effects: per-effect particle toggles - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/litematica.json",
+      "class": "player",
+      "reason": "Litematica hotkeys (v1.0.8): published holding only the M-to-N remap, because M opens the Xaero world map here (owner, 2026-09-26: Litematica on N in both packs). Player class: Litematica rewrites the whole file with every setting once a player changes one, and those choices are theirs."
     }
   ],
   "rewrittenAtRuntime": [

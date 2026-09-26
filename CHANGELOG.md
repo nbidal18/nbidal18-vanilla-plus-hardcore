@@ -5,6 +5,19 @@ build that was not published.
 
 ---
 
+## v1.0.8 — 2026-09-26
+
+**Litematica.** Manifest digest `046881b93a7d5fbf…`, replacing `3492505938cd32bf…` (v1.0.7). 248 managed
+files become 251.
+
+* **Litematica 0.28.8** with its library MaLiLib 0.29.6 - schematics, placements, material lists. Client-only.
+* **Its keys are on N, not M**, because M opens Xaero's world map. **N** opens the Litematica menu, and every
+  chord that was `M + key` is `N + key` (`N+A`, `N+S`, `N+L`, `N+Page Up` ...), `Ctrl+M` is `Ctrl+N`. Change them
+  in Litematica's own settings if you like; what you set there is yours and is kept.
+* Integrity helper 1.0.8. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.7 — 2026-09-26
 
 **The shader's defaults are the owner's.** Manifest digest `3492505938cd32bf…`, replacing `db90b8a8e0bbf48f…`

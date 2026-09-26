@@ -98,7 +98,18 @@ def main():
         outstanding = [h for h, n in by_hash[algo].items() if n not in installed]
         if not outstanding:
             continue
-        result = request("/version_files", {"hashes": outstanding, "algorithm": algo}) or {}
+        try:
+            result = request("/version_files", {"hashes": outstanding, "algorithm": algo}) or {}
+        except urllib.error.HTTPError as e:
+            # Since 2026-09-26 Modrinth answers the bulk POST with an HTML block page (502/503, then 403)
+            # while the single-hash GET still works. One request per jar is slower, never wrong.
+            print(f"note: bulk lookup refused (HTTP {e.code}); looking up {len(outstanding)} {algo} hashes one by one",
+                  file=sys.stderr)
+            result = {}
+            for h in outstanding:
+                version = request(f"/version_file/{h}?algorithm={algo}")
+                if version:
+                    result[h] = version
         for h, version in result.items():
             installed[by_hash[algo][h]] = version
 

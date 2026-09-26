@@ -408,9 +408,14 @@ try {
         # music set to off too". Only the pack rows come from the release; everything else is the
         # game's default, and the default plays music over a visual check.
         $rows += 'soundCategory_music:0.0'
+        # Never pause on lost focus. A throwaway runs behind whatever the owner is doing, so the
+        # default pauses it the moment it starts and it never ticks - found 2026-09-26 trying to
+        # watch Auto HUD fade on an idle client: the capture showed the pause menu and a hotbar
+        # frozen as it was at join. Owner-facing -Hold runs are focused by the owner anyway.
+        $rows += 'pauseOnLostFocus:false'
         [IO.File]::WriteAllText((Join-Path $testRoot 'options.txt'), (($rows -join "`n") + "`n"),
             (New-Object Text.UTF8Encoding($false)))
-        Write-Host ("seeded    options.txt with {0} rows from the client source (version, onboarding, packs), music off" -f ($rows.Count - 1))
+        Write-Host ("seeded    options.txt with {0} rows from the client source (version, onboarding, packs), music off, no pause on lost focus" -f ($rows.Count - 2))
     }
     else {
         Write-Warning ('No options.txt in the client source, so every resource pack boots ' +
@@ -450,8 +455,26 @@ try {
     Write-Host ("seeded    {0} release default(s) applied by the updater itself, to: {1}" -f $applied.Count,
         (($applied | Select-Object -Unique) -join ', '))
 
+    # A config the caller replaced on purpose wins over the pack's one-time defaults, so it is laid
+    # down again after the seed pass. Without this, -ReplaceConfig voxy-config.json with Voxy on was
+    # silently turned back off by the voxy-default-off seed (2026-09-26).
+    foreach ($candidate in $ReplaceConfig) {
+        Copy-Item -LiteralPath $candidate -Destination (Join-Path (Join-Path $testRoot 'config') (Split-Path $candidate -Leaf)) -Force
+    }
+
+    # The heap the instance itself is given, not a fixed 2 GB. A throwaway with Voxy switched on ran out
+    # of memory at 2 GB and hung in the game's emergency save (thread dump, 2026-09-26), while the real
+    # instance runs at 8 GB. Read from instance.cfg when it overrides memory, else Prism's global setting.
+    $maxMem = 4096; $minMem = 512
+    $cfgFiles = @((Join-Path $instanceRoot 'instance.cfg'), (Join-Path $prismRoot 'prismlauncher.cfg'))
+    $instCfg = if (Test-Path -LiteralPath $cfgFiles[0]) { [IO.File]::ReadAllText($cfgFiles[0]) } else { '' }
+    $source = if ($instCfg -match '(?m)^OverrideMemory=true') { $instCfg } elseif (Test-Path -LiteralPath $cfgFiles[1]) { [IO.File]::ReadAllText($cfgFiles[1]) } else { '' }
+    if ($source -match '(?m)^MaxMemAlloc=(\d+)') { $maxMem = [int] $Matches[1] }
+    if ($source -match '(?m)^MinMemAlloc=(\d+)') { $minMem = [int] $Matches[1] }
+    Write-Host ("memory    -Xms{0}m -Xmx{1}m, as the instance runs" -f $minMem, $maxMem)
+
     $arguments = @(
-        '-Xms512m', '-Xmx2048m',
+        "-Xms${minMem}m", "-Xmx${maxMem}m",
         '-cp', ($classpath -join ';'),
         $mainClass,
         '--username', 'LaunchCheck',

@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.6",
+    "packVersion":  "1.0.7",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -23,6 +23,7 @@
                                 "config/xaero/minimap/profiles/default.cfg",
                                 "config/xaero/world-map/profiles/default.cfg",
                                 "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
+                                "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                                 "config/MouseTweaks.cfg",
                                 "config/asyncparticles/asyncparticles-mixin.properties",
                                 "config/asyncparticles/asyncparticles.json",
@@ -102,7 +103,8 @@
                                 "config/explosiveenhancement.json",
                                 "config/particular-common.toml",
                                 "config/visuality.json",
-                                "config/wakes.json"
+                                "config/wakes.json",
+                                "config/particle_effects.json5"
                             ],
     "localAllowed":  [
                          "config/autohud.json5",
@@ -116,6 +118,7 @@
                          "config/xaero/minimap/profiles/default.cfg",
                          "config/xaero/world-map/profiles/default.cfg",
                          "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
+                         "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                          "config/MouseTweaks.cfg",
                          "config/asyncparticles/asyncparticles-mixin.properties",
                          "config/asyncparticles/asyncparticles.json",
@@ -189,7 +192,8 @@
                          "config/explosiveenhancement.json",
                          "config/particular-common.toml",
                          "config/visuality.json",
-                         "config/wakes.json"
+                         "config/wakes.json",
+                         "config/particle_effects.json5"
                      ],
     "propertyRules":  [
                           {
@@ -296,7 +300,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "4415f8b3e19ec4438a181205696885b56d4117a1433d13ad2fe7ad72c0c3c60f"
+                                    "sha256":  "de8d3cefb5d3ed6ae98af70113539d8a1188cbdb648c14748b1688c34b913ed9"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -499,6 +503,10 @@
                                     "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
                                 },
                                 {
+                                    "path":  "config/particle_effects.json5",
+                                    "sha256":  "d8e4194f91f8f374d89cd84d06a68dd4e3bef91a655d18330acc99842157df21"
+                                },
+                                {
                                     "path":  "config/particular-common.toml",
                                     "sha256":  "9e8b822edd6e274416a21cbc35767d678bdb4006f78625eda83921a31b4ed017"
                                 },
@@ -682,7 +690,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "4415f8b3e19ec4438a181205696885b56d4117a1433d13ad2fe7ad72c0c3c60f"
+                      "sha256":  "de8d3cefb5d3ed6ae98af70113539d8a1188cbdb648c14748b1688c34b913ed9"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -883,6 +891,10 @@
                   {
                       "path":  "config/notenoughanimations.json",
                       "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
+                  },
+                  {
+                      "path":  "config/particle_effects.json5",
+                      "sha256":  "d8e4194f91f8f374d89cd84d06a68dd4e3bef91a655d18330acc99842157df21"
                   },
                   {
                       "path":  "config/particular-common.toml",
@@ -1169,8 +1181,8 @@
                       "sha256":  "0f57afbd3dcddd0b7304c22d712ccf5437e2c41270ec08bd2d8c4e1df0a6d627"
                   },
                   {
-                      "path":  "mods/autohud-9.2+26.2-fabric.jar",
-                      "sha256":  "3842047943e4037f3d7fbe74446439163fef2ff4ecd6f1d56d4c6c4718a56b94"
+                      "path":  "mods/autohud-9.0-beta.3+26.2-fabric.jar",
+                      "sha256":  "5187752710768c0323e615ef112083e89aef8f6a24cdf15d155d70eae6fb47d9"
                   },
                   {
                       "path":  "mods/baguettelib-26.2-Fabric-2.0.7.jar",
@@ -1297,8 +1309,8 @@
                       "sha256":  "37f1c4a9e54c86729d3aa665a6d7b1ad54255155ec24b9609a28aafbe8c09f31"
                   },
                   {
-                      "path":  "mods/iris-fabric-1.11.4+mc26.2.jar",
-                      "sha256":  "f1f7ab57c974d193ba33aa285864a0ded949216f402116fceaf4dc7739b4dd7c"
+                      "path":  "mods/iris-fabric-1.11.2+mc26.2.jar",
+                      "sha256":  "df0e2ccddaea17b191eda32b21c979e131bc9d4ef4f831113b50b461fc4a3804"
                   },
                   {
                       "path":  "mods/jei-26.2-fabric-30.29.0.201.jar",
@@ -1349,8 +1361,8 @@
                       "sha256":  "8d4395fe368edd17467111c0cbd344db6a22c7abf9b261683ecde6b11970020a"
                   },
                   {
-                      "path":  "mods/nbidal18-autohud-9.2+26.2-fabric.jar",
-                      "sha256":  "94b61d0f0e2672eaabb53efce8ce0aab8954d2714bb878db52076b9f61485144"
+                      "path":  "mods/nbidal18-autohud-9.0-beta.3+26.2-fabric.jar",
+                      "sha256":  "155f574df117eb69590e3c48bfd64b42a84953510633b45be392708197afeb4b"
                   },
                   {
                       "path":  "mods/nbidal18-autopilot-1.3.0+26.2-fabric.jar",
@@ -1381,16 +1393,16 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.6+26.2-fabric.jar",
-                      "sha256":  "b0725a4520810e55026dce06b42d493b71c2db184c66540a9702f1955524aa8b"
+                      "path":  "mods/nbidal18-integrity-1.0.7+26.2-fabric.jar",
+                      "sha256":  "2b2839528b2d7529697185e05f414f62e2190f959cb0abce5b9e4af7eaebe443"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
                       "sha256":  "c1a9fbbfcb7372fac12425a9a0693d716c9c45ef5851f596703c2c7c3e8694bf"
                   },
                   {
-                      "path":  "mods/nbidal18-iris-1.0.1+26.2-fabric.jar",
-                      "sha256":  "170f80c16af020ae0d7d5ba42a50c87cbc18916220fe90dfdc7ad63342979d24"
+                      "path":  "mods/nbidal18-iris-1.0.2+26.2-fabric.jar",
+                      "sha256":  "5cbed51dc3d075d7ca4eaaeb60bf12b36996d18151013b781a258f8927af196f"
                   },
                   {
                       "path":  "mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar",
@@ -1463,6 +1475,10 @@
                   {
                       "path":  "mods/pneumonocore-1.3.1+26.2+A.jar",
                       "sha256":  "8740f3698563f35ade639a3e98eda22537e259f339abb629803b358d30e55ccd"
+                  },
+                  {
+                      "path":  "mods/reeses-sodium-options-fabric-2.2.3+mc26.2.jar",
+                      "sha256":  "49b68a887f5691b805efbe73c4e6e622cda5c322431ef68f81c8953de4041911"
                   },
                   {
                       "path":  "mods/skin_overrides-2.7.1+26.2.jar",
@@ -1562,7 +1578,7 @@
                   },
                   {
                       "path":  "nbidal18-packwiz-updater.next.jar",
-                      "sha256":  "648d65ffbc198398f675ed1268d2400b7e7b141ebf379aa726a18ae248807450"
+                      "sha256":  "b21cc014e572226e7caf768fdce0d1cfd0158991a44e281fe6bcb578597254dc"
                   },
                   {
                       "path":  "packwiz-installer-bootstrap.next.jar",
@@ -1630,11 +1646,19 @@
                   },
                   {
                       "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip",
-                      "sha256":  "91543c11005f6a71fb257e4ef0f711a6b9b1b66395d331ebfad824b13a0512d6"
+                      "sha256":  "371486eb8c3f6eae4c90a15c760924b1dc487de7ce85910c02a9b9b78731db0d"
                   },
                   {
                       "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                       "sha256":  "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
+                  },
+                  {
+                      "path":  "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip",
+                      "sha256":  "180ba7d2ed4f3d1935be1c2ac3f69bdcc42e7ac0b6f919b4b53d48ac1752c18d"
+                  },
+                  {
+                      "path":  "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
+                      "sha256":  "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"
                   }
               ]
 }

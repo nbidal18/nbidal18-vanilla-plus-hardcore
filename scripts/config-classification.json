@@ -755,6 +755,11 @@
       "match": "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
       "class": "player",
       "reason": "Complementary Unbound + Euphoria Patches settings (v1.0.97; Euphoria since v1.0.6). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."
+    },
+    {
+      "match": "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
+      "class": "player",
+      "reason": "Eclipse Shader Unstable's settings (Vanilla+'s tuning, brought over 2026-09-26 in v1.0.7). Published so it is an official file in the exact-match shaderpacks root; player class, because Iris writes the player's own choices into it."
     }
   ]
 }

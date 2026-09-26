@@ -227,6 +227,13 @@ public final class Nbidal18PackwizSync {
             // never runs twice under the same token.
             new PlayerFileSeed("config/autohud.json5", ':', "autohud-crosshair-v1044", List.of(
                     new SeedRow(List.of("elements", "minecraft:crosshair"), "alwaysHidden", "false"))),
+            // v1.0.7: Auto HUD back from 9.2 to 9.0-beta.3, the pair Vanilla+ runs - owner, 2026-09-26: "autoHUD
+            // isnt working as it did in vanilla plus by hiding and coming back ... its just always visible".
+            // 9.0 reads a file 9.2 rewrote without error and keeps every hidden element hidden, but 9.2 stores
+            // the hotbar's low-durability threshold as a fraction (0.1) and 9.0 as a percentage (int), so it
+            // arrives as 0. This puts the pack's 10 back, once; the master already says 10.
+            new PlayerFileSeed("config/autohud.json5", ':', "autohud-90-durability-v107", List.of(
+                    new SeedRow(List.of("elements", "minecraft:hotbar"), "durabilityPercentage", "10"))),
             // Hardcore v1.0.2: Complementary Unbound is the only shader pack. Eclipse, Photon,
             // Rethinking Voxels and E-LITE are gone from shaderpacks/, and with them the two Eclipse
             // settings seeds that used to sit here (eclipse-tuning-v1044, eclipse-clouds-v1074): a

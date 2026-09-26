@@ -5,6 +5,31 @@ build that was not published.
 
 ---
 
+## v1.0.7 — 2026-09-26
+
+**The shader's defaults are the owner's.** Manifest digest `3492505938cd32bf…`, replacing `db90b8a8e0bbf48f…`
+(v1.0.6). 244 managed files become 248.
+
+* **Generated Normals and Coated Textures are on by default** in Complementary Unbound + Euphoria Patches -
+  the two IntegratedPBR+ extras the owner had switched on himself. Same zip name, new bytes. They stay
+  toggles: a player who turns one off keeps that.
+* Particle Effects' config file is published now (it was written by the mod on first launch in v1.0.6 either
+  way).
+* **The full-screen video settings are back**: Reese's Sodium Options 2.2.3, the same build Vanilla+ runs.
+* **Far terrain shows under shaders again, and the clouds stop following your jumps.** Iris goes back to
+  1.11.2, the version Vanilla+ runs. The 1.11.4 this pack took in its rebuild changed how depth is handled and
+  was built for a newer Sodium than the pack uses, which put Voxy's far terrain at the wrong depth under every
+  shader. Complementary with Euphoria stays your shader.
+* **Eclipse is back as a second shader**, the same one Vanilla+ ships, with its settings. Pick it in the shader
+  list if you want it; nothing switches you to it.
+* **Auto HUD hides again.** Back to 9.0-beta.3, the version Vanilla+ runs, with our group companion pinned
+  to it. The hotbar, hearts, food and level fade after ten seconds and come back when you scroll, place,
+  mine, take damage or eat. Your Auto HUD settings are kept; the hotbar's low-durability warning is reset
+  to the pack's 10 %.
+* Integrity helper 1.0.7. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.6 — 2026-09-26
 
 **Ambience, potion particles with a face, and Euphoria Patches on the shader.** Manifest digest

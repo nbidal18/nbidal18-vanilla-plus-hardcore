@@ -42,6 +42,13 @@ boids-2.0.0+26.2.jar
 # name and farm the revival charm - does not hold: the server has white-list=true and
 # enforce-whitelist=true with two names on it, so no identity exists that the owner did not create.
 # The fork stays exactly as it is, all seven of its edits intact.
+#
+# 2026-09-26, v1.0.5: the line stopped being hardcore. Owner: "take the hardcore modpack, including the
+# world, and turn it into normal survival ... and remove the hardcore revive mod that adds the charm".
+# The fork leaves both sides with the hardcore flag; death is vanilla survival death (Gravestones
+# keeps the items). Not on the list above because the list is about content; recorded here because
+# this is where its earlier reprieve was written.
+nbidal18-hardcorerevive-1.12.0+26.2-fabric.jar
 
 # --- Added 2026-09-23, after the owner played the first build
 # Variants & Ventures registers four new mob entities with spawn eggs - Gelid, Thicket, Murk,

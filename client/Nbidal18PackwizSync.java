@@ -983,13 +983,21 @@ public final class Nbidal18PackwizSync {
      * only through this: the entry is appended if no entry with its address is there yet, the
      * marker is written, and the list is the player's again. Nothing is ever removed or reordered.
      */
-    private record ServerListSeed(String token, String name, String ip, String movedFrom) {
+    private record ServerListSeed(String token, String name, String ip, String movedFrom, String renamedFrom) {
         static ServerListSeed added(String token, String name, String ip) {
-            return new ServerListSeed(token, name, ip, null);
+            return new ServerListSeed(token, name, ip, null, null);
         }
 
         static ServerListSeed moved(String token, String name, String ip, String movedFrom) {
-            return new ServerListSeed(token, name, ip, movedFrom);
+            return new ServerListSeed(token, name, ip, movedFrom, null);
+        }
+
+        /**
+         * The pack's own entry gets a new display name - the address is unchanged. Only an entry
+         * still carrying the old name is renamed: a player who already renamed it keeps theirs.
+         */
+        static ServerListSeed renamed(String token, String name, String ip, String renamedFrom) {
+            return new ServerListSeed(token, name, ip, null, renamedFrom);
         }
     }
 
@@ -1004,7 +1012,12 @@ public final class Nbidal18PackwizSync {
     // 2026-09-23, under v1.0.0). This seed reaches the instances imported between the two: appended
     // once, only if no entry with that address is there, and the list is the player's again.
     private static final List<ServerListSeed> SERVER_LIST_SEEDS = List.of(
-            ServerListSeed.added("servers-vanilla-plus-v102", "nbidal18 Vanilla+", "194.54.88.14:27107"));
+            ServerListSeed.added("servers-vanilla-plus-v102", "nbidal18 Vanilla+", "194.54.88.14:27107"),
+            // v1.0.5: the line is Vanilla++ - normal survival on the old hardcore world. Owner,
+            // 2026-09-26: "so this becomes a second vanilla plus, more vanilla than the other". Same
+            // address, new name; an entry a player renamed themselves is left as it is.
+            ServerListSeed.renamed("servers-vanilla-plus-plus-v105", "nbidal18 Vanilla++",
+                    "38.103.248.98:27037", "nbidal18 Vanilla+ Hardcore"));
 
     private void applyServerListSeeds() {
         for (ServerListSeed seed : SERVER_LIST_SEEDS) {
@@ -1067,6 +1080,19 @@ public final class Nbidal18PackwizSync {
                 first = (Map<String, Object>) entry;
             }
             if (seed.ip().equalsIgnoreCase(String.valueOf(entry.get("ip")))) {
+                if (seed.renamedFrom() != null
+                        && seed.renamedFrom().equals(String.valueOf(entry.get("name")))) {
+                    // The rename: one field, and only while the entry still says what the pack
+                    // used to call itself. Anything the player renamed stays theirs.
+                    ((Map<String, Object>) entry).put("name", seed.name());
+                    root.put("servers", servers);
+                    writeServerList(target, root);
+                    Files.createDirectories(stateRoot);
+                    writeSeedMarker(marker, seed.token(), SERVER_LIST, true);
+                    status("The pack's server entry is now called " + seed.name()
+                            + "; nothing else in the multiplayer list was touched.");
+                    return false;
+                }
                 // Already on the new address - a fresh install, or this seed has run before under
                 // another token. Mark and leave the list alone.
                 Files.createDirectories(stateRoot);

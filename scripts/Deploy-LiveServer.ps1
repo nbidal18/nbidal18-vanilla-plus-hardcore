@@ -326,17 +326,27 @@ foreach ($rel in $afterBackup) {
 # It is verified by the same read-back as every other file below.
 $levelDataSend = @()
 if ($levelDataEdits.Count) {
+    # The world folder is whatever level-name will say once this deploy has written server.properties:
+    # a planned `level-name=` edit wins, otherwise the value the server held at shutdown. Hardcoded
+    # `world/` until 2026-09-26, when the hardcore line switched the server back to its old `world2`
+    # and made it survival in the same deploy - the edit has to land in the folder the server will load.
+    $levelName = 'world'
+    if ($freshText -match '(?m)^level-name=(.*)$') { $levelName = $Matches[1].Trim() }
+    if ($plan.PSObject.Properties.Name -contains 'properties' -and $null -ne $plan.properties -and
+        ($plan.properties.PSObject.Properties.Name -contains 'level-name')) { $levelName = [string] $plan.properties.'level-name' }
+    if ($levelName -notmatch '^[A-Za-z0-9._-]+$') { throw "Refusing to edit level.dat under an odd level-name '$levelName'" }
+    Write-Host ("leveldat  world folder is '{0}'" -f $levelName)
     $levelBackup = Join-Path $plan.backup 'level.dat'
-    & $syncScript -Get 'world/level.dat' -To $levelBackup -Session $Session -MirrorRoot $DriveRoot | Out-Null
+    & $syncScript -Get "$levelName/level.dat" -To $levelBackup -Session $Session -MirrorRoot $DriveRoot | Out-Null
     if (-not (Test-Path -LiteralPath $levelBackup -PathType Leaf) -or (Get-Item -LiteralPath $levelBackup).Length -eq 0) {
-        throw 'Could not back up world/level.dat after the shutdown - nothing was sent'
+        throw "Could not back up $levelName/level.dat after the shutdown - nothing was sent"
     }
-    $levelLocal = Join-Path $DriveRoot 'world\level.dat'
+    $levelLocal = Join-Path $DriveRoot "$levelName\level.dat"
     New-Item -ItemType Directory -Force -Path (Split-Path $levelLocal -Parent) | Out-Null
     $report = & python (Join-Path $PSScriptRoot 'Edit-LevelData.py') $levelBackup $levelLocal @levelDataEdits 2>&1
     if ($LASTEXITCODE -ne 0) { throw "Edit-LevelData.py refused the edit - nothing was sent: $report" }
     foreach ($line in @($report)) { Write-Host ('leveldat  ' + $line) }
-    $levelDataSend = @('world\level.dat')
+    $levelDataSend = @("$levelName\level.dat")
 }
 
 # ---------------------------------------------------------------- nothing may travel that changed

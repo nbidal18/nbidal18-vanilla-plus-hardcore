@@ -61,7 +61,6 @@ $mods = @(
     # hardcore world, gated (HardcoreGate + a `return 0` at the head of both tick functions) so it
     # is dormant on the normal-survival world. Datapack in a jar plus three classes. **Runs on the
     # server** - needs -AddMods.
-    @{ Name = 'nbidal18-hardcorerevive'; Generator = $null; Builder = 'patch_hcrplus.py'; Side = 'both' },
     # Blank graves (v1.0.89): one client mixin cancelling Gravestones' text rendering, because the
     # mod has no setting for it - only the date's format. Client only.
     @{ Name = 'nbidal18-gravestones'; Generator = $null; Builder = 'build_gravestones.py' },

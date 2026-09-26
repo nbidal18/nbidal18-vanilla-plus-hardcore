@@ -138,8 +138,21 @@ def main():
         before = len(items)
         items[:] = [e for e in items if ip_of(e) != ip]
         print('removed   %d entries with ip %s' % (before - len(items), ip))
+    elif verb == 'rename':
+        # rename <ip:port> "<new name>": the entry keeps its place, icon and flags; only `name`
+        # changes. Added 2026-09-26 when the hardcore line became Vanilla++ and the shipped list had
+        # to say so. The updater's ServerListSeed.renamed does the same on players' lists.
+        ip, name = sys.argv[4], sys.argv[5]
+        hits = 0
+        for i, e in enumerate(items):
+            if ip_of(e) != ip:
+                continue
+            fields = [(n, ('s', utf(name))) if n == utf('name') else (n, v) for n, v in e[1]]
+            items[i] = ('compound', fields)
+            hits += 1
+        print('renamed   %d entries with ip %s to %s' % (hits, ip, name))
     else:
-        raise SystemExit('verb must be add or remove')
+        raise SystemExit('verb must be add, remove or rename')
 
     out = io.BytesIO()
     out.write(struct.pack('>bH', COMPOUND, 0))

@@ -5,6 +5,23 @@ build that was not published.
 
 ---
 
+## v1.0.5 — 2026-09-26
+
+**The pack is `nbidal18 Vanilla++` now: normal survival, on the original world.** Manifest digest
+`bbf03e2451638709…`, replacing `47b260eee9f0bbcb…` (v1.0.4). 232 managed files become 231.
+
+* **Hardcore is over.** The server loads `world2` - the world everyone played until 2026-09-25 - with its
+  hardcore flag cleared, so death is ordinary survival death and Gravestones keeps your items. The fresh
+  world from this morning is retired.
+* **Hardcore Revive+ is removed** from client and server. No more lives, ghosts or revival charm.
+* **The name.** Prism shows `nbidal18 Vanilla++`; the server appears as `nbidal18 Vanilla++` in your
+  multiplayer list (renamed once, unless you had renamed it yourself); the motd reads `v1.0.5 Vanilla++`.
+  Your instance folder keeps whatever name it has - nothing is re-imported. New installs use
+  `nbidal18-vanilla-plus-plus-client.zip`.
+* Integrity helper 1.0.5. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice while the updater fetches the new helper.
+
 ## v1.0.4 — 2026-09-26
 
 **Animations are back, GUIs and crops got a look, and the updater stopped carrying Vanilla+'s

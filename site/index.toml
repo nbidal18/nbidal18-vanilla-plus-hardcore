@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "4120f96b50ed1d94252a021cb0cf5c7720aaf95d84f1418ee14584332081396f"
+hash = "86027f408cae1b2d0c3c4a1f7945dca7328c56b9511169903842327f1c476a68"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -669,10 +669,6 @@ file = "mods/nbidal18-gravestones-1.0.0+26.2-fabric.jar"
 hash = "f14153036ad9f690bcbd53f720b43fe6c156eb50ad38a550457a7462474993f3"
 
 [[files]]
-file = "mods/nbidal18-hardcorerevive-1.12.0+26.2-fabric.jar"
-hash = "aaf976b19b69ba210dcdd5d9934882d4719c843033545614b267b66317b40603"
-
-[[files]]
 file = "mods/nbidal18-immersivepaintings-1.0.0+26.2-fabric.jar"
 hash = "8ab55c6f085c5272249f8ffa921a1698e54e1dc9ab7184a8df3eb60abdaaabaa"
 
@@ -681,8 +677,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.4+26.2-fabric.jar"
-hash = "6a58daff7c7b41b277c05c27e9b30e1a7f81d95540b8c99f1b032e7b044802c4"
+file = "mods/nbidal18-integrity-1.0.5+26.2-fabric.jar"
+hash = "c88c8979b518269c1b1efe7ea91c94053719f06aac9e055dfc56933b350a8c48"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -850,7 +846,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "881f9641e0309358a301abc039a9fd1267bc322ce6047107fa4b26f94aaa549d"
+hash = "0c50fe0d2f1846117d8d9672a3c5d0f1149698c5ff2dd53687031987680fe218"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"

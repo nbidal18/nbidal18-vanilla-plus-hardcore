@@ -357,9 +357,15 @@ if ($SetLevelData.Count) {
     New-Item -ItemType Directory -Force -Path $probe | Out-Null
     try {
         $liveCopy = Join-Path $probe 'level.dat'
+        # The folder to probe is the one the server will load after this deploy: a `level-name=` in
+        # -SetProperty wins over the live file's value. Deploy-LiveServer resolves it the same way.
+        $probeLevel = 'world'
+        if ((Get-Content -LiteralPath $propsPath -Raw) -match '(?m)^level-name=(.*)$') { $probeLevel = $Matches[1].Trim() }
+        foreach ($pair in $SetProperty) { if ($pair -match '^level-name=(.+)$') { $probeLevel = $Matches[1].Trim() } }
         if ($isMirror) {
-            & $syncScript -Get 'world/level.dat' -To $liveCopy -Session $Session -MirrorRoot $DriveRoot | Out-Null
-            if (-not (Test-Path -LiteralPath $liveCopy -PathType Leaf)) { throw 'Could not fetch world/level.dat to check -SetLevelData against' }
+            Write-Host ("  leveldat probing {0}/level.dat" -f $probeLevel)
+            & $syncScript -Get "$probeLevel/level.dat" -To $liveCopy -Session $Session -MirrorRoot $DriveRoot | Out-Null
+            if (-not (Test-Path -LiteralPath $liveCopy -PathType Leaf)) { throw "Could not fetch $probeLevel/level.dat to check -SetLevelData against" }
             $probeOut = Join-Path $probe 'level.edited.dat'
             $report = & python $editor $liveCopy $probeOut @SetLevelData 2>&1
             if ($LASTEXITCODE -ne 0) { throw "-SetLevelData was refused by Edit-LevelData.py: $report" }
@@ -382,6 +388,14 @@ $motdNow = ([regex]::Match($propsText, '(?m)^motd=.*$')).Value
 $wantMotd = "motd=v$version - @nbidal18 on Discord"
 if ($motdNow -match '^motd=v[0-9.]+( .+?)? - @nbidal18 on Discord$' -and $Matches[1]) {
     $wantMotd = "motd=v$version$($Matches[1]) - @nbidal18 on Discord"
+}
+# A line that wants a different label says so in MOTD-SUFFIX.txt beside the scripts (data file, like
+# PACK-NAME.txt), and that wins over whatever the live motd carried. Added 2026-09-26 when the
+# hardcore line became Vanilla++: keeping the label from the live file would have kept "Hardcore".
+$suffixFile = Join-Path (Split-Path -Parent $PSScriptRoot) 'MOTD-SUFFIX.txt'
+if (Test-Path -LiteralPath $suffixFile -PathType Leaf) {
+    $suffix = (Get-Content -LiteralPath $suffixFile -Raw).Trim()
+    if ($suffix) { $wantMotd = "motd=v$version $suffix - @nbidal18 on Discord" }
 }
 
 # Named server.properties edits, beyond the motd this has always rewritten.

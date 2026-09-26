@@ -216,6 +216,12 @@ $requiredLines = @(
     @{ Name = 'InvMove bridge registered'
         Pattern = 'Registered the JEI search and allow-movement modules with InvMove'
         RequiresMod = 'nbidal18-invmov-*.jar' }
+    # The exception to the title-screen rule above, and a safe one: this companion is only staged
+    # when -World is given (see the world block), and a hosted world is exactly when it prints. It
+    # proves the throwaway's world runs the server's Vanilla Refresh settings, not stock ones.
+    @{ Name = 'Vanilla Refresh settings applied from the server master'
+        Pattern = 'Applied \d+ Vanilla Refresh settings from config'
+        RequiresMod = 'nbidal18-vanillarefresh-*.jar' }
 )
 
 $mixinFailure = '(?m)(org\.spongepowered\.asm\.mixin\..*throwables\.|Mixin apply failed|' +
@@ -344,6 +350,37 @@ try {
         if (-not (Test-Path -LiteralPath $World -PathType Container)) { throw "-World: no folder at $World" }
         Copy-Item -LiteralPath $World -Destination (Join-Path $testRoot 'saves') -Recurse -Force
         Write-Host ("world     restored {0}" -f ((Get-ChildItem -LiteralPath $World -Directory | ForEach-Object { $_.Name }) -join ', '))
+
+        # A world in the throwaway is hosted by the client's own integrated server, and the client we
+        # ship has no Vanilla Refresh companion - it is staged on the server only, deliberately, so
+        # nobody gets a Mod Menu screen the dedicated server never reads. Without it a test world runs
+        # Vanilla Refresh on stock values: sitting on, souls on, everything the server has switched
+        # off. Owner, 2026-09-26, looking at exactly that: "make sure the test instance fetches the
+        # latest configs, its a duplicate of what we ship". So the server's companion and the server
+        # master it reads are staged beside the client's mods whenever there is a world to host. The
+        # log then says "Applied 98 Vanilla Refresh settings from config", which the check below
+        # requires. Nothing here changes what is shipped.
+        #
+        # The same holds for every server-only mod that shapes a world rather than a player: each
+        # row is a jar pattern in 4. server\mods and the server master it reads. Preferred Gamerules
+        # joined 2026-09-26 (owner: "include the preferred gamerules mod with these two rules") - it
+        # sets the DEFAULT of a rule, so it shapes worlds created in the throwaway, not the restored one.
+        $serverMods = Join-Path $release '4. server\mods'
+        $worldShapers = @(
+            @{ Jar = 'nbidal18-vanillarefresh-*.jar'; Config = 'nbidal18-vanillarefresh.json'; Gives = 'Vanilla Refresh settings' },
+            @{ Jar = 'preferred-gamerules-*.jar'; Config = 'preferred-gamerules.properties'; Gives = 'game-rule defaults' }
+        )
+        foreach ($shaper in $worldShapers) {
+            $jar = @(Get-ChildItem -LiteralPath $serverMods -File -Filter $shaper.Jar -ErrorAction SilentlyContinue)
+            $serverConfig = Join-Path (Join-Path $release '4. server\config') $shaper.Config
+            if ($jar.Count -ne 1 -or -not (Test-Path -LiteralPath $serverConfig -PathType Leaf)) {
+                throw ("-World needs {0} and {1} in 4. server\, so the hosted world runs the server's {2} and not stock ones." -f
+                    $shaper.Jar, $shaper.Config, $shaper.Gives)
+            }
+            Copy-Item -LiteralPath $jar[0].FullName -Destination (Join-Path $testRoot 'mods') -Force
+            Copy-Item -LiteralPath $serverConfig -Destination (Join-Path $testRoot 'config') -Force
+            Write-Host ("server    {0} and {1} staged, so the hosted world runs the server's {2}" -f $jar[0].Name, $shaper.Config, $shaper.Gives)
+        }
     }
 
     # Seeded on every run, not just -Hold. Without these two rows the staged client boots with every
@@ -354,16 +391,64 @@ try {
     # rebuild enabled nine packs, three of which the game marks format-incompatible and runs anyway.
     $releaseOptions = Join-Path $clientSource 'options.txt'
     if (Test-Path -LiteralPath $releaseOptions -PathType Leaf) {
-        $rows = ([IO.File]::ReadAllText($releaseOptions) -split "`r?`n") |
-            Where-Object { $_ -match '^(resourcePacks|incompatibleResourcePacks):' }
+        # The version row comes too, and it is not optional: without it the game reads options.txt as a
+        # pre-1.13 file and runs its old key-code converter over every key_ row, parsing the value as
+        # an integer. The updater's seeds add key_ rows (pick block unbound, hotbar 1 on the bracket),
+        # so the file then fails to load - "NumberFormatException: key.keyboard.unknown" - and the
+        # game boots on defaults with every pack switched off. Found 2026-09-26, first seeded run.
+        #
+        # onboardAccessibility comes too. The master has it false, as every instance that has ever
+        # been played does; without the row the game shows its first-launch accessibility screen
+        # and runs quick play only after that screen is dismissed - so a -QuickPlay run sits on the
+        # title panorama for the whole timeout with a healthy render thread and no server thread.
+        # Found 2026-09-26, second seeded run, by thread dump.
+        $rows = @(([IO.File]::ReadAllText($releaseOptions) -split "`r?`n") |
+            Where-Object { $_ -match '^(version|onboardAccessibility|resourcePacks|incompatibleResourcePacks):' })
+        # Music off in every throwaway. Owner, 2026-09-26, mid-check: "about the test world, have
+        # music set to off too". Only the pack rows come from the release; everything else is the
+        # game's default, and the default plays music over a visual check.
+        $rows += 'soundCategory_music:0.0'
         [IO.File]::WriteAllText((Join-Path $testRoot 'options.txt'), (($rows -join "`n") + "`n"),
             (New-Object Text.UTF8Encoding($false)))
-        Write-Host ("seeded    options.txt with {0} pack rows from the client source" -f $rows.Count)
+        Write-Host ("seeded    options.txt with {0} rows from the client source (version, onboarding, packs), music off" -f ($rows.Count - 1))
     }
     else {
         Write-Warning ('No options.txt in the client source, so every resource pack boots ' +
             'switched off and this run proves nothing about them.')
     }
+
+    # The updater's own seeds, applied by the updater's own code. Staging copies the shipped files as
+    # they are in the source, but a player never sees them that way: on Play the updater applies
+    # this release's one-time defaults on top - Sodium Extra's coordinates off, the owner's
+    # options.txt rows, Complementary selected, the two servers. A throwaway without that step
+    # showed every one of those at its shipped value (owner, 2026-09-26: "the sodium extra show
+    # coordinates is still there"). The jar is the one Build-Updater just built, so the seeds tested
+    # here are the seeds that ship; --seed-only runs them against the throwaway and nothing else.
+    $updaterJar = Join-Path (Split-Path -Parent $PSScriptRoot) 'client\nbidal18-packwiz-updater.jar'
+    if (-not (Test-Path -LiteralPath $updaterJar -PathType Leaf)) {
+        throw "No updater jar at $updaterJar - run scripts\Build-Updater.ps1 first; the throwaway's seeds come from it."
+    }
+    $env:INST_MC_DIR = $testRoot
+    $env:NBIDAL18_HEADLESS_TEST = '1'
+    # The updater prints its warnings on stderr, and under $ErrorActionPreference = 'Stop' Windows
+    # PowerShell raises a native command's stderr as a terminating error before the exit code can be
+    # read (the same trap Build-PackwizSite documents around git). Relaxed for the call only.
+    $savedErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $seedOutput = @(& $javaPath -jar $updaterJar --seed-only 2>&1 | ForEach-Object { $_.ToString() })
+        $seedExit = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $savedErrorAction
+        Remove-Item Env:INST_MC_DIR, Env:NBIDAL18_HEADLESS_TEST -ErrorAction SilentlyContinue
+    }
+    foreach ($line in $seedOutput | Where-Object { $_ -match 'WARNING' }) { Write-Warning ($line -replace '^\[nbidal18 packwiz\] WARNING: ', '') }
+    if ($seedExit -ne 0) { throw ("The updater's --seed-only pass failed:`n" + ($seedOutput -join "`n")) }
+    $applied = @($seedOutput | Where-Object { $_ -match "Applied this release's defaults to (\S+)" } |
+        ForEach-Object { $Matches[1].TrimEnd(';') })
+    Write-Host ("seeded    {0} release default(s) applied by the updater itself, to: {1}" -f $applied.Count,
+        (($applied | Select-Object -Unique) -join ', '))
 
     $arguments = @(
         '-Xms512m', '-Xmx2048m',

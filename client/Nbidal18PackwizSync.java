@@ -174,11 +174,15 @@ public final class Nbidal18PackwizSync {
      * and drops it from the selection on the first launch that reads the row.
      */
     private static final List<PlayerFileSeed> PLAYER_FILE_SEEDS = List.of(
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-v1010", List.of(
-                    SeedRow.of("resourcePacks",
-                            "[\"vanilla\",\"file/Overlay’s.zip\",\"file/3D Default 1.21.2+ v1.15.0.zip\",\"file/§f§lActually §6§l3D §fBlocks \\u0026 Items!§7.zip\",\"file/Os\\u0027 Colorful Grasses (Mix).zip\",\"file/FreshAnimations_v1.10.5.zip\",\"file/FA+All_Extensions-v1.9.2.zip\",\"file/FA+Player-v1.1.zip\",\"file/Better Lanterns v1.3.2 - 26.2.zip\",\"file/§3Fresh §bFlower Pots.zip\",\"file/§3Fresh §bFlower Pots Rotated.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\",\"file/Theone\\u0027s Eating Animation Pack v1.0.zip\",\"file/Enchanted Covers v1.3.zip\",\"file/§5§lNo Enchant Glint §f§l26.2.zip\",\"file/No Potion Particles.zip\",\"file/Recolourful Containers 3.1.3 (1.19.4+).zip\",\"file/Compact Font.zip\",\"continuity:default\",\"continuity:glass_pane_culling_fix\",\"cursors_extended:default\",\"punchy:punchy\",\"black_icons\"]"),
-                    SeedRow.of("incompatibleResourcePacks",
-                            "[\"file/No Potion Particles.zip\",\"file/Os\\u0027 Colorful Grasses (Mix).zip\",\"file/Overlay’s.zip\",\"file/Compact Font.zip\",\"file/§f§lActually §6§l3D §fBlocks \\u0026 Items!§7.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\"]"))),
+            // 2026-09-26, hardcore: nine seeds inherited from Vanilla+ were cut here because their targets
+            // are not in this pack. Four restated the WHOLE resourcePacks row with a Vanilla+ list (v1010,
+            // v1034, v1046, v1073) - on a fresh hardcore install they overwrote the master's row with packs
+            // this pack has never shipped, and the game silently dropped the missing ones, which is why it
+            // looked right. Two warned on every launch because their file never exists on a hardcore
+            // client (jade.json, the client-side nbidal18-vanillarefresh.json - our companion is server-only
+            // here). One CREATED a stray config/immersive_aircraft.json on every instance. Two added
+            // resource packs that do not exist here (Cactus Zombies, AVPBR). A seed named for a target the
+            // pack cut leaves with it. Instances that already ran them keep their markers; nothing reverts.
             // load_new_chunks was pinned to false from v1.0.0 to v1.0.7 in the belief that it
             // revealed terrain the player had not visited. It does not: it is read inside
             // MapWriter and is the switch that records chunks onto the map at all, so the world
@@ -264,14 +268,31 @@ public final class Nbidal18PackwizSync {
                     SeedRow.of("soundCategory_weather", "0.15845070422535212"),
                     SeedRow.of("soundCategory_hostile", "0.10915492957746478"),
                     SeedRow.of("soundCategory_ambient", "0.2535211267605634"))),
-            // Vanilla Refresh's soul - the marker it leaves at the death spot holding 80 % of the XP
-            // and, under keepInventory, the hotbar - is off from v1.0.75: the owner wants nothing but
-            // the grave touching a death. The server's own copy is what the game reads (deployed
-            // with -Config server:...); this keeps the client's Mod Menu screen honest and covers
-            // singleplayer. One nested row; the file is JSON, so it is edited in place, never
-            // created, and the player's other choices stay theirs.
-            new PlayerFileSeed("config/nbidal18-vanillarefresh.json", ':', "vanillarefresh-soul-v1075", List.of(
-                    new SeedRow(List.of("settings"), "soul", "0"))),
+            // Hardcore v1.0.4: the player-animation half of the set-aside comes back - Fresh
+            // Animations: Player Extension, drawn by Entity Model Features. The pack has to be selected
+            // to do anything, and resourcePacks is a player row, so it is added once here; the master
+            // carries it for fresh installs, and an instance that already lists it is left alone. Its
+            // place in the order does not matter: it holds only the player's model, which no other
+            // pack here touches.
+            new PlayerFileSeed("options.txt", ':', "resourcepacks-fa-player-v104", List.of(
+                    SeedRow.addToList("resourcePacks", "\"file/FA+Player-v1.1.zip\""))),
+            // v1.0.4 (hardcore), the mobs half of the same set-aside, once the player half had been
+            // checked in the throwaway: Fresh Animations and its All Extensions pack, the versions
+            // Vanilla+ ships (byte-identical to Modrinth's). Both hold only mob models and textures;
+            // measured 2026-09-26, they share no file with any other pack here, so their place in the
+            // order does not matter either.
+            new PlayerFileSeed("options.txt", ':', "resourcepacks-fa-mobs-v104", List.of(
+                    SeedRow.addToList("resourcePacks", "\"file/FreshAnimations_v1.10.5.zip\""),
+                    SeedRow.addToList("resourcePacks", "\"file/FA+All_Extensions-v1.9.2.zip\""))),
+            // v1.0.4 (hardcore), from Incy PLUS. Owner, 2026-09-26: "do fancy crops and recolorful containers".
+            // Fancy Crops: crop models and textures, shares no file with any pack here. Recolourful
+            // Containers: recoloured GUIs, 462 vanilla GUI textures plus OptiGUI rules (the OptiGUI mod
+            // ships with it); it shares one file with FA+All_Extensions - font/default.json - and must
+            // draw over it, which addToList's "above the last file pack" does. Both declare formats that
+            // cover 26.2, so no incompatibleResourcePacks row.
+            new PlayerFileSeed("options.txt", ':', "resourcepacks-crops-containers-v104", List.of(
+                    SeedRow.addToList("resourcePacks", "\"file/Fancy Crops v1.3.zip\""),
+                    SeedRow.addToList("resourcePacks", "\"file/Recolourful Containers 3.1.3 (1.19.4+).zip\""))),
             // v1.0.76: Sound Physics skips the whole records category unless this is on (read in its
             // processSound), so a jukebox had no occlusion and no reverb. One row, seeded, because the
             // file is preserved for the player and a changed master would replace every copy.
@@ -288,107 +309,12 @@ public final class Nbidal18PackwizSync {
             new PlayerFileSeed("config/voxy-config.json", ':', "voxy-default-off-v1017", List.of(
                     SeedRow.of("enabled", "false"),
                     SeedRow.of("section_render_distance", "1.0"))),
-            // Two rows, always. Minecraft drops a pack from resourcePacks at startup when its
-            // declared format does not cover 26.2's 88, unless it is ALSO named in
-            // incompatibleResourcePacks - the list the "made for an older version, use anyway?"
-            // prompt writes. v1.0.31 seeded only the first row and five of its six new packs were
-            // switched off on the next launch, logged as "no longer compatible".
-            //
-            // v1.0.34: Compact Font is gone. It replaced the font atlas that Immersive Interfaces
-            // probes for its marker glyphs, so ordinary letters were read as markers and deleted -
-            // every "t" vanished from the game. The three Weskerson packs are renamed because they
-            // are forks now: their 26.1 item shader does not match 26.2's item pipeline and made
-            // every item render dark.
-            //
-            // A fresh token and both rows restated, because a seed sets a row rather than editing
-            // it, and every earlier token has already fired on every instance.
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-v1034", List.of(
-                    SeedRow.of("resourcePacks",
-                            "[\"vanilla\",\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/FreshAnimations_v1.10.5.zip\",\"file/FA+All_Extensions-v1.9.2.zip\",\"file/FA+Player-v1.1.zip\",\"file/Better Lanterns v1.3.2 - 26.2.zip\",\"file/§3Fresh §bFlower Pots.zip\",\"file/§3Fresh §bFlower Pots Rotated.zip\",\"file/nbidal18-Weskersons-3D-Items-2.5.zip\",\"file/nbidal18-Weskersons-3D-Food-1.0.zip\",\"file/nbidal18-Weskersons-Nature-1.02.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\",\"file/Theone's Eating Animation Pack v1.0.zip\",\"file/Enchanted Covers v1.3.zip\",\"file/§5§lNo Enchant Glint §f§l26.2.zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-26.2.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"continuity:default\",\"continuity:glass_pane_culling_fix\",\"cursors_extended:default\",\"punchy:punchy\",\"black_icons\"]"),
-                    SeedRow.of("incompatibleResourcePacks",
-                            "[\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/nbidal18-Weskersons-Nature-1.02.zip\",\"file/nbidal18-Weskersons-3D-Food-1.0.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\"]"))),
-            // v1.0.46: Actually 3D arrives and Weskerson Nature leaves.
-            //
-            // Actually 3D covers 878 models where every other 3D pack here covers a few dozen,
-            // so it is the floor and the Weskerson packs are the detail on top. It sits ABOVE
-            // them deliberately: the three categories they both cover - flowers, mushrooms and
-            // bamboo - were wanted from Actually 3D. The categories Weskerson does better are
-            // not in the fork at all, so priority cannot cost them anything.
-            //
-            // Weskerson Nature is removed. Its whole overlap with Actually 3D was those same
-            // three categories, so underneath it, it would draw nothing.
-            //
-            // Both rows restated in full, as always: a seed sets a row rather than editing it,
-            // and Minecraft drops a pack from resourcePacks unless it is also named in
-            // incompatibleResourcePacks when its declared format is out of range. v1.0.31
-            // seeded only the first row and five of its six new packs switched themselves off.
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-v1046", List.of(
-                    SeedRow.of("resourcePacks",
-                            "[\"vanilla\",\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/FreshAnimations_v1.10.5.zip\",\"file/FA+All_Extensions-v1.9.2.zip\",\"file/FA+Player-v1.1.zip\",\"file/Better Lanterns v1.3.2 - 26.2.zip\",\"file/§3Fresh §bFlower Pots.zip\",\"file/§3Fresh §bFlower Pots Rotated.zip\",\"file/nbidal18-Weskersons-3D-Items-2.5.zip\",\"file/nbidal18-Weskersons-3D-Food-1.0.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\",\"file/nbidal18-Actually-3D-26.2.zip\",\"file/Theone's Eating Animation Pack v1.0.zip\",\"file/Enchanted Covers v1.3.zip\",\"file/§5§lNo Enchant Glint §f§l26.2.zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-26.2.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"continuity:default\",\"continuity:glass_pane_culling_fix\",\"cursors_extended:default\",\"punchy:punchy\",\"black_icons\"]"),
-                    SeedRow.of("incompatibleResourcePacks",
-                            "[\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/nbidal18-Weskersons-3D-Food-1.0.zip\",\"file/nbidal18-Weskersons-Torches-1.02.zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\"]"))),
-            // v1.0.62: the four 3D packs - Actually 3D, Weskerson's 3D Items, 3D Food and Torches -
-            // become one, nbidal18-3D, built by Build-3DPack.ps1 and placed at the TOP of the file
-            // packs. Top, because it carries a generated definition for every item whose inventory
-            // look would otherwise differ from vanilla's, and a definition only wins from above the
-            // packs it corrects (Theone's Eating Animation Pack defines food items too). It declares
-            // format 88, so it needs no incompatibleResourcePacks entry; the two Weskerson packs that
-            // did are gone from that row with it.
-            //
-            // Both rows restated in full, as always: a seed sets a row rather than editing it, and
-            // every earlier token has already fired on every instance.
-            //
-            // v1.0.63: the 3D pack is 1.1 - Weskerson's fishing rod dropped, enchanted tools drawn
-            // as plain ones. A changed artefact gets a new name rather than new bytes under the old
-            // one, so the row is restated with it; packwiz removes the 1.0 zip on its own.
-            //
-            // v1.0.69: the 3D pack is 1.2 - beds drawn as the flat 1.11 sprite in the inventory,
-            // the one deliberate exception to the inventory-is-vanilla rule. Row restated again.
-            //
-            // v1.0.73: the 3D pack is 1.3 - every cross-shaped plant no source drew in the hand (saplings,
-            // grass, corals, roots, vines) gets a generated held cross. Row restated again.
             // v1.0.72: TreeChop binds N to its settings screen. The 4.5.2 pack shipped it unbound - N is
             // a key players use for other things, and the screen is reachable from Mod Menu - so the
             // port ships it the same way. Its other two keys (toggle chopping, cycle sneak behaviour)
             // are unbound upstream already.
             new PlayerFileSeed("options.txt", ':', "treechop-key-v1072", List.of(
                     SeedRow.of("key_treechop.key.open_settings_overlay", "key.keyboard.unknown"))),
-            // v1.0.73: a damaged aircraft could not be boarded. Immersive Aircraft treats any right-click on
-            // a plane below full health as a repair unless requireShiftForRepair is on; the owner wants
-            // boarding at any health and repair on shift + right-click, which is exactly that switch.
-            // The file is player-class, so the master copy alone never reaches an instance that already
-            // has one; the server reads its own copy, deployed with -Config in the same release.
-            new PlayerFileSeed("config/immersive_aircraft.json", ':', "aircraft-shift-repair-v1073", List.of(
-                    SeedRow.of("requireShiftForRepair", "true"))),
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-v1073", List.of(
-                    SeedRow.of("resourcePacks",
-                            "[\"vanilla\",\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/FreshAnimations_v1.10.5.zip\",\"file/FA+All_Extensions-v1.9.2.zip\",\"file/FA+Player-v1.1.zip\",\"file/Better Lanterns v1.3.2 - 26.2.zip\",\"file/§3Fresh §bFlower Pots.zip\",\"file/§3Fresh §bFlower Pots Rotated.zip\",\"file/Theone's Eating Animation Pack v1.0.zip\",\"file/Enchanted Covers v1.3.zip\",\"file/§5§lNo Enchant Glint §f§l26.2.zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-26.2.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"file/nbidal18-3D-1.3.zip\",\"continuity:default\",\"continuity:glass_pane_culling_fix\",\"cursors_extended:default\",\"punchy:punchy\",\"black_icons\"]"),
-                    SeedRow.of("incompatibleResourcePacks",
-                            "[\"file/Overlay’s.zip\",\"file/Os' Colorful Grasses (Mix).zip\",\"file/No Potion Particles.zip\",\"file/nbidal18-Immersive-Interfaces-TravelersBackpack-1.0.zip\",\"file/nbidal18-Immersive-Interfaces-JEI-1.0.zip\"]"))),
-            // v1.0.95: Jade shows the block's name and the mod's name, and that is all it was ever
-            // asked to show. HT's TreeChop adds two more lines through Jade's plugin API - the chop
-            // counter and the tree's log count - by calling addConfig twice, both defaulting to on,
-            // and Jade writes those defaults into the player's own jade.json the first time it sees
-            // the plugin. The pack's master has no treechop block at all, so it never said otherwise.
-            //
-            // The master could not have fixed this either: config/jade/jade.json is support class
-            // AND on the rewrittenAtRuntime list, which puts it in the preserved set - delivered
-            // once, never overwritten - so an instance that already exists keeps whatever Jade
-            // wrote. That is why the owner still saw both lines after asking for them to go
-            // (2026-09-12, with a screenshot of a spruce log reading "6/23 chops" and
-            // "Spruce Log x79"). Editing the master would also have re-delivered the file over every
-            // player's theme, position and toggles, which is what the build's own guard refuses.
-            //
-            // So: two rows, nested two deep, the same shape as the Auto HUD seeds above. Every other
-            // Jade setting stays the player's. The plugin itself is left enabled on purpose - it is
-            // what renames the block to "Chopped Spruce Log", which is the block's name and wanted.
-            //
-            // On a fresh install the block does not exist yet, the seed finds no rows and warns, and
-            // no marker is written; Jade writes its defaults on that first launch and the next one
-            // applies the seed. A seed only ever sets rows that are already there.
-            new PlayerFileSeed("config/jade/jade.json", ':', "jade-treechop-lines-v1095", List.of(
-                    new SeedRow(List.of("plugin", "treechop"), "show_tree_block_counts", "false"),
-                    new SeedRow(List.of("plugin", "treechop"), "show_num_chops_remaining", "false"))),
             // First Person Model body offsets, pushed to everyone as the owner plays them. Owner,
             // 2026-09-12: "for first person model, u need to push to everyone the default config as how
             // i have it on my instance". His file differs from the pack master in exactly these three
@@ -401,20 +327,6 @@ public final class Nbidal18PackwizSync {
                     SeedRow.of("xOffset", "15"),
                     SeedRow.of("sneakXOffset", "15"),
                     SeedRow.of("sitXOffset", "15"))),
-            // v1.0.97: Cactus Zombies, switched on for everyone once. Owner, 2026-09-13: "make zombies
-            // render as cactuses. with arms, and a scary look to them" - a joke on a friend who grew up
-            // thinking zombies were green because they were cactuses. It goes after the last file pack
-            // because Fresh Animations and its extensions pack both ship their own zombie.png, and the
-            // later pack in the list wins.
-            //
-            // Added to the player's own list, not written as a new one. Every earlier resourcepacks
-            // seed restated the whole list, which is only right when nobody has changed it since - the
-            // owner had switched nbidal18 3D and the three Immersive Interfaces packs off, and a
-            // restated list would have switched all four back on for him and anyone else who had.
-            // Owner, 2026-09-15: "Add only Cactus". It needs no incompatibleResourcePacks entry: the
-            // pack declares 26.2's format. Anyone who switches it off afterwards keeps that choice.
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-cactus-v1097", List.of(
-                    SeedRow.addToList("resourcePacks", "\"file/nbidal18-Cactus-Zombies-1.0.zip\""))),
             // v1.0.102: Not Enough Animations' own bow draw, the 1.21.1 pack's look, for everyone once.
             // Offered with the Fresh Animations fix (nbidal18-emf), which hands the arms back to NEA
             // while a bow is drawn; owner, 2026-09-19: "Yes". The file is preserved once delivered, so
@@ -422,17 +334,12 @@ public final class Nbidal18PackwizSync {
             // Anyone who sets it back to VANILLA afterwards keeps that. The master stays VANILLA.
             new PlayerFileSeed("config/notenoughanimations.json", ':', "nea-bow-custom-v1102", List.of(
                     SeedRow.of("bowAnimation", "\"CUSTOM_V1\""))),
-            // v1.0.104: AVPBR Retextured, switched on for everyone once. Owner, 2026-09-19: "put back a
-            // normal eclipse-unstable and this resouirce pack" - a labPBR pack, the normal and specular
-            // maps plain Eclipse's material settings read and which this pack never had. At the BOTTOM,
-            // just above vanilla: it also retextures, and shares 398 files with nbidal18-3D, dozens of
-            // Fresh Animations' mob and armour textures and the lanterns, grasses and cactus zombie, so
-            // above them it would draw over every look chosen here. Below them it fills in the rest. Shipped as
-            // Modrinth serves it: it declares formats 15 to 1000, which covers 26.2's 88, so it needs no
-            // incompatibleResourcePacks entry. Anyone who switches it
-            // off or moves it keeps that choice.
-            new PlayerFileSeed("options.txt", ':', "resourcepacks-avpbr-v1104", List.of(
-                    SeedRow.addToListBottom("resourcePacks", "\"file/AVPBR Retextured R6.zip\""))));
+            // v1.0.4 (hardcore): Sodium Extra's coordinates overlay was shipping on. Owner, 2026-09-26:
+            // "we are shipping the default settings with sodium extra show coordinates enabled, disable
+            // it". The file is rewritten by the mod and so preserved; the master keeps the form the mod
+            // writes and this sets the one key, once. Anyone who turns it back on afterwards keeps that.
+            new PlayerFileSeed("config/sodium-extra-options.json", ':', "sodium-extra-coords-off-v104", List.of(
+                    SeedRow.in("extra_settings", "show_coords", "false"))));
 
         /**
      * Empty on purpose, and it must stay that way until a mod is actually retired from THIS
@@ -584,9 +491,33 @@ public final class Nbidal18PackwizSync {
 
     public static void main(String[] args) {
         Nbidal18PackwizSync updater = new Nbidal18PackwizSync();
+        if (args.length == 1 && "--seed-only".equals(args[0])) {
+            System.exit(updater.runSeedsOnly());
+        }
         int exitCode = updater.run();
         updater.closeUpdaterWindow();
         System.exit(exitCode);
+    }
+
+    /**
+     * Applies this release's declared player-file changes to {@code INST_MC_DIR} and stops: no
+     * window, no network, no packwiz. For the test tooling, which stages the shipped files straight
+     * from the source and so never runs the updater - a throwaway built that way showed every
+     * seeded default still at its shipped value (owner, 2026-09-26: "the sodium extra show
+     * coordinates is still there"). Running the seeds through this same code, rather than a second
+     * implementation in PowerShell, keeps the throwaway an exact copy of what a player gets on Play.
+     * Markers are written under the throwaway's own state folder, so nothing here reaches an instance.
+     */
+    private int runSeedsOnly() {
+        try {
+            Files.createDirectories(stateRoot);
+        } catch (IOException error) {
+            warning("Could not create " + stateRoot + ": " + messageOf(error));
+            return 1;
+        }
+        applyPlayerFileChanges();
+        status("Seeds applied to " + minecraftRoot + " (--seed-only; nothing else was touched).");
+        return 0;
     }
 
     private int run() {

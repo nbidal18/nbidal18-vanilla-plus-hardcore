@@ -488,6 +488,26 @@
       "match": "config/yacl.json5",
       "class": "support",
       "reason": "Config GUI library."
+    },
+    {
+      "match": "config/emf_compat.json",
+      "class": "support",
+      "reason": "Entity model compatibility shim."
+    },
+    {
+      "match": "config/entity_model_features.json",
+      "class": "support",
+      "reason": "Model rendering."
+    },
+    {
+      "match": "config/entity_texture_features.json",
+      "class": "support",
+      "reason": "Texture rendering."
+    },
+    {
+      "match": "config/notenoughanimations.json",
+      "class": "support",
+      "reason": "Player animation."
     }
   ],
   "rewrittenAtRuntime": [

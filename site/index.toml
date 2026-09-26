@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
+hash = "4120f96b50ed1d94252a021cb0cf5c7720aaf95d84f1418ee14584332081396f"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -73,8 +73,20 @@ file = "config/cursors_extended.json"
 hash = "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
 
 [[files]]
+file = "config/emf_compat.json"
+hash = "6cf273cc8acf37b68944b938c66b5dea4be72efb77d1ec8a1269ea4a3a3cf5f0"
+
+[[files]]
 file = "config/enchdesc.json"
 hash = "4fb5cb608bfd085f88021026cdd43a65b79e09271a8881f75c46e19c3f00736c"
+
+[[files]]
+file = "config/entity_model_features.json"
+hash = "e0f8ab833d6b4625b6a0566ef2c1b6010368f05003508fc30f96aa5275690cd4"
+
+[[files]]
+file = "config/entity_texture_features.json"
+hash = "bd66edf9d1a72cd717bbe9b17b41ffd16963b089493e5ddae3d3ad69153105ba"
 
 [[files]]
 file = "config/entityculling.json"
@@ -195,6 +207,10 @@ hash = "b14c45c6447f9ee5474d70784a2ef96731abbeca1e92485b7599e76e9dce1444"
 [[files]]
 file = "config/modmenu.json"
 hash = "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
+
+[[files]]
+file = "config/notenoughanimations.json"
+hash = "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
 
 [[files]]
 file = "config/presencefootsteps/updater.json"
@@ -413,6 +429,10 @@ file = "mods/MouseTweaks-fabric-mc26.2-2.31.jar"
 hash = "4592eff38a2e7af3487688e888a637a8cbd4767b46662df94d993a889102effe"
 
 [[files]]
+file = "mods/PlayerAnimationLibMerged-1.2.6+mc.26.2.jar"
+hash = "97af3288dd39643bf3607bf9ff5c3293022793559236586a6783fe71dd66e6bd"
+
+[[files]]
 file = "mods/PresenceFootsteps-1.13.3+26.2.jar"
 hash = "f1f7e37ffc5a56cf7cc9833d8c6b48680340554d72498160df021c6fc354af13"
 
@@ -515,6 +535,22 @@ hash = "081c507d44eb1b7501f3b0d079657b1ca9887f94d4f890b102a740ea02509bf9"
 [[files]]
 file = "mods/cursors_extended-fabric-4.1.7+26.2.jar"
 hash = "f9d6b558a3ad1277898089f0bffc36f5dfee8dff2f6588284600169e6c85d2c1"
+
+[[files]]
+file = "mods/emf_compat_core_26.2_2.0.0.jar"
+hash = "064b80cae7e46eacfcaa7c6748882eae961e8ff263b590513b87166bc1f08b77"
+
+[[files]]
+file = "mods/emf_compat_not_enough_animations_26.2_1.2.0.jar"
+hash = "d09bfb5f30f739c41451af6d23b03952d6cb6c775b8d05ff93c0ff2d8a10bfea"
+
+[[files]]
+file = "mods/entity_model_features-3.3.8-26.2-fabric.jar"
+hash = "714686cefe56a7e46fa1e13ecdeddcb55ddfbb9715ae5b1ffd7573c1928d9fdd"
+
+[[files]]
+file = "mods/entity_texture_features-7.2.4-26.2-fabric.jar"
+hash = "351c0f40fa9cb760f51b8a0819c5ec5f5450a2787ced8e5200a7c695cb16500e"
 
 [[files]]
 file = "mods/entityculling-fabric-1.11.2-mc26.2.jar"
@@ -625,6 +661,10 @@ file = "mods/nbidal18-cameraoverhaul-2.1.1-fabric+mc.26.1-plus.jar"
 hash = "101a59b5a662c920a8ea05c2396e82f546be87f2cc7d698822eccd4821ad8a85"
 
 [[files]]
+file = "mods/nbidal18-emf-1.0.0+26.2-fabric.jar"
+hash = "4efcecb5815f3c7cbdcff9a452632a959219d9cb33aa917000c8eb3046115de4"
+
+[[files]]
 file = "mods/nbidal18-gravestones-1.0.0+26.2-fabric.jar"
 hash = "f14153036ad9f690bcbd53f720b43fe6c156eb50ad38a550457a7462474993f3"
 
@@ -641,8 +681,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.3+26.2-fabric.jar"
-hash = "591f66f190fa1c6cebaeb49d466274a17214bf200dc292e8c38c636b75451eb3"
+file = "mods/nbidal18-integrity-1.0.4+26.2-fabric.jar"
+hash = "6a58daff7c7b41b277c05c27e9b30e1a7f81d95540b8c99f1b032e7b044802c4"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -703,6 +743,14 @@ hash = "6412f5cc7618b008c1016015dfedd4384b15f9e3ed39a3f41f0328efbc2ee948"
 [[files]]
 file = "mods/nbidal18-xaeroworldmap-1.3.0+26.2-fabric.jar"
 hash = "e98ed4dab2ce9ff6cd76a642dcb96e2432d3b1b36e4e1c7725cef5cc83e3036e"
+
+[[files]]
+file = "mods/notenoughanimations-fabric-1.12.5-mc26.2.jar"
+hash = "8ef1069d4639299e473077ded3f5a6b22045e581e8a9fd51bbc470fc50675c9e"
+
+[[files]]
+file = "mods/optigui-2.3.0-beta.10+26.2.jar"
+hash = "72a870f8cb7cb7689965f4483be676508daeb187775c4c2a1a7b6c3419ae4659"
 
 [[files]]
 file = "mods/owo-lib-0.13.1+26.2.jar"
@@ -802,7 +850,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "d2cc63e1aded8d704c22943084feae00245eaa9b25d48b5270edb285d25a2358"
+hash = "881f9641e0309358a301abc039a9fd1267bc322ce6047107fa4b26f94aaa549d"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"
@@ -825,6 +873,22 @@ file = "resourcepacks/Enchanted Covers v1.3.zip"
 hash = "b8b9caa24ad0bc4c8e78286a14ddb1bc9841279b2a999448ae83526fe8acec33"
 
 [[files]]
+file = "resourcepacks/FA+All_Extensions-v1.9.2.zip"
+hash = "027acba5f64c9d1bf5ccb8daecb7fc756961bfeee866434a0ee5f7809a48d326"
+
+[[files]]
+file = "resourcepacks/FA+Player-v1.1.zip"
+hash = "9ee3ae5b2fe5cd980e4041429dc66d88243f5f2420e2814e5361c746ad937f33"
+
+[[files]]
+file = "resourcepacks/Fancy Crops v1.3.zip"
+hash = "0c26af02ec87d523e195cab9638391febbc0ce39bff3a8978d44b88e28771755"
+
+[[files]]
+file = "resourcepacks/FreshAnimations_v1.10.5.zip"
+hash = "cf9f17a2977e171b33cb0b598bc4357dd0383e09c10d5f768ff17c12d0a028ee"
+
+[[files]]
 file = "resourcepacks/No Potion Particles.zip"
 hash = "6ba1185db5ada65b3a9c09ac6ba803ff442d88786a1c464ec38e93c573ee5ba5"
 
@@ -835,6 +899,10 @@ hash = "13fa9c58de7beb6ce8a12e3231e9d0b3f54b7032e1b3fd4e68f0c198b8cd3b4b"
 [[files]]
 file = "resourcepacks/Overlay’s.zip"
 hash = "ac40030dd211be141e42b445f0aee77591dbf46ad1e1f5066f6ddace2925806a"
+
+[[files]]
+file = "resourcepacks/Recolourful Containers 3.1.3 (1.19.4+).zip"
+hash = "fe14f85cf5c551fb1d0f122d7fa07a4b371186f15e23b467a409999658974948"
 
 [[files]]
 file = "resourcepacks/Theone's Eating Animation Pack v1.0.zip"

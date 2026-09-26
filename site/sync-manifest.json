@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.3",
+    "packVersion":  "1.0.4",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -92,7 +92,11 @@
                                 "config/subtle_effects/general.toml",
                                 "config/subtle_effects/items.toml",
                                 "config/voxyworldgenv2.json",
-                                "config/yacl.json5"
+                                "config/yacl.json5",
+                                "config/emf_compat.json",
+                                "config/entity_model_features.json",
+                                "config/entity_texture_features.json",
+                                "config/notenoughanimations.json"
                             ],
     "localAllowed":  [
                          "config/autohud.json5",
@@ -121,7 +125,10 @@
                          "config/creativecore-client.json",
                          "config/creativecore.json",
                          "config/cursors_extended.json",
+                         "config/emf_compat.json",
                          "config/enchdesc.json",
+                         "config/entity_model_features.json",
+                         "config/entity_texture_features.json",
                          "config/entityculling.json",
                          "config/fallingleaves2.json",
                          "config/ferritecore.mixin.properties",
@@ -147,6 +154,7 @@
                          "config/lootr-client.jsonc",
                          "config/midnightlib.json",
                          "config/modmenu.json",
+                         "config/notenoughanimations.json",
                          "config/presencefootsteps/updater.json",
                          "config/presencefootsteps/userconfig.json5",
                          "config/skinlayers.json",
@@ -276,7 +284,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
+                                    "sha256":  "4120f96b50ed1d94252a021cb0cf5c7720aaf95d84f1418ee14584332081396f"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -327,8 +335,20 @@
                                     "sha256":  "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
                                 },
                                 {
+                                    "path":  "config/emf_compat.json",
+                                    "sha256":  "6cf273cc8acf37b68944b938c66b5dea4be72efb77d1ec8a1269ea4a3a3cf5f0"
+                                },
+                                {
                                     "path":  "config/enchdesc.json",
                                     "sha256":  "4fb5cb608bfd085f88021026cdd43a65b79e09271a8881f75c46e19c3f00736c"
+                                },
+                                {
+                                    "path":  "config/entity_model_features.json",
+                                    "sha256":  "e0f8ab833d6b4625b6a0566ef2c1b6010368f05003508fc30f96aa5275690cd4"
+                                },
+                                {
+                                    "path":  "config/entity_texture_features.json",
+                                    "sha256":  "bd66edf9d1a72cd717bbe9b17b41ffd16963b089493e5ddae3d3ad69153105ba"
                                 },
                                 {
                                     "path":  "config/entityculling.json",
@@ -449,6 +469,10 @@
                                 {
                                     "path":  "config/modmenu.json",
                                     "sha256":  "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
+                                },
+                                {
+                                    "path":  "config/notenoughanimations.json",
+                                    "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
                                 },
                                 {
                                     "path":  "config/presencefootsteps/updater.json",
@@ -622,7 +646,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "c577f9c1e9879546d08af35e2c051b4900ab078bb765f8455cf19f611143a8f6"
+                      "sha256":  "4120f96b50ed1d94252a021cb0cf5c7720aaf95d84f1418ee14584332081396f"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -673,8 +697,20 @@
                       "sha256":  "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
                   },
                   {
+                      "path":  "config/emf_compat.json",
+                      "sha256":  "6cf273cc8acf37b68944b938c66b5dea4be72efb77d1ec8a1269ea4a3a3cf5f0"
+                  },
+                  {
                       "path":  "config/enchdesc.json",
                       "sha256":  "4fb5cb608bfd085f88021026cdd43a65b79e09271a8881f75c46e19c3f00736c"
+                  },
+                  {
+                      "path":  "config/entity_model_features.json",
+                      "sha256":  "e0f8ab833d6b4625b6a0566ef2c1b6010368f05003508fc30f96aa5275690cd4"
+                  },
+                  {
+                      "path":  "config/entity_texture_features.json",
+                      "sha256":  "bd66edf9d1a72cd717bbe9b17b41ffd16963b089493e5ddae3d3ad69153105ba"
                   },
                   {
                       "path":  "config/entityculling.json",
@@ -795,6 +831,10 @@
                   {
                       "path":  "config/modmenu.json",
                       "sha256":  "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
+                  },
+                  {
+                      "path":  "config/notenoughanimations.json",
+                      "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
                   },
                   {
                       "path":  "config/presencefootsteps/updater.json",
@@ -1013,6 +1053,10 @@
                       "sha256":  "4592eff38a2e7af3487688e888a637a8cbd4767b46662df94d993a889102effe"
                   },
                   {
+                      "path":  "mods/PlayerAnimationLibMerged-1.2.6+mc.26.2.jar",
+                      "sha256":  "97af3288dd39643bf3607bf9ff5c3293022793559236586a6783fe71dd66e6bd"
+                  },
+                  {
                       "path":  "mods/PresenceFootsteps-1.13.3+26.2.jar",
                       "sha256":  "f1f7e37ffc5a56cf7cc9833d8c6b48680340554d72498160df021c6fc354af13"
                   },
@@ -1115,6 +1159,22 @@
                   {
                       "path":  "mods/cursors_extended-fabric-4.1.7+26.2.jar",
                       "sha256":  "f9d6b558a3ad1277898089f0bffc36f5dfee8dff2f6588284600169e6c85d2c1"
+                  },
+                  {
+                      "path":  "mods/emf_compat_core_26.2_2.0.0.jar",
+                      "sha256":  "064b80cae7e46eacfcaa7c6748882eae961e8ff263b590513b87166bc1f08b77"
+                  },
+                  {
+                      "path":  "mods/emf_compat_not_enough_animations_26.2_1.2.0.jar",
+                      "sha256":  "d09bfb5f30f739c41451af6d23b03952d6cb6c775b8d05ff93c0ff2d8a10bfea"
+                  },
+                  {
+                      "path":  "mods/entity_model_features-3.3.8-26.2-fabric.jar",
+                      "sha256":  "714686cefe56a7e46fa1e13ecdeddcb55ddfbb9715ae5b1ffd7573c1928d9fdd"
+                  },
+                  {
+                      "path":  "mods/entity_texture_features-7.2.4-26.2-fabric.jar",
+                      "sha256":  "351c0f40fa9cb760f51b8a0819c5ec5f5450a2787ced8e5200a7c695cb16500e"
                   },
                   {
                       "path":  "mods/entityculling-fabric-1.11.2-mc26.2.jar",
@@ -1225,6 +1285,10 @@
                       "sha256":  "101a59b5a662c920a8ea05c2396e82f546be87f2cc7d698822eccd4821ad8a85"
                   },
                   {
+                      "path":  "mods/nbidal18-emf-1.0.0+26.2-fabric.jar",
+                      "sha256":  "4efcecb5815f3c7cbdcff9a452632a959219d9cb33aa917000c8eb3046115de4"
+                  },
+                  {
                       "path":  "mods/nbidal18-gravestones-1.0.0+26.2-fabric.jar",
                       "sha256":  "f14153036ad9f690bcbd53f720b43fe6c156eb50ad38a550457a7462474993f3"
                   },
@@ -1241,8 +1305,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.3+26.2-fabric.jar",
-                      "sha256":  "591f66f190fa1c6cebaeb49d466274a17214bf200dc292e8c38c636b75451eb3"
+                      "path":  "mods/nbidal18-integrity-1.0.4+26.2-fabric.jar",
+                      "sha256":  "6a58daff7c7b41b277c05c27e9b30e1a7f81d95540b8c99f1b032e7b044802c4"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1303,6 +1367,14 @@
                   {
                       "path":  "mods/nbidal18-xaeroworldmap-1.3.0+26.2-fabric.jar",
                       "sha256":  "e98ed4dab2ce9ff6cd76a642dcb96e2432d3b1b36e4e1c7725cef5cc83e3036e"
+                  },
+                  {
+                      "path":  "mods/notenoughanimations-fabric-1.12.5-mc26.2.jar",
+                      "sha256":  "8ef1069d4639299e473077ded3f5a6b22045e581e8a9fd51bbc470fc50675c9e"
+                  },
+                  {
+                      "path":  "mods/optigui-2.3.0-beta.10+26.2.jar",
+                      "sha256":  "72a870f8cb7cb7689965f4483be676508daeb187775c4c2a1a7b6c3419ae4659"
                   },
                   {
                       "path":  "mods/owo-lib-0.13.1+26.2.jar",
@@ -1402,7 +1474,7 @@
                   },
                   {
                       "path":  "nbidal18-packwiz-updater.next.jar",
-                      "sha256":  "d2cc63e1aded8d704c22943084feae00245eaa9b25d48b5270edb285d25a2358"
+                      "sha256":  "881f9641e0309358a301abc039a9fd1267bc322ce6047107fa4b26f94aaa549d"
                   },
                   {
                       "path":  "packwiz-installer-bootstrap.next.jar",
@@ -1425,6 +1497,22 @@
                       "sha256":  "b8b9caa24ad0bc4c8e78286a14ddb1bc9841279b2a999448ae83526fe8acec33"
                   },
                   {
+                      "path":  "resourcepacks/FA+All_Extensions-v1.9.2.zip",
+                      "sha256":  "027acba5f64c9d1bf5ccb8daecb7fc756961bfeee866434a0ee5f7809a48d326"
+                  },
+                  {
+                      "path":  "resourcepacks/FA+Player-v1.1.zip",
+                      "sha256":  "9ee3ae5b2fe5cd980e4041429dc66d88243f5f2420e2814e5361c746ad937f33"
+                  },
+                  {
+                      "path":  "resourcepacks/Fancy Crops v1.3.zip",
+                      "sha256":  "0c26af02ec87d523e195cab9638391febbc0ce39bff3a8978d44b88e28771755"
+                  },
+                  {
+                      "path":  "resourcepacks/FreshAnimations_v1.10.5.zip",
+                      "sha256":  "cf9f17a2977e171b33cb0b598bc4357dd0383e09c10d5f768ff17c12d0a028ee"
+                  },
+                  {
                       "path":  "resourcepacks/No Potion Particles.zip",
                       "sha256":  "6ba1185db5ada65b3a9c09ac6ba803ff442d88786a1c464ec38e93c573ee5ba5"
                   },
@@ -1435,6 +1523,10 @@
                   {
                       "path":  "resourcepacks/Overlay’s.zip",
                       "sha256":  "ac40030dd211be141e42b445f0aee77591dbf46ad1e1f5066f6ddace2925806a"
+                  },
+                  {
+                      "path":  "resourcepacks/Recolourful Containers 3.1.3 (1.19.4+).zip",
+                      "sha256":  "fe14f85cf5c551fb1d0f122d7fa07a4b371186f15e23b467a409999658974948"
                   },
                   {
                       "path":  "resourcepacks/Theone\u0027s Eating Animation Pack v1.0.zip",

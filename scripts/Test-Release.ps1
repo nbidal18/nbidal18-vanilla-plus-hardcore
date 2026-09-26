@@ -59,15 +59,20 @@ if (-not (Test-Path -LiteralPath $ReleaseRoot)) { throw "No release folder at $R
 # but -ReleaseRoot pointed at an older release has to compare against what came before *it* - reading
 # the current version here compared v1.0.41 against v1.0.43 and called two unrelated jars a change.
 $leaf = Split-Path $ReleaseRoot -Leaf
-if ($leaf -notmatch '^v\.(\d+)\.(\d+)\.(\d+)$') { throw "Not a release folder name: $leaf" }
+# The prefix comes from ReleaseLine.ps1 like everywhere else. This was the one script still spelling
+# `v.` out, found 2026-09-26 on the hardcore line's first run of it - so v1.0.1 to v1.0.3 shipped
+# without this gate. It threw "Not a release folder name: hc.1.0.4" before it could test anything.
+$escapedPrefix = [regex]::Escape($prefix)
+if ($leaf -notmatch "^$escapedPrefix(\d+)\.(\d+)\.(\d+)$") { throw "Not a release folder name: $leaf (expected $prefix<x>.<y>.<z>)" }
 $subject = [version]::new([int] $Matches[1], [int] $Matches[2], [int] $Matches[3])
 
-# The previous release is the newest v.* that is not this one, ordered properly rather than
+# The previous release is the newest <prefix>* that is not this one, ordered properly rather than
 # alphabetically - "v.1.0.9" sorts after "v.1.0.44" as text, which would compare against the wrong
 # release and report every jar as changed.
-$versions = @(Get-ChildItem -LiteralPath $packRoot -Directory -Filter 'v.*' |
+$versions = @(Get-ChildItem -LiteralPath $packRoot -Directory -Filter "$prefix*" |
         ForEach-Object {
-            $parts = $_.Name.Substring(2) -split '\.'
+            if ($_.Name -notmatch "^$escapedPrefix(\d+)\.(\d+)\.(\d+)$") { return }
+            $parts = $_.Name.Substring($prefix.Length) -split '\.'
             if ($parts.Count -ne 3) { return }
             [pscustomobject]@{
                 Name = $_.Name

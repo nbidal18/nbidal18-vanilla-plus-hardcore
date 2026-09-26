@@ -355,12 +355,12 @@ try {
     if (Test-Path -LiteralPath $options -PathType Leaf) {
         $packsRow = Get-PropertyValue $options 'resourcePacks'
         Assert ($null -ne $packsRow -and $packsRow.StartsWith('[')) 'the resourcePacks row was not seeded'
-        # v1.0.97 adds Cactus Zombies to the list the earlier seeds wrote instead of writing the list
-        # again, so a pack a player switched off stays off. It has to land after Fresh Animations'
-        # packs, or their own zombie texture draws over it.
-        $cactus = '"file/nbidal18-Cactus-Zombies-1.0.zip"'
-        Assert ($null -ne $packsRow -and $packsRow.Contains($cactus)) 'the Cactus Zombies seed did not add the pack to resourcePacks'
-        Assert ($null -ne $packsRow -and $packsRow.IndexOf($cactus) -gt $packsRow.LastIndexOf('"file/FA+')) 'Cactus Zombies is listed before a Fresh Animations pack, so it would be drawn over'
+        # Hardcore, 2026-09-26: the Cactus Zombies assertion that stood here was a Vanilla+ fact - the
+        # pack and its seed are not in this line. What is asserted instead is this line's own seeds:
+        # the three Fresh Animations packs, added to the list rather than written over it.
+        foreach ($pack in '"file/FA+Player-v1.1.zip"', '"file/FreshAnimations_v1.10.5.zip"', '"file/FA+All_Extensions-v1.9.2.zip"') {
+            Assert ($packsRow.Contains($pack)) "the resourcePacks row lacks $pack after the sync"
+        }
         Write-Host 'seeded    options.txt carries the declared rows'
     }
     # Both servers in the multiplayer list: the address strings are plain UTF-8 inside the NBT.

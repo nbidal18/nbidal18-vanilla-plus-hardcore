@@ -174,9 +174,11 @@ $mods = @(
     # mixin at Window.close releases the raw input first. Proved by the throwaway: same close exits
     # with the option off or with Ixeris absent, and hangs with it on. Client only.
     @{ Name = 'nbidal18-ixeris'; Generator = $null; Builder = 'build_ixeris.py' },
-    # nbidal18-emf is not listed: Entity Model Features is set aside on this line (the player-render
-    # review, 2026-09-23) and its companion goes with it. The source folder stays for when that review
-    # closes; listing it would build a jar for a mod the pack does not ship.
+    # Fresh Animations: Player Extension stands aside whenever the game has its own pose for the
+    # player's arms: any item in use, a loaded crossbow held, a boat ride. No mixins - EMF's own
+    # pause and vanilla-model conditions. Set aside with EMF on 2026-09-23; back with the player
+    # animation group on 2026-09-26 (v1.0.4). Client only.
+    @{ Name = 'nbidal18-emf'; Generator = $null; Builder = 'build_emf.py' },
     # LambDynamicLights' cell debug view labels light cells with their absolute coordinates, and any
     # player can switch it on in the mod's settings (v1.0.103, coordinates stripped from the game).
     # One mixin stops that renderer; the light-level and bounding-box views draw no position. Client.

@@ -5,6 +5,35 @@ build that was not published.
 
 ---
 
+## v1.0.4 — 2026-09-26
+
+**Animations are back, GUIs and crops got a look, and the updater stopped carrying Vanilla+'s
+history.** Manifest digest `47b260eee9f0bbcb…`, replacing `a93d4c4e94b7d5bd…` (v1.0.3). 215 managed
+files become 232.
+
+* **The whole animation set-aside returns**, checked pose by pose in a throwaway by the owner. Entity
+  Model Features 3.3.8 and Entity Texture Features 7.2.4, NotEnoughAnimations 1.12.5, Player Animation
+  Library 1.2.6, EMF Compat Core 2.0.0 and EMF Compat NEA 1.2.0, our `nbidal18-emf` rebuilt against
+  the new EMF; Fresh Animations 1.10.5, its All Extensions 1.9.2 and FA+Player 1.1 as resource packs,
+  selected for everyone once. Baby animals stay vanilla-shaped: EMF stopped letting babies borrow the
+  adult model on this game version and the pack author removed its baby models, so that is upstream's
+  choice, not a fault here.
+* **Fancy Crops 1.3 and Recolourful Containers 3.1.3**, from Incy PLUS, with **OptiGUI 2.3.0** as the
+  mod Recolourful's per-container rules need. Prettier crops at every growth stage; every container
+  GUI coloured to match its block.
+* **Sodium Extra's coordinates overlay is off.** One seeded key; whoever turns it back on keeps that.
+* **Nine seeds written for Vanilla+ are gone from this updater** - four that overwrote the resource
+  pack list with a Vanilla+ list on first Play, two warning on every launch for files that never
+  exist here, one creating a stray Immersive Aircraft config, two adding packs this pack never had.
+  Nothing on an existing instance reverts; a fresh install now gets exactly the shipped list.
+* **Server:** Preferred Gamerules 2.0.1, so every world created from now on starts with
+  `reduced_debug_info` on and the locator bar off. The world already generated keeps its saved rules.
+* Integrity helper 1.0.4. The updater gains `--seed-only`, used by the launch test so a throwaway gets
+  the same one-time defaults a player does. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice while the updater fetches the new helper; the
+resource packs and OptiGUI download on that same launch.
+
 ## v1.0.3 — 2026-09-24
 
 **The game exits when you close it.** Since the rebuild, quitting from inside a world (or after a

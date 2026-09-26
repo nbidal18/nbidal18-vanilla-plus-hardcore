@@ -2,7 +2,7 @@
 """Ask Modrinth which of a pack's jars have a build for a given Minecraft version.
 
     python Measure-GameVersionSupport.py --game-version 26.3 \
-        --mods "../../hc.1.0.0/3. modpack/client/mods" \
+        --mods "../../vpp.1.0.0/3. modpack/client/mods" \
         --mods "../../_server-payload-cache/mods"
 
 Written 2026-09-23. `docs/archive/upgrade-26.3.md` was measured by hand on 2026-09-21 and says, in

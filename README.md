@@ -10,7 +10,7 @@ channel.
 **What it does share is its scripts, deliberately and byte-identically.** Every build and deploy
 script is the same file as in the Vanilla+ repository; the only thing that differs is
 `RELEASE-PREFIX.txt`, which `scripts/ReleaseLine.ps1` reads to find this line's release folders
-(`hc.<version>` here, `v.<version>` there). A fix made to a script in either repository is copied to
+(`vpp.<version>` here, `v.<version>` there). A fix made to a script in either repository is copied to
 the other verbatim. **Do not let them drift** — that was the whole reason for the prefix file.
 
 | | |
@@ -19,7 +19,7 @@ the other verbatim. **Do not let them drift** — that was the whole reason for 
 | Loader | Fabric 0.19.3 |
 | Server | `38.103.248.98:27037` |
 | Channel | `https://nbidal18.github.io/nbidal18-vanilla-plus-hardcore/pack.toml` |
-| Release folders | `hc.<version>`, beside this repository |
+| Release folders | `vpp.<version>`, beside this repository |
 | Server mirror | `_server-payload-cache`, beside this repository |
 | Docs | `..\docs\README.md` - the tour, then `..\docs\index.md`. The rebuild ledger is `..\docs\archive\rebuild.md` |
 

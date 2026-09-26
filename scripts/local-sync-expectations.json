@@ -1,7 +1,7 @@
 {
   "$doc": [
     "Per-line expectations for Test-LocalSync.ps1, so the script file itself stays identical",
-    "between nbidal18-vanilla-plus and nbidal18-vanilla-plus-hardcore - the same reason",
+    "between nbidal18-vanilla-plus and nbidal18-vanilla-plus-plus - the same reason",
     "RELEASE-PREFIX.txt, PACK-NAME.txt and SERVER.txt exist. Before this file the test asserted",
     "Vanilla+ facts outright: both servers in servers.dat, the v1.0.106 hardcore move, and a",
     "config probe on a mod the hardcore line removes. All three failed here, correctly, and none",

@@ -19,6 +19,9 @@ build that was not published.
   Your instance folder keeps whatever name it has - nothing is re-imported. New installs use
   `nbidal18-vanilla-plus-plus-client.zip`.
 * Integrity helper 1.0.5. Every other first-party jar rebuilt byte-identical.
+* **Later the same evening, on the maintainer's disk only:** the line's folder became `vanilla_plus_plus\`, the
+  repository folder `nbidal18-vanilla-plus-plus\`, releases `vpp.<version>`. The GitHub repository and this
+  channel's URL keep `nbidal18-vanilla-plus-hardcore`, because the URL is what every updater has compiled in.
 
 **Players click Play.** One "close and reopen" notice while the updater fetches the new helper.
 
@@ -156,7 +159,7 @@ the next went in, both halves launch-tested at every step:
 
 **Player-facing differences from Vanilla+**
 
-* **The Prism instance is `nbidal18-vanilla-plus-hardcore`**, derived from `PACK-NAME.txt`. The two
+* **The Prism instance is `nbidal18-vanilla-plus-plus`**, derived from `PACK-NAME.txt`. The two
   packs are separate installs and no longer collide on one machine.
 * **The multiplayer list ships the hardcore server only.** It had been carrying both; the Vanilla+
   address is gone, and the updater seeds nothing — every install of this pack is a first install.

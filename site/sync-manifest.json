@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.5",
+    "packVersion":  "1.0.6",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -22,7 +22,7 @@
                                 "config/voxy-config.json",
                                 "config/xaero/minimap/profiles/default.cfg",
                                 "config/xaero/world-map/profiles/default.cfg",
-                                "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt",
+                                "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                                 "config/MouseTweaks.cfg",
                                 "config/asyncparticles/asyncparticles-mixin.properties",
                                 "config/asyncparticles/asyncparticles.json",
@@ -96,7 +96,13 @@
                                 "config/emf_compat.json",
                                 "config/entity_model_features.json",
                                 "config/entity_texture_features.json",
-                                "config/notenoughanimations.json"
+                                "config/notenoughanimations.json",
+                                "config/coolrain.json",
+                                "config/elytratrails.json",
+                                "config/explosiveenhancement.json",
+                                "config/particular-common.toml",
+                                "config/visuality.json",
+                                "config/wakes.json"
                             ],
     "localAllowed":  [
                          "config/autohud.json5",
@@ -109,7 +115,7 @@
                          "config/voxy-config.json",
                          "config/xaero/minimap/profiles/default.cfg",
                          "config/xaero/world-map/profiles/default.cfg",
-                         "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt",
+                         "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                          "config/MouseTweaks.cfg",
                          "config/asyncparticles/asyncparticles-mixin.properties",
                          "config/asyncparticles/asyncparticles.json",
@@ -177,7 +183,13 @@
                          "config/subtle_effects/general.toml",
                          "config/subtle_effects/items.toml",
                          "config/voxyworldgenv2.json",
-                         "config/yacl.json5"
+                         "config/yacl.json5",
+                         "config/coolrain.json",
+                         "config/elytratrails.json",
+                         "config/explosiveenhancement.json",
+                         "config/particular-common.toml",
+                         "config/visuality.json",
+                         "config/wakes.json"
                      ],
     "propertyRules":  [
                           {
@@ -284,7 +296,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "86027f408cae1b2d0c3c4a1f7945dca7328c56b9511169903842327f1c476a68"
+                                    "sha256":  "4415f8b3e19ec4438a181205696885b56d4117a1433d13ad2fe7ad72c0c3c60f"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -323,6 +335,10 @@
                                     "sha256":  "28eaff624c99a24e49882e5f56496a9e0f55e9a25e583e9313b0360494810b65"
                                 },
                                 {
+                                    "path":  "config/coolrain.json",
+                                    "sha256":  "2d4fb0ac46c663910665cc022121de11c7ceab123ed5cfa885cea8b828e43958"
+                                },
+                                {
                                     "path":  "config/creativecore-client.json",
                                     "sha256":  "acb6c8c1394d4d6f2d0c98d5c314c5ef8ad34b8a76f0a420fc596733bcbc51ac"
                                 },
@@ -333,6 +349,10 @@
                                 {
                                     "path":  "config/cursors_extended.json",
                                     "sha256":  "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
+                                },
+                                {
+                                    "path":  "config/elytratrails.json",
+                                    "sha256":  "d239065474d703a3d5219bdb3c8dd74aa6d6967f423567cd50c620315e0cd372"
                                 },
                                 {
                                     "path":  "config/emf_compat.json",
@@ -353,6 +373,10 @@
                                 {
                                     "path":  "config/entityculling.json",
                                     "sha256":  "e92e6772c4b6ec28b9c179c80831d56d11fc65064591424a120133d397b2ab49"
+                                },
+                                {
+                                    "path":  "config/explosiveenhancement.json",
+                                    "sha256":  "839482f45a8c5563f356655dadc8cbba4386decfc68f02faf901626aa0af054c"
                                 },
                                 {
                                     "path":  "config/fallingleaves2.json",
@@ -473,6 +497,10 @@
                                 {
                                     "path":  "config/notenoughanimations.json",
                                     "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
+                                },
+                                {
+                                    "path":  "config/particular-common.toml",
+                                    "sha256":  "9e8b822edd6e274416a21cbc35767d678bdb4006f78625eda83921a31b4ed017"
                                 },
                                 {
                                     "path":  "config/presencefootsteps/updater.json",
@@ -603,12 +631,20 @@
                                     "sha256":  "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
                                 },
                                 {
+                                    "path":  "config/visuality.json",
+                                    "sha256":  "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
+                                },
+                                {
                                     "path":  "config/voxy-config.json",
                                     "sha256":  "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
                                 },
                                 {
                                     "path":  "config/voxyworldgenv2.json",
                                     "sha256":  "031ccf159125335412dac47483d728ce210466e621395b498ca1915548cb3884"
+                                },
+                                {
+                                    "path":  "config/wakes.json",
+                                    "sha256":  "c7aadae0d05facba05131e8d7260c864a76cbf2ed34e7504b223641e1d8770a9"
                                 },
                                 {
                                     "path":  "config/xaero/minimap/profiles/default.cfg",
@@ -646,7 +682,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "86027f408cae1b2d0c3c4a1f7945dca7328c56b9511169903842327f1c476a68"
+                      "sha256":  "4415f8b3e19ec4438a181205696885b56d4117a1433d13ad2fe7ad72c0c3c60f"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -685,6 +721,10 @@
                       "sha256":  "28eaff624c99a24e49882e5f56496a9e0f55e9a25e583e9313b0360494810b65"
                   },
                   {
+                      "path":  "config/coolrain.json",
+                      "sha256":  "2d4fb0ac46c663910665cc022121de11c7ceab123ed5cfa885cea8b828e43958"
+                  },
+                  {
                       "path":  "config/creativecore-client.json",
                       "sha256":  "acb6c8c1394d4d6f2d0c98d5c314c5ef8ad34b8a76f0a420fc596733bcbc51ac"
                   },
@@ -695,6 +735,10 @@
                   {
                       "path":  "config/cursors_extended.json",
                       "sha256":  "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
+                  },
+                  {
+                      "path":  "config/elytratrails.json",
+                      "sha256":  "d239065474d703a3d5219bdb3c8dd74aa6d6967f423567cd50c620315e0cd372"
                   },
                   {
                       "path":  "config/emf_compat.json",
@@ -715,6 +759,10 @@
                   {
                       "path":  "config/entityculling.json",
                       "sha256":  "e92e6772c4b6ec28b9c179c80831d56d11fc65064591424a120133d397b2ab49"
+                  },
+                  {
+                      "path":  "config/explosiveenhancement.json",
+                      "sha256":  "839482f45a8c5563f356655dadc8cbba4386decfc68f02faf901626aa0af054c"
                   },
                   {
                       "path":  "config/fallingleaves2.json",
@@ -835,6 +883,10 @@
                   {
                       "path":  "config/notenoughanimations.json",
                       "sha256":  "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
+                  },
+                  {
+                      "path":  "config/particular-common.toml",
+                      "sha256":  "6014ddeae103eb48df4ee8919741add2add815f2002e1080df501dc7db83fe4c"
                   },
                   {
                       "path":  "config/presencefootsteps/updater.json",
@@ -965,12 +1017,20 @@
                       "sha256":  "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
                   },
                   {
+                      "path":  "config/visuality.json",
+                      "sha256":  "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
+                  },
+                  {
                       "path":  "config/voxy-config.json",
                       "sha256":  "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
                   },
                   {
                       "path":  "config/voxyworldgenv2.json",
                       "sha256":  "031ccf159125335412dac47483d728ce210466e621395b498ca1915548cb3884"
+                  },
+                  {
+                      "path":  "config/wakes.json",
+                      "sha256":  "c7aadae0d05facba05131e8d7260c864a76cbf2ed34e7504b223641e1d8770a9"
                   },
                   {
                       "path":  "config/xaero/minimap/profiles/default.cfg",
@@ -1053,6 +1113,10 @@
                       "sha256":  "4592eff38a2e7af3487688e888a637a8cbd4767b46662df94d993a889102effe"
                   },
                   {
+                      "path":  "mods/ParticleEffects-1.6.0+26.2+fabric.jar",
+                      "sha256":  "239a3f74916e2718bc89f499063635c079202e2b93b0969ddc4389b91dc3773a"
+                  },
+                  {
                       "path":  "mods/PlayerAnimationLibMerged-1.2.6+mc.26.2.jar",
                       "sha256":  "97af3288dd39643bf3607bf9ff5c3293022793559236586a6783fe71dd66e6bd"
                   },
@@ -1109,6 +1173,10 @@
                       "sha256":  "3842047943e4037f3d7fbe74446439163fef2ff4ecd6f1d56d4c6c4718a56b94"
                   },
                   {
+                      "path":  "mods/baguettelib-26.2-Fabric-2.0.7.jar",
+                      "sha256":  "a5c70af8f95c2cf62506ec4a6f0a7b643498bc0f2857db27b9000a64bbe938a6"
+                  },
+                  {
                       "path":  "mods/better-compatability-checker-fabric-26.2.0.1.jar",
                       "sha256":  "9f051ab8e70d4a16f3e01e53600043ff6f297a20765296d4aa0bf7a73f48647c"
                   },
@@ -1157,8 +1225,16 @@
                       "sha256":  "081c507d44eb1b7501f3b0d079657b1ca9887f94d4f890b102a740ea02509bf9"
                   },
                   {
+                      "path":  "mods/coolrain-1.4.0-26.2.jar",
+                      "sha256":  "b7ec31587d29e194f8aa4eea39b253a8e2a3ef86965c20f605604d5b9755f50b"
+                  },
+                  {
                       "path":  "mods/cursors_extended-fabric-4.1.7+26.2.jar",
                       "sha256":  "f9d6b558a3ad1277898089f0bffc36f5dfee8dff2f6588284600169e6c85d2c1"
+                  },
+                  {
+                      "path":  "mods/elytratrails-1.6.3-26.2.jar",
+                      "sha256":  "f6f0f3005bdd36df062b26c682e661c5d71fd7f0768b23935e073a82a44e3f71"
                   },
                   {
                       "path":  "mods/emf_compat_core_26.2_2.0.0.jar",
@@ -1179,6 +1255,10 @@
                   {
                       "path":  "mods/entityculling-fabric-1.11.2-mc26.2.jar",
                       "sha256":  "ed48546f952edfbb4673aa44968650cc5966a573d2e64e727f58e11cbc36cf31"
+                  },
+                  {
+                      "path":  "mods/explosive-enhancement-1.4.2-26.2.jar",
+                      "sha256":  "8d1031d1599384f114a2ed0e40a7d64ee1913df2933a00f4cc1c18a6ce7cdd1f"
                   },
                   {
                       "path":  "mods/fabric-api-0.161.0+26.2.jar",
@@ -1301,8 +1381,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.5+26.2-fabric.jar",
-                      "sha256":  "c88c8979b518269c1b1efe7ea91c94053719f06aac9e055dfc56933b350a8c48"
+                      "path":  "mods/nbidal18-integrity-1.0.6+26.2-fabric.jar",
+                      "sha256":  "b0725a4520810e55026dce06b42d493b71c2db184c66540a9702f1955524aa8b"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1377,6 +1457,10 @@
                       "sha256":  "c774b8049b5477e6100514db64bd6de70201d1e3d05e7eb5fd9cfce723a1801d"
                   },
                   {
+                      "path":  "mods/particular-26.2-Fabric-1.5.7.jar",
+                      "sha256":  "68d9462e588c0e36e734742a7bb9963138f7d2b027e6975130c33e1242d21498"
+                  },
+                  {
                       "path":  "mods/pneumonocore-1.3.1+26.2+A.jar",
                       "sha256":  "8740f3698563f35ade639a3e98eda22537e259f339abb629803b358d30e55ccd"
                   },
@@ -1445,12 +1529,20 @@
                       "sha256":  "f4c02a35387e839e3d36ba140714aa6e8da81083433ebfd2adcebc3f8ec2d459"
                   },
                   {
+                      "path":  "mods/visuality-0.7.15+26.3.jar",
+                      "sha256":  "9810f96dc433719eb0c6e02229930308e708b5698c12c596e44c7d563b789f63"
+                  },
+                  {
                       "path":  "mods/voicechat-fabric-2.6.22+26.2.jar",
                       "sha256":  "1b6a8c6c41d6d7edaa10543ac623a70b0c60f22f34567969b6999c345aa277b2"
                   },
                   {
                       "path":  "mods/voxy-0.2.18-beta.jar",
                       "sha256":  "dd9e10d2110879f07c1ce9bdf1945f3470b32e83977f094005ee8c642e8128d5"
+                  },
+                  {
+                      "path":  "mods/wakes-0.7.1+26.2.jar",
+                      "sha256":  "116acf23f467aa847d4d78b7d2ba677e2680e3df8b72fd6867eb3463586b1063"
                   },
                   {
                       "path":  "mods/xaerominimap-fabric-26.2-26.5.1.jar",
@@ -1470,7 +1562,7 @@
                   },
                   {
                       "path":  "nbidal18-packwiz-updater.next.jar",
-                      "sha256":  "0c50fe0d2f1846117d8d9672a3c5d0f1149698c5ff2dd53687031987680fe218"
+                      "sha256":  "648d65ffbc198398f675ed1268d2400b7e7b141ebf379aa726a18ae248807450"
                   },
                   {
                       "path":  "packwiz-installer-bootstrap.next.jar",
@@ -1509,10 +1601,6 @@
                       "sha256":  "cf9f17a2977e171b33cb0b598bc4357dd0383e09c10d5f768ff17c12d0a028ee"
                   },
                   {
-                      "path":  "resourcepacks/No Potion Particles.zip",
-                      "sha256":  "6ba1185db5ada65b3a9c09ac6ba803ff442d88786a1c464ec38e93c573ee5ba5"
-                  },
-                  {
                       "path":  "resourcepacks/Os\u0027 Colorful Grasses (Mix).zip",
                       "sha256":  "13fa9c58de7beb6ce8a12e3231e9d0b3f54b7032e1b3fd4e68f0c198b8cd3b4b"
                   },
@@ -1541,12 +1629,12 @@
                       "sha256":  "46f2630fe76ec7dbc95c8ca54b09ad1a88812bf6e38fcbf5034b8c67320ffe23"
                   },
                   {
-                      "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip",
-                      "sha256":  "c6d740d8aafa4872628d9883f218f27c81d9427e299626c83a233e364543f80c"
+                      "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip",
+                      "sha256":  "91543c11005f6a71fb257e4ef0f711a6b9b1b66395d331ebfad824b13a0512d6"
                   },
                   {
-                      "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt",
-                      "sha256":  "00c106473dc7b634fe522ad43d8e380276f9807c10c8714724d76589ccd15df8"
+                      "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
+                      "sha256":  "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
                   }
               ]
 }

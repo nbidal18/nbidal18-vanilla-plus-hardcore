@@ -175,6 +175,9 @@ if ($plan.PSObject.Properties.Name -contains 'levelData' -and $null -ne $plan.le
     foreach ($prop in $plan.levelData.PSObject.Properties) { $levelDataEdits += ($prop.Name + '=' + $prop.Value) }
 }
 foreach ($e in $levelDataEdits) { Write-Host ("  leveldat {0}  (edited on the post-shutdown copy, after a backup)" -f $e) }
+$moveFolders = @()
+if ($plan.PSObject.Properties.Name -contains 'moveFolders' -and $null -ne $plan.moveFolders) { $moveFolders = @($plan.moveFolders) }
+foreach ($mv in $moveFolders) { Write-Host ("  move     {0}  ->  {1}  (server root, once the server is down, before anything else is written)" -f $mv.from, $mv.to) }
 Write-Host ("  motd     {0}" -f $plan.motd)
 Write-Host ("  backup   {0}" -f $plan.backup)
 
@@ -375,6 +378,21 @@ Write-Host ''
 if (Test-ServerUp) { throw 'The server came back up while this was checking. Nothing was sent. Stop it and re-run.' }
 Write-Host 'server    still down immediately before the first remote write'
 
+# Folder renames first, in the planned order, each proved by a fresh listing of the server root. They go
+# before server.properties so a planned `level-name=` can only point at a folder that already exists;
+# a failure here stops the deploy with nothing else sent, and a rename is reversible by hand from the panel.
+foreach ($mv in $moveFolders) {
+    $root = @(& $syncScript -List '/' -Session $Session -MirrorRoot $DriveRoot 2>&1 |
+        Where-Object { $_ -match '^d' } | ForEach-Object { ([string] $_ -split '\s+', 10)[-1] })
+    if ($root -notcontains $mv.from) { throw "Cannot move '$($mv.from)': no such folder at the server root now. Nothing else was sent." }
+    if ($root -contains $mv.to) { throw "Cannot move '$($mv.from)' to '$($mv.to)': the destination exists now. Nothing else was sent." }
+    & $syncScript -Move ('/' + $mv.from) -MoveTo ('/' + $mv.to) -Session $Session -MirrorRoot $DriveRoot | Out-Null
+    $root = @(& $syncScript -List '/' -Session $Session -MirrorRoot $DriveRoot 2>&1 |
+        Where-Object { $_ -match '^d' } | ForEach-Object { ([string] $_ -split '\s+', 10)[-1] })
+    if ($root -contains $mv.from -or $root -notcontains $mv.to) { throw "The move of '$($mv.from)' to '$($mv.to)' did not take on the server. Nothing else was sent." }
+    Write-Host ("moved     {0}  ->  {1}  (verified by listing)" -f $mv.from, $mv.to)
+}
+
 & $syncScript -Push -Files $sendFiles -Remove (@($plan.remove) + $afterBackup) -Session $Session -MirrorRoot $DriveRoot | Out-Null
 
 # ---------------------------------------------------------------- prove it landed
@@ -420,4 +438,4 @@ $global:LASTEXITCODE = 0
 # against a mirror that no longer matches it.
 Remove-Item -LiteralPath $planPath -Force
 Write-Host ''
-Write-Host ("OK        {0} file(s) on the server and verified by hash, {1} jar(s) removed, {2} file(s) deleted after backup, {3} level.dat edit(s). Start it." -f $sendFiles.Count, @($plan.remove).Count, $afterBackup.Count, $levelDataEdits.Count)
+Write-Host ("OK        {0} file(s) on the server and verified by hash, {1} jar(s) removed, {2} file(s) deleted after backup, {3} level.dat edit(s), {4} folder(s) renamed. Start it." -f $sendFiles.Count, @($plan.remove).Count, $afterBackup.Count, $levelDataEdits.Count, $moveFolders.Count)

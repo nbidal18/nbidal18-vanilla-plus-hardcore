@@ -5,6 +5,29 @@ build that was not published.
 
 ---
 
+## v1.0.6 — 2026-09-26
+
+**Ambience, potion particles with a face, and Euphoria Patches on the shader.** Manifest digest
+`db90b8a8e0bbf48f…`, replacing `bbf03e2451638709…` (v1.0.5). 231 managed files become 244.
+
+* **Seven ambience mods from Incy's pack:** Particular (falling leaves, chest puffs, pollen, cave drips),
+  Visuality (sparkles, feathers, hit particles, soul wisps), Wakes (boats and swimmers), Explosive
+  Enhancement (real explosions), Elytra Contrails (trails while flying - the server has it too, so you see
+  each other's), Cool Rain (rain sounds by what the rain is hitting), and BaguetteLib as Particular's
+  library. Some effects overlap Subtle Effects - feathers, slime hits, leaves - and both are on for now;
+  say which doubles you want gone.
+* **Particle Effects** gives every potion effect its own particle icon, and **No Potion Particles is
+  removed** - the vanilla swirls were the problem, not the idea.
+* **Euphoria Patches 1.10.5 on Complementary Unbound r5.9.3**, one zip under a new name. Everything it
+  adds is opt-in in the shader settings, off by default. Glowing ores stay removed - now with Euphoria's
+  situational ores and ore light removed too - so nothing in the shader shows an ore you cannot see.
+  Your shader settings start fresh: Iris keys them to the file name.
+* **Server:** the world folder is back to `world` (the fresh one from this morning moved aside, not
+  deleted). Integrity helper 1.0.6; every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper; the shader and the mods download
+on that launch.
+
 ## v1.0.5 — 2026-09-26
 
 **The pack is `nbidal18 Vanilla++` now: normal survival, on the original world.** Manifest digest

@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "86027f408cae1b2d0c3c4a1f7945dca7328c56b9511169903842327f1c476a68"
+hash = "4415f8b3e19ec4438a181205696885b56d4117a1433d13ad2fe7ad72c0c3c60f"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -61,6 +61,10 @@ file = "config/continuity.json"
 hash = "28eaff624c99a24e49882e5f56496a9e0f55e9a25e583e9313b0360494810b65"
 
 [[files]]
+file = "config/coolrain.json"
+hash = "2d4fb0ac46c663910665cc022121de11c7ceab123ed5cfa885cea8b828e43958"
+
+[[files]]
 file = "config/creativecore-client.json"
 hash = "acb6c8c1394d4d6f2d0c98d5c314c5ef8ad34b8a76f0a420fc596733bcbc51ac"
 
@@ -71,6 +75,10 @@ hash = "5f08d0878d7f89c6b4c947a49dce368d7738255d44fecf9aad59ec6ae8a4fcef"
 [[files]]
 file = "config/cursors_extended.json"
 hash = "684d15fba80c0c698e6ff03204242e4cac3aa15ca295ca141e30b1a50d2ddd5d"
+
+[[files]]
+file = "config/elytratrails.json"
+hash = "d239065474d703a3d5219bdb3c8dd74aa6d6967f423567cd50c620315e0cd372"
 
 [[files]]
 file = "config/emf_compat.json"
@@ -91,6 +99,10 @@ hash = "bd66edf9d1a72cd717bbe9b17b41ffd16963b089493e5ddae3d3ad69153105ba"
 [[files]]
 file = "config/entityculling.json"
 hash = "e92e6772c4b6ec28b9c179c80831d56d11fc65064591424a120133d397b2ab49"
+
+[[files]]
+file = "config/explosiveenhancement.json"
+hash = "839482f45a8c5563f356655dadc8cbba4386decfc68f02faf901626aa0af054c"
 
 [[files]]
 file = "config/fallingleaves2.json"
@@ -211,6 +223,10 @@ hash = "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
 [[files]]
 file = "config/notenoughanimations.json"
 hash = "45121987f8bbbb948bd5096ffb02b1361c762b3e34836b3f9097a9a4ef7222d4"
+
+[[files]]
+file = "config/particular-common.toml"
+hash = "6014ddeae103eb48df4ee8919741add2add815f2002e1080df501dc7db83fe4c"
 
 [[files]]
 file = "config/presencefootsteps/updater.json"
@@ -341,12 +357,20 @@ file = "config/treechop-common.toml"
 hash = "a81ab635f31580649db59716be621b57624a1cd538329a14e451f3a4af2c87f1"
 
 [[files]]
+file = "config/visuality.json"
+hash = "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
+
+[[files]]
 file = "config/voxy-config.json"
 hash = "571f57a2bb0ee3b15025e202c0f99fd732678994a4440cb3126a303a482688b1"
 
 [[files]]
 file = "config/voxyworldgenv2.json"
 hash = "031ccf159125335412dac47483d728ce210466e621395b498ca1915548cb3884"
+
+[[files]]
+file = "config/wakes.json"
+hash = "c7aadae0d05facba05131e8d7260c864a76cbf2ed34e7504b223641e1d8770a9"
 
 [[files]]
 file = "config/xaero/minimap/profiles/default.cfg"
@@ -429,6 +453,10 @@ file = "mods/MouseTweaks-fabric-mc26.2-2.31.jar"
 hash = "4592eff38a2e7af3487688e888a637a8cbd4767b46662df94d993a889102effe"
 
 [[files]]
+file = "mods/ParticleEffects-1.6.0+26.2+fabric.jar"
+hash = "239a3f74916e2718bc89f499063635c079202e2b93b0969ddc4389b91dc3773a"
+
+[[files]]
 file = "mods/PlayerAnimationLibMerged-1.2.6+mc.26.2.jar"
 hash = "97af3288dd39643bf3607bf9ff5c3293022793559236586a6783fe71dd66e6bd"
 
@@ -485,6 +513,10 @@ file = "mods/autohud-9.2+26.2-fabric.jar"
 hash = "3842047943e4037f3d7fbe74446439163fef2ff4ecd6f1d56d4c6c4718a56b94"
 
 [[files]]
+file = "mods/baguettelib-26.2-Fabric-2.0.7.jar"
+hash = "a5c70af8f95c2cf62506ec4a6f0a7b643498bc0f2857db27b9000a64bbe938a6"
+
+[[files]]
 file = "mods/better-compatability-checker-fabric-26.2.0.1.jar"
 hash = "9f051ab8e70d4a16f3e01e53600043ff6f297a20765296d4aa0bf7a73f48647c"
 
@@ -533,8 +565,16 @@ file = "mods/controlify-3.5.2+mc26.2-universal.jar"
 hash = "081c507d44eb1b7501f3b0d079657b1ca9887f94d4f890b102a740ea02509bf9"
 
 [[files]]
+file = "mods/coolrain-1.4.0-26.2.jar"
+hash = "b7ec31587d29e194f8aa4eea39b253a8e2a3ef86965c20f605604d5b9755f50b"
+
+[[files]]
 file = "mods/cursors_extended-fabric-4.1.7+26.2.jar"
 hash = "f9d6b558a3ad1277898089f0bffc36f5dfee8dff2f6588284600169e6c85d2c1"
+
+[[files]]
+file = "mods/elytratrails-1.6.3-26.2.jar"
+hash = "f6f0f3005bdd36df062b26c682e661c5d71fd7f0768b23935e073a82a44e3f71"
 
 [[files]]
 file = "mods/emf_compat_core_26.2_2.0.0.jar"
@@ -555,6 +595,10 @@ hash = "351c0f40fa9cb760f51b8a0819c5ec5f5450a2787ced8e5200a7c695cb16500e"
 [[files]]
 file = "mods/entityculling-fabric-1.11.2-mc26.2.jar"
 hash = "ed48546f952edfbb4673aa44968650cc5966a573d2e64e727f58e11cbc36cf31"
+
+[[files]]
+file = "mods/explosive-enhancement-1.4.2-26.2.jar"
+hash = "8d1031d1599384f114a2ed0e40a7d64ee1913df2933a00f4cc1c18a6ce7cdd1f"
 
 [[files]]
 file = "mods/fabric-api-0.161.0+26.2.jar"
@@ -677,8 +721,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.5+26.2-fabric.jar"
-hash = "c88c8979b518269c1b1efe7ea91c94053719f06aac9e055dfc56933b350a8c48"
+file = "mods/nbidal18-integrity-1.0.6+26.2-fabric.jar"
+hash = "b0725a4520810e55026dce06b42d493b71c2db184c66540a9702f1955524aa8b"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -753,6 +797,10 @@ file = "mods/owo-lib-0.13.1+26.2.jar"
 hash = "c774b8049b5477e6100514db64bd6de70201d1e3d05e7eb5fd9cfce723a1801d"
 
 [[files]]
+file = "mods/particular-26.2-Fabric-1.5.7.jar"
+hash = "68d9462e588c0e36e734742a7bb9963138f7d2b027e6975130c33e1242d21498"
+
+[[files]]
 file = "mods/pneumonocore-1.3.1+26.2+A.jar"
 hash = "8740f3698563f35ade639a3e98eda22537e259f339abb629803b358d30e55ccd"
 
@@ -821,12 +869,20 @@ file = "mods/vinurl-2.6.0+mc26.2.jar"
 hash = "f4c02a35387e839e3d36ba140714aa6e8da81083433ebfd2adcebc3f8ec2d459"
 
 [[files]]
+file = "mods/visuality-0.7.15+26.3.jar"
+hash = "9810f96dc433719eb0c6e02229930308e708b5698c12c596e44c7d563b789f63"
+
+[[files]]
 file = "mods/voicechat-fabric-2.6.22+26.2.jar"
 hash = "1b6a8c6c41d6d7edaa10543ac623a70b0c60f22f34567969b6999c345aa277b2"
 
 [[files]]
 file = "mods/voxy-0.2.18-beta.jar"
 hash = "dd9e10d2110879f07c1ce9bdf1945f3470b32e83977f094005ee8c642e8128d5"
+
+[[files]]
+file = "mods/wakes-0.7.1+26.2.jar"
+hash = "116acf23f467aa847d4d78b7d2ba677e2680e3df8b72fd6867eb3463586b1063"
 
 [[files]]
 file = "mods/xaerominimap-fabric-26.2-26.5.1.jar"
@@ -846,7 +902,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "0c50fe0d2f1846117d8d9672a3c5d0f1149698c5ff2dd53687031987680fe218"
+hash = "648d65ffbc198398f675ed1268d2400b7e7b141ebf379aa726a18ae248807450"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"
@@ -885,10 +941,6 @@ file = "resourcepacks/FreshAnimations_v1.10.5.zip"
 hash = "cf9f17a2977e171b33cb0b598bc4357dd0383e09c10d5f768ff17c12d0a028ee"
 
 [[files]]
-file = "resourcepacks/No Potion Particles.zip"
-hash = "6ba1185db5ada65b3a9c09ac6ba803ff442d88786a1c464ec38e93c573ee5ba5"
-
-[[files]]
 file = "resourcepacks/Os' Colorful Grasses (Mix).zip"
 hash = "13fa9c58de7beb6ce8a12e3231e9d0b3f54b7032e1b3fd4e68f0c198b8cd3b4b"
 
@@ -917,9 +969,9 @@ file = "resourcepacks/§5§lNo Enchant Glint §f§l26.2.zip"
 hash = "46f2630fe76ec7dbc95c8ca54b09ad1a88812bf6e38fcbf5034b8c67320ffe23"
 
 [[files]]
-file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip"
-hash = "c6d740d8aafa4872628d9883f218f27c81d9427e299626c83a233e364543f80c"
+file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip"
+hash = "91543c11005f6a71fb257e4ef0f711a6b9b1b66395d331ebfad824b13a0512d6"
 
 [[files]]
-file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt"
-hash = "00c106473dc7b634fe522ad43d8e380276f9807c10c8714724d76589ccd15df8"
+file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt"
+hash = "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"

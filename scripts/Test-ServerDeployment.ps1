@@ -89,6 +89,15 @@ param(
     # does the NBT work and refuses a key it cannot find or a type it cannot coerce.
     #   -SetLevelData 'hardcore=false'
     [string[]] $SetLevelData = @(),
+    # Folders at the server root to rename after the shutdown, in order, as from=to. Written 2026-09-26
+    # for the world switch of v1.0.6 (owner: "remove world and rename world2 (the actual world) to
+    # world"): a rename is instant and reversible where a delete is neither, so the folder being
+    # retired is moved aside, never deleted. Each source must exist and each destination must not,
+    # checked against a listing of the live root now; Deploy-LiveServer applies them with
+    # Sync-ServerMirror -Move once the server is confirmed down, before server.properties travels, so a
+    # `level-name=` set in the same plan can only ever point at a folder that is already in place.
+    #   -MoveServerFolder 'world=world.fresh-2026-09-26-retired','world2=world'
+    [string[]] $MoveServerFolder = @(),
     # The local mirror to stage into. Defaults to the one Sync-ServerMirror keeps, which is the
     # server's own state as of the last pull - so the plan is computed against what is really
     # installed, not against a guess. Point it elsewhere to rehearse: a plan staged anywhere but the
@@ -422,6 +431,28 @@ foreach ($pair in $SetProperty) {
     $propertyEdits[$key] = $value
 }
 
+# Folder renames: validated against the live root listing, applied at deploy time.
+$moveFolders = @()
+if ($MoveServerFolder.Count) {
+    $present = @()
+    if ($isMirror) {
+        $present = @(& $syncScript -List '/' -Session $Session -MirrorRoot $DriveRoot 2>&1 |
+            Where-Object { $_ -match '^d' } | ForEach-Object { ([string] $_ -split '\s+', 10)[-1] })
+    }
+    $will = New-Object System.Collections.Generic.List[string]
+    foreach ($name in $present) { $will.Add([string] $name) }
+    foreach ($pair in $MoveServerFolder) {
+        if ($pair -notmatch '^([A-Za-z0-9._-]+)=([A-Za-z0-9._-]+)$') { throw "-MoveServerFolder takes from=to with plain folder names, not '$pair'" }
+        $from, $to = $Matches[1], $Matches[2]
+        if ($isMirror) {
+            if (-not $will.Contains($from)) { throw "-MoveServerFolder: '$from' is not a folder at the server root (or was already moved by an earlier pair)" }
+            if ($will.Contains($to)) { throw "-MoveServerFolder: '$to' already exists at the server root; refusing to move over it" }
+            $will.Remove($from) | Out-Null; $will.Add($to)
+        }
+        $moveFolders += [pscustomobject]@{ from = $from; to = $to }
+    }
+}
+
 Write-Host ''
 Write-Host 'would change:'
 Write-Host ("  policy   {0}" -f $policyLive)
@@ -443,6 +474,7 @@ foreach ($old in $superseded) { Write-Host ("  retire   {0}" -f $old.Name) }
 foreach ($jar in $removedMods) { Write-Host ("  remove   {0}  (backed up now, deleted at deploy)" -f $jar.Name) }
 foreach ($rel in $RemoveServerFiles) { Write-Host ("  delete   {0}  (after a fresh backup at deploy time)" -f $rel) }
 foreach ($key in $levelDataEdits.Keys) { Write-Host ("  leveldat {0}={1}  (applied to the post-shutdown copy at deploy time)" -f $key, $levelDataEdits[$key]) }
+foreach ($mv in $moveFolders) { Write-Host ("  move     {0}  ->  {1}  (server root, after the shutdown, before anything else is written)" -f $mv.from, $mv.to) }
 Write-Host ("           {0} server-only jars untouched, {1} client-only jars not considered" -f $serverOnly, $clientOnly)
 
 # ---------------------------------------------------------------- back up, and prove the backup
@@ -577,6 +609,8 @@ $plan = [pscustomobject]@{
     removeAfterBackup = @($RemoveServerFiles)
     # Applied by Deploy-LiveServer to the level.dat it fetches after the shutdown; see -SetLevelData.
     levelData    = $levelDataEdits
+    # Folder renames at the server root, applied by Deploy-LiveServer after the shutdown; see -MoveServerFolder.
+    moveFolders  = @($moveFolders)
     sharedJars   = $shared.Count
     staleShared  = $staleShared.Count
     addedJars    = $added.Count

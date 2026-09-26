@@ -240,6 +240,13 @@ public final class Nbidal18PackwizSync {
             // The master row is stale by design, as voxy-config.json's `enabled` is.
             new PlayerFileSeed("config/iris.properties", '=', "shaders-complementary-only-v102", List.of(
                     SeedRow.of("shaderPack", "nbidal18-ComplementaryUnbound_r5.9.3.zip"))),
+            // v1.0.6: the shader is Complementary Unbound WITH Euphoria Patches, one zip under a new name
+            // (owner, 2026-09-26: "lets get euphoria patches too"). packwiz swaps the zip; this points Iris
+            // at it, once - after the v102 seed above, so a fresh install lands on this one. The master
+            // iris.properties stays stale by design, as noted above. A player who picks something else
+            // afterwards keeps that.
+            new PlayerFileSeed("config/iris.properties", '=', "shaders-euphoria-v106", List.of(
+                    SeedRow.of("shaderPack", "nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip"))),
             // Hardcore v1.0.2: the pack's defaults, seeded onto the instances that predate them. The
             // master options.txt became the owner's own Vanilla+ file on 2026-09-24 (v1.0.0's third
             // build), but options.txt ships only in the setup ZIP, so an instance imported before that

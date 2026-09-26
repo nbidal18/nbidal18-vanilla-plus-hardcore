@@ -508,6 +508,41 @@
       "match": "config/notenoughanimations.json",
       "class": "support",
       "reason": "Player animation."
+    },
+    {
+      "match": "config/coolrain.json",
+      "class": "support",
+      "reason": "Cool Rain: rain sound choice by surroundings, volume - a player's mix (v1.0.6)"
+    },
+    {
+      "match": "config/elytratrails.json",
+      "class": "support",
+      "reason": "Elytra Contrails: trail style and presets - cosmetic, the player's (v1.0.6)"
+    },
+    {
+      "match": "config/explosiveenhancement.json",
+      "class": "support",
+      "reason": "Explosive Enhancement: explosion animation toggles - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/particular-common.toml",
+      "class": "support",
+      "reason": "Particular: which ambience particles show - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/visuality.json",
+      "class": "support",
+      "reason": "Visuality: which particles show - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/wakes.json",
+      "class": "support",
+      "reason": "Wakes: wake rendering options - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/particle_effects.json5",
+      "class": "support",
+      "reason": "Particle Effects: per-effect particle toggles - cosmetic (v1.0.6)"
     }
   ],
   "rewrittenAtRuntime": [
@@ -618,7 +653,14 @@
     "config/voxyworldgenv2.json",
     "config/whitenoise-client.toml",
     "config/yacl.json5",
-    "config/zfastnoise.mixin.toml"
+    "config/zfastnoise.mixin.toml",
+    "config/coolrain.json",
+    "config/elytratrails.json",
+    "config/explosiveenhancement.json",
+    "config/particular-common.toml",
+    "config/visuality.json",
+    "config/wakes.json",
+    "config/particle_effects.json5"
   ],
   "$rewrittenDoc": [
     "Measured on a played instance: every file here was rewritten by its own mod during",
@@ -710,9 +752,9 @@
   ],
   "outsideConfig": [
     {
-      "match": "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3.zip.txt",
+      "match": "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
       "class": "player",
-      "reason": "Complementary Unbound's settings (v1.0.97). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."
+      "reason": "Complementary Unbound + Euphoria Patches settings (v1.0.97; Euphoria since v1.0.6). Published holding only a comment - the pack runs the shader on its defaults - so that it is an official file: shaderpacks is exact-match, and a settings file Iris wrote on its own would be moved out as an extra on the next launch. Glowing ores need no rule here, they are removed from the shader itself; the Mob Hurt Flash toggle is the player's."
     }
   ]
 }

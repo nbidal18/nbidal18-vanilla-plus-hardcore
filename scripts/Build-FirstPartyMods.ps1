@@ -162,6 +162,17 @@ $mods = @(
     # cache whenever Iris's pipeline or the block atlas changes, and for a few seconds after, so
     # every icon is re-baked once the pipeline has settled. Client only.
     @{ Name = 'nbidal18-iris'; Generator = $null; Builder = 'build_iris.py' },
+    # A fork of a community Fabric backport of CameraOverhaul, rebuilt from the upstream jar in dl\:
+    # the one-byte config-screen fix, and a mixin giving the culling frustum the camera's roll so a
+    # tilted screen stops hiding mobs in its corners (v1.0.9). Client only.
+    @{ Name = 'nbidal18-cameraoverhaul'; Generator = $null; Builder = 'build_cameraoverhaul.py' },
+    # Donkeys, mules and llamas get a chest slot beside the saddle; taking the chest out drops what
+    # was in it (v1.0.9). Both sides: the slot is part of the menu, which must match on both ends.
+    @{ Name = 'nbidal18-chestedhorse'; Generator = $null; Builder = 'build_chestedhorse.py'; Side = 'both' },
+    # Phantoms after three days without rest measured on Better Days' clock, not three vanilla days
+    # of real time, which Better Days' slower day used up before the next dusk (v1.0.9). Pinned to
+    # Better Days 4.1.1.7. Server side, like Better Days on this line.
+    @{ Name = 'nbidal18-betterdays'; Generator = $null; Builder = 'build_betterdays.py'; Side = 'server' },
     @{ Name = 'nbidal18-jei'; Generator = $null; Builder = 'build_jei.py' },
     # Voxy's internal errors go to the log instead of chat (v1.0.102). Its Logger.error writes the
     # log line and then posts the same text to chat through showInHUD; the mixin drops that post inside

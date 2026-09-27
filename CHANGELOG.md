@@ -5,6 +5,28 @@ build that was not published.
 
 ---
 
+## v1.0.9 — 2026-09-27
+
+**Jukebox, mobs at the screen edges, a chest slot, refilling, phantoms.** Manifest digest
+`7a8aa06206e9897b…`, replacing `046881b93a7d5fbf…` (v1.0.8). 251 managed files become 253.
+
+* **A jukebox plays again when you come back.** Walking away until its chunk unloaded, or
+  disconnecting, left it sending particles with no music until the disc was taken out and put back.
+  Now you hear it again as soon as you are back in range (from the start of the disc).
+* **Mobs no longer disappear at the corners of the screen.** Camera Overhaul tilts the picture when
+  you strafe or turn, and the game kept deciding what to draw from the untilted view - worst on wide
+  screens. The check now tilts with the picture.
+* **Donkeys, mules and llamas have a chest slot** beside the saddle (above the carpet on a llama).
+  Take the chest out and whatever was in it drops at the animal's feet; put one in, or shift-click one
+  in, and it carries it. Works while riding.
+* **Refilling: Stack Refill.** Place or use the last item in your hand and the same item comes up from
+  your inventory's main 27 slots. Not in creative.
+* **Phantoms need three nights without sleep again.** Better Days' long days had used up vanilla's
+  limit by the next nightfall even after sleeping; the limit now counts Better Days days.
+* Integrity helper 1.0.9. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.8 — 2026-09-26
 
 **Litematica.** Manifest digest `046881b93a7d5fbf…`, replacing `3492505938cd32bf…` (v1.0.7). 248 managed

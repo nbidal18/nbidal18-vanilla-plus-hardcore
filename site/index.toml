@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "a11cbb4b2d8bf3fc5ed1c5521cbeb7fbce954f828c383730c1b34ff24944cb84"
+hash = "b0c1396f0887167c22efd30170d16fba84d26b28db3dbbc5ef2e2452fb07a291"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -717,8 +717,12 @@ file = "mods/nbidal18-betterthirdperson-1.9.0+26.2-fabric.jar"
 hash = "83e0c7fdf7ea8c8ea32018504efa57d5107880fbe3085c94201f8bea83faaba2"
 
 [[files]]
-file = "mods/nbidal18-cameraoverhaul-2.1.1-fabric+mc.26.1-plus.jar"
-hash = "101a59b5a662c920a8ea05c2396e82f546be87f2cc7d698822eccd4821ad8a85"
+file = "mods/nbidal18-cameraoverhaul-2.1.1-fabric+mc.26.1-plus-nbidal18.2.jar"
+hash = "084a78ab4d8de0d045606097f1366ba972e42a1b05904814dcbda87a028cbccf"
+
+[[files]]
+file = "mods/nbidal18-chestedhorse-1.0.0+26.2-fabric.jar"
+hash = "d608094263ece2edef4c2a300a421b430919f24a4ce15d6cfc5b8db79b5af751"
 
 [[files]]
 file = "mods/nbidal18-emf-1.0.0+26.2-fabric.jar"
@@ -737,8 +741,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.8+26.2-fabric.jar"
-hash = "64a6d950771fc56fa69691b391378a9688238cdd95de03b80063db3a567e34a6"
+file = "mods/nbidal18-integrity-1.0.9+26.2-fabric.jar"
+hash = "0df53aab7e1cade814a449d2b51297c9583aa22c2f36c0fbb098438b32757bd2"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -753,8 +757,8 @@ file = "mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar"
 hash = "fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837"
 
 [[files]]
-file = "mods/nbidal18-jukebox-2.0.4+26.2-fabric.jar"
-hash = "74f800f257d43ed7905b8ec48f8bb575010ef9254f4a7b87c4f47453679f1967"
+file = "mods/nbidal18-jukebox-2.0.5+26.2-fabric.jar"
+hash = "5be173c4b20c2f2b3fdac83e38f4f1016173fe8d65467eaae948a03a1b14220b"
 
 [[files]]
 file = "mods/nbidal18-lambdynlights-1.0.0+26.2-fabric.jar"
@@ -867,6 +871,10 @@ hash = "7abb6f5facf44e74ea1a12e8ac0c669ef2ee44b32f2c1a22a6a237fc5d206f3d"
 [[files]]
 file = "mods/spyglass-zoom-2.4.0.jar"
 hash = "46ca2b3c6a5fc7a8b78430df1d7762c697c5f8a9acd124ec55ea08403bee81d0"
+
+[[files]]
+file = "mods/stackrefill-26.2.0-5.0.jar"
+hash = "b59a7a2c9b6d0fe833c7595703dea1bfed9179629eada50a5e19dd293ee89cac"
 
 [[files]]
 file = "mods/status-effect-bars-1.0.12.jar"

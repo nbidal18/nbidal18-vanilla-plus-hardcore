@@ -5,6 +5,18 @@ build that was not published.
 
 ---
 
+## v1.0.12 — 2026-09-27
+
+**The jukebox's top edge no longer shows through the world.** Manifest digest `39d793c13769815d…`,
+replacing `28ba9e34f7957ccc…` (v1.0.11). 253 managed files, as before.
+
+* The Amendments jukebox is a pixel shorter than a full block, and the blocks next to it were leaving
+  that pixel open, so you could see through the world along its top edge. Fixed, the way Amendments does
+  it. Jukeboxes also sound like wood when placed or broken, as they did with Amendments.
+* Integrity helper 1.0.12. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.11 — 2026-09-27
 
 **The jukebox from Amendments.** Manifest digest `28ba9e34f7957ccc…`, replacing `36d18bed8d7ebdcc…`

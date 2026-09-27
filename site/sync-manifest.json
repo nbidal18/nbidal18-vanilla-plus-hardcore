@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.12",
+    "packVersion":  "1.0.13",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -302,7 +302,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "0bb661c7a35fcc35acc4e1c27048742e745e2acadb6b6b4fe2cadbb3e26e740c"
+                                    "sha256":  "c66d817e6c3a0ae074db8ca9f72d2f577c60c6ec443733b5e6f4bfce0d827627"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -696,7 +696,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "0bb661c7a35fcc35acc4e1c27048742e745e2acadb6b6b4fe2cadbb3e26e740c"
+                      "sha256":  "c66d817e6c3a0ae074db8ca9f72d2f577c60c6ec443733b5e6f4bfce0d827627"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1415,8 +1415,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.12+26.2-fabric.jar",
-                      "sha256":  "50c176f19b2fa8bffe8070244e4971deddb6b1225b3eb827445a7b16f77b4485"
+                      "path":  "mods/nbidal18-integrity-1.0.13+26.2-fabric.jar",
+                      "sha256":  "b7685b26936dcf46bff2c09f55bcad41bf27626905349b78c4e1ba838a015af9"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",

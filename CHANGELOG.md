@@ -5,6 +5,17 @@ build that was not published.
 
 ---
 
+## v1.0.13 — 2026-09-27
+
+**Invisible item frames.** Manifest digest `1facb4cba9fadd2b…`, replacing `39d793c13769815d…` (v1.0.12).
+253 managed files, as before.
+
+* **Sneak and right-click an item frame to hide it**; take the item out and the frame shows again.
+  Invisible Frames 2.0.1, on the server only - nothing to install, and it does not apply in singleplayer.
+* Integrity helper 1.0.13.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.12 — 2026-09-27
 
 **The jukebox's top edge no longer shows through the world.** Manifest digest `39d793c13769815d…`,

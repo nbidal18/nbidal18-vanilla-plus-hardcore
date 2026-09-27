@@ -5,6 +5,23 @@ build that was not published.
 
 ---
 
+## v1.0.10 — 2026-09-27
+
+**A looping custom disc keeps looping; quitting singleplayer no longer crashes.** Manifest digest
+`36d18bed8d7ebdcc…`, replacing `7a8aa06206e9897b…` (v1.0.9). 253 managed files, as before.
+
+* **A looping jukebox with a VinURL (custom) disc no longer stops for good** when its song ends while
+  nobody is close by. VinURL stops its own disc when the song's time is up, which the loop never saw,
+  so it only restarted if a player nearby reported the end. Now a looping jukebox that still has its
+  disc but is not playing starts again by itself - including one already stuck showing *Finished*.
+* **Quitting (or dying in) a singleplayer world no longer crashes the game** now and then. Our
+  far-terrain mod reached a part of Voxy World Gen that only a dedicated server had prepared.
+* Turning a jukebox's loop on or off is now written to the logs on both ends, to chase a report of
+  the change only taking hold once the disc went back in.
+* Integrity helper 1.0.10. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.9 — 2026-09-27
 
 **Jukebox, mobs at the screen edges, a chest slot, refilling, phantoms.** Manifest digest

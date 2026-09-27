@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "b0c1396f0887167c22efd30170d16fba84d26b28db3dbbc5ef2e2452fb07a291"
+hash = "35c864847d47a8baab9865e80755bda892b18e3a5a88e65e81c8e29d8ed8d4db"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -741,8 +741,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.9+26.2-fabric.jar"
-hash = "0df53aab7e1cade814a449d2b51297c9583aa22c2f36c0fbb098438b32757bd2"
+file = "mods/nbidal18-integrity-1.0.10+26.2-fabric.jar"
+hash = "214c852cc64b70d395af09859a701145bbbf602c23790155228639a15d0976db"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -757,8 +757,8 @@ file = "mods/nbidal18-ixeris-1.0.0+26.2-fabric.jar"
 hash = "fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837"
 
 [[files]]
-file = "mods/nbidal18-jukebox-2.0.5+26.2-fabric.jar"
-hash = "5be173c4b20c2f2b3fdac83e38f4f1016173fe8d65467eaae948a03a1b14220b"
+file = "mods/nbidal18-jukebox-2.0.6+26.2-fabric.jar"
+hash = "5416baa32f93757d0a25312f02664eee4485229be99e48f63071e3fcbbad464b"
 
 [[files]]
 file = "mods/nbidal18-lambdynlights-1.0.0+26.2-fabric.jar"
@@ -789,8 +789,8 @@ file = "mods/nbidal18-voxy-1.0.0+26.2-fabric.jar"
 hash = "887a3409d399d4284855434e5086b0f536114e82471ba8a4f414c46e194ccd8e"
 
 [[files]]
-file = "mods/nbidal18-voxyworldgen-3.9.0+26.2-fabric.jar"
-hash = "141ea0759e4ef5d23b967c3f9cdb8fe573e05d34cc82ee40b7d8c5473dc149d6"
+file = "mods/nbidal18-voxyworldgen-3.9.1+26.2-fabric.jar"
+hash = "fe5baf403d0a2e20afdb56181186d513f9330d95fc16d4136395ddf4196876e9"
 
 [[files]]
 file = "mods/nbidal18-xaerolib-1.0.0+26.2-fabric.jar"

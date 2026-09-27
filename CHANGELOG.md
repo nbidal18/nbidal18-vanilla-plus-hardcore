@@ -5,6 +5,19 @@ build that was not published.
 
 ---
 
+## v1.0.11 — 2026-09-27
+
+**The jukebox from Amendments.** Manifest digest `28ba9e34f7957ccc…`, replacing `36d18bed8d7ebdcc…`
+(v1.0.10). 253 managed files, as before.
+
+* **Jukeboxes look like Amendments' again:** its model, and the disc lying in the top as a round record,
+  turning slowly while it plays and winding back when it stops. Every vanilla disc and custom (VinURL)
+  discs have their own record art; Bounce, Lava Chicken and Tears, which are newer than Amendments,
+  show a generic record.
+* Integrity helper 1.0.11. Every other first-party jar rebuilt byte-identical.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.10 — 2026-09-27
 
 **A looping custom disc keeps looping; quitting singleplayer no longer crashes.** Manifest digest

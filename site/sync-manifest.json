@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.13",
+    "packVersion":  "1.0.14",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -25,6 +25,7 @@
                                 "config/litematica.json",
                                 "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                                 "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
+                                "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip.txt",
                                 "config/MouseTweaks.cfg",
                                 "config/asyncparticles/asyncparticles-mixin.properties",
                                 "config/asyncparticles/asyncparticles.json",
@@ -121,6 +122,7 @@
                          "config/litematica.json",
                          "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                          "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
+                         "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip.txt",
                          "config/MouseTweaks.cfg",
                          "config/asyncparticles/asyncparticles-mixin.properties",
                          "config/asyncparticles/asyncparticles.json",
@@ -302,7 +304,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "c66d817e6c3a0ae074db8ca9f72d2f577c60c6ec443733b5e6f4bfce0d827627"
+                                    "sha256":  "979f337ad44504e06c6c3a76adede87ba0570562e3d4d384c4ff91ad43e6cb6e"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -696,7 +698,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "c66d817e6c3a0ae074db8ca9f72d2f577c60c6ec443733b5e6f4bfce0d827627"
+                      "sha256":  "979f337ad44504e06c6c3a76adede87ba0570562e3d4d384c4ff91ad43e6cb6e"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1415,8 +1417,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.13+26.2-fabric.jar",
-                      "sha256":  "b7685b26936dcf46bff2c09f55bcad41bf27626905349b78c4e1ba838a015af9"
+                      "path":  "mods/nbidal18-integrity-1.0.14+26.2-fabric.jar",
+                      "sha256":  "ef42a46680ce746ff9c604fd6f05d2c55df6c5be5504b1db6ad332428d1179f5"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1677,6 +1679,14 @@
                   {
                       "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                       "sha256":  "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
+                  },
+                  {
+                      "path":  "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip",
+                      "sha256":  "648ae1a664d2a943e516a03d2fc76f66c1dd4bf30b73c3185fa558eb9b2695ee"
+                  },
+                  {
+                      "path":  "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip.txt",
+                      "sha256":  "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"
                   },
                   {
                       "path":  "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip",

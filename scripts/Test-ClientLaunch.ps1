@@ -462,6 +462,24 @@ try {
         Copy-Item -LiteralPath $candidate -Destination (Join-Path (Join-Path $testRoot 'config') (Split-Path $candidate -Leaf)) -Force
     }
 
+    # And the same for the shader, for the same reason and in the same file: this release's seeds
+    # select Complementary in config\iris.properties, so a -ReplaceShader run silently showed
+    # Complementary instead of the candidate. Found 2026-09-27 on the first run of the Eclipse
+    # Complementary port, in a log line that read "Using shaderpack:
+    # nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip" while the run claimed to have
+    # selected ours. Nothing failed - the run just proved the wrong pack.
+    if ($ReplaceShader) {
+        $irisPath = Join-Path (Join-Path $testRoot 'config') 'iris.properties'
+        $irisRows = if (Test-Path -LiteralPath $irisPath) {
+            @([IO.File]::ReadAllText($irisPath) -split "`r?`n" | Where-Object { $_ -ne '' })
+        }
+        else { @() }
+        $irisRows = @($irisRows | Where-Object { $_ -notmatch '^(enableShaders|shaderPack)=' })
+        $irisRows += @('enableShaders=true', "shaderPack=$(Split-Path $ReplaceShader -Leaf)")
+        [IO.File]::WriteAllText($irisPath, (($irisRows -join "`n") + "`n"), (New-Object Text.UTF8Encoding($false)))
+        Write-Host ("shader    iris.properties re-selects {0} after the seed pass" -f (Split-Path $ReplaceShader -Leaf))
+    }
+
     # The heap the instance itself is given, not a fixed 2 GB. A throwaway with Voxy switched on ran out
     # of memory at 2 GB and hung in the game's emergency save (thread dump, 2026-09-26), while the real
     # instance runs at 8 GB. Read from instance.cfg when it overrides memory, else Prism's global setting.

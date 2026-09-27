@@ -5,6 +5,24 @@ build that was not published.
 
 ---
 
+## v1.0.14 — 2026-09-27
+
+**Eclipse with Complementary's textures.** Manifest digest `d8412b81639cf438…`, replacing
+`1facb4cba9fadd2b…` (v1.0.13). 255 managed files, up from 253.
+
+* **A new shader in the list: Eclipse Complementary Unstable.** It is our Eclipse, unchanged in how it
+  lights the world, with Complementary's IntegratedPBR on top of it: vanilla textures get depth,
+  gear and blocks get their material, and around seventy blocks get the look Complementary draws
+  them with — only the flame inside a lantern glows and its cage reads as iron, redstone ore lights
+  its crystals and not its stone, sculk crawls, magma glows in its cracks.
+* **The plain Eclipse Shader Unstable is untouched** and still in the list, byte for byte what it was.
+  Complementary Unbound is still the one selected by default. Pick whichever you like in Video
+  Settings → Shader Packs; everything the new one adds can be switched off on its own screen.
+* Integrity helper 1.0.14.
+
+**Players click Play.** One "close and reopen" notice for the new helper. The new shader is a 45 MB
+download.
+
 ## v1.0.13 — 2026-09-27
 
 **Invisible item frames.** Manifest digest `1facb4cba9fadd2b…`, replacing `39d793c13769815d…` (v1.0.12).

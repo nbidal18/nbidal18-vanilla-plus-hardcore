@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "c66d817e6c3a0ae074db8ca9f72d2f577c60c6ec443733b5e6f4bfce0d827627"
+hash = "979f337ad44504e06c6c3a76adede87ba0570562e3d4d384c4ff91ad43e6cb6e"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -741,8 +741,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.13+26.2-fabric.jar"
-hash = "b7685b26936dcf46bff2c09f55bcad41bf27626905349b78c4e1ba838a015af9"
+file = "mods/nbidal18-integrity-1.0.14+26.2-fabric.jar"
+hash = "ef42a46680ce746ff9c604fd6f05d2c55df6c5be5504b1db6ad332428d1179f5"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -1003,6 +1003,14 @@ hash = "371486eb8c3f6eae4c90a15c760924b1dc487de7ce85910c02a9b9b78731db0d"
 [[files]]
 file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt"
 hash = "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
+
+[[files]]
+file = "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip"
+hash = "648ae1a664d2a943e516a03d2fc76f66c1dd4bf30b73c3185fa558eb9b2695ee"
+
+[[files]]
+file = "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip.txt"
+hash = "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"
 
 [[files]]
 file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip"

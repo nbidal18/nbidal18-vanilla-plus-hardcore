@@ -5,6 +5,19 @@ build that was not published.
 
 ---
 
+## v1.0.16 — 2026-09-28
+
+**Servers in the list respond straight away again.** Manifest digest `1137262d3ed6211a…`, replacing
+`ce729251220c00d8…` (v1.0.15). 254 managed files, up from 253.
+
+* **Fast IP Ping is back.** Both servers are plain IP addresses, and the game was doing a reverse
+  name lookup on them every time it pinged the server list or connected — which can't return
+  anything and just costs you the wait. This skips it. You had this mod on the 1.21.1 pack; it never
+  came across in the rebuild.
+* Integrity helper 1.0.16.
+
+**Players click Play.** One "close and reopen" notice for the new helper.
+
 ## v1.0.15 — 2026-09-28
 
 **Your skin reaches everyone, and one Eclipse instead of two.** Manifest digest `ce729251220c00d8…`,

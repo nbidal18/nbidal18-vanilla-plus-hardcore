@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "90c3d5a6db2988ae70b34a2ebdc64acffc00128e4fd86693f2f2abff6120d21c"
+hash = "25bb66612b05fee8901b543ca89b3b56c6b141a0d59b793bd1dc0a1102a17422"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -745,8 +745,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.16+26.2-fabric.jar"
-hash = "556b81b9d62fc15cc6b842d6e6b7dccc74511a599e37723a092bee3d3a6b617f"
+file = "mods/nbidal18-integrity-1.0.17+26.2-fabric.jar"
+hash = "ba3b4e7be14ced5e710cb5ad5a2ffbc6ee1a3c5738feada6bfe2fa9faf518057"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -1010,7 +1010,7 @@ hash = "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
 
 [[files]]
 file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip"
-hash = "01c1dc7a2afb2ee34b8622de5023cf25157b40a59bf2f7116303bfc0f59ef347"
+hash = "d15e4e700d1de9644c1d30fa1940c40457ea984296d79625755e046dad786ae3"
 
 [[files]]
 file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt"

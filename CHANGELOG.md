@@ -5,6 +5,27 @@ build that was not published.
 
 ---
 
+## v1.0.17 — 2026-09-28
+
+**The flickering surfaces are fixed, and metals stopped looking like mirrors.** Manifest digest
+`00e9ddf813c19f4f…`, replacing `1137262d3ed6211a…` (v1.0.16). 254 managed files, as before.
+
+* **Surfaces no longer flicker under Eclipse.** Slabs, stairs, carpets and snow could shimmer as you
+  moved, because the shader's per-block tone effect kept changing its mind about which block a face
+  belonged to. It now asks the game for the block's own centre instead of guessing from the surface,
+  which is right whatever shape the block is. This is the flicker that has been there since the first
+  IntegratedPBR build.
+* **Distant surfaces are calmer too**: the same tone effect now fades out with distance, the way
+  Complementary does it.
+* **New setting — Metal Reflections**, on the shader's Complementary PBR screen. **Complementary**
+  (the default) gives iron, gold and copper a sheen over their own colour. **labPBR metal** is the
+  physically accurate version, where a metal is a real mirror tinted by its own colour — accurate, but
+  on anything with generated normals it crawls with moving dark pixels.
+* Integrity helper 1.0.17.
+
+**Players click Play.** One "close and reopen" notice for the new helper. The Eclipse shader is a
+45 MB re-download; nothing else changed.
+
 ## v1.0.16 — 2026-09-28
 
 **Servers in the list respond straight away again.** Manifest digest `1137262d3ed6211a…`, replacing

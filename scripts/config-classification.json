@@ -765,11 +765,6 @@
       "match": "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
       "class": "player",
       "reason": "Eclipse Shader Unstable's settings (Vanilla+'s tuning, brought over 2026-09-26 in v1.0.7). Published so it is an official file in the exact-match shaderpacks root; player class, because Iris writes the player's own choices into it."
-    },
-    {
-      "match": "shaderpacks/nbidal18-Eclipse-Complementary-Unstable.zip.txt",
-      "class": "player",
-      "reason": "The Eclipse + Complementary IntegratedPBR variant's settings (v1.0.14). Iris keys settings to the zip's file name, so this pack starts with nothing of its own; it is published seeded from the Eclipse one so the two look the same when it is first selected, and it is an official file in the exact-match shaderpacks root. Player class, like the other two: every switch on its IntegratedPBR screen is the player's to move."
     }
   ]
 }

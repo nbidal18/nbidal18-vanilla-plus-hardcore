@@ -5,6 +5,33 @@ build that was not published.
 
 ---
 
+## v1.0.15 — 2026-09-28
+
+**Your skin reaches everyone, and one Eclipse instead of two.** Manifest digest `ce729251220c00d8…`,
+replacing `d8412b81639cf438…` (v1.0.14). 253 managed files, down from 255.
+
+* **Skins now show for other players.** The server runs in offline mode, where it hands out player
+  profiles with no skin attached, so everyone saw everyone else as Steve. Skin Overrides is now on the
+  server as well as the client, and it passes your skin to everybody — including players running no
+  mods at all. **Set yours once** with the Skin Overrides button on the title or pause screen, and
+  that is the one people see from then on.
+* **Eclipse Complementary is gone as a separate pack**, and everything it did is now a switch inside
+  the normal Eclipse pack: **Complementary PBR**, on by default, at the top of its own settings
+  screen. Turn it off and Eclipse is exactly what it was before, with no restart. That saves the 45 MB
+  second copy this pack briefly carried. If you had the Complementary one selected, pick **Eclipse
+  Shader Unstable** again in Video Settings.
+* **Lanterns look like Complementary's now** — dark iron cage, only the flame glowing. Same for
+  torches, lava, glowstone, sea lanterns, magma, froglights, lit redstone lamps, end rods, amethyst
+  clusters and cave vines: the lamp's own surface is shaded the way Complementary shades it. *The
+  light they cast on the world is unchanged.*
+* **No more sparkle on gold and other reflective blocks.** They were being given the wrong one of
+  Complementary's two smoothness values, which made every pixel a tiny mirror.
+* Integrity helper 1.0.15.
+
+**Players click Play.** One "close and reopen" notice for the new helper. Eclipse is a 45 MB
+re-download because its contents changed; the old second copy is removed, so the pack gets smaller
+overall.
+
 ## v1.0.14 — 2026-09-27
 
 **Eclipse with Complementary's textures.** Manifest digest `d8412b81639cf438…`, replacing

@@ -1,6 +1,6 @@
 <#
-    Rebuilds nbidal18-Eclipse-Complementary-Unstable.zip: the pack's Eclipse fork with Complementary's
-    IntegratedPBR ported onto it.
+    Rebuilds the pack's Eclipse shader: the fork with Complementary's IntegratedPBR ported onto it,
+    behind a master COMPLEMENTARY_PBR switch.
 
       scripts\Build-EclipseComplementary.ps1        build it into the current release
       scripts\Build-EclipseComplementary.ps1 -ReleaseRoot <folder>
@@ -8,10 +8,14 @@
     Owner, 2026-09-27: "is it possible to duplicate our eclispe, and give it the full complimentary
     reimagined integrated PBR? ... basically i want eclipse views with complimentary textures".
 
-    Two shaders ship, and this builds the second one. The input is the release's own
-    nbidal18-Eclipse-Shader-Unstable.zip, which is not touched: selecting it still gives stock Eclipse.
-    The block lists come out of the release's own Complementary zip, so both inputs are files this
-    release already ships and the port has no outside dependency.
+    One shader ships. The input is the pristine fork kept in the port's own upstream folder, and the
+    patched result goes into the release under the same file name, so Iris keeps the settings file
+    players already have. The block lists come out of the release's own Complementary zip, so the port
+    has no outside dependency.
+
+    Before v1.0.15 the port shipped as a second 47 MB zip beside the plain one. Owner, 2026-09-28:
+    "make the complimentary stuff be the 'complimentary PBR' toggle" - so the master switch replaced
+    it, and saves every player 45 MB.
 
     Everything the port does, why each piece is in and what was deliberately left out, is in
     5. modpack source\custom packs\nbidal18-Eclipse-Shader\README.md. The one rule worth repeating
@@ -49,7 +53,7 @@ Write-Host ("building  from {0}" -f (Split-Path $source -Leaf))
 & $python.Source $builder $ReleaseRoot
 if ($LASTEXITCODE -ne 0) { throw "build_eclipse_complementary.py failed with exit code $LASTEXITCODE" }
 
-$out = Join-Path $ReleaseRoot '3. modpack\client\shaderpacks\nbidal18-Eclipse-Complementary-Unstable.zip'
+$out = Join-Path $ReleaseRoot '3. modpack\client\shaderpacks\nbidal18-Eclipse-Shader-Unstable.zip'
 if (-not (Test-Path -LiteralPath $out -PathType Leaf)) { throw "The builder wrote no zip at $out" }
 Write-Host ("OK        {0} ({1:N0} bytes)" -f (Split-Path $out -Leaf), (Get-Item -LiteralPath $out).Length)
 Write-Host '          next: scripts\Build-Release.ps1'

@@ -5,6 +5,31 @@ build that was not published.
 
 ---
 
+## v1.0.18 — 2026-09-30
+
+**The updater stops pretending to be stuck, the Eclipse shader is no longer downloaded, and the Nether
+has vanilla structure spacing again.** Manifest digest `0f401a3bbd10f405…`, replacing
+`00e9ddf813c19f4f…` (v1.0.17). 252 managed files, down from 254.
+
+* **The updater no longer looks frozen at 100%.** It was never stuck — it was downloading the last and
+  largest file with the bar already full. It now says which file it is on, *"Downloading pack files
+  (253 of 254)"*, and keeps moving instead of sitting at the end.
+* **The Eclipse shader is no longer included.** It was a 45 MB download every time it changed, and it
+  changed four times in four releases. Complementary stays as the pack's shader and is still what gets
+  selected for you. Nothing you have installed is deleted by this — it is removed from the pack.
+* **Nether fortresses and bastions are back to normal rarity**, along with Structory's Nether towers.
+  They were seven times rarer than vanilla, which works above ground where you can fly and see a long
+  way, but in the Nether you are in a tunnel and could pass within 200 blocks of a bastion and never
+  know. Blaze rods, wither skeleton skulls and the netherite template were all behind that. The rest of
+  the world — overworld and End — is unchanged and still sparse.
+* **The Nether has been reset** so the new spacing applies everywhere, not just past the frontier.
+  Anything built in the Nether is gone, and overworld portals will lead somewhere new. The old Nether is
+  kept on the server, not deleted.
+* Integrity helper 1.0.18.
+
+**Players click Play.** One "close and reopen" notice for the new helper and the new updater. The Eclipse
+shader is removed rather than downloaded, so this update is smaller than usual, not bigger.
+
 ## v1.0.17 — 2026-09-28
 
 **The flickering surfaces are fixed, and metals stopped looking like mirrors.** Manifest digest

@@ -22,7 +22,7 @@ hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
 file = "config/bcc-common.json"
-hash = "25bb66612b05fee8901b543ca89b3b56c6b141a0d59b793bd1dc0a1102a17422"
+hash = "cf4d886f9c4cbc8130c6c0fff03fabbdf90e049dabab25a249bd96d37a49fa16"
 
 [[files]]
 file = "config/betteradvancements.json"
@@ -745,8 +745,8 @@ file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
 
 [[files]]
-file = "mods/nbidal18-integrity-1.0.17+26.2-fabric.jar"
-hash = "ba3b4e7be14ced5e710cb5ad5a2ffbc6ee1a3c5738feada6bfe2fa9faf518057"
+file = "mods/nbidal18-integrity-1.0.18+26.2-fabric.jar"
+hash = "4c68ae7755a034145643f42b1c711449f38a92320d1f7b03d0b8fd8cb3b7c094"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -934,7 +934,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "b21cc014e572226e7caf768fdce0d1cfd0158991a44e281fe6bcb578597254dc"
+hash = "5f6a913c317e3c8d1df1753aaf537ffcdfe2497d8c5ed3303b00161549f935e2"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"
@@ -1007,11 +1007,3 @@ hash = "371486eb8c3f6eae4c90a15c760924b1dc487de7ce85910c02a9b9b78731db0d"
 [[files]]
 file = "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt"
 hash = "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
-
-[[files]]
-file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip"
-hash = "d15e4e700d1de9644c1d30fa1940c40457ea984296d79625755e046dad786ae3"
-
-[[files]]
-file = "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt"
-hash = "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"

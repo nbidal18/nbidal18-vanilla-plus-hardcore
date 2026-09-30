@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.17",
+    "packVersion":  "1.0.18",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -24,7 +24,6 @@
                                 "config/xaero/world-map/profiles/default.cfg",
                                 "config/litematica.json",
                                 "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
-                                "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                                 "config/MouseTweaks.cfg",
                                 "config/asyncparticles/asyncparticles-mixin.properties",
                                 "config/asyncparticles/asyncparticles.json",
@@ -120,7 +119,6 @@
                          "config/xaero/world-map/profiles/default.cfg",
                          "config/litematica.json",
                          "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
-                         "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
                          "config/MouseTweaks.cfg",
                          "config/asyncparticles/asyncparticles-mixin.properties",
                          "config/asyncparticles/asyncparticles.json",
@@ -302,7 +300,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "25bb66612b05fee8901b543ca89b3b56c6b141a0d59b793bd1dc0a1102a17422"
+                                    "sha256":  "cf4d886f9c4cbc8130c6c0fff03fabbdf90e049dabab25a249bd96d37a49fa16"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -696,7 +694,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "25bb66612b05fee8901b543ca89b3b56c6b141a0d59b793bd1dc0a1102a17422"
+                      "sha256":  "cf4d886f9c4cbc8130c6c0fff03fabbdf90e049dabab25a249bd96d37a49fa16"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1419,8 +1417,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.17+26.2-fabric.jar",
-                      "sha256":  "ba3b4e7be14ced5e710cb5ad5a2ffbc6ee1a3c5738feada6bfe2fa9faf518057"
+                      "path":  "mods/nbidal18-integrity-1.0.18+26.2-fabric.jar",
+                      "sha256":  "4c68ae7755a034145643f42b1c711449f38a92320d1f7b03d0b8fd8cb3b7c094"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1608,7 +1606,7 @@
                   },
                   {
                       "path":  "nbidal18-packwiz-updater.next.jar",
-                      "sha256":  "b21cc014e572226e7caf768fdce0d1cfd0158991a44e281fe6bcb578597254dc"
+                      "sha256":  "5f6a913c317e3c8d1df1753aaf537ffcdfe2497d8c5ed3303b00161549f935e2"
                   },
                   {
                       "path":  "packwiz-installer-bootstrap.next.jar",
@@ -1681,14 +1679,6 @@
                   {
                       "path":  "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                       "sha256":  "fb247f1d6282bed9381b36248cb081c562d7bc0fb7f0cf2ebe5d5358ab3e437b"
-                  },
-                  {
-                      "path":  "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip",
-                      "sha256":  "d15e4e700d1de9644c1d30fa1940c40457ea984296d79625755e046dad786ae3"
-                  },
-                  {
-                      "path":  "shaderpacks/nbidal18-Eclipse-Shader-Unstable.zip.txt",
-                      "sha256":  "11b85cadb6a2cb96eddf92748b9a3fc41295ba4d96dfcb8f32b30fc24447901a"
                   }
               ]
 }

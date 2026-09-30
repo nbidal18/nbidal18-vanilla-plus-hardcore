@@ -699,7 +699,26 @@ public final class Nbidal18PackwizSync {
             int current = Integer.parseInt(matcher.group(1));
             int total = Integer.parseInt(matcher.group(2));
             if (total > 0 && current >= 0 && current <= total) {
-                progressTo(current, total);
+                /*
+                    The counter is files, not bytes, and this pack's files are nothing like the same
+                    size: the Eclipse shader is 47 MB against a median of a few hundred KB, and it is
+                    the second to last entry in the index. So the bar reaches 100% and then sits
+                    there for the whole of that download - which is indistinguishable from a hang.
+
+                    Two players reported exactly that on 2026-09-28, the day the shader changed for
+                    the first time since v1.0.7 and everyone had to fetch it again. Their console
+                    read "253 of 254" the entire time; nothing was wrong.
+
+                    So: say which file count it is on, and when the count runs out do not claim to be
+                    finished - the work that is left has no counter, and a sweeping bar says "still
+                    going" where a full one says "stuck".
+                */
+                label(String.format("Downloading pack files (%d of %d)...", current, total));
+                if (current >= total) {
+                    progressIndeterminate();
+                } else {
+                    progressTo(current, total);
+                }
             }
         } catch (NumberFormatException ignored) {
             // A counter too large to parse is not worth reacting to.
@@ -1999,6 +2018,16 @@ public final class Nbidal18PackwizSync {
 
     private void status(String message) {
         System.out.println("[nbidal18 packwiz] " + message);
+        label(message);
+    }
+
+    /**
+     * The window's line, without a log line behind it.
+     *
+     * <p>For anything that changes per file: the installer already prints a line of its own for each
+     * one, and echoing a second copy would double the log for no reader.
+     */
+    private void label(String message) {
         JLabel label = updaterLabel;
         if (label != null) {
             SwingUtilities.invokeLater(() -> label.setText(message));

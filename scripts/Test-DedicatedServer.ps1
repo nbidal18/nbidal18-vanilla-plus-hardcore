@@ -29,7 +29,11 @@ param(
     [int] $BootTimeoutSeconds = 420,
     # The local mirror Sync-ServerMirror -Pull writes, not a mount: the `Y:` CloudMounter drive this
     # defaulted to expired, so the old default could only ever throw "A drive with the name 'Y'".
-    [string] $DriveRoot = (Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) '_server-payload-cache'),
+    # Filled in the body, not here: Windows PowerShell 5.1 leaves $PSScriptRoot empty while param
+    # defaults are evaluated, so this threw "Cannot bind argument to parameter 'Path' because it is
+    # an empty string" and exited 0 - a test that could not run and reported success. Found
+    # 2026-09-30, while checking that a sparsestructures.json5 change still let the server boot.
+    [string] $DriveRoot,
     # Jars this release puts on the server for the first time. Deploying one is a decision,
     # so proving it boots is opt-in rather than inferred from the jar's environment.
     [string[]] $AddMods = @(),
@@ -52,6 +56,10 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+if (-not $DriveRoot) {
+    $DriveRoot = Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) '_server-payload-cache'
+}
 
 # The server keeps latest.log open while it runs, so a plain read fails with a sharing violation.
 function Read-SharedText([string] $path) {

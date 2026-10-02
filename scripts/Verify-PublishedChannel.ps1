@@ -30,7 +30,10 @@ param(
     # Default: the channel this repository publishes, from UPDATE-URL.txt with pack.toml stripped.
     # It used to spell out the Vanilla+ URL, so on the hardcore line a run with no -BaseUrl verified
     # the wrong channel and passed (2026-09-24).
-    [string] $BaseUrl = ((Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'UPDATE-URL.txt') -Raw).Trim() -replace 'pack\.toml$', ''),
+    # Filled in the body, not here: Windows PowerShell 5.1 leaves $PSScriptRoot empty while param
+    # defaults are evaluated, so this threw "Cannot bind argument to parameter 'Path'" and exited 0 -
+    # a publish gate that could not run and reported success. Found 2026-09-30, verifying v1.0.18.
+    [string] $BaseUrl,
     [string[]] $Retired = @(),
     [int] $TimeoutSec = 60,
     # Seconds to wait for GitHub Pages to serve THIS build before judging it. 0 judges immediately.
@@ -44,6 +47,10 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $BaseUrl) {
+    $BaseUrl = (Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'UPDATE-URL.txt') -Raw).Trim() -replace 'pack\.toml$', ''
+}
 Set-StrictMode -Version Latest
 
 $repo = Split-Path -Parent $PSScriptRoot

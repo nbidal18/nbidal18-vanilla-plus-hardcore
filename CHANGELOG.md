@@ -5,6 +5,22 @@ build that was not published.
 
 ---
 
+## v1.0.19 — 2026-10-03
+
+**The party hats are off.** Manifest digest `574932c040ab33b5…`, replacing `0f401a3bbd10f405…`
+(v1.0.18). 252 managed files, as before.
+
+* **No more party hat.** SubtleEffects puts one on every player's head for its own birthday, the 3rd to
+  the 5th of October. It is switched off. Nothing else goes with it — the only other thing that setting
+  controls is a decoration that appears on the mod author's own account.
+* **Your own SubtleEffects settings are untouched.** This changes one line in your config and leaves
+  everything else exactly as you had it, so if you want the hats back you can turn them on and they will
+  stay on.
+* Integrity helper 1.0.19.
+
+**Players click Play.** One "close and reopen" notice for the new helper. Nothing changes on the server
+and there is no downtime.
+
 ## v1.0.18 — 2026-09-30
 
 **The updater stops pretending to be stuck, the Eclipse shader is no longer downloaded, and the Nether

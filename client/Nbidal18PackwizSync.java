@@ -353,7 +353,18 @@ public final class Nbidal18PackwizSync {
             // it". The file is rewritten by the mod and so preserved; the master keeps the form the mod
             // writes and this sets the one key, once. Anyone who turns it back on afterwards keeps that.
             new PlayerFileSeed("config/sodium-extra-options.json", ':', "sodium-extra-coords-off-v104", List.of(
-                    SeedRow.in("extra_settings", "show_coords", "false"))));
+                    SeedRow.in("extra_settings", "show_coords", "false"))),
+            // v1.0.19: SubtleEffects puts a party hat on every player for its own birthday -
+            // 3 to 5 October, from PartyHatLayer.isModBirthday. Owner, 2026-10-03, having found
+            // one on his head in a trial chamber: "nah lets remove it". enableEasterEggs gates
+            // exactly two renderers, and the other one (EinsteinSolarSystemLayer) checks the
+            // mod author's own UUID, so nothing else is lost by turning it off.
+            //
+            // Seeded rather than set in the master: general.toml is player class - it holds every
+            // SubtleEffects setting a player has touched - so shipping the new value in the master
+            // would re-deliver the whole file over their own. The build refused exactly that.
+            new PlayerFileSeed("config/subtle_effects/general.toml", '=', "subtle-easter-eggs-off-v1019", List.of(
+                    SeedRow.of("enableEasterEggs", "false"))));
 
         /**
      * Empty on purpose, and it must stay that way until a mod is actually retired from THIS

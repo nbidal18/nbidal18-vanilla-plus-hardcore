@@ -5,6 +5,22 @@ build that was not published.
 
 ---
 
+## v1.0.20 — 2026-10-03
+
+**Controlify can be switched off now.** Manifest digest `8978a0ad0cb54055…`, replacing
+`574932c040ab33b5…` (v1.0.19). 258 managed files, one more than before.
+
+* **New setting — "Turn Controlify off"**, on Controlify's own global settings screen. It stops
+  Minecraft reading the controller at all, without removing the mod, and takes effect immediately.
+  Keyboard and mouse are unaffected.
+* **Why it was needed:** leaving Minecraft running while you play something else on the controller
+  meant Minecraft kept reacting to it, even minimised. Controlify has a setting meant to prevent that,
+  but it relies on the game knowing it has lost focus, and with this pack's mods that does not reliably
+  happen. The new switch does not depend on focus at all.
+* Integrity helper 1.0.20.
+
+**Players click Play.** One "close and reopen" notice for the new helper and the new mod.
+
 ## v1.0.19 — 2026-10-03
 
 **The party hats are off.** Manifest digest `574932c040ab33b5…`, replacing `0f401a3bbd10f405…`

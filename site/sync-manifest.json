@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.19",
+    "packVersion":  "1.0.20",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -300,7 +300,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "2f13706539f3981263141a84bc85189834868db3bfd5d6f542e06bc95802d5ef"
+                                    "sha256":  "c5d8df27a472430070f8daebf1525eeb3e94dceb3e0c5d474dff551c61baff97"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -694,7 +694,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "2f13706539f3981263141a84bc85189834868db3bfd5d6f542e06bc95802d5ef"
+                      "sha256":  "c5d8df27a472430070f8daebf1525eeb3e94dceb3e0c5d474dff551c61baff97"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1401,6 +1401,10 @@
                       "sha256":  "d608094263ece2edef4c2a300a421b430919f24a4ce15d6cfc5b8db79b5af751"
                   },
                   {
+                      "path":  "mods/nbidal18-controlify-1.0.0+26.2-fabric.jar",
+                      "sha256":  "6184ef41f7b15a576312b27c7d3ed8c6c63d73b7b0cb22315822763c859fd3aa"
+                  },
+                  {
                       "path":  "mods/nbidal18-emf-1.0.0+26.2-fabric.jar",
                       "sha256":  "4efcecb5815f3c7cbdcff9a452632a959219d9cb33aa917000c8eb3046115de4"
                   },
@@ -1417,8 +1421,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.19+26.2-fabric.jar",
-                      "sha256":  "0ab53a6571b05facd67b9e409e439ae8ec999f692880255b1877e3d133375b00"
+                      "path":  "mods/nbidal18-integrity-1.0.20+26.2-fabric.jar",
+                      "sha256":  "45292b16aff9a1bd16266eb7b13c3c668f867eb78b0d02426fe8c485808d65f9"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",

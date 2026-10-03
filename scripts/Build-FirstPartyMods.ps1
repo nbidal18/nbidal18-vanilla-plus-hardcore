@@ -184,6 +184,14 @@ $mods = @(
     # mixin at Window.close releases the raw input first. Proved by the throwaway: same close exits
     # with the option off or with Ixeris absent, and hangs with it on. Client only.
     @{ Name = 'nbidal18-ixeris'; Generator = $null; Builder = 'build_ixeris.py' },
+    # Controlify ships no way to switch itself off, and its out-of-focus gate does not hold here:
+    # it tests Minecraft.isWindowActive, which reads a cached flag that only GLFW's focus callback
+    # updates, and Ixeris routes that callback through its own dispatcher to be replayed later - so
+    # a minimised window can still report itself focused and the game keeps reading the pad. Owner,
+    # 2026-10-03: "i wanted to afk minecraft while playing rocket elageu, but minecraft steals the
+    # controller". Two client mixins: one cancels Controlify.tick while the switch is on, the other
+    # adds the switch to Controlify's own global settings screen. Client only.
+    @{ Name = 'nbidal18-controlify'; Generator = $null; Builder = 'build_controlify.py' },
     # Fresh Animations: Player Extension stands aside whenever the game has its own pose for the
     # player's arms: any item in use, a loaded crossbow held, a boat ride. No mixins - EMF's own
     # pause and vanilla-model conditions. Set aside with EMF on 2026-09-23; back with the player

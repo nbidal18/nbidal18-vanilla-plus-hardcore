@@ -16,14 +16,30 @@
 #>
 [CmdletBinding()]
 param(
-    [string] $ServerHost = '194.54.88.14',
-    [int] $Port = 27107,
+    # Default: this repository's own server, from SERVER.txt. It used to be the Vanilla+ address
+    # spelled out here, in both lines' copies of this script - so on the Vanilla++ line a run with no
+    # arguments pinged the wrong machine and answered about the wrong server. Found 2026-10-06 asking
+    # whether Vanilla++ was back up after the v1.0.22 deploy: it said RUNNING, and that was Vanilla+.
+    # It failed safe that time. Reversed - Vanilla+ down, Vanilla++ up - it would have reported
+    # 'stopped' about a live server, which is the one thing this script exists to prevent.
+    # Filled in the body, not here: $PSScriptRoot is empty while param defaults are evaluated on
+    # Windows PowerShell 5.1, which is how two other scripts came to throw and exit 0.
+    [string] $ServerHost,
+    [int] $Port,
     [int] $TimeoutSec = 8,
     [switch] $Quiet
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+if (-not $ServerHost -or -not $Port) {
+    $serverFile = Join-Path (Split-Path -Parent $PSScriptRoot) 'SERVER.txt'
+    if (-not (Test-Path -LiteralPath $serverFile)) { throw "No SERVER.txt at $serverFile" }
+    $fileHost, $filePort = ((Get-Content -LiteralPath $serverFile -Raw).Trim() -split ':', 2)
+    if (-not $ServerHost) { $ServerHost = $fileHost }
+    if (-not $Port) { $Port = [int] $filePort }
+}
 
 function Get-VarInt([int] $value) {
     $bytes = New-Object Collections.Generic.List[byte]

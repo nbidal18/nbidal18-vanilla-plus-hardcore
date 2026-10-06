@@ -164,6 +164,18 @@ $run = [ordered]@{}
 $skip = [ordered]@{}
 
 $modsChanged = $byArea['mods'].Count -gt 0
+
+# The update engine is neither a mod jar nor a config file, and changing it is exactly what
+# Test-LocalSync exists to exercise - it is the only test that runs these jars. v1.0.18, v1.0.19
+# and v1.0.20 each changed the updater and each had the sync test skipped, and each time it was
+# remembered and run by hand. A rule that depends on being remembered is not a gate.
+$engineJars = @('nbidal18-packwiz-updater.jar', 'nbidal18-packwiz-sync.jar',
+                'packwiz-installer.jar', 'packwiz-installer-bootstrap.jar')
+$engineChanged = $false
+foreach ($path in $changed) {
+    $leaf = Split-Path -Leaf $path
+    if ($engineJars -contains $leaf -or $leaf -like '*packwiz-*.next.jar') { $engineChanged = $true; break }
+}
 $anyContent = $changed.Count -gt 0
 
 if ($All) {
@@ -177,11 +189,13 @@ else {
     if ($anyContent) { $run['Test-ClientLaunch'] = 'published content changed' }
     else { $skip['Test-ClientLaunch'] = 'nothing published changed' }
 
-    if ($modsChanged -or $configSetChanged) {
-        $run['Test-LocalSync'] = $(if ($modsChanged) { 'a mod jar changed' } else { 'a config file was added or removed' })
+    if ($modsChanged -or $configSetChanged -or $engineChanged) {
+        $run['Test-LocalSync'] = $(if ($modsChanged) { 'a mod jar changed' }
+                                   elseif ($engineChanged) { 'the update engine changed' }
+                                   else { 'a config file was added or removed' })
     }
     else {
-        $skip['Test-LocalSync'] = 'no jar changed and no config file appeared or vanished'
+        $skip['Test-LocalSync'] = 'no jar changed, no config file appeared or vanished, update engine untouched'
     }
 
     # Only mods can stop the server booting. A client-only config or a resource pack cannot, and the

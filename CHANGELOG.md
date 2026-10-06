@@ -5,6 +5,26 @@ build that was not published.
 
 ---
 
+## v1.0.21 — 2026-10-06
+
+**A mob conduit: a heavy core in a ring of crying obsidian stops hostile mobs spawning around it.**
+Manifest digest `edeccd8c1528f6fc…`, replacing `8978a0ad0cb54055…` (v1.0.20). 260 managed files.
+
+* **New: the mob conduit.** Place a **heavy core** and build a ring of **crying obsidian** around it,
+  in the same shape as a water conduit — 16 blocks to switch it on, up to 42 for the full range. While
+  it is lit, hostile mobs stop spawning anywhere near it, out to 128 blocks at full size. Existing
+  ones in range are burned away. Spawners, spawn eggs and breeding still work, and passive and
+  neutral mobs are left alone.
+* **Why those two blocks.** A heavy core comes only from an ominous vault in a trial chamber and
+  cannot be crafted or farmed — so a conduit is a trip, not a grind. Crying obsidian comes from
+  bastion chests and piglin bartering. It is the same bargain as a water conduit: one thing you have
+  to go and find, and one you can gather.
+* No end crystal and no netherite are involved. The mod this is built on asked for 42 netherite
+  blocks, which is 1512 ancient debris.
+* Integrity helper 1.0.21.
+
+**Players click Play.** One "close and reopen" notice for the new helper and the two new mods.
+
 ## v1.0.20 — 2026-10-03
 
 **Controlify can be switched off now.** Manifest digest `8978a0ad0cb54055…`, replacing

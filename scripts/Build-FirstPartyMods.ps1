@@ -192,6 +192,14 @@ $mods = @(
     # controller". Two client mixins: one cancels Controlify.tick while the switch is on, the other
     # adds the switch to Controlify's own global settings screen. Client only.
     @{ Name = 'nbidal18-controlify'; Generator = $null; Builder = 'build_controlify.py' },
+    # Mob Conduit's spawn suppressor is an end crystal inside 42 netherite blocks - 1512 ancient
+    # debris, which the owner called "way too hard", against an end crystal he called easy. This
+    # makes it a heavy core inside a crying obsidian frame instead: the heavy core comes only from
+    # an ominous vault in a trial chamber and cannot be farmed, crying obsidian only from bastion
+    # chests and bartering. Same shape as a vanilla conduit - one unfarmable core, a farmable
+    # frame. The frame scan is vanilla's own ConduitBlockEntity.updateShape minus its water test.
+    # Ships to clients too: it registers a block entity type, which is a synced registry.
+    @{ Name = 'nbidal18-mobconduit'; Generator = $null; Builder = 'build_mobconduit.py' },
     # Fresh Animations: Player Extension stands aside whenever the game has its own pose for the
     # player's arms: any item in use, a loaded crossbow held, a boat ride. No mixins - EMF's own
     # pause and vanilla-model conditions. Set aside with EMF on 2026-09-23; back with the player

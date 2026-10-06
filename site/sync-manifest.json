@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.21",
+    "packVersion":  "1.0.22",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -300,7 +300,7 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "d566370d8b2666c4f2c88f68939b6a43fabeb23b1676485e38e79af71d2a0970"
+                                    "sha256":  "5e456ad80623284b7dd81b8ae1dbc3ba15127fde729b12c9e93fe95ff709206e"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
@@ -694,7 +694,7 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "d566370d8b2666c4f2c88f68939b6a43fabeb23b1676485e38e79af71d2a0970"
+                      "sha256":  "5e456ad80623284b7dd81b8ae1dbc3ba15127fde729b12c9e93fe95ff709206e"
                   },
                   {
                       "path":  "config/betteradvancements.json",
@@ -1425,8 +1425,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.21+26.2-fabric.jar",
-                      "sha256":  "79e50c390c16406f910c7b55cbf42dc51a23f423ed55ad29191db4f28611b3d7"
+                      "path":  "mods/nbidal18-integrity-1.0.22+26.2-fabric.jar",
+                      "sha256":  "bed2ed6d022d4d77178ee75dbb101d30652d12f9b537c560d8b5d8bd1cc402ce"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1450,7 +1450,7 @@
                   },
                   {
                       "path":  "mods/nbidal18-mobconduit-1.0.0+26.2-fabric.jar",
-                      "sha256":  "c4da02ffa533a55bef1f4e8f346ddf4b410464aa5702d86f9eeb8bb2e7ffe5c4"
+                      "sha256":  "61672f033eeb8dd6253ceed5bd7681037fa7f1b621c191fef4d82b73449d47ab"
                   },
                   {
                       "path":  "mods/nbidal18-realisticdeathvisuals-1.0.2+26.2-fabric.jar",

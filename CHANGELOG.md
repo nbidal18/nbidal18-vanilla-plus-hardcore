@@ -5,6 +5,24 @@ build that was not published.
 
 ---
 
+## v1.0.22 — 2026-10-06
+
+**The mob conduit now behaves exactly like a water conduit.** Manifest digest `b900efe97c20cace…`,
+replacing `edeccd8c1528f6fc…` (v1.0.21). 260 managed files, as before.
+
+* **Its range steps, and the steps are vanilla's.** 32 blocks from 16 crying obsidian, then 48 at 21,
+  64 at 28, 80 at 35 and 96 at a full 42. In v1.0.21 it started at 64 and grew smoothly to 128, so
+  **a conduit you already built now reaches less far** — but it reaches exactly as far as a water
+  conduit of the same size, which is the point. Nothing to rebuild; the change applies itself.
+* **Only a full conduit burns mobs that are already there.** 42 crying obsidian, the same threshold a
+  water conduit needs before it attacks hostiles. Below that it still stops them spawning, it just
+  leaves the ones standing in range alone.
+* **It re-checks its frame every two seconds**, as vanilla does, so adding or breaking a block shows
+  up on the same timing.
+* Integrity helper 1.0.22.
+
+**Players click Play.** One "close and reopen" notice for the new helper and the rebuilt conduit mod.
+
 ## v1.0.21 — 2026-10-06
 
 **A mob conduit: a heavy core in a ring of crying obsidian stops hostile mobs spawning around it.**

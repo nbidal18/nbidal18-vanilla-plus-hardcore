@@ -118,37 +118,37 @@ $mods = @(
     # eight threads against the real class; fails on the first round. This serialises the writes.
     # The list only feeds a debug dump command, so there is no gameplay behaviour either way.
     # **Runs on the server too** - it is a server boot crash - so it needs -AddMods to deploy.
-    @{ Name = 'nbidal18-sparsestructures'; Generator = $null; Builder = 'build_sparsestructures.py'; Side = 'server' },
+    @{ Name = 'nbidal18-sparsestructures'; Generator = $null; Builder = 'build_sparsestructures.py'; Side = 'both' },
     # A passenger who logs out of an aircraft comes back in mid-air: vanilla saves a ride only for
     # its sole passenger. Remembers the ridden entity by UUID (never the entity - two copies would
     # rebuild the plane twice, cargo included), puts the player back aboard or on the first solid
     # block or water below. Port of the 1.21.1 pack's nbidal18-safe-rejoin. Until 1.1.0 (v1.0.98) it
     # also counted a moving or airborne vehicle as activity; that went, see nbidal18-afk below. **Runs on the
     # server** - that is where it does anything - so it needs -AddMods to deploy.
-    @{ Name = 'nbidal18-saferejoin'; Generator = $null; Builder = 'build_saferejoin.py'; Side = 'server' },
+    @{ Name = 'nbidal18-saferejoin'; Generator = $null; Builder = 'build_saferejoin.py'; Side = 'both' },
     # The idle kick back at five minutes (v1.0.98), counting only what a player actually does: keys,
     # mouse look, clicks, chat. Being moved - by the autopilot, a vehicle, water - no longer resets
     # the timer, which is how the owner starved flying on autopilot with nobody at the keyboard.
     # /afk holds the kick off until the player next does something. First-party content, no target.
     # **Runs on the server** - needs -AddMods.
-    @{ Name = 'nbidal18-afk'; Generator = $null; Builder = 'build_afk.py'; Side = 'server' },
+    @{ Name = 'nbidal18-afk'; Generator = $null; Builder = 'build_afk.py'; Side = 'both' },
     # The End stays sealed until the owner opens it from the console (/theend open), so the server
     # goes in together as an event. Refuses the End portal's destination before vanilla builds the
     # platform, and any other teleport of a player into the End. Named for its target, vanilla's
     # End. **Runs on the dedicated server** - inert on a client and in singleplayer - so it needs
     # -AddMods to deploy.
-    @{ Name = 'nbidal18-theend'; Generator = $null; Builder = 'build_theend.py'; Side = 'server' },
+    @{ Name = 'nbidal18-theend'; Generator = $null; Builder = 'build_theend.py'; Side = 'both' },
     # /strike <players>: a real lightning bolt on each named player - flash, thunder, the player and
     # the ground on fire - that hurts nobody and strikes nobody else. Vanilla's bolt has no damage
     # setting in 26.2 and its visual-only flag drops the fire too, so two wraps on bolts carrying the
     # command's tag. First-party content, no target. **Runs on the server** - needs -AddMods.
-    @{ Name = 'nbidal18-strike'; Generator = $null; Builder = 'build_strike.py'; Side = 'server' },
+    @{ Name = 'nbidal18-strike'; Generator = $null; Builder = 'build_strike.py'; Side = 'both' },
     # A copper golem no longer opens a chest it has nothing to take from. Vanilla already works the
     # case out - its ContainerInteractionState separates PICKUP_NO_ITEM, and the condition behind it
     # is literally !container.isEmpty() - so the mixin only drops that state's reached-target action,
     # which is the whole open-lid performance. Depositing into an empty chest still opens it.
     # **Runs on the server** - needs -AddMods.
-    @{ Name = 'nbidal18-coppergolem'; Generator = $null; Builder = 'build_coppergolem.py'; Side = 'server' },
+    @{ Name = 'nbidal18-coppergolem'; Generator = $null; Builder = 'build_coppergolem.py'; Side = 'both' },
     # Anvils without the prior-work penalty and without Too Expensive (v1.0.102 hotfix). The menu
     # mixin answers 0 for every REPAIR_COST read and writes 0 instead of the doubled penalty, and moves
     # the 40-level threshold out of reach - keeping vanilla's refusal to enchant a whole stack at once,
@@ -172,7 +172,7 @@ $mods = @(
     # Phantoms after three days without rest measured on Better Days' clock, not three vanilla days
     # of real time, which Better Days' slower day used up before the next dusk (v1.0.9). Pinned to
     # Better Days 4.1.1.7. Server side, like Better Days on this line.
-    @{ Name = 'nbidal18-betterdays'; Generator = $null; Builder = 'build_betterdays.py'; Side = 'server' },
+    @{ Name = 'nbidal18-betterdays'; Generator = $null; Builder = 'build_betterdays.py'; Side = 'both' },
     @{ Name = 'nbidal18-jei'; Generator = $null; Builder = 'build_jei.py' },
     # Voxy's internal errors go to the log instead of chat (v1.0.102). Its Logger.error writes the
     # log line and then posts the same text to chat through showInHUD; the mixin drops that post inside
@@ -200,6 +200,14 @@ $mods = @(
     # frame. The frame scan is vanilla's own ConduitBlockEntity.updateShape minus its water test.
     # Ships to clients too: it registers a block entity type, which is a synced registry.
     @{ Name = 'nbidal18-mobconduit'; Generator = $null; Builder = 'build_mobconduit.py' },
+    # Mixed Slabs lets two different slab types share one block, which is what the owner asked for
+    # and the only 26.2 mod that does it (Double Slabs, the one this pack had on 1.21.1, has no 26.x
+    # build and renders through the old baked-model pipeline). Two of its departures from a vanilla
+    # double slab are fixed here. It dampened light by 1 instead of 15 - its block is a full cube but
+    # built noOcclusion(), so BlockBehaviour.getLightDampening falls through to its last line - which
+    # the owner said was the one that would bother him most. And breaking one dropped both slabs with
+    # no loot table and no tool check, so a fist got you two stone slabs. Both sides.
+    @{ Name = 'nbidal18-mixedslabs'; Generator = $null; Builder = 'build_mixedslabs.py'; Side = 'both' },
     # Fresh Animations: Player Extension stands aside whenever the game has its own pose for the
     # player's arms: any item in use, a loaded crossbow held, a boat ride. No mixins - EMF's own
     # pause and vanilla-model conditions. Set aside with EMF on 2026-09-23; back with the player
@@ -213,17 +221,17 @@ $mods = @(
     # Every F3 source in the pack - vanilla, BetterF3, Sodium, Sodium Extra, each mod's entries - hides
     # absolute positions only under this rule, which had been set by hand. **Runs on the server** -
     # needs -AddMods.
-    @{ Name = 'nbidal18-reduceddebug'; Generator = $null; Builder = 'build_reduceddebug.py'; Side = 'server' },
+    @{ Name = 'nbidal18-reduceddebug'; Generator = $null; Builder = 'build_reduceddebug.py'; Side = 'both' },
     # Vanilla Refresh's settings bridge, until v1.0.102 a hand-built jar with no builder. Its shipped jar
     # is now the fixed input in base\ and is copied byte for byte; the builder adds datapack overrides
     # that win because Fabric sorts mod data by dependency and this jar depends on Vanilla Refresh
     # exactly. v1.1.0 (v1.0.103): the compass readout shows Y and facing only. Data added, no javac.
     # **Runs on the server too** - needs -AddMods.
-    @{ Name = 'nbidal18-vanillarefresh'; Generator = $null; Builder = 'build_vanillarefresh.py'; Side = 'server' },
+    @{ Name = 'nbidal18-vanillarefresh'; Generator = $null; Builder = 'build_vanillarefresh.py'; Side = 'both' },
 
     # Data only - no src\, so no javac. Its builder reads the vanilla loot table out of the game jar
     # and edits it, which is why it needs no classpath either.
-    @{ Name = 'nbidal18-tectonic'; Generator = $null; Builder = 'build_tectonic.py'; Side = 'server' },
+    @{ Name = 'nbidal18-tectonic'; Generator = $null; Builder = 'build_tectonic.py'; Side = 'both' },
     # Every Xaero option the pack pins (minimap off, coordinates and cave mode hidden, teleport
     # denied) reads as its pin for the whole session, so the mods' own settings screens cannot
     # flip them until the updater repairs the file. One mixin at Xaero Lib's Config.get; the pin

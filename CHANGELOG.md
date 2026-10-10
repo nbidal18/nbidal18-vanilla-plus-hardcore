@@ -5,6 +5,27 @@ build that was not published.
 
 ---
 
+## v1.0.23 — 2026-10-10
+
+**Far terrain no longer runs singleplayer out of memory, and slabs can be mixed.** Manifest digest
+`85a85c4fe6680859…`, replacing `b900efe97c20cace…` (v1.0.22). 299 managed files, up from 260.
+
+* **Singleplayer far terrain** (nbidal18-voxyworldgen 3.10.0): generation now pauses while chunks are
+  queued to unload, instead of piling them up until a long singleplayer session crashed. Built and
+  startup-tested; **not yet proven over a long session**.
+* **Mixed Slabs** — two different slab types in one block space. With our companion, a mixed slab
+  blocks light like a vanilla double slab; Mixed Slabs on its own let light through.
+* **Jukebox 2.3.0.** No disc title on screen when you walk up to a playing jukebox. **Pause now stops
+  the song and turns loop off, and Restart plays it from the beginning** for everyone listening - it
+  no longer resumes mid-song. A player without the mod gets a plain vanilla jukebox.
+* **The server's own mods now ship to the client too**, performance mods included, so a singleplayer
+  world behaves the way the server does.
+* Integrity helper 1.0.23.
+
+**Players click Play.** One "close and reopen" notice for the new helper and the rebuilt mods.
+
+---
+
 ## v1.0.22 — 2026-10-06
 
 **The mob conduit now behaves exactly like a water conduit.** Manifest digest `b900efe97c20cace…`,

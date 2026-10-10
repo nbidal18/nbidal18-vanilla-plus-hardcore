@@ -55,6 +55,22 @@ param(
     # Rocket League, and no run needs the screen to decide pass or fail - that is read from the log.
     # Pass this when you deliberately want the client in front of you.
     [switch] $Focus,
+    # Leave the controller stack out of the throwaway: Controlify and our companion.
+    #
+    # Owner, 2026-10-08: *"when u launch minecraft my rocket league gtoes away and the controller mod
+    # steals the controller, even after closing minecraft the controller doesnt go backj to rtocket
+    # leageu i have to turn it off and back on, its annoying"*. Controlify opens the pad through SDL
+    # at start-up and never closes it, so every run of this test took his controller away from
+    # whatever he was playing - and -Focus already being off did not help, because this is the device
+    # and not the window.
+    #
+    # nbidal18-controlify's off switch does NOT fix this and was read rather than assumed: its own
+    # README says "the controllers stay open ... it does not hand the device to another game". The
+    # only thing that keeps the pad free is not loading Controlify at all.
+    #
+    # The cost is stated rather than hidden: a run with this flag does not prove those two jars load.
+    # Use it while developing; leave it off for the run that gates a release.
+    [switch] $NoControllers,
     # How long to keep pushing the client's window back after the title screen is reached. Minecraft
     # raises its window once resource packs finish loading, which is after the log line this test
     # waits on, so suppression has to outlive the check itself.
@@ -216,12 +232,19 @@ $requiredLines = @(
     @{ Name = 'InvMove bridge registered'
         Pattern = 'Registered the JEI search and allow-movement modules with InvMove'
         RequiresMod = 'nbidal18-invmov-*.jar' }
-    # The exception to the title-screen rule above, and a safe one: this companion is only staged
-    # when -World is given (see the world block), and a hosted world is exactly when it prints. It
-    # proves the throwaway's world runs the server's Vanilla Refresh settings, not stock ones.
+    # The exception to the title-screen rule above. It proves the throwaway's world runs the server's
+    # Vanilla Refresh settings, not stock ones - and it prints at SERVER_STARTED, so only a run that
+    # opens a world can see it.
+    #
+    # RequiresWorld exists because the old premise died: this companion used to be staged only when
+    # -World was given, since it lived in the server set, so "staged" implied "a world is coming".
+    # From the release that puts every server-side mod in the client pack it is always staged, and a
+    # title-screen run was suddenly failing a check for a line that cannot be printed without a
+    # world. Keying it on the world rather than on the jar says what the check actually needs.
     @{ Name = 'Vanilla Refresh settings applied from the server master'
         Pattern = 'Applied \d+ Vanilla Refresh settings from config'
-        RequiresMod = 'nbidal18-vanillarefresh-*.jar' }
+        RequiresMod = 'nbidal18-vanillarefresh-*.jar'
+        RequiresWorld = $true }
 )
 
 $mixinFailure = '(?m)(org\.spongepowered\.asm\.mixin\..*throwables\.|Mixin apply failed|' +
@@ -297,6 +320,21 @@ try {
     foreach ($drop in Get-ChildItem -LiteralPath (Join-Path $testRoot 'mods') -File -Filter 'nbidal18-integrity-*.jar') {
         Remove-Item -LiteralPath $drop.FullName -Force
     }
+    if ($NoControllers) {
+        $withheld = @()
+        foreach ($pattern in @('controlify-*.jar', 'nbidal18-controlify-*.jar')) {
+            foreach ($drop in Get-ChildItem -LiteralPath (Join-Path $testRoot 'mods') -File -Filter $pattern) {
+                $withheld += $drop.Name
+                Remove-Item -LiteralPath $drop.FullName -Force
+            }
+        }
+        if ($withheld.Count) {
+            Write-Host ("no pad    withheld {0} - this run does not prove they load" -f ($withheld -join ', '))
+        }
+        else {
+            Write-Host 'no pad    -NoControllers given, but no Controlify jar was staged anyway'
+        }
+    }
     $stagedMods = @(Get-ChildItem -LiteralPath (Join-Path $testRoot 'mods') -File -Filter '*.jar').Count
     Write-Host ("staging   {0} mods into {1}" -f $stagedMods, $testRoot)
 
@@ -351,20 +389,23 @@ try {
         Copy-Item -LiteralPath $World -Destination (Join-Path $testRoot 'saves') -Recurse -Force
         Write-Host ("world     restored {0}" -f ((Get-ChildItem -LiteralPath $World -Directory | ForEach-Object { $_.Name }) -join ', '))
 
-        # A world in the throwaway is hosted by the client's own integrated server, and the client we
-        # ship has no Vanilla Refresh companion - it is staged on the server only, deliberately, so
-        # nobody gets a Mod Menu screen the dedicated server never reads. Without it a test world runs
-        # Vanilla Refresh on stock values: sitting on, souls on, everything the server has switched
-        # off. Owner, 2026-09-26, looking at exactly that: "make sure the test instance fetches the
-        # latest configs, its a duplicate of what we ship". So the server's companion and the server
-        # master it reads are staged beside the client's mods whenever there is a world to host. The
-        # log then says "Applied 98 Vanilla Refresh settings from config", which the check below
-        # requires. Nothing here changes what is shipped.
+        # A world in the throwaway is hosted by the client's own integrated server, so it needs the
+        # mods and masters that shape a world and not just a player. Owner, 2026-09-26: "make sure
+        # the test instance fetches the latest configs, its a duplicate of what we ship". Without
+        # them a test world ran Vanilla Refresh on stock values - sitting on, souls on, everything
+        # the server has switched off.
         #
-        # The same holds for every server-only mod that shapes a world rather than a player: each
-        # row is a jar pattern in 4. server\mods and the server master it reads. Preferred Gamerules
-        # joined 2026-09-26 (owner: "include the preferred gamerules mod with these two rules") - it
-        # sets the DEFAULT of a rule, so it shapes worlds created in the throwaway, not the restored one.
+        # **This block used to be the only way these reached a client, and it no longer is.** Owner,
+        # 2026-10-08: "the clients should have also all of the srever suide mods and configs, so a
+        # single player world gfives the same experience as the server". Every server-side mod and
+        # its config now ships in the client pack, so by the time this runs both of these are already
+        # staged and each copy below overwrites a file with itself.
+        #
+        # Kept rather than deleted, on purpose: it is what fails loudly if a future release stops
+        # shipping one of them to clients, and the throw below names the file instead of leaving a
+        # test world quietly running stock values again. Preferred Gamerules joined 2026-09-26
+        # (owner: "include the preferred gamerules mod with these two rules") - it sets the DEFAULT of
+        # a rule, so it shapes worlds created in the throwaway, not the restored one.
         $serverMods = Join-Path $release '4. server\mods'
         $worldShapers = @(
             @{ Jar = 'nbidal18-vanillarefresh-*.jar'; Config = 'nbidal18-vanillarefresh.json'; Gives = 'Vanilla Refresh settings' },
@@ -630,6 +671,12 @@ try {
             # Without this the check is not "the bridge works" but "the bridge is installed", and it
             # fails any run that legitimately does not ship it - which is every step of the v2.0.0
             # rebuild, where the pack is built up one mod at a time from nothing.
+            # Some lines are only printed once a world (and therefore an integrated server) exists.
+            # A title-screen run cannot produce them, and demanding them there is a false failure.
+            if ($check.ContainsKey('RequiresWorld') -and $check.RequiresWorld -and -not ($World -or $QuickPlayServer)) {
+                Write-Host ("skipped   {0} - this run does not open a world" -f $check.Name)
+                continue
+            }
             if ($check.ContainsKey('RequiresMod')) {
                 $present = @(Get-ChildItem -LiteralPath (Join-Path $testRoot 'mods') -File `
                         -Filter $check.RequiresMod -ErrorAction SilentlyContinue).Count

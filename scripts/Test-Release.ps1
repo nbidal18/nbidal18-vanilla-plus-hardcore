@@ -42,6 +42,10 @@ param(
     # Test-ServerDeployment makes it a named decision.
     [string[]] $AddMods = @(),
     [switch] $All,
+    # Passed through to Test-ClientLaunch: keep Controlify and our companion out of the throwaway, so
+    # the run does not take the owner's controller away from whatever he is playing. See that script
+    # for why the mod's own off switch does not help. A gating run should NOT use this.
+    [switch] $NoControllers,
     [switch] $WhatIf
 )
 
@@ -231,6 +235,7 @@ foreach ($name in $run.Keys) {
     $script = Join-Path $PSScriptRoot ($name + '.ps1')
     switch ($name) {
         'Test-DedicatedServer' { & $script -DriveRoot $mirror -AddMods $AddMods }
+        'Test-ClientLaunch' { if ($NoControllers) { & $script -NoControllers } else { & $script } }
         default { & $script }
     }
     # $LASTEXITCODE is only set once a native process has run, and every test here is a PowerShell

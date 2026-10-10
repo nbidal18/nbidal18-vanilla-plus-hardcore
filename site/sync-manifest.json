@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "packVersion":  "1.0.22",
+    "packVersion":  "1.0.23",
     "exactRoots":  [
                        "mods",
                        "config",
@@ -12,23 +12,23 @@
                                "config"
                            ],
     "runtimeMutableRoots":  [
-                                "config/autohud.json5",
-                                "config/iris.properties",
                                 "config/VinURLConfig.json5",
+                                "config/autohud.json5",
                                 "config/firstperson.json",
+                                "config/iris.properties",
+                                "config/litematica.json",
                                 "config/sodium-fingerprint.json",
                                 "config/sodium-options.json",
                                 "config/sounds/chat.json",
                                 "config/voxy-config.json",
                                 "config/xaero/minimap/profiles/default.cfg",
                                 "config/xaero/world-map/profiles/default.cfg",
-                                "config/litematica.json",
                                 "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                                 "config/MouseTweaks.cfg",
                                 "config/asyncparticles/asyncparticles-mixin.properties",
                                 "config/asyncparticles/asyncparticles.json",
-                                "config/treechop-client.toml",
                                 "config/betteradvancements.json",
+                                "config/betterdays-client.toml",
                                 "config/betterf3.json",
                                 "config/betterthirdperson.json5",
                                 "config/c2me.toml",
@@ -37,20 +37,30 @@
                                 "config/cherishedworlds-client.toml",
                                 "config/collective.json5",
                                 "config/continuity.json",
+                                "config/controlify/server.json",
+                                "config/coolrain.json",
                                 "config/creativecore-client.json",
                                 "config/creativecore.json",
                                 "config/cursors_extended.json",
+                                "config/elytratrails.json",
+                                "config/emf_compat.json",
                                 "config/enchdesc.json",
+                                "config/entity_model_features.json",
+                                "config/entity_texture_features.json",
                                 "config/entityculling.json",
+                                "config/explosiveenhancement.json",
                                 "config/fallingleaves2.json",
                                 "config/ferritecore.mixin.properties",
                                 "config/gnetum.json",
+                                "config/gravestones.json",
                                 "config/immediatelyfast.json",
+                                "config/immersive_optimization.json",
                                 "config/invmove.json",
                                 "config/invmove/unrecognized.json",
                                 "config/invmove/vanilla.json",
                                 "config/iris-excluded.json",
                                 "config/ixeris.toml",
+                                "config/jei-server.properties",
                                 "config/jei/blacklist.json",
                                 "config/jei/ingredient-list-mod-sort-order.ini",
                                 "config/jei/ingredient-list-type-sort-order.ini",
@@ -67,9 +77,13 @@
                                 "config/lootr-client.jsonc",
                                 "config/midnightlib.json",
                                 "config/modmenu.json",
-                                "config/gravestones.json",
+                                "config/notenoughanimations.json",
+                                "config/particle_effects.json5",
+                                "config/particular-common.toml",
                                 "config/presencefootsteps/updater.json",
                                 "config/presencefootsteps/userconfig.json5",
+                                "config/servercore/config.yml",
+                                "config/servercore/optimizations.yml",
                                 "config/skinlayers.json",
                                 "config/smooth_steps.json",
                                 "config/smoothgui.json",
@@ -87,42 +101,37 @@
                                 "config/sounds/ui.json",
                                 "config/sounds/world.json",
                                 "config/status-effect-bars.json",
+                                "config/structure_layout_optimizer.jsonc",
                                 "config/subtle_effects/blocks.toml",
                                 "config/subtle_effects/entities.toml",
                                 "config/subtle_effects/environment.toml",
                                 "config/subtle_effects/general.toml",
                                 "config/subtle_effects/items.toml",
-                                "config/voxyworldgenv2.json",
-                                "config/yacl.json5",
-                                "config/emf_compat.json",
-                                "config/entity_model_features.json",
-                                "config/entity_texture_features.json",
-                                "config/notenoughanimations.json",
-                                "config/coolrain.json",
-                                "config/elytratrails.json",
-                                "config/explosiveenhancement.json",
-                                "config/particular-common.toml",
+                                "config/treechop-client.toml",
                                 "config/visuality.json",
+                                "config/voicechat/translations.properties",
+                                "config/voxyworldgenv2.json",
                                 "config/wakes.json",
-                                "config/particle_effects.json5"
+                                "config/yacl.json5"
                             ],
     "localAllowed":  [
-                         "config/autohud.json5",
-                         "config/iris.properties",
                          "config/VinURLConfig.json5",
+                         "config/autohud.json5",
                          "config/firstperson.json",
+                         "config/iris.properties",
+                         "config/litematica.json",
                          "config/sodium-fingerprint.json",
                          "config/sodium-options.json",
                          "config/sounds/chat.json",
                          "config/voxy-config.json",
                          "config/xaero/minimap/profiles/default.cfg",
                          "config/xaero/world-map/profiles/default.cfg",
-                         "config/litematica.json",
                          "shaderpacks/nbidal18-ComplementaryUnbound_r5.9.3-EuphoriaPatches_1.10.5.zip.txt",
                          "config/MouseTweaks.cfg",
                          "config/asyncparticles/asyncparticles-mixin.properties",
                          "config/asyncparticles/asyncparticles.json",
                          "config/betteradvancements.json",
+                         "config/betterdays-client.toml",
                          "config/betterf3.json",
                          "config/betterthirdperson.json5",
                          "config/c2me.toml",
@@ -148,6 +157,7 @@
                          "config/invmove/vanilla.json",
                          "config/iris-excluded.json",
                          "config/ixeris.toml",
+                         "config/jei-server.properties",
                          "config/jei/blacklist.json",
                          "config/jei/ingredient-list-mod-sort-order.ini",
                          "config/jei/ingredient-list-type-sort-order.ini",
@@ -166,6 +176,7 @@
                          "config/notenoughanimations.json",
                          "config/presencefootsteps/updater.json",
                          "config/presencefootsteps/userconfig.json5",
+                         "config/servercore/config.yml",
                          "config/skinlayers.json",
                          "config/smooth_steps.json",
                          "config/smoothgui.json",
@@ -181,6 +192,7 @@
                          "config/sounds/ui.json",
                          "config/sounds/world.json",
                          "config/status-effect-bars.json",
+                         "config/structure_layout_optimizer.jsonc",
                          "config/subtle_effects/blocks.toml",
                          "config/subtle_effects/entities.toml",
                          "config/subtle_effects/general.toml",
@@ -300,11 +312,19 @@
                                 },
                                 {
                                     "path":  "config/bcc-common.json",
-                                    "sha256":  "5e456ad80623284b7dd81b8ae1dbc3ba15127fde729b12c9e93fe95ff709206e"
+                                    "sha256":  "a41c04b5e42a5d8334730c69c1011e3e108d78b240d36d149b4585501a4c91be"
                                 },
                                 {
                                     "path":  "config/betteradvancements.json",
                                     "sha256":  "c81c89e9534c83ecef3206b6c7d311c7695a396c23080b15abeedeabbd7064d5"
+                                },
+                                {
+                                    "path":  "config/betterdays-client.toml",
+                                    "sha256":  "dae026d4419175e0fecdd856ac27adcfead736d6474b76cbbb0654a8d7676929"
+                                },
+                                {
+                                    "path":  "config/betterdays-common.toml",
+                                    "sha256":  "67378074f765cc108c09840fca6fcafd9860b213e9179ec6f97efeeed3929454"
                                 },
                                 {
                                     "path":  "config/betterf3.json",
@@ -337,6 +357,10 @@
                                 {
                                     "path":  "config/continuity.json",
                                     "sha256":  "28eaff624c99a24e49882e5f56496a9e0f55e9a25e583e9313b0360494810b65"
+                                },
+                                {
+                                    "path":  "config/controlify/server.json",
+                                    "sha256":  "318dc69a8bcb706d1d61f4d1575d8499141a42f3a6e7553bbac4874f77943d2b"
                                 },
                                 {
                                     "path":  "config/coolrain.json",
@@ -407,6 +431,10 @@
                                     "sha256":  "de689cd568aa0de06b6d2bab7462b0f033c101418e5069d95ced35c57128ab49"
                                 },
                                 {
+                                    "path":  "config/immersive_optimization.json",
+                                    "sha256":  "72c171bed9d554dfa0a3d7af64c39194b95feaf3f787c1219603181c1316e58f"
+                                },
+                                {
                                     "path":  "config/invmove.json",
                                     "sha256":  "7b98a6bf611bd12ca97ffb221856a06c3786a6b97a0344823e685cad968c8e26"
                                 },
@@ -429,6 +457,10 @@
                                 {
                                     "path":  "config/ixeris.toml",
                                     "sha256":  "fb01aa8a788bec8b6d54aeb36290dbdf4f627cc64dbb8db76e3021a5d803791b"
+                                },
+                                {
+                                    "path":  "config/jei-server.properties",
+                                    "sha256":  "866b0d3890088e93bbaa0eb498bdc610dc043df1af99f43fdc3b46fbca79d360"
                                 },
                                 {
                                     "path":  "config/jei/blacklist.json",
@@ -495,12 +527,20 @@
                                     "sha256":  "40ee141cd92a979607cff5c87497b27a9f165015bd4ff81bb52d25f358cfc3a3"
                                 },
                                 {
+                                    "path":  "config/lootr-common.jsonc",
+                                    "sha256":  "4c58e0e5e487b639b0e1e7c8a3025d4124dc2c4e31559d22cbf675196c73ad16"
+                                },
+                                {
                                     "path":  "config/midnightlib.json",
                                     "sha256":  "b14c45c6447f9ee5474d70784a2ef96731abbeca1e92485b7599e76e9dce1444"
                                 },
                                 {
                                     "path":  "config/modmenu.json",
                                     "sha256":  "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
+                                },
+                                {
+                                    "path":  "config/nbidal18-vanillarefresh.json",
+                                    "sha256":  "3b66845b8f6afb9a773b17f136a7434cd18a14211a2628326ffd69852caa5093"
                                 },
                                 {
                                     "path":  "config/notenoughanimations.json",
@@ -515,12 +555,24 @@
                                     "sha256":  "9e8b822edd6e274416a21cbc35767d678bdb4006f78625eda83921a31b4ed017"
                                 },
                                 {
+                                    "path":  "config/preferred-gamerules.properties",
+                                    "sha256":  "108ecead4847093ffd46e815900eeb3651282242e5368411896602a62bc05f70"
+                                },
+                                {
                                     "path":  "config/presencefootsteps/updater.json",
                                     "sha256":  "1e7c61df09c105e1eeca8cf3dcbdfeb976700e9904bcb3983fc7791adb7fad2e"
                                 },
                                 {
                                     "path":  "config/presencefootsteps/userconfig.json5",
                                     "sha256":  "90fab4d4fe137ee65a86934eab457c4c679a87f6bd3188a320e8c0ade3ef5112"
+                                },
+                                {
+                                    "path":  "config/servercore/config.yml",
+                                    "sha256":  "384271d5f0a964d713586d3ce648c0d172e82fbe281f12281b49aeac48b5f5bd"
+                                },
+                                {
+                                    "path":  "config/servercore/optimizations.yml",
+                                    "sha256":  "f6a4950e02e2e2aac4525c924b22500282fc27996d4385de466ab34ff8d6dcd6"
                                 },
                                 {
                                     "path":  "config/skinlayers.json",
@@ -599,8 +651,16 @@
                                     "sha256":  "e698f9f2184dad829d45013b85d821abce38a024d47822cbac5846778ca398a2"
                                 },
                                 {
+                                    "path":  "config/sparsestructures.json5",
+                                    "sha256":  "4d2c12720123860c1d0d88a9e51351130690ef0474a193b2760b33a1bb7d29e8"
+                                },
+                                {
                                     "path":  "config/status-effect-bars.json",
                                     "sha256":  "9d6b9cee844e073d40de18fdfb268c267978a3cb0e64f1d1f17f79e6bf688a70"
+                                },
+                                {
+                                    "path":  "config/structure_layout_optimizer.jsonc",
+                                    "sha256":  "5a9058652bc0b88b8810e0b94eba0e1a90cbff2472845c53a7e67442682a1579"
                                 },
                                 {
                                     "path":  "config/subtle_effects/blocks.toml",
@@ -635,6 +695,10 @@
                                     "sha256":  "2e028738077e9aa01907930b4621a6943276da53bedfb3dd9432bca17fbfa77d"
                                 },
                                 {
+                                    "path":  "config/the-block-keeps-ticking.json",
+                                    "sha256":  "7ca80eca4b62c8b25bfc7dcc0d0ec5279b452e77466f2d93aa9fcf6ff6ca6ef2"
+                                },
+                                {
                                     "path":  "config/treechop-client.toml",
                                     "sha256":  "71d467c170c878d7e576f38d8d03b35f4959fb997f679ec4418e1478afab37de"
                                 },
@@ -645,6 +709,10 @@
                                 {
                                     "path":  "config/visuality.json",
                                     "sha256":  "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
+                                },
+                                {
+                                    "path":  "config/voicechat/translations.properties",
+                                    "sha256":  "b258a94a5ed60fbf93b66c452c3d6e36b044f630741f90e5b13852a4805b235e"
                                 },
                                 {
                                     "path":  "config/voxy-config.json",
@@ -694,11 +762,19 @@
                   },
                   {
                       "path":  "config/bcc-common.json",
-                      "sha256":  "5e456ad80623284b7dd81b8ae1dbc3ba15127fde729b12c9e93fe95ff709206e"
+                      "sha256":  "a41c04b5e42a5d8334730c69c1011e3e108d78b240d36d149b4585501a4c91be"
                   },
                   {
                       "path":  "config/betteradvancements.json",
                       "sha256":  "c81c89e9534c83ecef3206b6c7d311c7695a396c23080b15abeedeabbd7064d5"
+                  },
+                  {
+                      "path":  "config/betterdays-client.toml",
+                      "sha256":  "730b13a15e01a03825fc40477758799ed8801c783d9cf829867c43c1b08f7ad9"
+                  },
+                  {
+                      "path":  "config/betterdays-common.toml",
+                      "sha256":  "fa497006bef4420ea30c9387dbd174f5726a3ed436147099319a8f0afe7035ef"
                   },
                   {
                       "path":  "config/betterf3.json",
@@ -731,6 +807,10 @@
                   {
                       "path":  "config/continuity.json",
                       "sha256":  "28eaff624c99a24e49882e5f56496a9e0f55e9a25e583e9313b0360494810b65"
+                  },
+                  {
+                      "path":  "config/controlify/server.json",
+                      "sha256":  "318dc69a8bcb706d1d61f4d1575d8499141a42f3a6e7553bbac4874f77943d2b"
                   },
                   {
                       "path":  "config/coolrain.json",
@@ -801,6 +881,10 @@
                       "sha256":  "de689cd568aa0de06b6d2bab7462b0f033c101418e5069d95ced35c57128ab49"
                   },
                   {
+                      "path":  "config/immersive_optimization.json",
+                      "sha256":  "72c171bed9d554dfa0a3d7af64c39194b95feaf3f787c1219603181c1316e58f"
+                  },
+                  {
                       "path":  "config/invmove.json",
                       "sha256":  "7b98a6bf611bd12ca97ffb221856a06c3786a6b97a0344823e685cad968c8e26"
                   },
@@ -823,6 +907,10 @@
                   {
                       "path":  "config/ixeris.toml",
                       "sha256":  "6670075f5a197ad07155acc99568ce9f9d4a45c1c451f4d482f06dfafb7ebf74"
+                  },
+                  {
+                      "path":  "config/jei-server.properties",
+                      "sha256":  "866b0d3890088e93bbaa0eb498bdc610dc043df1af99f43fdc3b46fbca79d360"
                   },
                   {
                       "path":  "config/jei/blacklist.json",
@@ -889,12 +977,20 @@
                       "sha256":  "40ee141cd92a979607cff5c87497b27a9f165015bd4ff81bb52d25f358cfc3a3"
                   },
                   {
+                      "path":  "config/lootr-common.jsonc",
+                      "sha256":  "4c58e0e5e487b639b0e1e7c8a3025d4124dc2c4e31559d22cbf675196c73ad16"
+                  },
+                  {
                       "path":  "config/midnightlib.json",
                       "sha256":  "b14c45c6447f9ee5474d70784a2ef96731abbeca1e92485b7599e76e9dce1444"
                   },
                   {
                       "path":  "config/modmenu.json",
                       "sha256":  "e8f1becee4d20e11702910e0d3eedbe35175922c6ba1a98b52efeb8c9ab3a11d"
+                  },
+                  {
+                      "path":  "config/nbidal18-vanillarefresh.json",
+                      "sha256":  "3b66845b8f6afb9a773b17f136a7434cd18a14211a2628326ffd69852caa5093"
                   },
                   {
                       "path":  "config/notenoughanimations.json",
@@ -909,12 +1005,24 @@
                       "sha256":  "6014ddeae103eb48df4ee8919741add2add815f2002e1080df501dc7db83fe4c"
                   },
                   {
+                      "path":  "config/preferred-gamerules.properties",
+                      "sha256":  "108ecead4847093ffd46e815900eeb3651282242e5368411896602a62bc05f70"
+                  },
+                  {
                       "path":  "config/presencefootsteps/updater.json",
                       "sha256":  "1e7c61df09c105e1eeca8cf3dcbdfeb976700e9904bcb3983fc7791adb7fad2e"
                   },
                   {
                       "path":  "config/presencefootsteps/userconfig.json5",
                       "sha256":  "90fab4d4fe137ee65a86934eab457c4c679a87f6bd3188a320e8c0ade3ef5112"
+                  },
+                  {
+                      "path":  "config/servercore/config.yml",
+                      "sha256":  "384271d5f0a964d713586d3ce648c0d172e82fbe281f12281b49aeac48b5f5bd"
+                  },
+                  {
+                      "path":  "config/servercore/optimizations.yml",
+                      "sha256":  "f6a4950e02e2e2aac4525c924b22500282fc27996d4385de466ab34ff8d6dcd6"
                   },
                   {
                       "path":  "config/skinlayers.json",
@@ -993,8 +1101,16 @@
                       "sha256":  "e698f9f2184dad829d45013b85d821abce38a024d47822cbac5846778ca398a2"
                   },
                   {
+                      "path":  "config/sparsestructures.json5",
+                      "sha256":  "4d2c12720123860c1d0d88a9e51351130690ef0474a193b2760b33a1bb7d29e8"
+                  },
+                  {
                       "path":  "config/status-effect-bars.json",
                       "sha256":  "9d6b9cee844e073d40de18fdfb268c267978a3cb0e64f1d1f17f79e6bf688a70"
+                  },
+                  {
+                      "path":  "config/structure_layout_optimizer.jsonc",
+                      "sha256":  "5a9058652bc0b88b8810e0b94eba0e1a90cbff2472845c53a7e67442682a1579"
                   },
                   {
                       "path":  "config/subtle_effects/blocks.toml",
@@ -1029,6 +1145,10 @@
                       "sha256":  "2e028738077e9aa01907930b4621a6943276da53bedfb3dd9432bca17fbfa77d"
                   },
                   {
+                      "path":  "config/the-block-keeps-ticking.json",
+                      "sha256":  "7ca80eca4b62c8b25bfc7dcc0d0ec5279b452e77466f2d93aa9fcf6ff6ca6ef2"
+                  },
+                  {
                       "path":  "config/treechop-client.toml",
                       "sha256":  "71d467c170c878d7e576f38d8d03b35f4959fb997f679ec4418e1478afab37de"
                   },
@@ -1039,6 +1159,10 @@
                   {
                       "path":  "config/visuality.json",
                       "sha256":  "1f74f3290cdadbddc0aef4e961a1fa8b97bdd2167a8b8c00b3d2e1e938d091bb"
+                  },
+                  {
+                      "path":  "config/voicechat/translations.properties",
+                      "sha256":  "b258a94a5ed60fbf93b66c452c3d6e36b044f630741f90e5b13852a4805b235e"
                   },
                   {
                       "path":  "config/voxy-config.json",
@@ -1129,6 +1253,10 @@
                       "sha256":  "84186b3d128fd45b6affb4af2d4132520ec302ea53634f53b717d14689784905"
                   },
                   {
+                      "path":  "mods/Mixed-Slabs-1.0.1+mc26.2-icon.jar",
+                      "sha256":  "f4d2e572a70141111335b95378b8be07a49b4faa7c6a6a60110830ee928927c3"
+                  },
+                  {
                       "path":  "mods/MouseTweaks-fabric-mc26.2-2.31.jar",
                       "sha256":  "4592eff38a2e7af3487688e888a637a8cbd4767b46662df94d993a889102effe"
                   },
@@ -1149,12 +1277,24 @@
                       "sha256":  "adb871854e5596a6d10593b13634622801b202b18d0eae694ff3a5a50951dc85"
                   },
                   {
+                      "path":  "mods/ResourcefulConfig-5.0.0.jar",
+                      "sha256":  "e1f3138849b7ec68d029ba07a8158e9bec4032c02f20c3999fe335c638fc8d89"
+                  },
+                  {
                       "path":  "mods/ScalableLux-0.2.1+fabric.2b08348-all.jar",
                       "sha256":  "b8c2807ec1ac3e7e87ff3dc2c2cfd83abbb5d283b35a8a1cb71a34d96f1620ba"
                   },
                   {
                       "path":  "mods/Smooth Steps v1.2.0-26.2.jar",
                       "sha256":  "9da31ecfbdc0d0a58aabb40ed0d170dd94399d5c0e6ff851823deced0b2821cb"
+                  },
+                  {
+                      "path":  "mods/Structory_26.2_v1.3.7.jar",
+                      "sha256":  "e9079b2bb9bc2efb9b0f1244376488e41f8b50f25415094d8f03dc753cdfb131"
+                  },
+                  {
+                      "path":  "mods/Structory_Towers_26.2_v1.0.17.jar",
+                      "sha256":  "226d8cb187e0d4fb75571db017c0abb26176aec16586c337a1b5620f3805a372"
                   },
                   {
                       "path":  "mods/SubtleEffects-fabric-26.2-1.14.3.jar",
@@ -1205,6 +1345,10 @@
                       "sha256":  "8c6a41fe64802f4867de86017492a081d6947e2f3afa9b9d84b72a2d9e0da5c1"
                   },
                   {
+                      "path":  "mods/betterdays-26.2-fabric-4.1.1.7-FABRIC.jar",
+                      "sha256":  "58441a6be44ebce67c8054f0fe9017a381ed6dc36ae199ab0acbf20615de275f"
+                  },
+                  {
                       "path":  "mods/bettermounthud-1.3.1.jar",
                       "sha256":  "3d4f56c46e61e86ecd5f411809a01af7c40b25aead6791b716befcf33e1e3336"
                   },
@@ -1247,6 +1391,10 @@
                   {
                       "path":  "mods/coolrain-1.4.0-26.2.jar",
                       "sha256":  "b7ec31587d29e194f8aa4eea39b253a8e2a3ef86965c20f605604d5b9755f50b"
+                  },
+                  {
+                      "path":  "mods/cristellib-fabric-26.2-3.1.13.jar",
+                      "sha256":  "0fd562e8f3c081013d20c4c06bb4f410bcb1d9d2708168f2be17cc66d3c596c4"
                   },
                   {
                       "path":  "mods/cursors_extended-fabric-4.1.7+26.2.jar",
@@ -1317,8 +1465,20 @@
                       "sha256":  "251cb8643cb572c1848262792c0b3edbdcb8427288f7fbf0a786ddd3ef91ccb1"
                   },
                   {
+                      "path":  "mods/imfast-FABRIC-26.2-1.0.3.jar",
+                      "sha256":  "5eafbc57d60b0d4439f1c365348b7b02f516f4e9df22199da817bd50ca55fa01"
+                  },
+                  {
+                      "path":  "mods/immersive_optimization-fabric-26.2-0.2.0.jar",
+                      "sha256":  "c2de58954cc0d202dd22bd4dcd6198f5f8d30d8e5c223bcbc63ed6e6e74bbc81"
+                  },
+                  {
                       "path":  "mods/immersive_paintings-fabric-26.2-0.7.9.jar",
                       "sha256":  "37f1c4a9e54c86729d3aa665a6d7b1ad54255155ec24b9609a28aafbe8c09f31"
+                  },
+                  {
+                      "path":  "mods/invisibleframes-fabric-2.0.1+26.2.jar",
+                      "sha256":  "1d425b913720da95bb313d31f518873d5a5748c28f92a06abed7441ce5b1b682"
                   },
                   {
                       "path":  "mods/iris-fabric-1.11.2+mc26.2.jar",
@@ -1381,6 +1541,10 @@
                       "sha256":  "1e799b29577abe703412cc1a5e4ad72e2317e98d5a2eb55299ca8302f2164ae7"
                   },
                   {
+                      "path":  "mods/nbidal18-afk-1.0.0+26.2-fabric.jar",
+                      "sha256":  "9cffc04496aac4038755ec6a1b43a0e46d3c1201d185413bf25780589f51a670"
+                  },
+                  {
                       "path":  "mods/nbidal18-anvil-1.0.0+26.2-fabric.jar",
                       "sha256":  "8d4395fe368edd17467111c0cbd344db6a22c7abf9b261683ecde6b11970020a"
                   },
@@ -1391,6 +1555,10 @@
                   {
                       "path":  "mods/nbidal18-autopilot-1.3.0+26.2-fabric.jar",
                       "sha256":  "20964b7da5db58b5e9bd499e8e43c79d4715dd8bdf99581b6bca899a23adcc9e"
+                  },
+                  {
+                      "path":  "mods/nbidal18-betterdays-1.0.0+26.2-fabric.jar",
+                      "sha256":  "275792eb830686f8e3fa405812d04573ed324225ea5583a28fa43698397a6b8c"
                   },
                   {
                       "path":  "mods/nbidal18-betterthirdperson-1.9.0+26.2-fabric.jar",
@@ -1409,6 +1577,10 @@
                       "sha256":  "6184ef41f7b15a576312b27c7d3ed8c6c63d73b7b0cb22315822763c859fd3aa"
                   },
                   {
+                      "path":  "mods/nbidal18-coppergolem-1.0.0+26.2-fabric.jar",
+                      "sha256":  "5fc10606c0c8b5cb2b422b3e52717cd1b326036a67000637d90585179cb9ad26"
+                  },
+                  {
                       "path":  "mods/nbidal18-emf-1.0.0+26.2-fabric.jar",
                       "sha256":  "4efcecb5815f3c7cbdcff9a452632a959219d9cb33aa917000c8eb3046115de4"
                   },
@@ -1425,8 +1597,8 @@
                       "sha256":  "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
                   },
                   {
-                      "path":  "mods/nbidal18-integrity-1.0.22+26.2-fabric.jar",
-                      "sha256":  "bed2ed6d022d4d77178ee75dbb101d30652d12f9b537c560d8b5d8bd1cc402ce"
+                      "path":  "mods/nbidal18-integrity-1.0.23+26.2-fabric.jar",
+                      "sha256":  "fb22fee08c14baaa7f6474063666022d2b861c5b5001785c1281f40317cff501"
                   },
                   {
                       "path":  "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar",
@@ -1441,12 +1613,16 @@
                       "sha256":  "fde02cb97c73ec12e2d113e42bb816b3d873910003348ed13486865040021837"
                   },
                   {
-                      "path":  "mods/nbidal18-jukebox-2.1.1+26.2-fabric.jar",
-                      "sha256":  "5a1599625815df3fbca98301b3e14f4e75031131a452fbc35c814e973a02fa12"
+                      "path":  "mods/nbidal18-jukebox-2.3.0+26.2-fabric.jar",
+                      "sha256":  "b94346a5a0f562c7edaf731681601627695d39672d9cdab4429f699a7273a03b"
                   },
                   {
                       "path":  "mods/nbidal18-lambdynlights-1.0.0+26.2-fabric.jar",
                       "sha256":  "58e51525b24495c5e22554d6633578ffd795aed09dc2a170d48a2873c67ebfdf"
+                  },
+                  {
+                      "path":  "mods/nbidal18-mixedslabs-1.0.0+26.2-fabric.jar",
+                      "sha256":  "e29b5884ed905abbcfa49ca1ffaff0640dc465e2e48849bb9dae8638f9020bbf"
                   },
                   {
                       "path":  "mods/nbidal18-mobconduit-1.0.0+26.2-fabric.jar",
@@ -1455,6 +1631,14 @@
                   {
                       "path":  "mods/nbidal18-realisticdeathvisuals-1.0.2+26.2-fabric.jar",
                       "sha256":  "d2db12699fd76389473394c85ff418ca1ebfdb315a7eae77f01cedd16924aaa8"
+                  },
+                  {
+                      "path":  "mods/nbidal18-reduceddebug-1.0.0+26.2-fabric.jar",
+                      "sha256":  "60813901db0014aa3969079c54489ec71eeed79d11e78ae2c99470d0665be4ec"
+                  },
+                  {
+                      "path":  "mods/nbidal18-saferejoin-1.1.0+26.2-fabric.jar",
+                      "sha256":  "54900b92b0e5e68991cace05c913db6ca592af0728309f9db5ce10633ff9c598"
                   },
                   {
                       "path":  "mods/nbidal18-skinoverrides-1.0.0+26.2-fabric.jar",
@@ -1469,16 +1653,36 @@
                       "sha256":  "67181a1ae3c401c5d53aedd890298bca33ede2c1a1d061bbd20d5cbac1b791c2"
                   },
                   {
+                      "path":  "mods/nbidal18-sparsestructures-1.0.0+26.2-fabric.jar",
+                      "sha256":  "9df55804984419fe57cf1f656d3660f84221f36d6601ce0fd00abfd146615f75"
+                  },
+                  {
+                      "path":  "mods/nbidal18-strike-1.0.0+26.2-fabric.jar",
+                      "sha256":  "b59c21391aa14c445f44dba5a24b18e34f6fb9b72abe135bb9767f20d10152a0"
+                  },
+                  {
+                      "path":  "mods/nbidal18-tectonic-1.1.0+26.2-fabric.jar",
+                      "sha256":  "7f090c95dd116f632aba7676946b693e7a03fb419903e0cb9a4743650ddf8a08"
+                  },
+                  {
+                      "path":  "mods/nbidal18-theend-1.1.0+26.2-fabric.jar",
+                      "sha256":  "2359be5448da44bd5d5c6eb3d5f900188ec46708c897110fb37cb6f89e61c6e8"
+                  },
+                  {
                       "path":  "mods/nbidal18-treechop-0.19.3+26.2-nbidal18.2-fabric.jar",
                       "sha256":  "cb71edf724fd4df18bc4373519f507a33a5c6809f213af49beaccca6984743d7"
+                  },
+                  {
+                      "path":  "mods/nbidal18-vanillarefresh-1.2.0+26.2-fabric.jar",
+                      "sha256":  "dbebbea3c71e7ac81f6cac6c9a76ff0aee3cbbb4a55e456cd7852a2fefef2e27"
                   },
                   {
                       "path":  "mods/nbidal18-voxy-1.0.0+26.2-fabric.jar",
                       "sha256":  "887a3409d399d4284855434e5086b0f536114e82471ba8a4f414c46e194ccd8e"
                   },
                   {
-                      "path":  "mods/nbidal18-voxyworldgen-3.9.1+26.2-fabric.jar",
-                      "sha256":  "fe5baf403d0a2e20afdb56181186d513f9330d95fc16d4136395ddf4196876e9"
+                      "path":  "mods/nbidal18-voxyworldgen-3.10.0+26.2-fabric.jar",
+                      "sha256":  "03ff4e4d2cd8e38771a8fe06d506f8827930e4fd745ba16b3b2ce61508ee63e8"
                   },
                   {
                       "path":  "mods/nbidal18-xaerolib-1.0.0+26.2-fabric.jar",
@@ -1513,8 +1717,20 @@
                       "sha256":  "8740f3698563f35ade639a3e98eda22537e259f339abb629803b358d30e55ccd"
                   },
                   {
+                      "path":  "mods/preferred-gamerules-2.0.1+26.2.jar",
+                      "sha256":  "42dbfb65ffa4bbd607f312dd8e8a3b220135faf8da77c607e6570b65baaac4f4"
+                  },
+                  {
+                      "path":  "mods/railoptimization-fabric-mc26.1.2-1.6.jar",
+                      "sha256":  "18620e4542c04afc52e86a09284203100a11745a8e9c063e10f469f13a8d508c"
+                  },
+                  {
                       "path":  "mods/reeses-sodium-options-fabric-2.2.3+mc26.2.jar",
                       "sha256":  "49b68a887f5691b805efbe73c4e6e622cda5c322431ef68f81c8953de4041911"
+                  },
+                  {
+                      "path":  "mods/servercore-fabric-1.5.19+26.2.jar",
+                      "sha256":  "4f7c9fb3b35b364d8f6500d04f0d5481656f617a83bc69742b47f39adff59666"
                   },
                   {
                       "path":  "mods/skin_overrides-2.7.1+26.2.jar",
@@ -1523,6 +1739,10 @@
                   {
                       "path":  "mods/skinlayers3d-fabric-1.11.3-mc26.2.jar",
                       "sha256":  "813709ca903e8c8b004ab7114845bed5205744ad562eab9f0360bddd551b81a8"
+                  },
+                  {
+                      "path":  "mods/sleeping-messages-v1.2.1.jar",
+                      "sha256":  "1b8ff11e88339cd480a586d52975131f77087776aeb1efbb3a0c344d00132b83"
                   },
                   {
                       "path":  "mods/smoothgui-fabric-2.0.6+mc26.2.jar",
@@ -1557,6 +1777,14 @@
                       "sha256":  "7abb6f5facf44e74ea1a12e8ac0c669ef2ee44b32f2c1a22a6a237fc5d206f3d"
                   },
                   {
+                      "path":  "mods/spark-1.10.173-fabric.jar",
+                      "sha256":  "076ed2288db2a05ca6e8061615e1a31d1912cf1b10665e4f09a1794d5db99433"
+                  },
+                  {
+                      "path":  "mods/sparsestructures-fabric-26.2-3.1.4.jar",
+                      "sha256":  "bbefc0c02b3a5fb92f8b6aad52e2566cafa421eb56b22dcbaaf7181524642dc2"
+                  },
+                  {
                       "path":  "mods/spyglass-zoom-2.4.0.jar",
                       "sha256":  "46ca2b3c6a5fc7a8b78430df1d7762c697c5f8a9acd124ec55ea08403bee81d0"
                   },
@@ -1569,12 +1797,24 @@
                       "sha256":  "8cb64d13fb73ae1dff415734b980bca0f858311ffa010c8a21522113a9dddee5"
                   },
                   {
+                      "path":  "mods/structure_layout_optimizer-1.1.4+26.1-fabric.jar",
+                      "sha256":  "189a4356cc34b34156ec18dd22b9d63e617f12dddfe31729c640fcc62b5ad1fc"
+                  },
+                  {
+                      "path":  "mods/t_and_t-fabric-neoforge-1.13.11.jar",
+                      "sha256":  "13b38f18cff6103b02f2b7d768b0d495edb8969df724e1538e13ce5bcc05f8be"
+                  },
+                  {
                       "path":  "mods/tcdcommons-5.5.6+fn-26.2.jar",
                       "sha256":  "06d84215e18c97572505170e42cf52bb57e0701e644c7010aaaf0a127aea8d87"
                   },
                   {
                       "path":  "mods/tectonic-3.0.28-fabric-26.2.jar",
                       "sha256":  "9e57f7ff2d0e39808f1523ce46e87feee2c66c9a2050839eaba9be7f9b0eaaf0"
+                  },
+                  {
+                      "path":  "mods/the-block-keeps-ticking-1.2.1.jar",
+                      "sha256":  "ca0da67313c1d2a5860d11087da960f1742f34fd3d6055142ac6f241aa829c13"
                   },
                   {
                       "path":  "mods/vanilla-refresh-1.4.31.jar",
@@ -1611,6 +1851,10 @@
                   {
                       "path":  "mods/yet_another_config_lib_v3-3.9.6+26.2-fabric.jar",
                       "sha256":  "829396c3b3e7d1801ae0e9e2921d0454c5a3078afdb6c6dda6b3d1819dfa0e3f"
+                  },
+                  {
+                      "path":  "mods/zfastnoise-1.0.40+26.2.jar",
+                      "sha256":  "cdbed999df58da95c39a1e0c10811f7bc8c9aadc5696a1efda1624bd30104046"
                   },
                   {
                       "path":  "nbidal18-packwiz-sync.next.jar",

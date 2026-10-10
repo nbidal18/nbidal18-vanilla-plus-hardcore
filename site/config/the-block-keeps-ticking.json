@@ -1,0 +1,30 @@
+{
+	"enabledByName": {
+		"Furnaces": true,
+		"Campfires": true,
+		"Brewing Stands": true,
+		"Crops": true,
+		"Crop Stems": true,
+		"Nether Wart": true,
+		"Cocoa Beans": true,
+		"Saplings": true,
+		"Leaves": false,
+		"Kelp": true,
+		"Bamboo Sapling": true,
+		"Bamboo Stalk": true,
+		"Sugar Cane": true,
+		"Cactus": true,
+		"Ageable Entities": true,
+		"Dried Ghast": true,
+		"Sniffer Eggs": true,
+		"Pointed Dripstone": true,
+		"Sweet Berry Bushes": true,
+		"Budding Amethyst": true,
+		"Chicken Egg Laying": true
+	},
+	"lazyTaxPercent": 0,
+	"timeMode": "WORLD_TIME",
+	"simulateChunksWhenSleeping": true,
+	"debugLogging": false,
+	"minInhabitedTicks": 6000
+}

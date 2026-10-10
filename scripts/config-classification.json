@@ -65,6 +65,11 @@
       "reason": "Inventory mouse handling."
     },
     {
+      "match": "config/VinURLConfig.json5",
+      "class": "player",
+      "reason": "VinURL's custom music discs. Published (v1.0.74) so a fresh install starts with youtube.com and soundcloud.com on the URL whitelist instead of asking every player to press Y once per domain, which is what 4.5.2 shipped too. Player class because the mod writes the player's own whitelist additions into this file; player class still delivers it once to instances that already have one, so existing players get the two domains and lose any they added themselves, once. Startup updates stay on: yt-dlp has to chase YouTube. The executables (yt-dlp, ffmpeg, ffprobe, deno - 230 MB) are not shipped; the mod downloads and updates them itself."
+    },
+    {
       "match": "config/asyncparticles/asyncparticles-mixin.properties",
       "class": "support",
       "reason": "Particle threading; rendering."
@@ -85,19 +90,19 @@
       "reason": "Declares this pack's name and version to Better Compatibility Checker (26.2 reads only this JSON; the TOML it read on 1.21.1 is dead). If a player can edit it, they can claim to be on any version, and the mismatch marker means nothing. BCC writes the file only when it is missing, so the published bytes stand."
     },
     {
-      "match": "config/treechop-client.toml",
-      "class": "support",
-      "reason": "Client half of TreeChop: the crosshair chop indicator (shipped off, as in 4.5.2) and settings-screen preferences."
-    },
-    {
-      "match": "config/treechop-common.toml",
-      "class": "gameplay",
-      "reason": "Which blocks count as a tree, how many chops fell it, what happens to the leaves. Carries the 4.5.2 additions: stripped logs and wood are choppable, and stripped or oak-wood trunks use the problematic-leaves detector so mixed trunks and broad crowns count as one tree."
-    },
-    {
       "match": "config/betteradvancements.json",
       "class": "support",
       "reason": "Advancement screen."
+    },
+    {
+      "match": "config/betterdays-client.toml",
+      "class": "support",
+      "reason": "Better Days' client half: how the longer day is shown. Display only."
+    },
+    {
+      "match": "config/betterdays-common.toml",
+      "class": "gameplay",
+      "reason": "How long a day lasts - daySpeedMinutes 60, a sixth of vanilla's speed. The mechanic the whole mod is, and the one that moved the phantom threshold (v1.0.9). Enforced."
     },
     {
       "match": "config/betterf3.json",
@@ -140,6 +145,16 @@
       "reason": "Connected textures."
     },
     {
+      "match": "config/controlify/server.json",
+      "class": "support",
+      "reason": "Controlify's server policy, chiefly reachAroundPolicy (denied, 2026-09-09). SUPPORT rather than gameplay on purpose: the mod WRITES this file itself when it is missing or stale, and an enforced file the game rewrites is how a player gets locked out at login. Restored by the updater instead."
+    },
+    {
+      "match": "config/coolrain.json",
+      "class": "support",
+      "reason": "Cool Rain: rain sound choice by surroundings, volume - a player's mix (v1.0.6)"
+    },
+    {
       "match": "config/creativecore-client.json",
       "class": "support",
       "reason": "CreativeCore client library."
@@ -155,14 +170,39 @@
       "reason": "Cursor rendering."
     },
     {
+      "match": "config/elytratrails.json",
+      "class": "support",
+      "reason": "Elytra Contrails: trail style and presets - cosmetic, the player's (v1.0.6)"
+    },
+    {
+      "match": "config/emf_compat.json",
+      "class": "support",
+      "reason": "Entity model compatibility shim."
+    },
+    {
       "match": "config/enchdesc.json",
       "class": "support",
       "reason": "Enchantment tooltip text."
     },
     {
+      "match": "config/entity_model_features.json",
+      "class": "support",
+      "reason": "Model rendering."
+    },
+    {
+      "match": "config/entity_texture_features.json",
+      "class": "support",
+      "reason": "Texture rendering."
+    },
+    {
       "match": "config/entityculling.json",
       "class": "support",
       "reason": "Render culling; performance."
+    },
+    {
+      "match": "config/explosiveenhancement.json",
+      "class": "support",
+      "reason": "Explosive Enhancement: explosion animation toggles - cosmetic (v1.0.6)"
     },
     {
       "match": "config/fallingleaves2.json",
@@ -175,14 +215,29 @@
       "reason": "Memory optimisation."
     },
     {
+      "match": "config/firstperson.json",
+      "class": "player",
+      "reason": "First Person Model (v1.0.90): whether the body is drawn in first person, the vanilla-hands mode, the offsets. The mod's F6 toggle writes this file, and a player who prefers vanilla first person keeps that choice; nothing in it affects fairness. v1.0.97 seeds the three body offsets (xOffset, sneakXOffset, sitXOffset) to 15, the values the owner plays with, once per instance under token firstperson-offsets-v1097. The master deliberately keeps 0: changing a player master re-delivers the file over every player, F6 choice included."
+    },
+    {
       "match": "config/gnetum.json",
       "class": "support",
       "reason": "Client-side foliage rendering."
     },
     {
+      "match": "config/gravestones.json",
+      "class": "support",
+      "reason": "Pneumono's Gravestones (v1.0.75), configured as in 4.5.2: graves decay with deaths and with time (576,000 ticks), no experience stored, no skeletons, no graves in creative or under keepInventory, no chat broadcasts. Support rather than gameplay because the server's copy is the one the mod reads and syncs to clients (PneumonoCore ConfigSyncS2CPayload); the client copy decides nothing on this server, and the mod rewrites its file in its own layout, so enforcing it by hash would only risk a lockout. The server gets the same file through -Config."
+    },
+    {
       "match": "config/immediatelyfast.json",
       "class": "support",
       "reason": "Render batching; performance."
+    },
+    {
+      "match": "config/immersive_optimization.json",
+      "class": "support",
+      "reason": "Entity and block-entity tick throttling by distance. Performance."
     },
     {
       "match": "config/invmove.json",
@@ -213,6 +268,11 @@
       "match": "config/ixeris.toml",
       "class": "support",
       "reason": "Window event threading; input."
+    },
+    {
+      "match": "config/jei-server.properties",
+      "class": "support",
+      "reason": "JEI's server half - cheat-mode permissions for an operator. UI."
     },
     {
       "match": "config/jei/blacklist.json",
@@ -275,6 +335,11 @@
       "reason": "Thunder sound and flash."
     },
     {
+      "match": "config/litematica.json",
+      "class": "player",
+      "reason": "Litematica hotkeys (v1.0.8): published holding only the M-to-N remap, because M opens the Xaero world map here (owner, 2026-09-26: Litematica on N in both packs). Player class: Litematica rewrites the whole file with every setting once a player changes one, and those choices are theirs."
+    },
+    {
       "match": "config/lithium.properties",
       "class": "support",
       "reason": "Server optimisation toggles."
@@ -290,6 +355,11 @@
       "reason": "Client half of Lootr: textures and UI only."
     },
     {
+      "match": "config/lootr-common.jsonc",
+      "class": "gameplay",
+      "reason": "Whether chests are per player and how long a player's copy is remembered. Changing it changes who can loot what. Enforced."
+    },
+    {
       "match": "config/midnightlib.json",
       "class": "support",
       "reason": "Config screen library."
@@ -300,19 +370,29 @@
       "reason": "Mod list screen."
     },
     {
-      "match": "config/gravestones.json",
+      "match": "config/nbidal18-vanillarefresh.json",
+      "class": "gameplay",
+      "reason": "Which of Vanilla Refresh's 98 settings this pack applies - the server logs 'Applied 98 Vanilla Refresh settings from config' at boot. Enforced."
+    },
+    {
+      "match": "config/notenoughanimations.json",
       "class": "support",
-      "reason": "Pneumono's Gravestones (v1.0.75), configured as in 4.5.2: graves decay with deaths and with time (576,000 ticks), no experience stored, no skeletons, no graves in creative or under keepInventory, no chat broadcasts. Support rather than gameplay because the server's copy is the one the mod reads and syncs to clients (PneumonoCore ConfigSyncS2CPayload); the client copy decides nothing on this server, and the mod rewrites its file in its own layout, so enforcing it by hash would only risk a lockout. The server gets the same file through -Config."
+      "reason": "Player animation."
     },
     {
-      "match": "config/VinURLConfig.json5",
-      "class": "player",
-      "reason": "VinURL's custom music discs. Published (v1.0.74) so a fresh install starts with youtube.com and soundcloud.com on the URL whitelist instead of asking every player to press Y once per domain, which is what 4.5.2 shipped too. Player class because the mod writes the player's own whitelist additions into this file; player class still delivers it once to instances that already have one, so existing players get the two domains and lose any they added themselves, once. Startup updates stay on: yt-dlp has to chase YouTube. The executables (yt-dlp, ffmpeg, ffprobe, deno - 230 MB) are not shipped; the mod downloads and updates them itself."
+      "match": "config/particle_effects.json5",
+      "class": "support",
+      "reason": "Particle Effects: per-effect particle toggles - cosmetic (v1.0.6)"
     },
     {
-      "match": "config/firstperson.json",
-      "class": "player",
-      "reason": "First Person Model (v1.0.90): whether the body is drawn in first person, the vanilla-hands mode, the offsets. The mod's F6 toggle writes this file, and a player who prefers vanilla first person keeps that choice; nothing in it affects fairness. v1.0.97 seeds the three body offsets (xOffset, sneakXOffset, sitXOffset) to 15, the values the owner plays with, once per instance under token firstperson-offsets-v1097. The master deliberately keeps 0: changing a player master re-delivers the file over every player, F6 choice included."
+      "match": "config/particular-common.toml",
+      "class": "support",
+      "reason": "Particular: which ambience particles show - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/preferred-gamerules.properties",
+      "class": "gameplay",
+      "reason": "The game rules a NEW world is created with: reduced_debug_info true, locator_bar false. In singleplayer this is what hides coordinates in a freshly made world. Enforced."
     },
     {
       "match": "config/presencefootsteps/updater.json",
@@ -323,6 +403,16 @@
       "match": "config/presencefootsteps/userconfig.json5",
       "class": "support",
       "reason": "Footstep sounds; writes its own updater state."
+    },
+    {
+      "match": "config/servercore/config.yml",
+      "class": "support",
+      "reason": "ServerCore's dynamic performance tuning. Performance."
+    },
+    {
+      "match": "config/servercore/optimizations.yml",
+      "class": "support",
+      "reason": "ServerCore's optimisation switches. Performance."
     },
     {
       "match": "config/skinlayers.json",
@@ -420,9 +510,19 @@
       "reason": "Sound overhaul definitions."
     },
     {
+      "match": "config/sparsestructures.json5",
+      "class": "gameplay",
+      "reason": "Structure spacing - x7 everywhere except the Nether, which went back to vanilla in v1.0.18 after the owner called finding anything there impossible. Decides where structures are. Enforced."
+    },
+    {
       "match": "config/status-effect-bars.json",
       "class": "support",
       "reason": "HUD effect bars."
+    },
+    {
+      "match": "config/structure_layout_optimizer.jsonc",
+      "class": "support",
+      "reason": "Structure placement caching. Performance; it does not change where structures go."
     },
     {
       "match": "config/subtle_effects/blocks.toml",
@@ -465,6 +565,31 @@
       "reason": "Terrain generation."
     },
     {
+      "match": "config/the-block-keeps-ticking.json",
+      "class": "gameplay",
+      "reason": "Which blocks keep ticking outside loaded chunks. A behaviour change, not a performance setting. Enforced."
+    },
+    {
+      "match": "config/treechop-client.toml",
+      "class": "support",
+      "reason": "Client half of TreeChop: the crosshair chop indicator (shipped off, as in 4.5.2) and settings-screen preferences."
+    },
+    {
+      "match": "config/treechop-common.toml",
+      "class": "gameplay",
+      "reason": "Which blocks count as a tree, how many chops fell it, what happens to the leaves. Carries the 4.5.2 additions: stripped logs and wood are choppable, and stripped or oak-wood trunks use the problematic-leaves detector so mixed trunks and broad crowns count as one tree."
+    },
+    {
+      "match": "config/visuality.json",
+      "class": "support",
+      "reason": "Visuality: which particles show - cosmetic (v1.0.6)"
+    },
+    {
+      "match": "config/voicechat/translations.properties",
+      "class": "support",
+      "reason": "Simple Voice Chat's server-side strings. Text only. NOTE: voicechat-server.properties is deliberately NOT published - it carries voice_host 38.103.248.98:27038, and on a client's integrated server that would advertise the live server's voice host. The client writes its own local default."
+    },
+    {
       "match": "config/voxy-config.json",
       "class": "player",
       "reason": "Voxy's render distance and thread counts. Machine-dependent, and the whole point of shipping a low default is that a player raises it - as support it was restored to the shipped value on every sync, so a raised value never survived a launch."
@@ -473,6 +598,11 @@
       "match": "config/voxyworldgenv2.json",
       "class": "support",
       "reason": "LOD generation threading; machine-dependent."
+    },
+    {
+      "match": "config/wakes.json",
+      "class": "support",
+      "reason": "Wakes: wake rendering options - cosmetic (v1.0.6)"
     },
     {
       "match": "config/xaero/minimap/profiles/default.cfg",
@@ -488,66 +618,6 @@
       "match": "config/yacl.json5",
       "class": "support",
       "reason": "Config GUI library."
-    },
-    {
-      "match": "config/emf_compat.json",
-      "class": "support",
-      "reason": "Entity model compatibility shim."
-    },
-    {
-      "match": "config/entity_model_features.json",
-      "class": "support",
-      "reason": "Model rendering."
-    },
-    {
-      "match": "config/entity_texture_features.json",
-      "class": "support",
-      "reason": "Texture rendering."
-    },
-    {
-      "match": "config/notenoughanimations.json",
-      "class": "support",
-      "reason": "Player animation."
-    },
-    {
-      "match": "config/coolrain.json",
-      "class": "support",
-      "reason": "Cool Rain: rain sound choice by surroundings, volume - a player's mix (v1.0.6)"
-    },
-    {
-      "match": "config/elytratrails.json",
-      "class": "support",
-      "reason": "Elytra Contrails: trail style and presets - cosmetic, the player's (v1.0.6)"
-    },
-    {
-      "match": "config/explosiveenhancement.json",
-      "class": "support",
-      "reason": "Explosive Enhancement: explosion animation toggles - cosmetic (v1.0.6)"
-    },
-    {
-      "match": "config/particular-common.toml",
-      "class": "support",
-      "reason": "Particular: which ambience particles show - cosmetic (v1.0.6)"
-    },
-    {
-      "match": "config/visuality.json",
-      "class": "support",
-      "reason": "Visuality: which particles show - cosmetic (v1.0.6)"
-    },
-    {
-      "match": "config/wakes.json",
-      "class": "support",
-      "reason": "Wakes: wake rendering options - cosmetic (v1.0.6)"
-    },
-    {
-      "match": "config/particle_effects.json5",
-      "class": "support",
-      "reason": "Particle Effects: per-effect particle toggles - cosmetic (v1.0.6)"
-    },
-    {
-      "match": "config/litematica.json",
-      "class": "player",
-      "reason": "Litematica hotkeys (v1.0.8): published holding only the M-to-N remap, because M opens the Xaero world map here (owner, 2026-09-26: Litematica on N in both packs). Player class: Litematica rewrites the whole file with every setting once a player changes one, and those choices are theirs."
     }
   ],
   "rewrittenAtRuntime": [

@@ -5,6 +5,33 @@ build that was not published.
 
 ---
 
+## v1.0.24 — 2026-10-10 — the final release
+
+**This instance is now yours. Nothing is checked, repaired or downloaded ever again.** Manifest
+digest `71de34ce02eb03fb…`, replacing `85a85c4fe6680859…` (v1.0.23). 296 managed files, down from 299.
+
+The Paris server is retired and Vanilla++ is now played offline, so the machinery that kept every
+instance identical to the server goes:
+
+* **The updater installs once, then never again.** On your next Play it applies this release and
+  switches itself off in the same launch. From then on it opens no window, contacts nothing and
+  verifies nothing - add, remove or change any mod or setting and it stays exactly as you left it,
+  even with no internet and even after this channel is taken down.
+* **The integrity helper and Better Compatibility Checker are removed.** Both existed only to keep a
+  client in step with the server.
+
+**Players click Play - once.** That launch is the last update. Two things worth knowing:
+
+* **Make your own changes after that Play, not before.** The previous updater runs one final time to
+  apply this release, and it still restores anything it manages.
+* **Leave the `nbidal18-...` and `packwiz-...` jars in the instance folder**, or clear the pre-launch
+  command in Prism first (Edit Instance -> Settings -> Custom Commands). Prism refuses to launch if that
+  command points at a jar that is gone. Left alone they cost nothing - well under a second per launch.
+
+Nothing published after this reaches anyone on it.
+
+---
+
 ## v1.0.23 — 2026-10-10
 
 **Far terrain no longer runs singleplayer out of memory, and slabs can be mixed.** Manifest digest

@@ -21,10 +21,6 @@ file = "config/autohud.json5"
 hash = "20f0177e023bf14fcd09c78f8a764479fe5306520d1a0bf5d3f1d244f46afac4"
 
 [[files]]
-file = "config/bcc-common.json"
-hash = "a41c04b5e42a5d8334730c69c1011e3e108d78b240d36d149b4585501a4c91be"
-
-[[files]]
 file = "config/betteradvancements.json"
 hash = "c81c89e9534c83ecef3206b6c7d311c7695a396c23080b15abeedeabbd7064d5"
 
@@ -597,10 +593,6 @@ file = "mods/baguettelib-26.2-Fabric-2.0.7.jar"
 hash = "a5c70af8f95c2cf62506ec4a6f0a7b643498bc0f2857db27b9000a64bbe938a6"
 
 [[files]]
-file = "mods/better-compatability-checker-fabric-26.2.0.1.jar"
-hash = "9f051ab8e70d4a16f3e01e53600043ff6f297a20765296d4aa0bf7a73f48647c"
-
-[[files]]
 file = "mods/betterbiomeblend-fabric-26.2-1.4.0.jar"
 hash = "8c6a41fe64802f4867de86017492a081d6947e2f3afa9b9d84b72a2d9e0da5c1"
 
@@ -855,10 +847,6 @@ hash = "8ab55c6f085c5272249f8ffa921a1698e54e1dc9ab7184a8df3eb60abdaaabaa"
 [[files]]
 file = "mods/nbidal18-immersivethunder-1.2.2+26.2-fabric.jar"
 hash = "819992b85104f1e39a8d9a6148349bf610f4182b42398c9ecfe1d6a23f849a6b"
-
-[[files]]
-file = "mods/nbidal18-integrity-1.0.23+26.2-fabric.jar"
-hash = "fb22fee08c14baaa7f6474063666022d2b861c5b5001785c1281f40317cff501"
 
 [[files]]
 file = "mods/nbidal18-invmov-1.0.2+26.2-fabric.jar"
@@ -1122,7 +1110,7 @@ hash = "9224213b15caa8b884b8fc62c3426a8ce9d2091305a2692627cecb58196f56fa"
 
 [[files]]
 file = "nbidal18-packwiz-updater.next.jar"
-hash = "13cec39ceb487e92920d5d38615a80bb34ea8dc8bc8633d04af26621e1169aef"
+hash = "82df4e9be577f332084a24b4401bd26a329630c85fda25c2c42c7b32c1a1cfc2"
 
 [[files]]
 file = "packwiz-installer-bootstrap.next.jar"

@@ -519,6 +519,31 @@ public final class Nbidal18PackwizSync {
         if (args.length == 1 && "--seed-only".equals(args[0])) {
             System.exit(updater.runSeedsOnly());
         }
+        // v1.0.24, THE FINAL RELEASE: install once, then never again.
+        //
+        // The owner, 2026-10-10, retiring the channel: "now we need to make .24 be the 'unlink from
+        // github' so we remove our integrity checker, updater, whatnot, let players do what they
+        // want". From here on an instance belongs to its player.
+        //
+        // An instance that has ever completed an install - every existing player, the moment this
+        // jar is promoted - stops right here: no window, no network, no verification, no repair, no
+        // seeds. Exit 0 so Prism starts Minecraft. Nothing is enforced again, a player may add,
+        // remove or edit anything, and the GitHub channel can disappear without stopping a single
+        // launch (before this, an unreachable channel plus any changed file refused to start).
+        //
+        // An instance that has NEVER installed - a fresh import of the setup ZIP, which carries only
+        // this engine - falls through and installs once, normally, for as long as the channel is
+        // still up; it writes last-successful-manifest.json at the end, and is detached from then on.
+        //
+        // How existing players get here: this jar ships as nbidal18-packwiz-updater.next.jar. On the
+        // first Play after v1.0.24, the previous engine installs it; the supervisor sees the newer
+        // staged engine, promotes it and runs it again in the same launch; it finds the manifest the
+        // previous engine just wrote, and stops. Minecraft then starts on v1.0.24.
+        if (Files.isRegularFile(updater.lastManifestPath)) {
+            System.out.println("[nbidal18] Detached from the update channel since v1.0.24 - "
+                    + "nothing is checked, repaired or downloaded. This instance is yours.");
+            System.exit(0);
+        }
         int exitCode = updater.run();
         updater.closeUpdaterWindow();
         System.exit(exitCode);
